@@ -1,0 +1,72 @@
+body {
+  background-image: url("../img/background/img_2.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.modal{
+  display: none;
+  position: fixed;
+  inset: 0;
+}
+
+.modal.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  size: 100px
+}
+
+button {
+  border: none;
+  background: none;
+  color: white;
+  font-size: 15px;
+  -webkit-text-stroke: 0.5px #45361c;
+}
+
+div{
+  background: antiquewhite;
+  border: 4px solid #9a7951;
+  border-radius: 15px;
+  height: 500px;
+  width: 700px;
+}
+
+canvas, form {
+  background: antiquewhite;
+  border: 4px solid #9a7951;
+  border-radius: 15px;
+  height: 250px;
+  width: 250px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
+}
+
+.section-1 {
+
+}
+
+.teor {
+  font-size: 15px;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold";
+}
+
+.title-th {
+  font-size: 30px;
+  text-align: center;
+}
