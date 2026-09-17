@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../1lab/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/1lab.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/LICENSE.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/icon.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/img/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/js/app.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/js/vendor/.gitkeep" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/site.webmanifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/webpack.common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/webpack.config.dev.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../1lab/webpack.config.prod.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/big_to_little_endian.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/big_to_little_endian.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/fibonacci.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/fibonacci.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/reverse_string_cstr.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/reverse_string_cstr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/reverse_words_cstr.s" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/3lab/reverse_words_cstr.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../ak/4laba/4lab-ak-503302" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../япы" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3JSvWliS5VVIbXMgEZtigeaxP9W" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "lab1",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/xfiles/itmo/3sem/play",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
+  }
+}]]></component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-a203e0a19954-intellij.indexing.shared.core-IU-262.10315.125" />
+        <option value="bundled-js-predefined-d6986cc7102b-4abd2a77f808-JavaScript-IU-262.10315.125" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="" />
+      <created>1789667318247</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1789667318247</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
