@@ -33,7 +33,7 @@ but.addEventListener('click', (event) => {
 //todo нужно чтобы размер мог свапаться, то есть не было ограничений по рисунку просто размер координатной плоскости сделать интерактивным
   if(object['a'].trim() === '' || object['x'].trim() === '' || object['y'].trim() === '' ||
       !Number.isFinite(a) || !Number.isFinite(x) || !Number.isFinite(y) ||
-      x > 10 || a > 10 || y > 10 || x < -10 || y < -10 || a < -10){
+      x > 10 || a > 10 || y > 10 || x < -10 || y < -10 || a < 0){
 
     return;
   }
@@ -107,3 +107,7 @@ function a1(){
   ctx.restore();
 }
  a1();
+
+canvas.addEventListener('click', (event) => {
+  alert('координатная плоскость по хорошему тут должна менять свой масштаб, но пока опустим этот момент');
+});

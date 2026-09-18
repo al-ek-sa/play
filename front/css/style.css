@@ -49,6 +49,8 @@ canvas, form {
   width: 70%;
   overflow-y: auto;
   gap: 15px;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .section {
@@ -63,8 +65,8 @@ canvas, form {
   font-size: 25px;
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
-  margin-left: 15px;
-  margin-right: 25px;
+  margin-left: 35px;
+  margin-right: 35px;
   opacity: 5;
   visibility: visible;
   margin-bottom: 0;
@@ -80,7 +82,7 @@ canvas, form {
 
 label {
   font-size: 15px;
-  margin-top: 0;
+  margin-top: 5px;
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
   margin-left: 5%;
@@ -88,16 +90,39 @@ label {
   height: 10%;
 }
 
-input, .but {
+input{
   border-radius: 10px;
   margin-top: 0;
   margin-left: 5%;
-  height: 10%;
+  height: 11%;
   width: 87%;
   border: 2px solid #9a7951;
   background: #e1ceb9;
   margin-bottom: 5px;
   color: #45361c;
+}
+
+.but {
+  border-radius: 10px;
+  margin-top: 10px;
+  margin-left: 5%;
+  height: 15%;
+  width: 90%;
+  border: 2px solid #9a7951;
+  background: #e1ceb9;
+  margin-bottom: 5px;
+  color: #45361c;
+}
+
+.but1 {
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 650px;
+  border: 2px solid #9a7951;
+  background: #e1ceb9;
+  margin-bottom: 15px;
+  color: #45361c;
+  text-align: center;
 }
 
 .game-row{

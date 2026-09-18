@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Locus</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
   <meta name="description" content="">
 
   <meta property="og:title" content="">
@@ -16,14 +16,13 @@
 
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="apple-touch-icon" href="../icon.png">
 
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="manifest" href="../site.webmanifest">
   <meta name="theme-color" content="#fafafa">
 </head>
 
 <body>
-  <output >
   <button id="lv-one">1</button>
   <button id="lv-two">2</button>
   <button id="lv-tree">3</button>
@@ -63,7 +62,7 @@
     <br>
     <div class="game-row">
       <form id="form-lv-one" class="section section-1">
-        <label>Введи значение a (от -10 до 10)</label><br>
+        <label>Введи значение a (от 0 до 10)</label><br>
         <input name="a" placeholder="Введи значение а"><br>
         <label>Введи значение x₀ (от -10 до 10)</label><br>
         <input name="x" placeholder="Введи значение х"><br>
@@ -73,53 +72,53 @@
       </form>
       <canvas id="canvas-lv-one" width="320" height="320"></canvas>
     </div>
-      <button class="but">Теория прочитана</button>
+      <button class="but1">Теория прочитана</button>
   </div>
 </div>
     <div id="bear1">
-      <img src="img/bear.png" class="bear">
+      <img src="../img/bear.png" class="bear">
     </div>
-    <div class="scroll">
-      <div class="container div">
-        <p class="title-th">Круг</p>
-        <p class="section teor"><br>
-        <p class="section teor">Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.
+<!--    <div class="scroll">-->
+<!--      <div class="container div">-->
+<!--        <p class="title-th">Круг</p>-->
+<!--        <p class="section teor"><br>-->
+<!--        <p class="section teor">Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.-->
 
-          На координатной плоскости квадрат можно задать через его центр и половину длины стороны.
+<!--          На координатной плоскости квадрат можно задать через его центр и половину длины стороны.-->
 
-          Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:
+<!--          Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:-->
 
-          левая граница: x = x₀ − a
-          правая граница: x = x₀ + a
-          нижняя граница: y = y₀ − a
-          верхняя граница: y = y₀ + a
+<!--          левая граница: x = x₀ − a-->
+<!--          правая граница: x = x₀ + a-->
+<!--          нижняя граница: y = y₀ − a-->
+<!--          верхняя граница: y = y₀ + a-->
 
-          Чтобы проверить, находится ли точка (x, y) внутри квадрата:
+<!--          Чтобы проверить, находится ли точка (x, y) внутри квадрата:-->
 
-          x₀ − a ≤ x ≤ x₀ + a
+<!--          x₀ − a ≤ x ≤ x₀ + a-->
 
-          y₀ − a ≤ y ≤ y₀ + a
+<!--          y₀ − a ≤ y ≤ y₀ + a-->
 
-          Если обе формулы выполняются — точка находится внутри квадрата!</p>
-        <br>
-        <div class="game-row">
-          <form id="form-lv-one" class="section section-1">
-            <label>Введи значение a (от -10 до 10)</label><br>
-            <input name="a" placeholder="Введи значение а"><br>
-            <label>Введи значение x₀ (от -10 до 10)</label><br>
-            <input name="x" placeholder="Введи значение х"><br>
-            <label>Введи значение у₀ (от -10 до 10)</label><br>
-            <input name="y" placeholder="Введи значение у"><br>
-            <button id="button-lv-one" class="but">посмотреть значение</button>
-          </form>
-          <canvas id="canvas-lv-one" width="320" height="320"></canvas>
-        </div>
-        <button class="but">Теория прочитана</button>
-      </div>
-    </div>
-    <div id="bear">
-      <img src="img/bear.png" class="bear">
-    </div>
+<!--          Если обе формулы выполняются — точка находится внутри квадрата!</p>-->
+<!--        <br>-->
+<!--        <div class="game-row">-->
+<!--          <form id="form-lv-one" class="section section-1">-->
+<!--            <label>Введи значение a (от -10 до 10)</label><br>-->
+<!--            <input name="a" placeholder="Введи значение а"><br>-->
+<!--            <label>Введи значение x₀ (от -10 до 10)</label><br>-->
+<!--            <input name="x" placeholder="Введи значение х"><br>-->
+<!--            <label>Введи значение у₀ (от -10 до 10)</label><br>-->
+<!--            <input name="y" placeholder="Введи значение у"><br>-->
+<!--            <button id="button-lv-one" class="but">посмотреть значение</button>-->
+<!--          </form>-->
+<!--          <canvas id="canvas-lv-one" width="320" height="320"></canvas>-->
+<!--        </div>-->
+<!--        <button class="but">Теория прочитана</button>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--    <div id="bear">-->
+<!--      <img src="img/bear.png" class="bear">-->
+<!--    </div>-->
 </body>
-<script src="js/vendor/level-one.js"></script>
+<script src="../js/vendor/level-one.js"></script>
 </html>

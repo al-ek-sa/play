@@ -1,0 +1,21 @@
+body {
+  background-image: url("../img/background/img_1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container {
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  width: 70%;
+  overflow-y: auto;
+  gap: 15px;
+  justify-content: flex-start;
+  align-items: center;
+}
