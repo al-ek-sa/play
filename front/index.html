@@ -23,7 +23,7 @@
 </head>
 
 <body>
-  <h6>locus - игра по планиметрии</h6>
+  <output >
   <button id="lv-one">1</button>
   <button id="lv-two">2</button>
   <button id="lv-tree">3</button>
@@ -36,77 +36,90 @@
   <button id="lv-ten">10</button>
   <button id="lv-eleven">11</button>
   <button id="lv-twelve">12</button>
-<div id="bear" class="modal">
-  <img src="img/bear.png">
-</div>
-
-  <div class="container">
-    <p class="section section-1 teor"><p class="title-th">Квадрат</p><br>
+  <button id="lv-therteen">13</button>
+  <button id="lv-fourteen">14</button>
+<div class="scroll">
+  <div class="container div">
+    <p class="title-th">Квадрат</p>
+    <p class="section teor">
       Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.<br>
 
-      На координатной плоскости квадрат можно задать через его центр и половину длины стороны.
+      На координатной плоскости квадрат можно задать через его центр и половину длины стороны.</p>
 
-      Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:<br>
+      <ul class="teor">Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:
 
-      левая граница: x = x₀ − a<br>
-      правая граница: x = x₀ + a<br>
-      нижняя граница: y = y₀ − a<br>
-      верхняя граница: y = y₀ + a<br>
-      Чтобы проверить, находится ли точка (x, y) внутри квадрата:<br>
+        <li class="teor">левая граница: x = x₀ − a</li>
+        <li class="teor">правая граница: x = x₀ + a</li>
+        <li class="teor">нижняя граница: y = y₀ − a</li>
+        <li class="teor">верхняя граница: y = y₀ + a</li>
+      </ul>
+      <ul class="teor">Чтобы проверить, находится ли точка (x, y) внутри квадрата:<br>
 
-      x₀ − a ≤ x ≤ x₀ + a<br>
+        <li class="teor">x₀ − a ≤ x ≤ x₀ + a</li>
 
-      y₀ − a ≤ y ≤ y₀ + a<br>
-
-      Если обе формулы выполняются — точка находится внутри квадрата!</p>
+        <li class="teor">y₀ − a ≤ y ≤ y₀ + a</li>
+      </ul>
+      <p class="teor">Если обе формулы выполняются — точка находится внутри квадрата!</p>
     <br>
-    <form id="form-lv-one">
-      <label>Введи значение a</label><br>
-      <input id="a"><br>
-      <label>Введи значение x₀</label><br>
-      <input id="x"><br>
-      <label>Введи значение у₀</label><br>
-      <input id="y"><br>
-      <button id="button-lv-one">посмотреть значение</button>
-    </form>
-    <canvas id="canvas-lv-one"></canvas>
-    <button>Теория прочитана</button>
+    <div class="game-row">
+      <form id="form-lv-one" class="section section-1">
+        <label>Введи значение a (от -10 до 10)</label><br>
+        <input name="a" placeholder="Введи значение а"><br>
+        <label>Введи значение x₀ (от -10 до 10)</label><br>
+        <input name="x" placeholder="Введи значение х"><br>
+        <label>Введи значение у₀ (от -10 до 10)</label><br>
+        <input name="y" placeholder="Введи значение у"><br>
+        <button id="button-lv-one" class="but">посмотреть значение</button>
+      </form>
+      <canvas id="canvas-lv-one" width="320" height="320"></canvas>
+    </div>
+      <button class="but">Теория прочитана</button>
   </div>
-  <div class="container">
-    <p>Круг</p>
-    <p>Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.
+</div>
+    <div id="bear1">
+      <img src="img/bear.png" class="bear">
+    </div>
+    <div class="scroll">
+      <div class="container div">
+        <p class="title-th">Круг</p>
+        <p class="section teor"><br>
+        <p class="section teor">Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.
 
-      На координатной плоскости квадрат можно задать через его центр и половину длины стороны.
+          На координатной плоскости квадрат можно задать через его центр и половину длины стороны.
 
-      Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:
+          Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:
 
-      левая граница: x = x₀ − a
-      правая граница: x = x₀ + a
-      нижняя граница: y = y₀ − a
-      верхняя граница: y = y₀ + a
+          левая граница: x = x₀ − a
+          правая граница: x = x₀ + a
+          нижняя граница: y = y₀ − a
+          верхняя граница: y = y₀ + a
 
-      Чтобы проверить, находится ли точка (x, y) внутри квадрата:
+          Чтобы проверить, находится ли точка (x, y) внутри квадрата:
 
-      x₀ − a ≤ x ≤ x₀ + a
+          x₀ − a ≤ x ≤ x₀ + a
 
-      y₀ − a ≤ y ≤ y₀ + a
+          y₀ − a ≤ y ≤ y₀ + a
 
-      Если обе формулы выполняются — точка находится внутри квадрата!</p>
-    <br>
-    <form id="form-lv-two">
-      <label>Введи значение x</label><br>
-      <input><br>
-      <label>Введи значение у</label><br>
-      <input><br>
-      <label>Введи значение x₀</label><br>
-      <input><br>
-      <label>Введи значение у₀</label><br>
-      <input><br>
-      <button id="button-lv-two">посмотреть значение</button>
-    </form>
-    <canvas id="canvas-lv-two"></canvas>
-    <button>Теория прочитана</button>
-  </div>
+          Если обе формулы выполняются — точка находится внутри квадрата!</p>
+        <br>
+        <div class="game-row">
+          <form id="form-lv-one" class="section section-1">
+            <label>Введи значение a (от -10 до 10)</label><br>
+            <input name="a" placeholder="Введи значение а"><br>
+            <label>Введи значение x₀ (от -10 до 10)</label><br>
+            <input name="x" placeholder="Введи значение х"><br>
+            <label>Введи значение у₀ (от -10 до 10)</label><br>
+            <input name="y" placeholder="Введи значение у"><br>
+            <button id="button-lv-one" class="but">посмотреть значение</button>
+          </form>
+          <canvas id="canvas-lv-one" width="320" height="320"></canvas>
+        </div>
+        <button class="but">Теория прочитана</button>
+      </div>
+    </div>
+    <div id="bear">
+      <img src="img/bear.png" class="bear">
+    </div>
 </body>
 <script src="js/vendor/level-one.js"></script>
 </html>

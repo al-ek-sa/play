@@ -16,7 +16,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  size: 100px
 }
 
 button {
@@ -24,28 +23,32 @@ button {
   background: none;
   color: white;
   font-size: 15px;
-  -webkit-text-stroke: 0.5px #45361c;
 }
 
-div{
+.div {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
-  height: 500px;
-  width: 700px;
 }
 
 canvas, form {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
-  height: 250px;
-  width: 250px;
+  height: 320px;
+  width: 320px;
 }
 
 .container {
+  position: fixed;
+  bottom: 10%;
+  right: 15%;
   display: flex;
   flex-direction: column;
+  height: 600px;
+  width: 70%;
+  overflow-y: auto;
+  gap: 15px;
 }
 
 .section {
@@ -56,17 +59,64 @@ canvas, form {
   padding: 0;
 }
 
-.section-1 {
-
-}
-
 .teor {
-  font-size: 15px;
+  font-size: 25px;
   color: #45361c;
-  font-family: "JetBrains Mono ExtraBold";
+  font-family: "JetBrains Mono ExtraBold", serif;
+  margin-left: 15px;
+  margin-right: 25px;
+  opacity: 5;
+  visibility: visible;
+  margin-bottom: 0;
 }
 
 .title-th {
-  font-size: 30px;
+  font-size: 40px;
   text-align: center;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  color: #3b3019;
+  font-width: 700%;
+}
+
+label {
+  font-size: 15px;
+  margin-top: 0;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  margin-left: 5%;
+  margin-right: 5%;
+  height: 10%;
+}
+
+input, .but {
+  border-radius: 10px;
+  margin-top: 0;
+  margin-left: 5%;
+  height: 10%;
+  width: 87%;
+  border: 2px solid #9a7951;
+  background: #e1ceb9;
+  margin-bottom: 5px;
+  color: #45361c;
+}
+
+.game-row{
+  display: flex;
+  flex-direction: row;
+  gap: 70px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.scroll {
+  scrollbar-color: #9a7951 rgb(250 235 215 / 0);
+  scrollbar-width: thin;
+  padding: 15px;
+}
+
+.bear {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  height: 450px;
 }
