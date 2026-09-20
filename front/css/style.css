@@ -1,3 +1,4 @@
+/*фоновое изображение игры*/
 body {
   background-image: url("../img/background/img_2.png");
   background-size: cover;
@@ -5,40 +6,85 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
-
+/*todo не работает*/
 .modal{
   display: none;
   position: fixed;
   inset: 0;
 }
-
+/*todo не работает*/
 .modal.active {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-button {
-  border: none;
-  background: none;
-  color: white;
+/*кнопки*/
+.button-base-lv-th { /*todo кнопки в теории и в уровнях*/
+  border: 2px solid #9a7951;
+  background: #e1ceb9;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  color: #3b3019;
   font-size: 15px;
+  text-align: center;
+  border-radius: 10px;
 }
 
-.div {
+.btn--theory {/*todo кнопка именно в форме с теорией*/
+  margin-top: 10px;
+  margin-left: 5%;
+  height: 15%;
+  width: 89%;
+  margin-bottom: 5px;
+}
+
+.btn--to-task {/* todo кнопка в блоке с теорией*/
+  margin-top: 10px;
+  width: 650px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+/* todo поля для теории (стоит наверное тут указывать */
+.div--th {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
 }
 
-canvas, form {
+/*todo пересмотреть дизайн добавить стилей*/
+label {
+  margin-top: 5px;
+  margin-right: 5%;
+}
+
+input{ /*todo очень похож стиль с кнопкой возможно объединить*/
+  border: 2px solid #9a7951;
+  background: #e1ceb9;
+  margin-bottom: 5px;
+}
+
+/*todo пересмотреть возможно не самый лучший выбор селекторов*/
+.form--th > label, input{
+  border-radius: 10px;
+  margin-left: 5%;
+  height: 11%;
+  width: 87%;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  font-size: 20px;
+}
+
+/*todo аддитивность страдает, нужно не в пикселяъ*/
+canvas, .form--th {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
-  height: 320px;
-  width: 320px;
+  height: 400px;
+  width: 400px;
 }
 
+/*контейнеры для теории*/
 .container {
   position: fixed;
   bottom: 10%;
@@ -80,55 +126,10 @@ canvas, form {
   font-width: 700%;
 }
 
-label {
-  font-size: 15px;
-  margin-top: 5px;
-  color: #45361c;
-  font-family: "JetBrains Mono ExtraBold", serif;
-  margin-left: 5%;
-  margin-right: 5%;
-  height: 10%;
-}
-
-input{
-  border-radius: 10px;
-  margin-top: 0;
-  margin-left: 5%;
-  height: 11%;
-  width: 87%;
-  border: 2px solid #9a7951;
-  background: #e1ceb9;
-  margin-bottom: 5px;
-  color: #45361c;
-}
-
-.but {
-  border-radius: 10px;
-  margin-top: 10px;
-  margin-left: 5%;
-  height: 15%;
-  width: 90%;
-  border: 2px solid #9a7951;
-  background: #e1ceb9;
-  margin-bottom: 5px;
-  color: #45361c;
-}
-
-.but1 {
-  border-radius: 10px;
-  margin-top: 10px;
-  width: 650px;
-  border: 2px solid #9a7951;
-  background: #e1ceb9;
-  margin-bottom: 15px;
-  color: #45361c;
-  text-align: center;
-}
-
 .game-row{
   display: flex;
   flex-direction: row;
-  gap: 70px;
+  gap: 40px;
   justify-content: center;
   align-items: flex-start;
 }
@@ -145,3 +146,4 @@ input{
   right: 0;
   height: 450px;
 }
+

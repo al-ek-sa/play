@@ -38,7 +38,7 @@
   <button id="lv-therteen">13</button>
   <button id="lv-fourteen">14</button>
 <div class="scroll">
-  <div class="container div">
+  <div class="container div--th">
     <p class="title-th">Квадрат</p>
     <p class="section teor">
       Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.<br>
@@ -52,7 +52,7 @@
         <li class="teor">нижняя граница: y = y₀ − a</li>
         <li class="teor">верхняя граница: y = y₀ + a</li>
       </ul>
-      <ul class="teor">Чтобы проверить, находится ли точка (x, y) внутри квадрата:<br>
+      <ul class="teor">Чтобы проверить, находится ли точка (x, y) внутри квадрата:
 
         <li class="teor">x₀ − a ≤ x ≤ x₀ + a</li>
 
@@ -61,64 +61,23 @@
       <p class="teor">Если обе формулы выполняются — точка находится внутри квадрата!</p>
     <br>
     <div class="game-row">
-      <form id="form-lv-one" class="section section-1">
+      <form id="form-lv-one" class="section form--th">
         <label>Введи значение a (от 0 до 10)</label><br>
-        <input name="a" placeholder="Введи значение а"><br>
+        <input name="a" placeholder="Введи значение а" type="number" min="0" max="10" step="0.5"><br>
         <label>Введи значение x₀ (от -10 до 10)</label><br>
-        <input name="x" placeholder="Введи значение х"><br>
+        <input name="x" placeholder="Введи значение х" type="number" min="-10" max="10" step="0.5"><br>
         <label>Введи значение у₀ (от -10 до 10)</label><br>
-        <input name="y" placeholder="Введи значение у"><br>
-        <button id="button-lv-one" class="but">посмотреть значение</button>
+        <input name="y" placeholder="Введи значение у" type="number" min="-10" max="10" step="0.5"><br>
+        <button id="button-lv-one" class="button-base-lv-th btn--theory">посмотреть значение</button>
       </form>
       <canvas id="canvas-lv-one" width="320" height="320"></canvas>
     </div>
-      <button class="but1">Теория прочитана</button>
+      <button class="btn--to-task button-base-lv-th" height="60">Теория прочитана</button>
   </div>
 </div>
     <div id="bear1">
       <img src="../img/bear.png" class="bear">
     </div>
-<!--    <div class="scroll">-->
-<!--      <div class="container div">-->
-<!--        <p class="title-th">Круг</p>-->
-<!--        <p class="section teor"><br>-->
-<!--        <p class="section teor">Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.-->
-
-<!--          На координатной плоскости квадрат можно задать через его центр и половину длины стороны.-->
-
-<!--          Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:-->
-
-<!--          левая граница: x = x₀ − a-->
-<!--          правая граница: x = x₀ + a-->
-<!--          нижняя граница: y = y₀ − a-->
-<!--          верхняя граница: y = y₀ + a-->
-
-<!--          Чтобы проверить, находится ли точка (x, y) внутри квадрата:-->
-
-<!--          x₀ − a ≤ x ≤ x₀ + a-->
-
-<!--          y₀ − a ≤ y ≤ y₀ + a-->
-
-<!--          Если обе формулы выполняются — точка находится внутри квадрата!</p>-->
-<!--        <br>-->
-<!--        <div class="game-row">-->
-<!--          <form id="form-lv-one" class="section section-1">-->
-<!--            <label>Введи значение a (от -10 до 10)</label><br>-->
-<!--            <input name="a" placeholder="Введи значение а"><br>-->
-<!--            <label>Введи значение x₀ (от -10 до 10)</label><br>-->
-<!--            <input name="x" placeholder="Введи значение х"><br>-->
-<!--            <label>Введи значение у₀ (от -10 до 10)</label><br>-->
-<!--            <input name="y" placeholder="Введи значение у"><br>-->
-<!--            <button id="button-lv-one" class="but">посмотреть значение</button>-->
-<!--          </form>-->
-<!--          <canvas id="canvas-lv-one" width="320" height="320"></canvas>-->
-<!--        </div>-->
-<!--        <button class="but">Теория прочитана</button>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div id="bear">-->
-<!--      <img src="img/bear.png" class="bear">-->
-<!--    </div>-->
 </body>
 <script src="../js/vendor/level-one.js"></script>
 </html>

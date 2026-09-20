@@ -111,3 +111,7 @@ function a1(){
 canvas.addEventListener('click', (event) => {
   alert('координатная плоскость по хорошему тут должна менять свой масштаб, но пока опустим этот момент');
 });
+
+function drawCoordinatePlane(event) {
+  event.preventDefault();
+}
