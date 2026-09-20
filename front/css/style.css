@@ -6,6 +6,11 @@ body {
   background-position: center;
   background-attachment: fixed;
 }
+
+input:focus {/*todo базовое свечение аннулировано пересмотреть или везде оправдано*/
+  outline: none;
+}
+
 /*todo не работает*/
 .modal{
   display: none;
@@ -42,7 +47,7 @@ body {
   margin-top: 10px;
   width: 650px;
   height: 60px;
-  margin-bottom: 15px;
+  margin-bottom: 15px;background: #ceb899;
 }
 
 /* todo поля для теории (стоит наверное тут указывать */
@@ -134,16 +139,29 @@ canvas, .form--th {
   align-items: flex-start;
 }
 
-.scroll {
+.scroll {/*todo scroll хорош, но в разных браузерах совершенно разное отображение*/
   scrollbar-color: #9a7951 rgb(250 235 215 / 0);
   scrollbar-width: thin;
   padding: 15px;
 }
 
-.bear {
+.bear { /**картинка мишки сопроводителя*/
   position: fixed;
   bottom: 0;
   right: 0;
   height: 450px;
 }
 
+.form--th > input:hover, button:hover {
+  border: 2px solid #8a6d49;
+  background: #ead2b6;
+}
+
+.form--th > input:focus, button:active { /*todo не менять местами с hover*/
+  background: #ceb899;
+}
+
+/*todo итоговое.
+   Очень много похожего кода в форме теории, шрифт и тп, возможно стоит поднять по уровням это, так
+    как выглядит небрежно и с дублями
+ */
