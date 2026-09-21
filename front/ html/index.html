@@ -22,7 +22,7 @@
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body>
+<body class="body-start">
   <button id="lv-one">1</button>
   <button id="lv-two">2</button>
   <button id="lv-tree">3</button>
@@ -37,8 +37,8 @@
   <button id="lv-twelve">12</button>
   <button id="lv-therteen">13</button>
   <button id="lv-fourteen">14</button>
-<div class="scroll">
-  <div class="container div--th">
+<div id="th-square" class="modal">
+  <div class="container div--th scroll">
     <p class="title-th">Квадрат</p>
     <p class="section teor">
       Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.<br>
@@ -70,14 +70,15 @@
         <input name="y" placeholder="Введи значение у" type="number" min="-10" max="10" step="0.5"><br>
         <button id="button-lv-one" class="button-base-lv-th btn--theory">посмотреть значение</button>
       </form>
-      <canvas id="canvas-lv-one" width="320" height="320"></canvas>
+      <canvas id="canvas-lv-one" class="canvas--th" width="320" height="320"></canvas>
     </div>
-      <button class="btn--to-task button-base-lv-th" height="60">Теория прочитана</button>
+      <button class="btn--to-task button-base-lv-th" id="lv1">Теория прочитана</button>
   </div>
-</div>
+
     <div id="bear1">
       <img src="../img/bear.png" class="bear">
     </div>
+</div>
 </body>
-<script src="../js/vendor/level-one.js"></script>
+  <script type="module" src="../js/app.js"></script>
 </html>

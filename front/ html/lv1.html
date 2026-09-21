@@ -5,19 +5,35 @@
   <title>Locus</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
-  <div>
-    <h1 class="title-th">Уровень 1. Тема: Квадрат</h1>
+<body class="body-lv">
+<div class="section-lv">
+  <h1 class="title-th">Уровень 1. Тема: Квадрат</h1>
+  <button id="history--1lv">история</button>
+  <button id="exit--1lv">выйти</button>
+</div>
+    <div class="section-lv">
+      <form id="form-lv1" class="form--lv">
+        <p class="text-lv-tz">Дан центр квадрата a = 3. Необходимо найти точку Х если известно, что центр имеет координату (2,3), а координата у = 4.</p>
+        <label class="label--lv">Ответ (введите числа через пробел):</label>
+        <input name="answer" class="input--lv" type="number" placeholder="Введите ответ" min="-10" max="10" step="0.5">
+        <button id="answer--lv1" class="button-base-lv-th button-lv-form">Отправить на проверку</button>
+      </form>
+      <canvas id="canvas-lv-one" class="canvas--lv" width="450" height="450"></canvas>
+    </div>
+<div id="true" class="modal">
+  <div class="container--1 div--th">
+    <output>правильно</output>
+    <button id="understand-true">хорошо</button>
   </div>
-  <div class="game-row">
-    <form>
-      <p>Дан центр квадрата a = 3. Необходимо найти точку Х если известно, что центр имеет координату (2,3), а координата у = -4.</p>
-      <label>Ответ:</label>
-      <input>
-      <button class="but">Отправить на проверку</button>
-    </form>
-    <canvas id="canvas-lv-one" width="650" height="650"></canvas>
+  <img src="../img/bear.png" class="bear">
+</div>
+<div id="false" class="modal">
+  <div class="container--1 div--th">
+    <output>неверно</output>
+    <button id="failure-lv1">хорошо</button>
   </div>
+  <img src="../img/bear.png" class="bear">
+</div>
 </body>
-<script src="../js/vendor/level-one.js"></script>
+  <script type="module" src="../js/app.js"></script>
 </html>

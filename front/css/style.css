@@ -1,5 +1,5 @@
 /*фоновое изображение игры*/
-body {
+.body-start {
   background-image: url("../img/background/img_2.png");
   background-size: cover;
   background-repeat: no-repeat;
@@ -11,13 +11,12 @@ input:focus {/*todo базовое свечение аннулировано п�
   outline: none;
 }
 
-/*todo не работает*/
 .modal{
   display: none;
   position: fixed;
   inset: 0;
 }
-/*todo не работает*/
+
 .modal.active {
   display: flex;
   align-items: center;
@@ -63,7 +62,9 @@ label {
   margin-right: 5%;
 }
 
-input{ /*todo очень похож стиль с кнопкой возможно объединить*/
+input[type="text"],
+input[type="number"],
+input[type="email"]{ /*todo очень похож стиль с кнопкой возможно объединить*/
   border: 2px solid #9a7951;
   background: #e1ceb9;
   margin-bottom: 5px;
@@ -81,7 +82,7 @@ input{ /*todo очень похож стиль с кнопкой возможн�
 }
 
 /*todo аддитивность страдает, нужно не в пикселяъ*/
-canvas, .form--th {
+.canvas--th, .form--th {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
@@ -165,3 +166,74 @@ canvas, .form--th {
    Очень много похожего кода в форме теории, шрифт и тп, возможно стоит поднять по уровням это, так
     как выглядит небрежно и с дублями
  */
+
+/*-----------*/
+
+.canvas--lv, .form--lv {
+  background: antiquewhite;
+  border: 4px solid #9a7951;
+  border-radius: 15px;
+  width: 450px;
+  height: 450px;
+}
+
+.text-lv-tz {
+  font-family: "JetBrains Mono ExtraBold", serif;
+  color: #3b3019;
+  font-size: 24px;
+  margin-right: 14px;
+  margin-left: 14px;
+}
+
+.label--lv, .input--lv{
+  border-radius: 10px;
+  margin-left: 5%;
+  height: 11%;
+  width: 87%;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.button-lv-form {
+  border-radius: 10px;
+  margin-left: 5%;
+  height: 15%;
+  width: 88.5%;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  font-size: 20px;
+  margin-top: 20px;
+}
+
+.section-lv{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: left;
+  align-items: flex-start;
+  margin-left: 80px;
+}
+
+.body-lv {
+  background-image: url("../img/background/img_1.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.container--1 {
+  position: fixed;
+  bottom: 8%;
+  right: 15%;
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  width: 300px;
+  overflow-y: auto;
+  gap: 15px;
+  justify-content: flex-start;
+  align-items: center;
+}

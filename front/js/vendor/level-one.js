@@ -1,17 +1,39 @@
 const button = document.getElementById('lv-one');
-const modal = document.getElementById('teor');
+const modal = document.getElementById('th-square');
 const canvas = document.getElementById('canvas-lv-one');
 const ctx = canvas.getContext("2d");
 const form = document.getElementById('form-lv-one');
 const but = document.getElementById('button-lv-one');
+const answer_one_lv = document.getElementById('answer-lv1');
+const lv1 = document.getElementById('lv1');
 const height = canvas.height;
 const width = canvas.width;
 const c = height/40;
 const b = width/40;
+const history_1lv = document.getElementById('history--1lv');
+const exit_1lv = document.getElementById('exit--1lv');
+
+// exit_1lv.addEventListener('click', event =>{
+//   event.preventDefault();
+//   window.location.href='index.html';
+// });
+//
+// history_1lv.addEventListener('click', (event) =>{
+//   event.preventDefault();
+//   window.location.href='1lv--history.html';
+// });
+
+
 
 coordinate_plane(ctx, height, width);
+
 button.addEventListener('click', (event) => {
+  event.preventDefault();
   modal.classList.add('active');
+});
+lv1.addEventListener('click', (event) => {
+  event.preventDefault();
+  window.location.href='lv1.html';
 });
 
 but.addEventListener('click', (event) => {
@@ -115,3 +137,8 @@ canvas.addEventListener('click', (event) => {
 function drawCoordinatePlane(event) {
   event.preventDefault();
 }
+
+answer_one_lv.addEventListener('submit', (event) => {
+  event.preventDefault();
+
+})
