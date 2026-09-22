@@ -108,10 +108,45 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  function drawCircle(r, x, y){
+    const centerX = Math.floor(width / 2) + 0.5;
+    const centerY = Math.floor(height / 2) + 0.5;
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.scale(1, -1);
+    ctx.strokeStyle = '#9A7951FF';
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+    ctx.arc(x * b, y * c, r * b, 0, 2 * Math.PI);
+    ctx.stroke();
+    ctx.restore();
+  }
+
+  function drawTriangle(p1, p2, p3) {
+    const centerX = Math.floor(width / 2) + 0.5;
+    const centerY = Math.floor(height / 2) + 0.5;
+
+    ctx.save();
+    ctx.translate(centerX, centerY);
+    ctx.scale(1, -1);
+    ctx.strokeStyle = '#9A7951FF';
+    ctx.lineWidth = 3;
+
+    ctx.beginPath();
+    ctx.moveTo(p1[0] * b, p1[1] * c);
+    ctx.lineTo(p2[0] * b, p2[1] * c);
+    ctx.lineTo(p3[0] * b, p3[1] * c);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.restore();
+  }
+
   function redraw() {
     coordinatePlane();
     grid();
   }
 
-  return { canvas, ctx, width, height, b, c, coordinatePlane, grid, drawSquare, redraw, drawPoint };
+  return { canvas, ctx, width, height, b, c, coordinatePlane, grid, drawSquare, redraw, drawPoint,drawCircle, drawTriangle };
 }

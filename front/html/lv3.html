@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Locus</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="body-lv">
+
+<div class="level-header">
+  <h1 class="title-th title-lv">Уровень 3. Тема: Треугольник</h1>
+  <div class="level-header-actions">
+    <button id="history--3lv" class="button-base-lv-th">история</button>
+    <button id="exit--3lv" class="button-base-lv-th">выйти</button>
+  </div>
+</div>
+
+<div class="section-lv">
+  <form id="form-lv3" class="form--lv">
+    <p class="text-lv-tz">
+      Дан треугольник с вершинами A(−3, 0), B(3, 0) и C(0, 4).
+      Необходимо найти координату x точки X, если известно,
+      что точка X лежит на стороне AC, а её координата y = 2.
+    </p>
+    <label class="label--lv" for="answer-lv3">Ответ (введите число):</label>
+    <input id="answer-lv3" name="answer" class="input--lv" type="number"
+           placeholder="Введите ответ" min="-10" max="10" step="0.5">
+    <button id="answer--lv3" class="button-base-lv-th button-lv-form">
+      Отправить на проверку
+    </button>
+  </form>
+  <canvas id="canvas-lv-three" class="canvas--lv" width="450" height="450"></canvas>
+</div>
+
+<div id="true-lv3" class="modal">
+  <div class="container--1 div--th">
+    <output class="text-lv-tz">правильно</output>
+    <div class="section-success">
+      <button id="success--next--lv3" class="button-base-lv-th">дальше</button>
+      <button id="success--exit--lv3" class="button-base-lv-th">выйти</button>
+    </div>
+  </div>
+  <img src="../img/bear.png" class="bear" alt="Мишка">
+</div>
+
+<div id="false-lv3" class="modal">
+  <div class="container--1 div--th">
+    <output class="text-lv-tz">неверно</output>
+    <button id="failure-lv3" class="button-base-lv-th">хорошо</button>
+  </div>
+  <img src="../img/bear.png" class="bear" alt="Мишка">
+</div>
+
+<script type="module" src="../js/app.js"></script>
+</body>
+</html>
