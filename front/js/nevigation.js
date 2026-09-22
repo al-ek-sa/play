@@ -5,6 +5,15 @@ export function initNavigation(){
   const lv1Success = document.getElementById('understand-true');
   const lv1Failure = document.getElementById('failure-lv1');
   const modalLv1= document.getElementById('false');
+  const tableLv1 = document.getElementById('but-table-1lv');
+
+  if(tableLv1){
+    tableLv1.addEventListener('click', (event) => {
+      event.preventDefault();
+      window.location.href = 'lv1.html';
+    });
+  }
+
   if(lv1){
     lv1.addEventListener('click', (event) => {
       event.preventDefault();

@@ -230,10 +230,67 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   right: 15%;
   display: flex;
   flex-direction: column;
-  height: 70px;
+  height: 100px;
   width: 300px;
   overflow-y: auto;
   gap: 15px;
   justify-content: flex-start;
   align-items: center;
+}
+
+.level-header{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 20px;
+}
+
+.level-header .title-lv {
+  grid-column: 2;
+  text-align: center;
+  margin: 0;
+}
+
+.level-header-actions {
+  grid-column: 3;
+  display: flex;
+  gap: 10px;
+  justify-self: end;
+}
+
+.history-table {
+  border-collapse: collapse;
+  background: antiquewhite;
+  border: 2px solid #9a7951;
+  border-radius: 10px;
+  overflow: hidden;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  color: #3b3019;
+  min-width: 800px;
+}
+
+.history-table th,
+.history-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #9a7951;
+  text-align: left;
+  font-size: 14px;
+}
+
+.history-table th {
+  background: #e1ceb9;
+  font-weight: bold;
+}
+
+.history-table tr:last-child td {
+  border-bottom: none;
+}
+
+.section-table{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 80px;
 }

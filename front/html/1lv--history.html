@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Locus — История уровня 1</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="body-lv">
+
+<div class="level-header">
+  <h1 class="title-th title-lv">История уровня 1</h1>
+  <div class="level-header-actions">
+    <button id="history-back-lv1" class="button-base-lv-th">← К уровню</button>
+  </div>
+</div>
+
+<div class="history-wrapper">
+  <h2 class="history-title">
+    Всего попыток: <span id="history-total-lv1">0</span>
+  </h2>
+
+  <div class="history-pagination">
+    <button id="history-prev-lv1" class="button-base-lv-th">←</button>
+    <span id="history-page-lv1" class="history-pagination__info">1 / 1</span>
+    <button id="history-next-lv1" class="button-base-lv-th">→</button>
+  </div>
+
+  <table class="history-table">
+    <thead>
+    <tr>
+      <th>Ответ</th>
+      <th>Результат</th>
+      <th>Дата и время</th>
+    </tr>
+    </thead>
+    <tbody id="history-body-lv1"></tbody>
+  </table>
+
+  <button id="history-clear-lv1" class="button-base-lv-th">Очистить историю</button>
+</div>
+
+<script type="module" src="../js/app.js"></script>
+</body>
+</html>
