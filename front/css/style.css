@@ -43,10 +43,11 @@ input:focus {/*todo базовое свечение аннулировано п�
 }
 
 .btn--to-task {/* todo кнопка в блоке с теорией*/
-  margin-top: 10px;
+  margin-top: 20px;
   width: 650px;
   height: 60px;
-  margin-bottom: 15px;background: #ceb899;
+  margin-bottom: 15px;
+  background: #ceb899;
 }
 
 /* todo поля для теории (стоит наверное тут указывать */
@@ -117,11 +118,19 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   font-size: 25px;
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
-  margin-left: 35px;
-  margin-right: 35px;
-  opacity: 5;
-  visibility: visible;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 0;
   margin-bottom: 0;
+  width: 90%;
+  text-align: left;
+}
+
+.teor li {
+  font-size: 25px;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  margin-left: 25px;
 }
 
 .title-th {
@@ -129,7 +138,8 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   text-align: center;
   font-family: "JetBrains Mono ExtraBold", serif;
   color: #3b3019;
-  font-width: 700%;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .game-row{
@@ -231,7 +241,7 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   display: flex;
   flex-direction: column;
   height: 100px;
-  width: 300px;
+  width: 350px;
   overflow-y: auto;
   gap: 15px;
   justify-content: flex-start;
@@ -294,3 +304,48 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   align-items: flex-start;
   margin-left: 80px;
 }
+
+.history-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  margin: 20px auto;
+  width: fit-content;
+  max-width: 90vw;
+}
+
+.section-success {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: left;
+}
+
+.history-title {
+  font-family: "JetBrains Mono ExtraBold", serif;
+  color: #3b3019;
+  font-size: 24px;
+  margin: 0;
+}
+
+.history-pagination {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  color: #3b3019;
+}
+
+.history-pagination__info {
+  font-size: 16px;
+  min-width: 60px;
+  text-align: center;
+}
+
+.history-pagination button {
+  min-width: 40px;
+}
+
+.history-table .is-correct { color: #7c866d; }
+.history-table .is-wrong   { color: #a96666; }
