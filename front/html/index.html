@@ -22,174 +22,229 @@
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body class="body-start">
-  <button id="lv-one" class="button-base-lv-th">1</button>
-  <button id="lv-two" class="button-base-lv-th">2</button>
-  <button id="lv-tree" class="button-base-lv-th">3</button>
-  <button id="lv-four">4</button>
-  <button id="lv-five">5</button>
-  <button id="lv-six">6</button>
-  <button id="lv-seven">7</button>
-  <button id="lv-eight">8</button>
-  <button id="lv-nine">9</button>
-  <button id="lv-ten">10</button>
-  <button id="lv-eleven">11</button>
-  <button id="lv-twelve">12</button>
-  <button id="lv-therteen">13</button>
-  <button id="lv-fourteen">14</button>
-<div id="th-square" class="modal">
-  <div class="container div--th scroll">
-    <p class="title-th">Квадрат</p>
-    <p class="section teor">
-      Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.<br>
+<body>
+    <section class="background--main">
+      <button id="lv-one" style="top: 86.8%; left: 17.2%;">1</button>
+      <button id="lv-two" style="top: 85%; left: 24.1%;">2</button>
+      <button id="lv-tree" style="top: 74%; left: 29.5%;">3</button>
+      <button id="lv-four" style="top: 61.6%; left: 29.5%;">4</button>
+      <button id="lv-five" style="top: 57.9%; left: 36%;">5</button>
+      <button id="lv-six" style="top: 50.8%; left: 42%;">6</button>
+      <button id="lv-seven" style="top: 36.3%; left: 40%;">7</button>
+      <button id="lv-eight" style="top: 27.5%; left: 46.6%;">8</button>
+      <button id="lv-nine" style="top: 33.5%; left: 55%;">9</button>
+      <button id="lv-ten" style="top: 46.7%; left: 58%;">10</button>
+      <button id="lv-eleven" style="top: 50%; left: 67.6%;">11</button>
+      <button id="lv-twelve" style="top: 55.5%; left: 76.5%;">12</button>
+      <button id="lv-thirteen" style="top: 49.7%; left: 84.4%;">13</button>
+      <button id="lv-fourteen" style="top: 39.6%; left: 89%;">14</button>
 
-      На координатной плоскости квадрат можно задать через его центр и половину длины стороны.</p>
+    <div id="th-square" class="modal">
+      <div class="container div--th scroll">
+        <p class="title-th">Квадрат</p>
+        <p class="section teor">
+          Квадрат — это фигура, у которой 4 равные стороны и 4 прямых угла.<br>
 
-    <p class="teor">Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:</p>
+          На координатной плоскости квадрат можно задать через его центр и половину длины стороны.</p>
 
-    <ul class="teor">
-      <li>левая граница: x = x₀ − a</li>
-      <li>правая граница: x = x₀ + a</li>
-      <li>нижняя граница: y = y₀ − a</li>
-      <li>верхняя граница: y = y₀ + a</li>
-    </ul>
+        <p class="teor">Если центр квадрата находится в точке (x₀, y₀), а половина стороны равна a, то:</p>
 
-    <p class="teor">Чтобы проверить, находится ли точка (x, y) внутри квадрата:</p>
+        <ul class="teor">
+          <li>левая граница: x = x₀ − a</li>
+          <li>правая граница: x = x₀ + a</li>
+          <li>нижняя граница: y = y₀ − a</li>
+          <li>верхняя граница: y = y₀ + a</li>
+        </ul>
 
-    <ul class="teor">
-      <li>x₀ − a ≤ x ≤ x₀ + a</li>
-      <li>y₀ − a ≤ y ≤ y₀ + a</li>
-    </ul>
-      <p class="teor">Если обе формулы выполняются — точка находится внутри квадрата!</p>
-    <br>
-    <div class="game-row">
-      <form id="form-lv-one" class="section form--th">
-        <label>Введи значение a (от 0 до 10)</label><br>
-        <input name="a" placeholder="Введи значение а" type="number" min="0" max="10" step="0.5"><br>
-        <label>Введи значение x₀ (от -10 до 10)</label><br>
-        <input name="x" placeholder="Введи значение х" type="number" min="-10" max="10" step="0.5"><br>
-        <label>Введи значение у₀ (от -10 до 10)</label><br>
-        <input name="y" placeholder="Введи значение у" type="number" min="-10" max="10" step="0.5"><br>
-        <button id="button-lv-one" class="button-base-lv-th btn--theory">посмотреть значение</button>
-      </form>
-      <canvas id="canvas-lv-one" class="canvas--th" width="320" height="320"></canvas>
-    </div>
-      <button class="button-base-lv-th btn--to-task" id="lv1">Теория прочитана</button>
-  </div>
+        <p class="teor">Чтобы проверить, находится ли точка (x, y) внутри квадрата:</p>
 
-    <div id="bear1">
-      <img src="../img/bear.png" class="bear">
-    </div>
-</div>
-  <div id="th-circle" class="modal">
-    <div class="container div--th scroll">
-      <p class="title-th">Круг</p>
-
-      <p class="teor">
-        Круг — это множество точек на плоскости, находящихся на одинаковом
-        расстоянии от центра. Это расстояние называется радиусом.
-      </p>
-
-      <p class="teor">
-        На координатной плоскости круг можно задать через его центр и радиус.
-      </p>
-
-      <p class="teor">
-        Если центр круга находится в точке (x₀, y₀), а радиус равен r, то:
-      </p>
-
-      <ul class="teor">
-        <li>уравнение круга: (x − x₀)² + (y − y₀)² = r²</li>
-        <li>радиус: r</li>
-        <li>диаметр: d = 2r</li>
-      </ul>
-
-      <p class="teor">
-        Чтобы проверить, находится ли точка (x, y) внутри круга:
-      </p>
-
-      <ul class="teor">
-        <li>(x − x₀)² + (y − y₀)² ≤ r²</li>
-      </ul>
-
-      <p class="teor">
-        Если неравенство выполняется — точка находится внутри круга!
-      </p>
-
-      <div class="game-row">
-        <form id="form-lv-two" class="section form--th">
-          <label>Введи значение r (от 0 до 10)</label><br>
-          <input name="r" placeholder="Введи значение r" type="number" min="0" max="10" step="0.5"><br>
-          <label>Введи значение x₀ (от -10 до 10)</label><br>
-          <input name="x" placeholder="Введи значение x₀" type="number" min="-10" max="10" step="0.5"><br>
-          <label>Введи значение y₀ (от -10 до 10)</label><br>
-          <input name="y" placeholder="Введи значение y₀" type="number" min="-10" max="10" step="0.5"><br>
-          <button id="button-lv-two" class="button-base-lv-th btn--theory">посмотреть значение</button>
-        </form>
-        <canvas id="canvas-lv-two" class="canvas--th" width="320" height="320"></canvas>
+        <ul class="teor">
+          <li>x₀ − a ≤ x ≤ x₀ + a</li>
+          <li>y₀ − a ≤ y ≤ y₀ + a</li>
+        </ul>
+          <p class="teor">Если обе формулы выполняются — точка находится внутри квадрата!</p>
+        <br>
+        <div class="game-row">
+          <form id="form-lv-one" class="section form--th">
+            <label>Введи значение a (от 0 до 10)
+              <input
+                name="a"
+                placeholder="Введи значение а"
+                type="number"
+                min="0"
+                max="10"
+                step="0.5"
+              >
+            </label>
+            <label>Введи значение x₀ (от -10 до 10)
+              <input
+                name="x"
+                placeholder="Введи значение х"
+                type="number"
+                min="-10"
+                max="10"
+                step="0.5"
+              >
+            </label>
+            <label>Введи значение у₀ (от -10 до 10)
+              <input
+                name="y"
+                placeholder="Введи значение у"
+                type="number"
+                min="-10"
+                max="10"
+                step="0.5"
+              >
+            </label><br>
+            <button id="button-lv-one" class="button-base-lv-th btn--theory">посмотреть значение</button>
+          </form>
+          <canvas id="canvas-lv-one" class="canvas--th" width="320" height="320"></canvas>
+        </div>
+          <button class="button-base-lv-th btn--to-task" id="lv1">Теория прочитана</button>
       </div>
-
-      <button class="button-base-lv-th btn--to-task" id="lv2">Теория прочитана</button>
     </div>
+      <div id="th-circle" class="modal">
+        <div class="container div--th scroll">
+          <p class="title-th">Круг</p>
 
-    <div id="bear2">
-      <img src="../img/bear.png" class="bear">
-    </div>
-  </div>
-  <div id="th-triangle" class="modal">
-    <div class="container div--th scroll">
-      <p class="title-th">Треугольник</p>
+          <p class="teor">
+            Круг — это множество точек на плоскости, находящихся на одинаковом
+            расстоянии от центра. Это расстояние называется радиусом.
+          </p>
 
-      <p class="teor">
-        Треугольник — это фигура с тремя сторонами и тремя углами.
-        Сумма углов треугольника всегда равна 180°.
-      </p>
+          <p class="teor">
+            На координатной плоскости круг можно задать через его центр и радиус.
+          </p>
 
-      <p class="teor">
-        На координатной плоскости треугольник задаётся тремя вершинами.
-      </p>
+          <p class="teor">
+            Если центр круга находится в точке (x₀, y₀), а радиус равен r, то:
+          </p>
 
-      <p class="teor">
-        Если вершины имеют координаты A(x₁, y₁), B(x₂, y₂), C(x₃, y₃), то:
-      </p>
+          <ul class="teor">
+            <li>уравнение круга: (x − x₀)² + (y − y₀)² = r²</li>
+            <li>радиус: r</li>
+            <li>диаметр: d = 2r</li>
+          </ul>
 
-      <ul class="teor">
-        <li>площадь: S = ½ · |x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|</li>
-        <li>периметр: P = AB + BC + CA</li>
-        <li>длина стороны AB = √((x₂ − x₁)² + (y₂ − y₁)²)</li>
-      </ul>
+          <p class="teor">
+            Чтобы проверить, находится ли точка (x, y) внутри круга:
+          </p>
 
-      <p class="teor">
-        Чтобы проверить, находится ли точка (x, y) внутри треугольника:
-      </p>
+          <ul class="teor">
+            <li>(x − x₀)² + (y − y₀)² ≤ r²</li>
+          </ul>
 
-      <ul class="teor">
-        <li>используют барицентрические координаты</li>
-        <li>или проверяют, что точка лежит по одну сторону от каждой из сторон</li>
-      </ul>
+          <p class="teor">
+            Если неравенство выполняется — точка находится внутри круга!
+          </p>
 
-      <p class="teor">
-        Если все три условия выполняются — точка находится внутри треугольника!
-      </p>
+          <div class="game-row">
+            <form id="form-lv-two" class="section form--th">
+              <label>Введи значение r (от 0 до 10)
+                <input
+                  name="r"
+                  placeholder="Введи значение r"
+                  type="number"
+                  min="0"
+                  max="10"
+                  step="0.5"
+                >
+              </label>
+              <label>Введи значение x₀ (от -10 до 10)
+                <input
+                  name="x"
+                  placeholder="Введи значение x₀"
+                  type="number"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                >
+              </label>
+              <label>Введи значение y₀ (от -10 до 10)
+                <input
+                  name="y"
+                  placeholder="Введи значение y₀"
+                  type="number"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                >
+              </label>
+              <button id="button-lv-two" class="button-base-lv-th btn--theory">посмотреть значение</button>
+            </form>
+            <canvas id="canvas-lv-two" class="canvas--th" width="320" height="320"></canvas>
+          </div>
 
-      <div class="game-row">
-        <form id="form-lv-three" class="section form--th">
-          <label>Введи координату x(от -10 до 10)</label><br>
-          <input name="x" placeholder="Введи значение x" type="number" min="-10" max="10" step="0.5"><br>
-          <label>Введи координату y(от -10 до 10)</label><br>
-          <input name="y" placeholder="Введи значение y" type="number" min="-10" max="10" step="0.5"><br>
-          <button id="button-lv-three" class="button-base-lv-th btn--theory">посмотреть значение</button>
-        </form>
-        <canvas id="canvas-lv-three" class="canvas--th" width="320" height="320"></canvas>
+          <button class="button-base-lv-th btn--to-task" id="lv2">Теория прочитана</button>
+        </div>
       </div>
+      <div id="th-triangle" class="modal">
+        <div class="container div--th scroll">
+          <p class="title-th">Треугольник</p>
 
-      <button class="button-base-lv-th btn--to-task" id="lv3">Теория прочитана</button>
-    </div>
+          <p class="teor">
+            Треугольник — это фигура с тремя сторонами и тремя углами.
+            Сумма углов треугольника всегда равна 180°.
+          </p>
 
-    <div id="bear3">
-      <img src="../img/bear.png" class="bear">
-    </div>
-  </div>
+          <p class="teor">
+            На координатной плоскости треугольник задаётся тремя вершинами.
+          </p>
+
+          <p class="teor">
+            Если вершины имеют координаты A(x₁, y₁), B(x₂, y₂), C(x₃, y₃), то:
+          </p>
+
+          <ul class="teor">
+            <li>площадь: S = ½ · |x₁(y₂ − y₃) + x₂(y₃ − y₁) + x₃(y₁ − y₂)|</li>
+            <li>периметр: P = AB + BC + CA</li>
+            <li>длина стороны AB = √((x₂ − x₁)² + (y₂ − y₁)²)</li>
+          </ul>
+
+          <p class="teor">
+            Чтобы проверить, находится ли точка (x, y) внутри треугольника:
+          </p>
+
+          <ul class="teor">
+            <li>используют барицентрические координаты</li>
+            <li>или проверяют, что точка лежит по одну сторону от каждой из сторон</li>
+          </ul>
+
+          <p class="teor">
+            Если все три условия выполняются — точка находится внутри треугольника!
+          </p>
+
+          <div class="game-row">
+            <form id="form-lv-three" class="section form--th">
+              <label>Введи координату x(от -10 до 10)
+                <input
+                  name="x"
+                  placeholder="Введи значение x"
+                  type="number"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                >
+              </label>
+              <label>Введи координату y(от -10 до 10)
+                <input
+                  name="y"
+                  placeholder="Введи значение y"
+                  type="number"
+                  min="-10"
+                  max="10"
+                  step="0.5"
+                >
+              </label>
+              <button id="button-lv-three" class="button-base-lv-th btn--theory">посмотреть значение</button>
+            </form>
+            <canvas id="canvas-lv-three" class="canvas--th" width="320" height="320"></canvas>
+          </div>
+
+          <button class="button-base-lv-th btn--to-task" id="lv3">Теория прочитана</button>
+        </div>
+      </div>
+    </section>
 </body>
   <script type="module" src="../js/app.js"></script>
 </html>

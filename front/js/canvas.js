@@ -148,5 +148,5 @@ export function createCanvas(id) {
     grid();
   }
 
-  return { canvas, ctx, width, height, b, c, coordinatePlane, grid, drawSquare, redraw, drawPoint,drawCircle, drawTriangle };
+  return { canvas, ctx, width, height, b, c, drawSquare, redraw, drawPoint,drawCircle, drawTriangle };
 }

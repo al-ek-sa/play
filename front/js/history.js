@@ -127,7 +127,6 @@ export function createHistory(id){
   return {
     add,
     render,
-    clear,
     initPagination,
     initClear,
   };

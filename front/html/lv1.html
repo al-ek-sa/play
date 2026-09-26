@@ -16,8 +16,9 @@
     <div class="section-lv">
       <form id="form-lv1" class="form--lv">
         <p class="text-lv-tz">Дан центр квадрата a = 3. Необходимо найти точку Х если известно, что центр имеет координату (2,3), а координата у = 4.</p>
-        <label class="label--lv">Ответ (введите числа через пробел):</label>
-        <input name="answer" class="input--lv" type="number" placeholder="Введите ответ" min="-10" max="10" step="0.5">
+        <label class="label--lv">Ответ (введите числа через пробел):
+          <input name="answer" class="input--lv" type="number" placeholder="Введите ответ" min="-10" max="10" step="0.5">
+        </label>
         <button id="answer--lv1" class="button-base-lv-th button-lv-form">Отправить на проверку</button>
       </form>
       <canvas id="canvas-lv-one" class="canvas--lv" width="450" height="450"></canvas>
@@ -30,14 +31,12 @@
       <button id="success--exit--lv1" class="button-base-lv-th">выйти</button>
     </div>
   </div>
-  <img src="../img/bear.png" class="bear">
 </div>
 <div id="false" class="modal">
   <div class="container--1 div--th">
     <output class="text-lv-tz">неверно</output>
     <button id="failure-lv1" class="button-base-lv-th">хорошо</button>
   </div>
-  <img src="../img/bear.png" class="bear">
 </div>
 </body>
   <script type="module" src="../js/app.js"></script>

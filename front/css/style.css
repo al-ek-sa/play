@@ -1,10 +1,18 @@
+body{
+  margin: 0;
+  background: #ead2b6;
+}
 /*фоновое изображение игры*/
-.body-start {
+.background--main {
+  position: relative;
+  width: 100%;
+  max-width: 1672px;
+  aspect-ratio: 1672 / 941;
+  margin: 0 auto;
   background-image: url("../img/background/img_2.png");
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  background-position: top left;
 }
 
 input:focus {/*todo базовое свечение аннулировано пересмотреть или везде оправдано*/
@@ -29,17 +37,17 @@ input:focus {/*todo базовое свечение аннулировано п�
   background: #e1ceb9;
   font-family: "JetBrains Mono ExtraBold", serif;
   color: #3b3019;
-  font-size: 15px;
+  font-size: clamp(12px, 1.5vw, 16px);
   text-align: center;
   border-radius: 10px;
+  padding: 8px 16px;
 }
 
-.btn--theory {/*todo кнопка именно в форме с теорией*/
-  margin-top: 10px;
-  margin-left: 5%;
-  height: 15%;
-  width: 89%;
-  margin-bottom: 5px;
+.btn--theory {
+  display: block;
+  width: 90%;
+  margin: 10px auto 5px;
+  padding: 10px 16px;
 }
 
 .btn--to-task {/* todo кнопка в блоке с теорией*/
@@ -72,33 +80,43 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
 }
 
 /*todo пересмотреть возможно не самый лучший выбор селекторов*/
-.form--th > label, input{
+.form--th > label{
   border-radius: 10px;
   margin-left: 5%;
-  height: 11%;
+  height: 25%;
   width: 87%;
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
-  font-size: 20px;
+  font-size: 15px;
 }
 
-/*todo аддитивность страдает, нужно не в пикселяъ*/
+label > input {
+  border-radius: 10px;
+  margin-left: 0;
+  height: 50%;
+  width: 100%;
+  color: #45361c;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  font-size: 18px;
+}
+
+/*todo аддитивность страдает, нужно не в пикселях*/
 .canvas--th, .form--th {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
-  height: 400px;
-  width: 400px;
+  height: 100%;
+  width: 100%;
 }
 
 /*контейнеры для теории*/
 .container {
   position: fixed;
-  bottom: 10%;
-  right: 15%;
+  bottom: 75px;
+  right: 100px;
   display: flex;
   flex-direction: column;
-  height: 600px;
+  height: 70%;
   width: 70%;
   overflow-y: auto;
   gap: 15px;
@@ -118,10 +136,7 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   font-size: 25px;
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin: 0 50px;
   width: 90%;
   text-align: left;
 }
@@ -143,9 +158,10 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
 }
 
 .game-row{
+  margin: 0;
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 10%;
   justify-content: center;
   align-items: flex-start;
 }
@@ -160,7 +176,7 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
   position: fixed;
   bottom: 0;
   right: 0;
-  height: 450px;
+  height: 50%;
 }
 
 .form--th > input:hover, button:hover {
@@ -349,3 +365,27 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
 
 .history-table .is-correct { color: #7c866d; }
 .history-table .is-wrong   { color: #a96666; }
+
+.background--main > button {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 3%;
+  height: 5%;
+  border: 2px solid #9a7951;
+  border-radius: 50%;
+  background: #e1ceb9;
+  color: #3b3019;
+  font-family: "JetBrains Mono ExtraBold", serif;
+  font-size: 100%;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+
+.background--main > button:hover {
+  background: #ead2b6;
+  transform: translate(-50%, -50%) scale(1.1);
+}
+
+.background--main > button:active {
+  transform: translate(-50%, -50%) scale(0.95);
+}
