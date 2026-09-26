@@ -23,6 +23,8 @@ input:focus {/*todo базовое свечение аннулировано п�
   display: none;
   position: fixed;
   inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
 }
 
 .modal.active {
@@ -50,11 +52,12 @@ input:focus {/*todo базовое свечение аннулировано п�
   padding: 10px 16px;
 }
 
-.btn--to-task {/* todo кнопка в блоке с теорией*/
-  margin-top: 20px;
-  width: 650px;
+.btn--to-task {
+  display: block;
+  width: 100%;
+  max-width: 650px;
   height: 60px;
-  margin-bottom: 15px;
+  margin: 20px auto 15px;
   background: #ceb899;
 }
 
@@ -98,6 +101,7 @@ label > input {
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
   font-size: 18px;
+  margin-top: 9px;
 }
 
 /*todo аддитивность страдает, нужно не в пикселях*/
@@ -122,6 +126,7 @@ label > input {
   gap: 15px;
   justify-content: flex-start;
   align-items: center;
+  overflow-x: hidden;
 }
 
 .section {
@@ -161,9 +166,11 @@ label > input {
   margin: 0;
   display: flex;
   flex-direction: row;
-  gap: 10%;
+  gap: 5%;
   justify-content: center;
   align-items: flex-start;
+  height: 60%;
+  width: 100%;
 }
 
 .scroll {/*todo scroll хорош, но в разных браузерах совершенно разное отображение*/
@@ -201,6 +208,8 @@ label > input {
   border-radius: 15px;
   width: 450px;
   height: 450px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .text-lv-tz {
@@ -388,4 +397,32 @@ label > input {
 
 .background--main > button:active {
   transform: translate(-50%, -50%) scale(0.95);
+}
+
+.field-error {
+  height: 6%;
+  font-size: 10px;
+  color: #a96666;
+  margin-left: 5%;
+}
+
+.form--th label::before {
+  content: "* ";
+  color: #9a7951;
+  margin-right: 4px;
+}
+
+.field-error:not(:empty)::before {
+  content: "! ";
+  color: #a96666;
+  margin-right: 4px;
+}
+
+.title-th::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: #9a7951;
+  margin: 8px auto 0;
 }

@@ -17,8 +17,19 @@
       <form id="form-lv1" class="form--lv">
         <p class="text-lv-tz">Дан центр квадрата a = 3. Необходимо найти точку Х если известно, что центр имеет координату (2,3), а координата у = 4.</p>
         <label class="label--lv">Ответ (введите числа через пробел):
-          <input name="answer" class="input--lv" type="number" placeholder="Введите ответ" min="-10" max="10" step="0.5">
+          <input
+            name="answer"
+            class="input--lv"
+            type="text"
+            placeholder="Введите ответ"
+            required
+            min="-10"
+            max="10"
+            step="0.5"
+            pattern="^-?\d+(\.\d+)?$"
+          >
         </label>
+        <span id="fail--answer--lv1" class="field-error" data-error-for="a" role="alert"></span>
         <button id="answer--lv1" class="button-base-lv-th button-lv-form">Отправить на проверку</button>
       </form>
       <canvas id="canvas-lv-one" class="canvas--lv" width="450" height="450"></canvas>

@@ -7,6 +7,8 @@ export function initLevel3() {
 
   const form = document.getElementById('form-lv-three');
   const but = document.getElementById('button-lv-three');
+  const failX = document.getElementById('fail--x--lv3');
+  const failY = document.getElementById('fail--y--lv3');
 
   if (!form || !but) return;
 
@@ -30,7 +32,36 @@ export function initLevel3() {
       x > 10 || y > 10 ||
       x < -10 || y < -10;
 
-    if (isInvalid) return;
+    if(isInvalid) {
+      if (!Number.isFinite(x)){
+        failX.textContent = 'Поле должно быть числовым';
+      } else if(isEmpty(object['x'])) {
+        failX.textContent = 'Поле обязательно к заполнению';
+      } else if (x > 10) {
+        failX.textContent = 'Поле должно быть не больше 10';
+      } else if (x < -10) {
+        failX.textContent = 'Поле должно быть не меньше -10';
+      } else {
+        failX.textContent = '';
+      }
+
+      if (!Number.isFinite(y)){
+        failY.textContent = 'Поле должно быть числовым';
+      } else if(isEmpty(object['y'])) {
+        failY.textContent = 'Поле обязательно к заполнению';
+      } else if (y > 10) {
+        failY.textContent = 'Поле должно быть не больше 10';
+      } else if (y < -10) {
+        failY.textContent = 'Поле должно быть не меньше -10';
+      } else {
+        failY.textContent = '';
+      }
+
+      return;
+    }
+
+    failX.textContent = '';
+    failY.textContent = '';
 
     plane.drawTriangle([-3, 0], [3, 0], [0, 4]);
     plane.drawPoint(x, y);

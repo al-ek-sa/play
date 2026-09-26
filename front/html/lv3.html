@@ -24,9 +24,20 @@
       что точка X лежит на стороне AC, а её координата y = 2.
     </p>
     <label class="label--lv" for="answer-lv3">Ответ (введите число):
-    <input id="answer-lv3" name="answer" class="input--lv" type="number"
-           placeholder="Введите ответ" min="-10" max="10" step="0.5">
+    <input
+      id="answer-lv3"
+      name="answer"
+      class="input--lv"
+      type="text"
+      placeholder="Введите ответ"
+      required
+      min="-10"
+      max="10"
+      step="0.5"
+      pattern="^-?\d+(\.\d+)?$"
+    >
     </label>
+    <span id="fail--answer--lv3" class="field-error" data-error-for="a" role="alert"></span>
     <button id="answer--lv3" class="button-base-lv-th button-lv-form">
       Отправить на проверку
     </button>

@@ -24,9 +24,20 @@
       если координата y = 4 и точка лежит на правой границе круга.
     </p>
     <label class="label--lv" for="answer-lv2">Ответ (введите число):
-    <input id="answer-lv2" name="answer" class="input--lv" type="number"
-           placeholder="Введите ответ" min="-10" max="10" step="0.5">
+    <input
+      id="answer-lv2"
+      name="answer"
+      class="input--lv"
+      type="text"
+      placeholder="Введите ответ"
+      required
+      min="-10"
+      max="10"
+      step="0.5"
+      pattern="^-?\d+(\.\d+)?$"
+    >
     </label>
+    <span id="fail--answer--lv2" class="field-error" data-error-for="a" role="alert"></span>
     <button id="answer--lv2" class="button-base-lv-th button-lv-form">
       Отправить на проверку
     </button>

@@ -7,6 +7,9 @@ export function initLevel2() {
 
   const form = document.getElementById('form-lv-two');
   const but = document.getElementById('button-lv-two');
+  const failR = document.getElementById('fail--r--lv2');
+  const failX = document.getElementById('fail--x--lv2');
+  const failY = document.getElementById('fail--y--lv2');
 
   if (!form || !but) return;
 
@@ -31,7 +34,48 @@ export function initLevel2() {
       x > 10 || r > 10 || y > 10 ||
       x < -10 || y < -10 || r < 0;
 
-    if (isInvalid) return;
+    if(isInvalid) {
+      if (!Number.isFinite(r)){
+        failR.textContent = 'Поле должно быть числовым';
+      } else if(isEmpty(object['r'])) {
+        failR.textContent = 'Поле обязательно к заполнению';
+      } else if (r > 10) {
+        failR.textContent = 'Поле должно быть не больше 10';
+      } else if (r < 0) {
+        failR.textContent = 'Поле должно быть не меньше 0';
+      } else {
+        failR.textContent = '';
+      }
+
+      if (!Number.isFinite(x)){
+        failX.textContent = 'Поле должно быть числовым';
+      } else if(isEmpty(object['x'])) {
+        failX.textContent = 'Поле обязательно к заполнению';
+      } else if (x > 10) {
+        failX.textContent = 'Поле должно быть не больше 10';
+      } else if (x < -10) {
+        failX.textContent = 'Поле должно быть не меньше -10';
+      } else {
+        failX.textContent = '';
+      }
+
+      if (!Number.isFinite(y)){
+        failY.textContent = 'Поле должно быть числовым';
+      } else if(isEmpty(object['y'])) {
+        failY.textContent = 'Поле обязательно к заполнению';
+      } else if (y > 10) {
+        failY.textContent = 'Поле должно быть не больше 10';
+      } else if (y < -10) {
+        failY.textContent = 'Поле должно быть не меньше -10';
+      } else {
+        failY.textContent = '';
+      }
+
+      return;
+    }
+    failR.textContent = '';
+    failX.textContent = '';
+    failY.textContent = '';
 
     plane.drawCircle(r, x, y);
   });
