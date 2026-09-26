@@ -83,10 +83,11 @@ export function initLevel1() {
   const canvas = document.getElementById('canvas-lv-one');
   if (canvas) {
     canvas.addEventListener('click', (event) => {
-      const rect = canvas.getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-      plane.drawPoint(x/40, y/40);
+      // const rect = canvas.getBoundingClientRect();
+      // const x = event.clientX - rect.left;
+      // const y = event.clientY - rect.top;
+      // plane.drawPoint(x/40, y/40);
+       alert('масштабирование нудно добавить');
     });
   }
 }
