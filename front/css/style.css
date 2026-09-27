@@ -86,7 +86,7 @@ input[type="email"]{ /*todo очень похож стиль с кнопкой �
 .form--th > label{
   border-radius: 10px;
   margin-left: 5%;
-  height: 25%;
+  height: 120px;
   width: 87%;
   color: #45361c;
   font-family: "JetBrains Mono ExtraBold", serif;
@@ -135,6 +135,8 @@ label > input {
   justify-content: flex-start;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .teor {
@@ -218,6 +220,8 @@ label > input {
   font-size: 24px;
   margin-right: 14px;
   margin-left: 14px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .label--lv, .input--lv{

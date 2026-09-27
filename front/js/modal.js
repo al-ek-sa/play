@@ -5,6 +5,11 @@ export  function initModal(){
   const modalLv2 = document.getElementById('th-circle');
   const buttonLv3 = document.getElementById('lv-tree');
   const modalLv3 = document.getElementById('th-triangle')
+  // const mod = document.querySelector('.modal');
+  //
+  // mod.addEventListener('click', event => {
+  //   mod.classList.remove('active');
+  // });
 
 
   if (!button || !modal) return;

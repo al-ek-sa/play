@@ -9,10 +9,16 @@
 <body class="body-lv">
 
 <div class="level-header">
-  <h1 class="title-th title-lv">Уровень 3. Тема: Треугольник</h1>
+  <h1 class="title-th title-lv">
+    Уровень 3. Тема: Треугольник
+  </h1>
   <div class="level-header-actions">
-    <button id="history--3lv" class="button-base-lv-th">история</button>
-    <button id="exit--3lv" class="button-base-lv-th">выйти</button>
+    <button id="history--3lv" class="button-base-lv-th">
+      история
+    </button>
+    <button id="exit--3lv" class="button-base-lv-th">
+      выйти
+    </button>
   </div>
 </div>
 
@@ -23,7 +29,8 @@
       Необходимо найти координату x точки X, если известно,
       что точка X лежит на стороне AC, а её координата y = 2.
     </p>
-    <label class="label--lv" for="answer-lv3">Ответ (введите число):
+    <label class="label--lv" for="answer-lv3">
+      Ответ (введите число):
     <input
       id="answer-lv3"
       name="answer"
@@ -36,8 +43,8 @@
       step="0.5"
       pattern="^-?\d+(\.\d+)?$"
     >
-    </label>
-    <span id="fail--answer--lv3" class="field-error" data-error-for="a" role="alert"></span>
+    </label><br>
+    <span id="fail--answer--lv3" class="field-error" data-error-for="a" role="alert"></span><br>
     <button id="answer--lv3" class="button-base-lv-th button-lv-form">
       Отправить на проверку
     </button>
@@ -47,21 +54,30 @@
 
 <div id="true-lv3" class="modal">
   <div class="container--1 div--th">
-    <output class="text-lv-tz">правильно</output>
+    <output class="text-lv-tz">
+      правильно
+    </output>
     <div class="section-success">
-      <button id="success--next--lv3" class="button-base-lv-th">дальше</button>
-      <button id="success--exit--lv3" class="button-base-lv-th">выйти</button>
+      <button id="success--next--lv3" class="button-base-lv-th">
+        дальше
+      </button>
+      <button id="success--exit--lv3" class="button-base-lv-th">
+        выйти
+      </button>
     </div>
   </div>
 </div>
 
 <div id="false-lv3" class="modal">
   <div class="container--1 div--th">
-    <output class="text-lv-tz">неверно</output>
-    <button id="failure-lv3" class="button-base-lv-th">хорошо</button>
+    <output class="text-lv-tz">
+      неверно
+    </output>
+    <button id="failure-lv3" class="button-base-lv-th">
+      хорошо
+    </button>
   </div>
 </div>
-
 <script type="module" src="../js/app.js"></script>
 </body>
 </html>
