@@ -21,7 +21,7 @@ input:focus {/*todo базовое свечение аннулировано п�
 
 .modal{
   display: none;
-  position: fixed;
+  position: absolute;
   inset: 0;
   z-index: 1000;
   background: rgba(0, 0, 0, 0.7);
@@ -109,24 +109,26 @@ label > input {
   background: antiquewhite;
   border: 4px solid #9a7951;
   border-radius: 15px;
-  height: 100%;
+  aspect-ratio: 1/1;
   width: 100%;
 }
 
 /*контейнеры для теории*/
 .container {
-  position: fixed;
-  bottom: 75px;
-  right: 100px;
+  width: 80%;
+  max-width: 1200px;
+  max-height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 20px;
+  background: antiquewhite;
+  border: 4px solid #9a7951;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
-  height: 70%;
-  width: 70%;
-  overflow-y: auto;
   gap: 15px;
   justify-content: flex-start;
   align-items: center;
-  overflow-x: hidden;
 }
 
 .section {
@@ -171,7 +173,7 @@ label > input {
   gap: 5%;
   justify-content: center;
   align-items: flex-start;
-  height: 60%;
+  aspect-ratio: 2/1;
   width: 100%;
 }
 
@@ -209,7 +211,7 @@ label > input {
   border: 4px solid #9a7951;
   border-radius: 15px;
   width: 450px;
-  height: 450px;
+  aspect-ratio: 1/1;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -314,6 +316,7 @@ label > input {
   border-bottom: 1px solid #9a7951;
   text-align: left;
   font-size: 14px;
+  border-right: 1px solid #9a7951;
 }
 
 .history-table th {
@@ -404,7 +407,7 @@ label > input {
 }
 
 .field-error {
-  height: 6%;
+  height: 20px;
   font-size: 10px;
   color: #a96666;
   margin-left: 5%;
