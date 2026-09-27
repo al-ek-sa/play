@@ -28,34 +28,36 @@ export function createHistory(id){
    *
    * @param {number} answer - ответ пользователя.
    * @param {boolean} isCorrect - признак правильности ответа.
+   * @returns {Promise<void>}
    */
-  function add(answer, isCorrect) {
+  async function add(answer, isCorrect) {
     const entry = {
       answer,
       isCorrect,
       date: new Date().toISOString(),
     };
 
-    const data = loadData();
+    const data = await loadData();
     data.push(entry);
-    saveData(data);
+    await saveData(data);
 
     const totalPage = Math.ceil(data.length / PAGE_SIZE);
     currentPage = Math.max(1, totalPage);
 
-    render();
+    await render();
   }
 
   /**
    * Перерисовывает таблицу истории для текущей страницы, а также
    * обновляет индикатор страниц, счётчик записей и состояние кнопок
    * навигации.
+   * @returns {Promise<void>}
    */
-  function render() {
+  async function render() {
     const tbody = document.getElementById(`history-body-${id}`);
     if(!tbody) return;
 
-    const data = loadData();
+    const data = await loadData();
     const totalPage = Math.max(1, Math.ceil(data.length / PAGE_SIZE));
 
     if (currentPage < 1) currentPage = 1;
@@ -83,30 +85,34 @@ export function createHistory(id){
   /**
    * Полностью очищает историю: удаляет данные из localStorage,
    * сбрасывает текущую страницу на первую и перерисовывает таблицу.
+   *
+   * @returns {Promise<void>}
    */
-  function clear(){
+  async function clear(){
     localStorage.removeItem(storageKey);
     currentPage = 1;
-    render();
+    await render();
   }
 
   /**
    * Навешивает обработчики кликов на кнопки "предыдущая"/"следующая
    * страница". Должна вызываться один раз при инициализации модуля.
+   *
+   * @returns {void}
    */
   function initPagination() {
     const prevBut = document.getElementById(`history-prev-${id}`);
     const nextBut = document.getElementById(`history-next-${id}`);
     if(prevBut){
-      prevBut.addEventListener('click', () => {
+      prevBut.addEventListener('click', async () => {
         currentPage--;
-        render();
+        await render();
       });
     }
     if(nextBut){
-      nextBut.addEventListener('click', ()=>{
+      nextBut.addEventListener('click', async ()=>{
         currentPage++;
-        render();
+        await render();
       });
     }
   }
@@ -115,24 +121,26 @@ export function createHistory(id){
    * Навешивает обработчик на кнопку очистки истории с подтверждением
    * действия через стандартный confirm(). Должна вызываться один раз
    * при инициализации модуля.
+   *
+   * @returns {void}
    */
   function initClear() {
     const clearBtn = document.getElementById(`history-clear-${id}`);
     if(!clearBtn) return;
 
-    clearBtn.addEventListener('click', () => {
-      if (confirm('Очистить всю историю?')) clear();
-    })
+    clearBtn.addEventListener('click', async () => {
+      if (confirm('Очистить всю историю?')) await clear();
+    });
   }
 
   /**
    * Загружает массив записей истории из localStorage.
    * При отсутствии данных или ошибке парсинга возвращает пустой массив.
    *
-   * @returns {Array<{answer: *, isCorrect: boolean, date: string}>}
+   * @returns {Promise<Array<{answer: *, isCorrect: boolean, date: string}>>}
    * @private
    */
-  function loadData() {
+  async function loadData() {
     try {
       return JSON.parse(localStorage.getItem(storageKey) || '[]');
     } catch {
@@ -144,9 +152,10 @@ export function createHistory(id){
    * Сохраняет массив записей истории в localStorage.
    *
    * @param {Array<{answer: *, isCorrect: boolean, date: string}>} data
+   * @returns {Promise<void>}
    * @private
    */
-  function saveData(data) {
+  async function saveData(data) {
     localStorage.setItem(storageKey, JSON.stringify(data));
   }
 
@@ -155,6 +164,7 @@ export function createHistory(id){
    * для одной записи (ответ, результат, дата).
    *
    * @param {{answer: number, isCorrect: boolean, date: string}} entry
+   * @returns {void}
    * @private
    */
   function renderRow(entry){
