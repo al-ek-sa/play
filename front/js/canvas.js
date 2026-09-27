@@ -1,3 +1,12 @@
+/**
+ * Создает и инициализирует окружение для рисования координатной плоскости на <canvas>.
+ *
+ * Начало координат (0, 0) располагается в центре <canvas>, ось У направлена вверх, плоскость условно разбита на 40 делений по каждой оси.
+ * @param {string} id - id элемента <canvas> на странице.
+ * @returns {{canvas: HTMLElement, ctx: *, width: *, height: *, b: number, c: number, drawSquare: drawSquare, redraw: redraw, drawPoint: drawPoint, drawCircle: drawCircle, drawTriangle: drawTriangle}|null}
+ * @author Lishyk Aliaksandra
+ * @version 1.0
+ */
 export function createCanvas(id) {
   const canvas = document.getElementById(id);
   if(!canvas) return null;
@@ -8,6 +17,10 @@ export function createCanvas(id) {
   const b = width / 40;
   const c = height / 40;
 
+  /**
+   * Очищает <canvas> и рисует координатную плоскость: оси Х и У с направляющими стрелками.
+   * @private
+   */
   function coordinatePlane() {
     ctx.clearRect(0, 0, width, height);
     ctx.save();
@@ -44,6 +57,10 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  /**
+   * Рисует сетку для системы координат размером 40*40.
+   * @private
+   */
   function grid() {
     ctx.save();
     ctx.strokeStyle = '#d9b68f';
@@ -66,6 +83,13 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  /**
+   * Рисует квадрат с центром в точке (х, у).
+   *
+   * @param {number} a - половина длины стороны квадрата (в условных единицах).
+   * @param {number} x - координата Х центра квадрата.
+   * @param {number} y - координата У центра квадрата.
+   */
   function drawSquare(a, x, y) {
     const centerX = Math.floor(width / 2) + 0.5;
     const centerY = Math.floor(height / 2) + 0.5;
@@ -91,6 +115,11 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  /**
+   * Рисует закрашенную точку в заданных координатах.
+   * @param {number} x - координата Х точки (в условных единицах).
+   * @param {number} y - координата У точки (в условных единицах).
+   */
   function drawPoint(x, y) {
     const centerX = Math.floor(width / 2) + 0.5;
     const centerY = Math.floor(height / 2) + 0.5;
@@ -108,6 +137,13 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  /**
+   * Рисует окружность с центром в точке (x, y).
+   *
+   * @param {number} r - радиус окружности (в условных единицах).
+   * @param {number} x - координата X центра окружности.
+   * @param {number} y - координата Y центра окружности.
+   */
   function drawCircle(r, x, y){
     const centerX = Math.floor(width / 2) + 0.5;
     const centerY = Math.floor(height / 2) + 0.5;
@@ -124,6 +160,13 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  /**
+   * Рисует треугольник по трём вершинам.
+   *
+   * @param {[number, number]} p1 - координаты первой вершины.
+   * @param {[number, number]} p2 - координаты второй вершины.
+   * @param {[number, number]} p3 - координаты третьей вершины.
+   */
   function drawTriangle(p1, p2, p3) {
     const centerX = Math.floor(width / 2) + 0.5;
     const centerY = Math.floor(height / 2) + 0.5;
@@ -143,6 +186,10 @@ export function createCanvas(id) {
     ctx.restore();
   }
 
+  /**
+   * Полностью перерисовывает систему координат: очищает canvas
+   * и рисует координатную плоскость с сеткой.
+   */
   function redraw() {
     coordinatePlane();
     grid();

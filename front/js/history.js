@@ -1,9 +1,34 @@
 const PAGE_SIZE = 10;
 
+/**
+ * Создаёт модуль истории ответов с пагинацией и хранением в localStorage.
+ *
+ * Ожидает в разметке страницы элементы со следующими id (где {id} -
+ * переданный параметр):
+ * - `history-body-{id}` — <tbody>, куда рендерятся строки истории
+ * - `history-page-{id}` — элемент для отображения "текущая / всего страниц"
+ * - `history-total-{id}` — элемент для отображения общего числа записей
+ * - `history-prev-{id}` — кнопка "предыдущая страница"
+ * - `history-next-{id}` — кнопка "следующая страница"
+ * - `history-clear-{id}` — кнопка очистки истории
+ *
+ * @param {string|number} id - уникальный идентификатор экземпляра истории
+ * (используется как часть ключа localStorage и id DOM-элементов).
+ * @returns {{add: add, render: render, initPagination: initPagination, initClear: initClear}}
+ * @author Lishyk Aliaksandra
+ * @version 1.0
+ */
 export function createHistory(id){
   const storageKey = `history:${id}`;
   let currentPage = 1;
 
+  /**
+   * Добавляет новую запись в историю, сохраняет её в localStorage
+   * и переключает отображение на последнюю страницу.
+   *
+   * @param {number} answer - ответ пользователя.
+   * @param {boolean} isCorrect - признак правильности ответа.
+   */
   function add(answer, isCorrect) {
     const entry = {
       answer,
@@ -21,6 +46,11 @@ export function createHistory(id){
     render();
   }
 
+  /**
+   * Перерисовывает таблицу истории для текущей страницы, а также
+   * обновляет индикатор страниц, счётчик записей и состояние кнопок
+   * навигации.
+   */
   function render() {
     const tbody = document.getElementById(`history-body-${id}`);
     if(!tbody) return;
@@ -50,12 +80,20 @@ export function createHistory(id){
 
   }
 
+  /**
+   * Полностью очищает историю: удаляет данные из localStorage,
+   * сбрасывает текущую страницу на первую и перерисовывает таблицу.
+   */
   function clear(){
     localStorage.removeItem(storageKey);
     currentPage = 1;
     render();
   }
 
+  /**
+   * Навешивает обработчики кликов на кнопки "предыдущая"/"следующая
+   * страница". Должна вызываться один раз при инициализации модуля.
+   */
   function initPagination() {
     const prevBut = document.getElementById(`history-prev-${id}`);
     const nextBut = document.getElementById(`history-next-${id}`);
@@ -73,6 +111,11 @@ export function createHistory(id){
     }
   }
 
+  /**
+   * Навешивает обработчик на кнопку очистки истории с подтверждением
+   * действия через стандартный confirm(). Должна вызываться один раз
+   * при инициализации модуля.
+   */
   function initClear() {
     const clearBtn = document.getElementById(`history-clear-${id}`);
     if(!clearBtn) return;
@@ -82,6 +125,13 @@ export function createHistory(id){
     })
   }
 
+  /**
+   * Загружает массив записей истории из localStorage.
+   * При отсутствии данных или ошибке парсинга возвращает пустой массив.
+   *
+   * @returns {Array<{answer: *, isCorrect: boolean, date: string}>}
+   * @private
+   */
   function loadData() {
     try {
       return JSON.parse(localStorage.getItem(storageKey) || '[]');
@@ -90,10 +140,23 @@ export function createHistory(id){
     }
   }
 
+  /**
+   * Сохраняет массив записей истории в localStorage.
+   *
+   * @param {Array<{answer: *, isCorrect: boolean, date: string}>} data
+   * @private
+   */
   function saveData(data) {
     localStorage.setItem(storageKey, JSON.stringify(data));
   }
 
+  /**
+   * Создаёт и добавляет в tbody одну строку таблицы истории
+   * для одной записи (ответ, результат, дата).
+   *
+   * @param {{answer: number, isCorrect: boolean, date: string}} entry
+   * @private
+   */
   function renderRow(entry){
     const tbody = document.getElementById(`history-body-${id}`);
     if(!tbody) return;

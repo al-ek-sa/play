@@ -1,3 +1,18 @@
+/**
+ * Точка входа в приложения.
+ *
+ * Запускает все модули после загрузки DOM:
+ * - initModal() - открытие модалок с теорией
+ * - initNavigation() - переходы между страницами, переходы при проверке результатов открытие модалки
+ * - initLevel1/2/3() - логика модалок с теорией для 1/2/3 уровня
+ * - level1/2/3() - логика уровней игры
+ * - initHistoryPage() - рендер страниц истории попыток
+ *
+ * Модули запускаются условно: при наличии на странице соответствующих
+ * элементов -- модуль инициализируется.
+ * @author Lishik Aliaksandra
+ * @version 1.0
+ */
 import { initModal } from './modal.js';
 import { initNavigation } from './navigation.js';
 import { initLevel1, level1 } from './level1.js';
@@ -34,6 +49,18 @@ document.addEventListener('DOMContentLoaded', () => {
   initHistoryPage('lv3');
 });
 
+/**
+ * Инициализирует страницу истории для указанного уровня.
+ *
+ * Находит tbody таблицы истории по id `history-body-${id}`.
+ *
+ * Создаёт объект истории через createHistory(id), рендерит
+ * таблицу, вешает обработчики пагинации и очистки, а также
+ * кнопку возврата на страницу уровня.
+ *
+ * @param {string} id - Идентификатор уровня: 'lv1', 'lv2' или 'lv3'
+ * @returns {void}
+ */
 function initHistoryPage(id) {
   const tbody = document.getElementById(`history-body-${id}`);
   if (!tbody) return;
