@@ -12,4 +12,6 @@
 
 ```bash
 git clone git@github.com:al-ek-sa/play.git
+docker build -t locus .
+docker run -d -p 8080:80 --name locus locus
 ```
