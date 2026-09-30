@@ -1,5 +1,6 @@
 import { createCanvas } from './canvas.js';
 import { createHistory } from './history.js';
+import { validateNumber } from './validation.js';
 
 /**
  * Инициализирует интерактивный режим "Уровень 1": форма для ручного ввода
@@ -17,8 +18,7 @@ import { createHistory } from './history.js';
  * Если canvas, форма или кнопка не найдены на странице — функция
  * прерывается без ошибок.
  *
- * Валидация: все три поля обязательны, должны быть числами;
- * `a` — в диапазоне [0, 10]; `x` и `y` — в диапазоне [-10, 10].
+ * Валидация: диапазон изменен после нового функционала(условие в html нужно переписать)
  * При успешной валидации рисует квадрат с данными параметрами.
  */
 export function initLevel1() {
@@ -33,81 +33,61 @@ export function initLevel1() {
 
   if (!form || !but) return;
 
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+
   plane.redraw();
 
   but.addEventListener('click', (event) => {
     event.preventDefault();
-
-    plane.redraw();
+    event.stopPropagation();
 
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
+    const limit = plane.maxRange;
+
+    const errA = validateNumber(object['a'], 0, limit);
+    const errX = validateNumber(object['x'], -limit, limit);
+    const errY = validateNumber(object['y'], -limit, limit);
+
+    failA.textContent = errA;
+    failX.textContent = errX;
+    failY.textContent = errY;
+
+    if (errA || errX || errY) return;
 
     const a = Number(object['a']);
     const x = Number(object['x']);
     const y = Number(object['y']);
 
-    const isEmpty = (v) => v.trim() === '';
-    const isInvalid =
-      isEmpty(object['a']) || isEmpty(object['x']) || isEmpty(object['y']) ||
-      !Number.isFinite(a) || !Number.isFinite(x) || !Number.isFinite(y) ||
-      x > 10 || a > 10 || y > 10 ||
-      x < -10 || y < -10 || a < 0;
-
-    if(isInvalid) {
-      if (!Number.isFinite(a)){
-        failA.textContent = 'Поле должно быть числовым';
-      } else if(isEmpty(object['a'])) {
-        failA.textContent = 'Поле обязательно к заполнению';
-      } else if (a > 10) {
-        failA.textContent = 'Поле должно быть не больше 10';
-      } else if (a < 0) {
-        failA.textContent = 'Поле должно быть не меньше 0';
-      } else {
-        failA.textContent = '';
-      }
-
-      if (!Number.isFinite(x)){
-        failX.textContent = 'Поле должно быть числовым';
-      } else if(isEmpty(object['x'])) {
-        failX.textContent = 'Поле обязательно к заполнению';
-      } else if (x > 10) {
-        failX.textContent = 'Поле должно быть не больше 10';
-      } else if (x < -10) {
-        failX.textContent = 'Поле должно быть не меньше -10';
-      } else {
-        failX.textContent = '';
-      }
-
-      if (!Number.isFinite(y)){
-        failY.textContent = 'Поле должно быть числовым';
-      } else if(isEmpty(object['y'])) {
-        failY.textContent = 'Поле обязательно к заполнению';
-      } else if (y > 10) {
-        failY.textContent = 'Поле должно быть не больше 10';
-      } else if (y < -10) {
-        failY.textContent = 'Поле должно быть не меньше -10';
-      } else {
-        failY.textContent = '';
-      }
-
-      return;
-    }
-    failA.textContent = '';
-    failX.textContent = '';
-    failY.textContent = '';
-
-    plane.drawSquare(a, x, y);
+    plane.clearShapes();
+    plane.drawSquare(a / 2, x, y);
+    plane.focusOn(x, y, a / 2);
   });
+}
 
-  const canvas = document.getElementById('canvas-lv-one');
-  if (canvas) {
-    canvas.addEventListener('click', (event) => {
-      // const rect = canvas.getBoundingClientRect();
-      // const x = event.clientX - rect.left;
-      // const y = event.clientY - rect.top;
-      // plane.drawPoint(x/40, y/40);
-       alert('масштабирование нудно добавить');
+/*todo на лабораторной кнопки были рабочие поэтому пока не убирала код(в html кнопки убраны), потом вынести на канвас в виде + и -*/
+export function initScaleButtons() {
+  const plane = createCanvas('canvas-lv-one');
+  if (!plane) return;
+
+  const lv1max = document.getElementById('lv1-1');
+  const lv1min = document.getElementById('lv1-2');
+
+  if (lv1max) {
+    lv1max.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      plane.setScale(plane.getScale() * 1.1);
+    });
+  }
+
+  if (lv1min) {
+    lv1min.addEventListener('click', (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      plane.setScale(plane.getScale() * 0.9);
     });
   }
 }
@@ -131,7 +111,7 @@ export function initLevel1() {
  *
  * Если canvas не найден — функция прерывается без ошибок
  * @author Lishyk Aliaksandra
- * @version 1.0.
+ * @version 1.1.
  */
 export function level1() {
   const plane = createCanvas('canvas-lv-one');
@@ -143,12 +123,17 @@ export function level1() {
   const answerFail = document.getElementById('fail--answer--lv1');
   const history = createHistory('lv1');
 
+  if (!form) return;
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+  });
+
   plane.redraw();
 
   if (answerLv) {
     answerLv.addEventListener('click', (event) => {
       event.preventDefault();
-      plane.redraw();
+      event.stopPropagation();
 
       const formData = new FormData(form);
       const object = Object.fromEntries(formData);
@@ -167,6 +152,7 @@ export function level1() {
 
       answerFail.textContent = '';
 
+      plane.clearShapes();
       plane.drawSquare(3, 2, 3);
       plane.drawPoint(x, 4);
 
