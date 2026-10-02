@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/css/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/css/components.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/css/symbol.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/css/today.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/css/tokens.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/data/data.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/html/1lv--history.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/html/2lv--history.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/html/3lv--history.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/front/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/html/lv1.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/html/lv2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/html/lv3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/js/canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/canvas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/js/vendor/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/vendor/.gitkeep" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +25,7 @@
         <option value="Docker Compose" />
         <option value="Dockerfile" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -45,26 +42,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Docker.front/Dockerfile.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "final-design",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/xfiles/itmo/3sem/play",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Docker.front/Dockerfile.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;final-design&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/xfiles/itmo/3sem/play&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />

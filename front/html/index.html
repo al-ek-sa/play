@@ -6,41 +6,149 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MathQuest - Сегодня</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/today.css">
+  <link rel="stylesheet" href="../css/symbol.css">
 </head>
 
 <body>
-  <main>
-    <div>
+  <svg width="0" height="0">
+    <defs>
+      <defs>
+        <symbol id="i-logo" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/>
+          <path class="icon-shape" d="M4 7.4 12 12l8-4.6M12 12v9.2"/>
+        </symbol>
+
+        <symbol id="i-bell" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/>
+          <path class="icon-shape" d="M10 21h4"/>
+        </symbol>
+
+        <symbol id="i-today" viewBox="0 0 24 24">
+          <rect class="icon-shape" x="3.5" y="5" width="17" height="15" rx="3"/>
+          <path class="icon-shape" d="M3.5 10h17M8 3v4M16 3v4"/>
+          <path class="icon-shape" d="m9 15 2 2 4-4"/>
+        </symbol>
+
+        <symbol id="i-topics" viewBox="0 0 24 24">
+          <rect class="icon-shape" x="4" y="4" width="7" height="7" rx="2"/>
+          <rect class="icon-shape" x="13" y="4" width="7" height="7" rx="2"/>
+          <rect class="icon-shape" x="4" y="13" width="7" height="7" rx="2"/>
+          <rect class="icon-shape" x="13" y="13" width="7" height="7" rx="2"/>
+        </symbol>
+
+        <symbol id="i-send" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/>
+        </symbol>
+
+        <symbol id="i-cal" viewBox="0 0 24 24">
+          <rect class="icon-shape" x="3.5" y="5" width="17" height="15" rx="3"/>
+          <path class="icon-shape" d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/>
+        </symbol>
+
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>
+        </symbol>
+
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle class="icon-shape" cx="12" cy="12" r="4"/>
+          <path class="icon-shape" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </symbol>
+
+        <symbol id="i-flame" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.6 1 2.5 2 3 .2-3-.3-5.6.5-8z"/>
+        </symbol>
+
+        <symbol id="i-pen" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M4 20l4-1L19 8l-3-3L5 16z"/>
+          <path class="icon-shape" d="M14 7l3 3"/>
+        </symbol>
+
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle class="icon-shape" cx="12" cy="12" r="8.5"/>
+          <path class="icon-shape" d="M12 7.5V12l3 2"/>
+        </symbol>
+
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path class="icon-shape icon-check" d="m5 12 4.5 4.5L19 7"/>
+        </symbol>
+
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M5 12h14M13 6l6 6-6 6"/>
+        </symbol>
+
+        <symbol id="i-inbox" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z"/>
+        </symbol>
+      </defs>
+    </defs>
+  </svg>
+
+
+  <div>
+    <aside>
       <div>
-        <span>MathQuest</span>
+        <a href="#">
+          <span class="symbol"><svg><use href="#i-logo"/></svg></span>
+          MathQuest
+        </a>
+        <button>
+          <svg><use href="#i-bell"/></svg>
+          <span>2</span>
+        </button>
       </div>
+
+      <nav>
+        <a href="#" class="nav-item">
+          <svg><use href="#i-today"/></svg>
+          Сегодня
+        </a>
+
+        <span class="icon icon-s icon-clock"></span>
+        <a href="#">
+          <svg><use href="#i-topics"/></svg>
+          Темы
+        </a>
+        <a href="#">
+          <svg><use href="#i-send"/></svg>
+          Задачи друзьям
+          <span>3</span>
+        </a>
       <div>
-        <a href="#">Сегодня</a>
-      </div>
-      <div>
-        <a href="#">Темы</a>
-      </div>
-      <div>
-        <a href="#">Задачи друзьям</a>
-      </div>
-      <div>
-        <a href="#">календарь</a>
+        <svg><use href="i-cal"/></svg>
+        <span>Календарь</span>
         <span>скоро</span>
       </div>
+    </nav>
+
       <div>
+        <span>Мои группы</span>
+        <a href="#">
+          <span>И</span>
+          7Б · Ирина С.
+        </a>
+      </div>
+
+      <div>
+      <button>
+        <svg><use href="#i-moon"/></svg>
+        <svg><use href="i-sun"/></svg>
+        <span>Темная тема</span>
+      </button>
+      <div>
+        <span>М</span>
         <div>
-          <a href="#">7Б * Ирина С.</a>
+          <strong>Маша Котова</strong>
+          <span>6 класс</span>
         </div>
       </div>
-      <div>
-        <a href="#">Темная тема</a>
-      </div>
-      <div>
-        <span>Маша Котова</span>
-        <span>6 класс</span>
-      </div>
     </div>
+  </aside>
+
+    <main>
     <header>
       <div>
         <p>Четверг, 1 октября</p>
@@ -48,9 +156,11 @@
       </div>
       <div>
         <span>
+          <svg><use href="#i-flame"/></svg>
           12дней подряд
         </span>
         <a href="#/tasks/new">
+          <svg><use href="#i-pen"/></svg>
           Придумать задачу
         </a>
       </div>
@@ -63,115 +173,146 @@
           <span>3 из 4 осталось</span>
         </div>
 
-        <div>
-          <span>Дроби: общий знаменатель</span>
+        <article>
           <div>
-            <span>Ирина Сергеевна</span>
-            <span>до 18:00</span>
-            <span>5 задач</span>
-            <a href="#">Решать</a>
+            <span>Дроби: общий знаменатель</span>
+            <div>
+              <span>Ирина Сергеевна</span>
+              <span><svg><use href="#i-clock"></use></svg>до 18:00</span>
+              <span>5 задач</span>
+            </div>
           </div>
-        </div>
+          <a href="#">Решать</a>
+        </article>
 
-        <div>
-          <span>Часы на башне</span>
+        <article>
           <div>
-            <span>Аня</span>
-            <span>до 20:00</span>
-            <span>1 задача</span>
-            <a href="#">Решать</a>
+            <span>Часы на башне</span>
+            <div>
+              <span>Аня</span>
+              <span><svg><use href="#i-clock"/></svg>до 20:00</span>
+              <span>1 задача</span>
+            </div>
           </div>
-        </div>
+          <a href="#">Решать</a>
+        </article>
 
-        <div>
-          <span>Тема "Дроби". Урок 4</span>
+        <article>
           <div>
-            <span>сама себе</span>
-            <span>сегодня</span>
-            <span>7 задач</span>
-            <a href="#">Решать</a>
+            <span>Тема "Дроби". Урок 4</span>
+            <div>
+              <span>сама себе</span>
+              <span><svg><use href="#i-clock"/></svg>сегодня</span>
+              <span>7 задач</span>
+            </div>
           </div>
-        </div>
+          <a href="#">Решать</a>
+        </article>
 
-        <div>
+        <article>
+          <div>
           <span>Разминка: закономерности</span>
           <div>
             <span>Илья</span>
-            <span>утром</span>
+            <span><svg><use href="#i-clock"/></svg>утром</span>
             <span>2 задачи</span>
-            <span>Готова</span>
           </div>
         </div>
+        <span>
+          <svg><use href="#i-check"/></svg>
+          Готово
+        </span>
+      </article>
 
-      </div>
       <div>
         <h2>Скоро</h2>
         <span>на этой неделе</span>
       </div>
 
-      <div>
+
+      <a href="#">
         <span>5 задач на дроби</span>
         <span>Ирина Сергеевна</span>
-        <span>пятница, 18:00</span>
-      </div>
+        <span><svg><use href="#i-clock"/></svg>пятница, 18:00</span>
+      </a>
 
-      <div>
+      <a href="#">
         <span>Повторить углы</span>
         <span>сама себе</span>
-        <span>воскресенье</span>
-      </div>
+        <span><svg><use href="#i-clock"/></svg>воскресенье</span>
+      </a>
 
-      <div>
+      <a href="">
         <span>Отправить Ане ответную задачу</span>
         <span>для Ани</span>
-        <span>без срока</span>
+        <span><svg><use href="#i-clock"/></svg>без срока</span>
+      </a>
+
+      <div>
+        <span><i></i>от репетитора</span>
+        <span><i></i>от друзей</span>
+        <span><i></i>свои</span>
       </div>
 
       <div>
-        <span>от репетитора</span>
-        <span>от друзей</span>
-        <span>свои</span>
-      </div>
-
-      <div>
-        <div>
-          <span>Аня решила твою задачу</span>
-          <span>с первой попытки * отправь ей своей</span>
-        </div>
-        <div>
-          <span>2 новые задачи от друзей</span>
-          <span>Аня и Илья ждут ответа</span>
-        </div>
+        <a href="#">
+          <span></span>
+          <div>
+            <span>Аня решила твою задачу</span>
+            <span>с первой попытки * отправь ей своей</span>
+          </div>
+        </a>
+        <a href="#">
+          <span><svg><use href="#i-inbox"/></svg></span>
+          <div>
+            <span>2 новые задачи от друзей</span>
+            <span>Аня и Илья ждут ответа</span>
+          </div>
+        </a>
       </div>
     </div>
 
     <div>
-      <span>продолжить тему</span>
-      <span>Дроби</span>
-      <span>Числа * урок 4 из 6</span>
-      <a href="#">продолжить</a>
-    </div>
+      <section>
+        <div>
+          <svg width="72" height="72" viewBox="0 0 72 72" aria-label="Пройдено 3 урока из 6">
+            <text>3/6</text>
+          </svg>
+          <div>
+            <span>Продолжить тему</span>
+            <span>Дроби</span>
+            <span>Числа * урок 4 из 6</span>
+          </div>
+        </div>
+        <a href="#">
+          продолжить
+          <svg><use href="#i-arrow"/></svg>
+        </a>
+      </section>
 
-    <div>
-      <span>Мой прогресс * 6 класс</span>
-      <div>
-        <span>Числа</span>
-        <span>62%</span>
-      </div>
-      <div>
-        <span>Геометрия</span>
-        <span>40%</span>
-      </div>
-      <div>
-        <span>Логика</span>
-        <span>55%</span>
-      </div>
-      <div>
-        <span>Алгебра</span>
-        <span>8%</span>
-      </div>
+      <section>
+        <h2>Мой прогресс * 6 класс</h2>
+        <div>
+          <strong>Числа</strong>
+          <span>62%</span>
+        </div>
+        <div>
+          <strong>Геометрия</strong>
+          <span>40%</span>
+        </div>
+        <div>
+          <strong>Логика</strong>
+          <span>55%</span>
+        </div>
+        <div>
+          <span>Алгебра</span>
+          <span>8%</span>
+        </div>
+      </section>
+    </div>
     </div>
   </main>
+<script src="js/main.js" defer></script>
 </body>
 
 </html>
