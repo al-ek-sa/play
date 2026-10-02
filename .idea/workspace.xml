@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="" />
+    <list default="true" id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/data/data.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/1lv--history.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/2lv--history.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/3lv--history.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/html/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/lv1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/lv2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/html/lv3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/js/canvas.js" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/canvas.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,7 +53,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "lab1",
+    "git-widget-placeholder": "final-design",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/xfiles/itmo/3sem/play",
     "node.js.detected.package.eslint": "true",
@@ -70,7 +83,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
-      <deployment type="dockerfile" />
+      <deployment type="dockerfile">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration name="front/Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
