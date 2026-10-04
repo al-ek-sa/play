@@ -78,3 +78,11 @@ aside.container--1 { /*для менюшки(переименовать)*/
   flex: 4;
   border: 2px solid black;
 }
+
+
+ul[role="list"]{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+

@@ -1,4 +1,6 @@
-.icon-shape {
+.icon {
+  height: 20px;
+  width: 20px;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.9;
@@ -6,11 +8,17 @@
   stroke-linejoin: round;
 }
 
-.icon-check {
-  stroke-width: 2.6;
+.icon--s{
+  width: 14px;
+  height: 14px;
 }
 
-svg{
-  height: 20px;
-  width: 20px;
+.icon--m {
+  width: 18px;
+  height: 18px;
+}
+
+.icon--l {
+  width: 22px;
+  height: 22px;
 }
