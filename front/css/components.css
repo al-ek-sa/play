@@ -63,12 +63,6 @@ aside.container--1 { /*для менюшки(переименовать)*/
   background: rgb(197 197 197 / 0.53);
 }
 
-.j {
-  background: white;
-  border-radius: 20px;
-  border: 0.5px solid grey;
-}
-
 .section--1 {
   flex: 1;
   border: 2px solid black;

@@ -161,36 +161,36 @@
     </div>
   </aside>
 
-    <main id="main" class="section--2 color">
-    <header class="container">
-      <div class="section--2">
+    <main id="main" class="page">
+    <header class="page__header">
+      <div>
         <p><time>Четверг, 1 октября</time></p>
         <h1>Привет, Маша!</h1>
       </div>
-      <div class="section--1">
+      <div class="page__actions">
         <p>
           <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg>
           12дней подряд
         </p>
-        <a class="section--1" href="#/tasks/new">
+        <a class="button" href="#/tasks/new">
           <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg>
           Придумать задачу
         </a>
       </div>
     </header>
 
-    <div class="container">
-      <div class="section--2">
-        <section aria-labelledby="today-title">
-          <header>
+    <div class="page__body">
+      <div class="page__main">
+        <section class="block" aria-labelledby="today-title">
+          <header class="block__head">
             <h2 id="today-title">На сегодня</h2>
             <span>3 из 4 осталось</span>
           </header>
 
-          <ul role="list">
+          <ul class="task-list" role="list">
             <li>
-              <article class="j">
-                <div>
+              <article class="task">
+                <div class="task__body">
                   <h3>Дроби: общий знаменатель</h3>
                   <ul role="list">
                     <li>
@@ -213,8 +213,8 @@
             </li>
 
             <li>
-              <article class="j">
-                <div>
+              <article class="task">
+                <div class="task__body">
                   <h3>Часы на башне</h3>
                   <ul role="list">
                     <li>
@@ -236,8 +236,8 @@
             </li>
 
             <li>
-              <article class="j">
-                <div>
+              <article class="task">
+                <div class="task__body">
                   <h3>Тема "Дроби". Урок 4</h3>
                   <ul>
                     <li>
@@ -259,8 +259,8 @@
             </li>
 
             <li>
-              <article class="j">
-                <div>
+              <article class="task">
+                <div class="task__body">
                   <h3>Разминка: закономерности</h3>
                   <ul>
                     <li>
@@ -285,18 +285,18 @@
           </ul>
         </section>
 
-        <section>
-          <header>
+        <section class="block">
+          <header class="block__head">
             <h2>Скоро</h2>
             <span>на этой неделе</span>
           </header>
 
-          <ul role="list">
+          <ul class="soon-list" role="list">
             <li>
-              <a class="j" href="#">
-                <span>5 задач на дроби</span>
+              <a class="soon-item" href="#">
+                <span class="soon-item__title">5 задач на дроби</span>
                 <span>Ирина Сергеевна</span>
-                <span>
+                <span class="soon-item__when">
                   <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
                   <time>пятница, 18:00</time>
                 </span>
@@ -304,10 +304,10 @@
             </li>
 
             <li>
-              <a class="j" href="#">
-                <span>Повторить углы</span>
+              <a class="soon-item" href="#">
+                <span class="soon-item__title">Повторить углы</span>
                 <span>сама себе</span>
-                <span>
+                <span class="soon-item__when">
                   <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
                   <time>воскресенье</time>
                 </span>
@@ -315,10 +315,10 @@
             </li>
 
             <li>
-              <a class="j" href="">
-                <span>Отправить Ане ответную задачу</span>
-                <span>для Ани</span>
-                <span>
+              <a class="soon-item" href="">
+                <span class="soon-item__title">Отправить Ане ответную задачу</span>
+                <span class="">для Ани</span>
+                <span class="soon-item__when">
                   <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
                   <time>без срока</time>
                 </span>
@@ -326,17 +326,17 @@
             </li>
           </ul>
 
-          <ul class="name" role="list">
-            <li>от репетитора</li>
-            <li>от друзей</li>
-            <li>свои</li>
+          <ul class="legend" role="list">
+            <li class="">от репетитора</li>
+            <li class="">от друзей</li>
+            <li class="">свои</li>
           </ul>
         </section>
 
 
-      <ul aria-label="Новости от друзей">
+      <ul class="messages" aria-label="Новости от друзей">
         <li>
-          <a href="#">
+          <a href="#" class="message">
             <span></span>
             <div>
               <span>Аня решила твою задачу</span>
@@ -345,12 +345,12 @@
           </a>
         </li>
         <li>
-          <a href="#">
+          <a href="#" class="message">
             <span><svg class="icon icon--l" aria-hidden="true" focusable="false"><use href="#i-inbox"/></svg></span>
-            <div>
+            <span class="message__text">
               <span>2 новые задачи от друзей</span>
               <span>Аня и Илья ждут ответа</span>
-            </div>
+            </span>
           </a>
         </li>
       </ul>
