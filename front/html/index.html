@@ -100,65 +100,80 @@
       </div>
 
       <nav class="b" aria-label="Основное меню">
-        <a href="#" class="nav-item">
-          <svg><use href="#i-today"/></svg>
-          Сегодня
-        </a>
+        <ul role="list">
+          <li>
+            <a href="#" class="nav-item">
+              <svg><use href="#i-today"/></svg>
+              Сегодня
+            </a>
+          </li>
 
-        <span class="icon icon-s icon-clock"></span>
-        <a href="#">
-          <svg><use href="#i-topics"/></svg>
-          Темы
-        </a>
-        <a href="#">
-          <svg><use href="#i-send"/></svg>
-          Задачи друзьям
-          <span>3</span>
-        </a>
-      <div>
-        <svg><use href="i-cal"/></svg>
-        <span>Календарь</span>
-        <span>скоро</span>
-      </div>
+          <li>
+            <a href="#">
+              <svg><use href="#i-topics"/></svg>
+              Темы
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <svg><use href="#i-send"/></svg>
+              Задачи друзьям
+              <span>3</span>
+            </a>
+          </li>
+
+          <li>
+            <span aria-disabled="true">
+              <svg aria-hidden="true" focusable="false"><use href="#i-cal"/></svg>
+              <span>Календарь</span>
+              <span>скоро</span>
+            </span>
+          </li>
+        </ul>
     </nav>
 
       <div class="c">
-        <span>Мои группы</span>
-        <a href="#">
-          <span>И</span>
-          7Б · Ирина С.
-        </a>
+        <h2 id="group-title">Мои группы</h2>
+        <ul role="list">
+          <li>
+            <a href="#">
+              <span aria-hidden="true">И</span>
+              7Б · Ирина С.
+            </a>
+          </li>
+        </ul>
       </div>
 
       <div class="d">
-      <button>
-        <svg><use href="#i-moon"/></svg>
-        <svg><use href="i-sun"/></svg>
+      <button type="button" aria-pressed="false">
+        <svg aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+        <svg aria-hidden="true" focusable="false"><use href="i-sun"/></svg>
         <span>Темная тема</span>
       </button>
-      <div>
-        <span>М</span>
-        <div>
-          <strong>Маша Котова</strong>
+      <a>
+        <span aria-hidden="true">М</span>
+        <span>
+          <span>Маша Котова</span>
           <span>6 класс</span>
-        </div>
-      </div>
+        </span>
+      </a>
     </div>
   </aside>
 
-    <main class="section--2 color">
+    <main id="main" class="section--2 color">
     <header class="container">
       <div class="section--2">
-        <p>Четверг, 1 октября</p><br>
+        <p><time>Четверг, 1 октября</time></p>
         <h1>Привет, Маша!</h1>
       </div>
       <div class="section--1">
-        <span>
-          <svg><use href="#i-flame"/></svg>
+        <p>
+          <svg aria-hidden="true" focusable="false"><use href="#i-flame"/></svg>
           12дней подряд
-        </span>
+        </p>
         <a class="section--1" href="#/tasks/new">
-          <svg><use href="#i-pen"/></svg>
+          <svg aria-hidden="true" focusable="false"><use href="#i-pen"/></svg>
           Придумать задачу
         </a>
       </div>
@@ -166,120 +181,191 @@
 
     <div class="container">
       <div class="section--2">
-        <div>
-          <h2>На сегодня</h2>
-          <span>3 из 4 осталось</span>
-        </div>
+        <section aria-labelledby="today-title">
+          <header>
+            <h2 id="today-title">На сегодня</h2>
+            <span>3 из 4 осталось</span>
+          </header>
 
-        <article class="j">
-          <div>
-            <span>Дроби: общий знаменатель</span>
+          <ul role="list">
+            <li>
+              <article class="j">
+                <div>
+                  <h3>Дроби: общий знаменатель</h3>
+                  <ul role="list">
+                    <li>
+                      <span>Ирина Сергеевна</span>
+                    </li>
+                    <li>
+                      <span>
+                        <svg><use href="#i-clock"/>
+                        </svg>
+                        <time>до 18:00</time>
+                      </span>
+                    </li>
+                    <li>
+                      5 задач
+                    </li>
+                  </ul>
+                </div>
+                <a href="#">Решать</a>
+              </article>
+            </li>
+
+            <li>
+              <article class="j">
+                <div>
+                  <h3>Часы на башне</h3>
+                  <ul role="list">
+                    <li>
+                      <span>Аня</span>
+                    </li>
+                    <li>
+                      <span>
+                        <svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                        <time>до 20:00</time>
+                      </span>
+                    </li>
+                    <li>
+                      1 задача
+                    </li>
+                  </ul>
+                </div>
+                <a href="#">Решать</a>
+              </article>
+            </li>
+
+            <li>
+              <article class="j">
+                <div>
+                  <h3>Тема "Дроби". Урок 4</h3>
+                  <ul>
+                    <li>
+                      <span>сама себе</span>
+                    </li>
+                    <li>
+                      <span>
+                        <svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                        <time>сегодня</time>
+                      </span>
+                    </li>
+                    <li>
+                      <span>7 задач</span>
+                    </li>
+                  </ul>
+                </div>
+                <a href="#">Решать</a>
+              </article>
+            </li>
+
+            <li>
+              <article class="j">
+                <div>
+                  <h3>Разминка: закономерности</h3>
+                  <ul>
+                    <li>
+                      <span>Илья</span>
+                    </li>
+                    <li>
+                      <span><svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                        <time>утром</time>
+                      </span>
+                    </li>
+                    <li>
+                      <span>2 задачи</span>
+                    </li>
+                  </ul>
+                </div>
+                <p>
+                  <svg aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+                  Готово
+                </p>
+              </article>
+            </li>
+          </ul>
+        </section>
+
+        <section>
+          <header>
+            <h2>Скоро</h2>
+            <span>на этой неделе</span>
+          </header>
+
+          <ul role="list">
+            <li>
+              <a class="j" href="#">
+                <span>5 задач на дроби</span>
+                <span>Ирина Сергеевна</span>
+                <span>
+                  <svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                  <time>пятница, 18:00</time>
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="j" href="#">
+                <span>Повторить углы</span>
+                <span>сама себе</span>
+                <span>
+                  <svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                  <time>воскресенье</time>
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="j" href="">
+                <span>Отправить Ане ответную задачу</span>
+                <span>для Ани</span>
+                <span>
+                  <svg aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                  <time>без срока</time>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <ul role="list">
+            <li>от репетитора</li>
+            <li>от друзей</li>
+            <li>свои</li>
+          </ul>
+        </section>
+
+
+      <ul aria-label="Новости от друзей">
+        <li>
+          <a href="#">
+            <span></span>
             <div>
-              <span>Ирина Сергеевна</span>
-              <span><svg><use href="#i-clock"></use></svg>до 18:00</span>
-              <span>5 задач</span>
+              <span>Аня решила твою задачу</span>
+              <span>с первой попытки * отправь ей своей</span>
             </div>
-          </div>
-          <a href="#">Решать</a>
-        </article>
-
-        <article class="j">
-          <div>
-            <span>Часы на башне</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <span><svg aria-hidden="true" focusable="false"><use href="#i-inbox"/></svg></span>
             <div>
-              <span>Аня</span>
-              <span><svg><use href="#i-clock"/></svg>до 20:00</span>
-              <span>1 задача</span>
+              <span>2 новые задачи от друзей</span>
+              <span>Аня и Илья ждут ответа</span>
             </div>
-          </div>
-          <a href="#">Решать</a>
-        </article>
-
-        <article class="j">
-          <div>
-            <span>Тема "Дроби". Урок 4</span>
-            <div>
-              <span>сама себе</span>
-              <span><svg><use href="#i-clock"/></svg>сегодня</span>
-              <span>7 задач</span>
-            </div>
-          </div>
-          <a href="#">Решать</a>
-        </article>
-
-        <article class="j">
-          <div>
-          <span>Разминка: закономерности</span>
-          <div>
-            <span>Илья</span>
-            <span><svg><use href="#i-clock"/></svg>утром</span>
-            <span>2 задачи</span>
-          </div>
-        </div>
-        <span>
-          <svg><use href="#i-check"/></svg>
-          Готово
-        </span>
-      </article>
-
-      <div>
-        <h2>Скоро</h2>
-        <span>на этой неделе</span>
-      </div>
-
-
-      <a class="j" href="#">
-        <span>5 задач на дроби</span>
-        <span>Ирина Сергеевна</span>
-        <span><svg><use href="#i-clock"/></svg>пятница, 18:00</span>
-      </a>
-
-      <a class="j" href="#">
-        <span>Повторить углы</span>
-        <span>сама себе</span>
-        <span><svg><use href="#i-clock"/></svg>воскресенье</span>
-      </a>
-
-      <a class="j" href="">
-        <span>Отправить Ане ответную задачу</span>
-        <span>для Ани</span>
-        <span><svg><use href="#i-clock"/></svg>без срока</span>
-      </a>
-
-      <div>
-        <span><i></i>от репетитора</span>
-        <span><i></i>от друзей</span>
-        <span><i></i>свои</span>
-      </div>
-
-      <div aria-label="Новости от друзей">
-        <a href="#">
-          <span></span>
-          <div>
-            <span>Аня решила твою задачу</span>
-            <span>с первой попытки * отправь ей своей</span>
-          </div>
-        </a>
-        <a href="#">
-          <span><svg aria-hidden="true" focusable="false"><use href="#i-inbox"/></svg></span>
-          <div>
-            <span>2 новые задачи от друзей</span>
-            <span>Аня и Илья ждут ответа</span>
-          </div>
-        </a>
-      </div>
+          </a>
+        </li>
+      </ul>
     </div>
 
-    <div class="section--1" aria-label="Прогресс">
+    <aside class="section--1" aria-label="Прогресс">
       <section class="j">
         <div>
-          <svg width="72" height="72" viewBox="0 0 72 72" aria-label="Пройдено 3 урока из 6">
-            <text aria-hidden="true">3/6</text>
-          </svg>
+          <div class="ring" style="--progress: 50" role="img" aria-label="Пройдено 3 урока из 6">
+            <span class="ring__value" aria-hidden="true">3/6</span>
+          </div>
           <div>
-            <span>Продолжить тему</span>
-            <span>Дроби</span>
-            <span>Числа * урок 4 из 6</span>
+            <p>Продолжить тему</p>
+            <h2>Дроби</h2>
+            <p>Числа * урок 4 из 6</p>
           </div>
         </div>
         <a href="#">
@@ -289,30 +375,44 @@
       </section>
 
       <section class="j" aria-labelledby="progress-title">
-        <h2 id="progress-title">Мой прогресс * 6 класс</h2>
-        <div>
-          <strong>Числа</strong>
-          <span>62%</span>
-          <progress max="100" min="0" value="62"></progress>
-        </div>
-        <div>
-          <strong>Геометрия</strong>
-          <span>40%</span>
-          <progress max="100" min="0" value="40"></progress>
-        </div>
-        <div>
-          <strong>Логика</strong>
-          <span>55%</span>
-          <progress max="100" min="0" value="55"></progress>
-        </div>
+        <h2 id="progress-title">
+          Мой прогресс * 6 класс
+        </h2>
+        <ul>
+          <li>
+            <label>
+              <span>Числа</span>
+              <span>62%</span>
+            </label>
+            <progress max="100" value="62"></progress>
+          </li>
 
-        <div>
-          <span>Алгебра</span>
-          <span>8%</span>
-          <progress max="100" min="0" value="8"></progress>
-        </div>
+          <li>
+            <label>
+              <span>Геометрия</span>
+              <span>40%</span>
+            </label>
+            <progress max="100" value="40"></progress>
+          </li>
+
+          <li>
+            <label>
+              <span>Логика</span>
+              <span>55%</span>
+            </label>
+            <progress max="100" value="55"></progress>
+          </li>
+
+          <li>
+            <label>
+              <span>Алгебра</span>
+              <span>8%</span>
+            </label>
+            <progress max="100" value="8"></progress>
+          </li>
+        </ul>
       </section>
-    </div>
+    </aside>
     </div>
   </main>
   </div>

@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/css/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/components.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/css/tokens.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/tokens.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/html/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -28,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lab1" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
