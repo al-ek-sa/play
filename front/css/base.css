@@ -91,6 +91,11 @@ svg {
   right: 0;
 }
 
+.progress__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
 .progress-row__bar {
   width: 100%;
@@ -110,4 +115,56 @@ svg {
   display: flex;
   flex-direction: row;
   gap: 15px;
+}
+
+.progress-row {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.progress__title{
+  color: deeppink;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 22px;
+  border: 2px solid black;
+}
+
+.page__side {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.continue__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ring {
+  display: grid;
+  place-items: center;
+  flex: 0 0 72px;
+  height: 72px;
+}
+
+.ring__value {
+  color: darkred;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.button--wide {
+  justify-content: center;
+  width: 100%;
 }

@@ -148,7 +148,7 @@
       <div class="d">
       <button type="button" aria-pressed="false">
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
-        <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="i-sun"/></svg>
+        <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
         <span>Темная тема</span>
       </button>
       <a>
@@ -356,30 +356,30 @@
       </ul>
     </div>
 
-    <aside class="section--1" aria-label="Прогресс">
-      <section class="j">
-        <div>
+    <aside class="page__side" aria-label="Прогресс">
+      <section class="card">
+        <div class="continue__info">
           <div class="ring" style="--progress: 50" role="img" aria-label="Пройдено 3 урока из 6">
             <span class="ring__value" aria-hidden="true">3/6</span>
           </div>
-          <div>
-            <p>Продолжить тему</p>
-            <h2>Дроби</h2>
-            <p>Числа * урок 4 из 6</p>
+          <div class="">
+            <p class="">Продолжить тему</p>
+            <h2 class="">Дроби</h2>
+            <p class="">Числа * урок 4 из 6</p>
           </div>
         </div>
-        <a href="#">
+        <a class="button button--wide" href="#">
           продолжить
           <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>
         </a>
       </section>
 
-      <section class="j" aria-labelledby="progress-title">
-        <h2 id="progress-title">
+      <section class="card" aria-labelledby="progress-title">
+        <h2 id="progress-title" class="progress__title">
           Мой прогресс * 6 класс
         </h2>
-        <ul>
-          <li>
+        <ul class="progress__list">
+          <li class="progress-row">
             <label class="progress-row__label">
               <span>Числа</span>
               <span>62%</span>
@@ -387,7 +387,7 @@
             <progress class="progress-row__bar" max="100" value="62"></progress>
           </li>
 
-          <li>
+          <li class="progress-row">
             <label class="progress-row__label">
               <span>Геометрия</span>
               <span>40%</span>
@@ -395,7 +395,7 @@
             <progress class="progress-row__bar" max="100" value="40"></progress>
           </li>
 
-          <li>
+          <li class="progress-row">
             <label class="progress-row__label">
               <span>Логика</span>
               <span>55%</span>
@@ -403,7 +403,7 @@
             <progress class="progress-row__bar" max="100" value="55"></progress>
           </li>
 
-          <li>
+          <li class="progress-row">
             <label class="progress-row__label">
               <span class="progress-row__name">Алгебра</span>
               <span class="progress-row__value">8%</span>
