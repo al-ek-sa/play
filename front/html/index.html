@@ -16,7 +16,6 @@
 <body>
   <svg width="0" height="0">
     <defs>
-      <defs>
         <symbol id="i-logo" viewBox="0 0 24 24">
           <path class="icon-shape" d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/>
           <path class="icon-shape" d="M4 7.4 12 12l8-4.6M12 12v9.2"/>
@@ -83,25 +82,24 @@
         <symbol id="i-inbox" viewBox="0 0 24 24">
           <path class="icon-shape" d="M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z"/>
         </symbol>
-      </defs>
     </defs>
   </svg>
 
 
-  <div>
-    <aside>
-      <div>
+  <div class="container h" >
+    <aside class="section--1 container--1">
+      <div class="a">
         <a href="#">
-          <span class="symbol"><svg><use href="#i-logo"/></svg></span>
-          MathQuest
+          <span class="symbol"><svg aria-hidden="true"><use href="#i-logo"/></svg></span>
+          <span aria-hidden="true">MathQuest</span>
         </a>
-        <button>
-          <svg><use href="#i-bell"/></svg>
-          <span>2</span>
+        <button type="button" aria-label="Уведомления, 2 новых">
+          <svg aria-hidden="true" focusable="false"><use href="#i-bell"/></svg>
+          <span aria-hidden="true">2</span>
         </button>
       </div>
 
-      <nav>
+      <nav class="b" aria-label="Основное меню">
         <a href="#" class="nav-item">
           <svg><use href="#i-today"/></svg>
           Сегодня
@@ -124,7 +122,7 @@
       </div>
     </nav>
 
-      <div>
+      <div class="c">
         <span>Мои группы</span>
         <a href="#">
           <span>И</span>
@@ -132,7 +130,7 @@
         </a>
       </div>
 
-      <div>
+      <div class="d">
       <button>
         <svg><use href="#i-moon"/></svg>
         <svg><use href="i-sun"/></svg>
@@ -148,32 +146,32 @@
     </div>
   </aside>
 
-    <main>
-    <header>
-      <div>
-        <p>Четверг, 1 октября</p>
+    <main class="section--2 color">
+    <header class="container">
+      <div class="section--2">
+        <p>Четверг, 1 октября</p><br>
         <h1>Привет, Маша!</h1>
       </div>
-      <div>
+      <div class="section--1">
         <span>
           <svg><use href="#i-flame"/></svg>
           12дней подряд
         </span>
-        <a href="#/tasks/new">
+        <a class="section--1" href="#/tasks/new">
           <svg><use href="#i-pen"/></svg>
           Придумать задачу
         </a>
       </div>
     </header>
 
-    <div>
-      <div>
+    <div class="container">
+      <div class="section--2">
         <div>
           <h2>На сегодня</h2>
           <span>3 из 4 осталось</span>
         </div>
 
-        <article>
+        <article class="j">
           <div>
             <span>Дроби: общий знаменатель</span>
             <div>
@@ -185,7 +183,7 @@
           <a href="#">Решать</a>
         </article>
 
-        <article>
+        <article class="j">
           <div>
             <span>Часы на башне</span>
             <div>
@@ -197,7 +195,7 @@
           <a href="#">Решать</a>
         </article>
 
-        <article>
+        <article class="j">
           <div>
             <span>Тема "Дроби". Урок 4</span>
             <div>
@@ -209,7 +207,7 @@
           <a href="#">Решать</a>
         </article>
 
-        <article>
+        <article class="j">
           <div>
           <span>Разминка: закономерности</span>
           <div>
@@ -230,19 +228,19 @@
       </div>
 
 
-      <a href="#">
+      <a class="j" href="#">
         <span>5 задач на дроби</span>
         <span>Ирина Сергеевна</span>
         <span><svg><use href="#i-clock"/></svg>пятница, 18:00</span>
       </a>
 
-      <a href="#">
+      <a class="j" href="#">
         <span>Повторить углы</span>
         <span>сама себе</span>
         <span><svg><use href="#i-clock"/></svg>воскресенье</span>
       </a>
 
-      <a href="">
+      <a class="j" href="">
         <span>Отправить Ане ответную задачу</span>
         <span>для Ани</span>
         <span><svg><use href="#i-clock"/></svg>без срока</span>
@@ -254,7 +252,7 @@
         <span><i></i>свои</span>
       </div>
 
-      <div>
+      <div aria-label="Новости от друзей">
         <a href="#">
           <span></span>
           <div>
@@ -263,7 +261,7 @@
           </div>
         </a>
         <a href="#">
-          <span><svg><use href="#i-inbox"/></svg></span>
+          <span><svg aria-hidden="true" focusable="false"><use href="#i-inbox"/></svg></span>
           <div>
             <span>2 новые задачи от друзей</span>
             <span>Аня и Илья ждут ответа</span>
@@ -272,11 +270,11 @@
       </div>
     </div>
 
-    <div>
-      <section>
+    <div class="section--1" aria-label="Прогресс">
+      <section class="j">
         <div>
           <svg width="72" height="72" viewBox="0 0 72 72" aria-label="Пройдено 3 урока из 6">
-            <text>3/6</text>
+            <text aria-hidden="true">3/6</text>
           </svg>
           <div>
             <span>Продолжить тему</span>
@@ -286,33 +284,39 @@
         </div>
         <a href="#">
           продолжить
-          <svg><use href="#i-arrow"/></svg>
+          <svg aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>
         </a>
       </section>
 
-      <section>
-        <h2>Мой прогресс * 6 класс</h2>
+      <section class="j" aria-labelledby="progress-title">
+        <h2 id="progress-title">Мой прогресс * 6 класс</h2>
         <div>
           <strong>Числа</strong>
           <span>62%</span>
+          <progress max="100" min="0" value="62"></progress>
         </div>
         <div>
           <strong>Геометрия</strong>
           <span>40%</span>
+          <progress max="100" min="0" value="40"></progress>
         </div>
         <div>
           <strong>Логика</strong>
           <span>55%</span>
+          <progress max="100" min="0" value="55"></progress>
         </div>
+
         <div>
           <span>Алгебра</span>
           <span>8%</span>
+          <progress max="100" min="0" value="8"></progress>
         </div>
       </section>
     </div>
     </div>
   </main>
-<script src="js/main.js" defer></script>
+  </div>
+<script src="../js/main.js" defer></script>
 </body>
 
 </html>

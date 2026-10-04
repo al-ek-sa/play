@@ -1,0 +1,80 @@
+.container { /*общий контейнер всей страницы (переименовать)*/
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.h { /*стиль для все страницы(переименовать)*/
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+}
+
+aside.container--1 { /*для менюшки(переименовать)*/
+  flex: 0 0 248px;
+  width: 248px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 24px 16px;
+  overflow-y: auto;
+  border: 2px solid black;
+}
+
+.a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid black;
+}
+
+.b {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 2px solid black;
+}
+
+.b > a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 46px;
+}
+
+.c {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 2px solid black;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.d {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 2px solid black;
+}
+
+.color {
+  background: rgb(197 197 197 / 0.53);
+}
+
+.j {
+  background: white;
+  border-radius: 20px;
+  border: 0.5px solid grey;
+}
+
+.section--1 {
+  flex: 1;
+  border: 2px solid black;
+}
+
+.section--2 {
+  flex: 4;
+  border: 2px solid black;
+}

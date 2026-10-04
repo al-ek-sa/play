@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2b41e3cb-b937-4105-bba9-e362a3e320d0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/front/css/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/css/components.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/css/symbol.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/css/today.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/front/css/tokens.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/front/js/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/css/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/css/components.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/components.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/front/css/tokens.css" beforeDir="false" afterPath="$PROJECT_DIR$/front/css/tokens.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/front/html/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/front/html/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/front/js/vendor/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/front/js/vendor/.gitkeep" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
