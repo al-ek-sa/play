@@ -4,5 +4,12 @@
   --radius-m: 18px;
   --radius-l: 22px;
   --line: #E3E6EF;
+  --primary: #4F46E5;
+  --on-primary: #FFFFFF;
   --font: "Manrope", "Helvetica Neue", Arial, sana-serif;
+}
+
+body.dark {
+  --primary: #8E88FF;
+  --on-primary: #0E0F1E;
 }

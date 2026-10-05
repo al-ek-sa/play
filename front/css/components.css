@@ -4,7 +4,15 @@
   gap: 4px;
 }
 
-.logo,
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.1em;
+}
+
 .nav__item {
   display: flex;
   align-items: center;
@@ -113,9 +121,18 @@
 }
 
 .button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
+  height: 48px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: filter 0.15s ease;
 }
 
 .button--wide {
@@ -136,3 +153,17 @@
   gap: 14px;
 }
 
+.button--primary {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.logo__mark {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 11px;
+  background: var(--primary);
+  color: var(--on-primary);
+}
