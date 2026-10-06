@@ -183,100 +183,108 @@
       <div class="page__main">
         <section class="block" aria-labelledby="today-title">
           <header class="block__head">
-            <h2 id="today-title">На сегодня</h2>
-            <span>3 из 4 осталось</span>
+            <h2 id="today-title" class="block__title">На сегодня</h2>
+            <p class="block__note">3 из 4 осталось</p>
           </header>
 
           <ul class="task-list" role="list">
             <li>
-              <article class="task">
+              <article class="task task--teacher">
+                <span class="task__stripe" aria-hidden="true"></span>
                 <div class="task__body">
-                  <h3>Дроби: общий знаменатель</h3>
-                  <ul role="list">
-                    <li>
-                      <span>Ирина Сергеевна</span>
+                  <h3 class="task__title">Дроби: общий знаменатель</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--teacher" aria-hidden="true">И</span>
+                      Ирина Сергеевна
                     </li>
                     <li>
-                      <span>
+                      <span class="task__meta-item">
                         <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/>
                         </svg>
-                        <time>до 18:00</time>
+                        <time datetime="2026-10-01T18:00">до 18:00</time>
                       </span>
                     </li>
-                    <li>
+                    <li class="task__meta-item">
                       5 задач
                     </li>
                   </ul>
                 </div>
-                <a href="#">Решать</a>
+                <a class="task__action" href="#">Решать</a>
               </article>
             </li>
 
             <li>
-              <article class="task">
+              <article class="task task--friend">
+                <span class="task__stripe" aria-hidden="true"></span>
                 <div class="task__body">
-                  <h3>Часы на башне</h3>
-                  <ul role="list">
-                    <li>
-                      <span>Аня</span>
+                  <h3 class="task__title">Часы на башне</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--friend">А</span>
+                      Аня
                     </li>
-                    <li>
+                    <li class="task__meta-item">
                       <span>
                         <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
-                        <time>до 20:00</time>
+                        <time datetime=2026-10-01T20:20"">до 20:00</time>
                       </span>
                     </li>
-                    <li>
+                    <li class="task__meta-item">
                       1 задача
                     </li>
                   </ul>
                 </div>
-                <a href="#">Решать</a>
+                <a class="task__action" href="#">Решать</a>
               </article>
             </li>
 
             <li>
-              <article class="task">
+              <article class="task task--own">
+                <span class="task__stripe" aria-hidden="true"></span>
                 <div class="task__body">
-                  <h3>Тема "Дроби". Урок 4</h3>
-                  <ul>
-                    <li>
-                      <span>сама себе</span>
+                  <h3 class="task__title">Тема "Дроби". Урок 4</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--own">M</span>
+                      сама себе
                     </li>
-                    <li>
+                    <li class="task__meta-item">
                       <span>
                         <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
-                        <time>сегодня</time>
+                        <time datetime="2026-10-01">сегодня</time>
                       </span>
                     </li>
                     <li>
-                      <span>7 задач</span>
+                      <span class="task__meta-item">7 задач</span>
                     </li>
                   </ul>
                 </div>
-                <a href="#">Решать</a>
+                <a class="task__action" href="#">Решать</a>
               </article>
             </li>
 
             <li>
-              <article class="task">
+              <article class="task task--friend task--done">
+                <span class="task__stripe" aria-hidden="true"></span>
                 <div class="task__body">
-                  <h3>Разминка: закономерности</h3>
-                  <ul>
-                    <li>
-                      <span>Илья</span>
+                  <h3 class="task__title">Разминка: закономерности</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--friend">И</span>
+                      Илья
                     </li>
-                    <li>
+                    <li class="task__meta-item">
                       <span><svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
-                        <time>утром</time>
+                        <time datetime="2026-10-01T09:00">утром</time>
                       </span>
                     </li>
-                    <li>
+                    <li class="task__meta-item">
                       <span>2 задачи</span>
                     </li>
                   </ul>
                 </div>
-                <p>
+                <p class="task__status">
                   <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
                   Готово
                 </p>

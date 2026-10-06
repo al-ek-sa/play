@@ -153,6 +153,18 @@
   --accent: var(--friend);
 }
 
+.avatar--own {
+  --accent: var(--own);
+}
+
+body.dark .avatar {
+  color: var(--bg);
+}
+
+.avatar--teacher {
+  --accent: var(--teacher);
+}
+
 .avatar--l {
   flex-basis: 44px;
   height: 44px;
