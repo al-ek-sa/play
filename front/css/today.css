@@ -171,3 +171,30 @@
   background: var(--surface-2);
   appearance: none;
 }
+
+.continue__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.continue__caption {
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.continue__topic {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.continue__lesson {
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.continue__info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}

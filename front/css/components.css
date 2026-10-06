@@ -79,22 +79,32 @@
   min-width: 0;
 }
 
-.continue__info {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
 .ring {
+  --progress: 0;
   display: grid;
   place-items: center;
   flex: 0 0 72px;
   height: 72px;
+  border-radius: 50%;
+  background: conic-gradient(var(--friend) calc(var(--progress) * 1%), var(--surface-2) 0);
 }
 
 .ring__value {
-  color: darkred;
+  grid-area: 1 / 1;
+  position: relative;
+  font-size: 17px;
+  font-weight: 800;
 }
+
+.ring::before {
+  content: "";
+  grid-area: 1 / 1;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
 
 .button {
   display: inline-flex;
