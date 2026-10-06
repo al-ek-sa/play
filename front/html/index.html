@@ -378,32 +378,33 @@
         <h2 id="progress-title" class="progress__title">
           Мой прогресс * 6 класс
         </h2>
-        <ul class="progress__list">
-          <li class="progress-row">
-            <label class="progress-row__label">
-              <span>Числа</span>
-              <span>62%</span>
+        <ul class="progress__list" role="list">
+          <li class="progress-row progress-row--num">
+            <label class="progress-row__label" for="progress-num">
+              <span class="progress-row__name">Числа</span>
+              <span class="progress-row__value">62%</span>
             </label>
-            <progress class="progress-row__bar" max="100" value="62"></progress>
+            <progress class="progress-row__bar" id="progress-num" max="100" value="62">62%</progress>
           </li>
 
-          <li class="progress-row">
-            <label class="progress-row__label">
-              <span>Геометрия</span>
-              <span>40%</span>
+          <li class="progress-row progress-row--geo">
+            <label class="progress-row__label" for="progress-geo">
+              <span class="progress-row__name">Геометрия</span>
+              <span class="progress-row__value">40%</span>
             </label>
-            <progress class="progress-row__bar" max="100" value="40"></progress>
+            <progress class="progress-row__bar" id="progress-geo" max="100" value="40">40%</progress>
           </li>
 
-          <li class="progress-row">
-            <label class="progress-row__label">
-              <span>Логика</span>
-              <span>55%</span>
+          <li class="progress-row progress-row--log">
+            <label class="progress-row__label" for="progress-log">
+              <span class="progress-row__name">Логика</span>
+              <span class="progress-row__value">55%</span>
             </label>
-            <progress class="progress-row__bar" max="100" value="55"></progress>
+            <progress class="progress-row__bar" id="progress-log" max="100" value="55">55%</progress>
           </li>
 
-          <li class="progress-row">
+
+          <li class="progress-row progress-row--alg">
             <label class="progress-row__label">
               <span class="progress-row__name">Алгебра</span>
               <span class="progress-row__value">8%</span>

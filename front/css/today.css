@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  border: 2px solid black;
 }
 
 .page__header {
@@ -28,7 +27,6 @@
   grid-template-columns: minmax(0, 1fr) 340px;
   gap: 24px;
   align-items: start;
-  border: 2px solid black;
 }
 
 .page__side{
@@ -82,14 +80,18 @@
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  gap: 12px;
 }
 
 .task {
+  --accent: var(--own);
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 14px 16 px;
-  border: 2px solid black;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-m);
+  background: var(--surface);
 }
 
 .task__body {
@@ -98,4 +100,74 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.progress__title {
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.progress__list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.progress-row {
+  --accent: var(--friend);
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.progress-row--num {
+  --accent: var(--friend);
+}
+
+.progress-row--geo {
+  --accent: var(--own);
+}
+
+.progress-row--log {
+  --accent: var(--logic);
+}
+
+.progress-row--alg {
+  --accent: var(--teacher);
+}
+
+.progress-row__label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+}
+
+.progress-row__name {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+}
+
+.progress-row__name::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
+}
+
+.progress-row__value {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.progress-row__bar {
+  width: 100%;
+  height: 8px;
+  border: none;
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface-2);
+  appearance: none;
 }
