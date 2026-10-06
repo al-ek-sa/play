@@ -1,7 +1,7 @@
 .history__head {
   display: flex;
   align-items: baseline;
-  align-content: space-between;
+  justify-content: space-between;
 }
 
 .history__title {
@@ -106,4 +106,83 @@
 .coords__task {
   font-size: 16px;
   font-weight: 700;
+}
+
+.plot {
+  padding: 0;
+  overflow: hidden;
+}
+
+.plot__canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  cursor: crosshair;
+  touch-action: manipulation;
+}
+
+.page__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.page__eyebrow {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+.page__title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.page__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 24px;
+  align-items: start;
+}
+
+.page__body--coords {
+  grid-template-columns: minmax(280px, 460px) minmax(0, 1fr);
+  gap: 32px;
+}
+
+.coords__plot {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  color: var(--muted);
+  font-size: 13.5px;
+}
+
+.plot-legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.plot-legend__item::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ok);
+}
+
+.plot-legend__item--miss::before {
+  background: var(--miss);
 }

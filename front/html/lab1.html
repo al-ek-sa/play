@@ -134,18 +134,6 @@
       </ul>
     </nav>
 
-    <div class="sidebar__groups">
-      <h2 class="sidebar__caption" id="group-title">Мои группы</h2>
-      <ul class="sidebar__group-list" role="list">
-        <li>
-          <a class="group-link" href="#">
-            <span class="avatar avatar--teacher" aria-hidden="true">И</span>
-            7Б · Ирина С.
-          </a>
-        </li>
-      </ul>
-    </div>
-
     <div class="sidebar__footer">
       <button class="theme-toggle" type="button" aria-pressed="false">
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
@@ -165,27 +153,26 @@
   <main id="main" class="page">
     <header class="page__header">
       <div>
-        <p class="greeting__date">Геометрия * 6 класс</p>
-        <h1 class="greeting__title">Координатная плоскость</h1>
+        <p class="page__eyebrow">Геометрия * 6 класс</p>
+        <h1 class="page__title">Координатная плоскость</h1>
       </div>
     </header>
 
-    <div class="page__body">
-      <section class="page__main">
-        <h2 class="visually-hidden">График</h2>
-        <div>
-          <canvas width="460" height="460" role="img" aria-label="Координатная плоскость"></canvas>
+    <div class="page__body page__body--coords">
+      <section class="coords__plot">
+        <div class="plot card">
+          <canvas class="plot__canvas" width="460" height="460" role="img" aria-label="Координатная плоскость"></canvas>
         </div>
-        <ul role="list">
-          <li>попала в область</li>
-          <li>мимо</li>
+        <ul class="plot-legend" role="list">
+          <li class="plot-legend__item">попала в область</li>
+          <li class="plot-legend__item plot-legend__item--miss">мимо</li>
         </ul>
       </section>
 
-      <div class="coords__side" aria-label="Прогресс">
+      <div class="coords__side">
         <section class="card">
           <h2 class="coords__task">Поставь точку так, чтобы она попала в закрашенную область</h2>
-            <form id="point-form">
+            <form class="point-form">
               <div class="point-form__field">
                 <label class="point-form__label">R</label>
                 <input
