@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../css/components.css">
   <link rel="stylesheet" href="../css/today.css">
   <link rel="stylesheet" href="../css/symbol.css">
+  <link rel="stylesheet" href="../css/coords.css">
 </head>
 
 <body>
@@ -181,13 +182,14 @@
         </ul>
       </section>
 
-      <div class="page__side" aria-label="Прогресс">
+      <div class="coords__side" aria-label="Прогресс">
         <section class="card">
-          <h2>Поставь точку так, чтобы она попала в закрашенную область</h2>
+          <h2 class="coords__task">Поставь точку так, чтобы она попала в закрашенную область</h2>
             <form id="point-form">
-              <div>
-                <label>R</label>
+              <div class="point-form__field">
+                <label class="point-form__label">R</label>
                 <input
+                  class="text-input"
                   id="r"
                   type="text"
                   name="r"
@@ -196,9 +198,10 @@
                   step="0.1"
                 >
               </div>
-              <div>
-                <label>X</label>
+              <div class="point-form__field">
+                <label class="point-form__label">X</label>
                 <input
+                  class="text-input"
                   id="x"
                   type="text"
                   name="x"
@@ -207,9 +210,10 @@
                   step="0.1"
                 >
               </div>
-              <div>
-                <label>Y</label>
+              <div class="point-form__field">
+                <label class="point-form__label">Y</label>
                 <input
+                  class="text-input"
                   id="y"
                   type="text"
                   name="y"
@@ -222,24 +226,31 @@
             </form>
         </section>
 
-        <section class="card" aria-labelledby="progress-title">
-          <table class="history">
-            <thead>
-              <tr>
-                <th scope="col">X</th>
-                <th scope="col">Y</th>
-                <th scope="col">R</th>
-                <th scope="col">Итог</th>
-                <th scope="col">Время</th>
-              </tr>
-            </thead>
+        <section class="card">
+          <div class="history__head">
+            <h2 class="history__title">История проверок</h2>
+            <button class="history__clear" type="button">Очистить</button>
+          </div>
 
-            <tbody id="history-body">
-            <tr class="history__empty">
-              <td colspan="5">Пока нет проверок</td>
-            </tr>
-            </tbody>
-          </table>
+          <div class="history__scroll" aria-labelledby="progress-title">
+            <table class="history">
+              <thead>
+                <tr>
+                  <th scope="col">X</th>
+                  <th scope="col">Y</th>
+                  <th scope="col">R</th>
+                  <th scope="col">Итог</th>
+                  <th scope="col">Время</th>
+                </tr>
+              </thead>
+
+              <tbody id="history-body">
+              <tr class="history__empty">
+                <td colspan="5">Пока нет проверок</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
         </section>
       </div>
     </div>
