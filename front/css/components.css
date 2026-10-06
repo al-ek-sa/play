@@ -56,12 +56,6 @@
   right: 0;
 }
 
-.legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
 .card {
   display: flex;
   flex-direction: column;

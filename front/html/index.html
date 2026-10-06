@@ -285,51 +285,64 @@
           </ul>
         </section>
 
-        <section class="block">
+        <section class="block" aria-labelledby="soon-title">
           <header class="block__head">
-            <h2>Скоро</h2>
-            <span>на этой неделе</span>
+            <h2 class="block__title" id="soon-title">Скоро</h2>
+            <p class="block__note">на этой неделе</p>
           </header>
 
           <ul class="soon-list" role="list">
             <li>
-              <a class="soon-item" href="#">
+              <a class="soon-item soon-item--teacher" href="#">
+                <span class="soon-item__dot" aria-hidden="true"></span>
                 <span class="soon-item__title">5 задач на дроби</span>
-                <span>Ирина Сергеевна</span>
+                <span class="soon-item__who">
+                    <span class="avatar avatar--teacher" aria-hidden="true">И</span>
+                    Ирина Сергеевна
+                  </span>
                 <span class="soon-item__when">
-                  <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
-                  <time>пятница, 18:00</time>
-                </span>
+                    <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>
+                    <time datetime="2026-10-02T18:00">пятница, 18:00</time>
+                  </span>
               </a>
             </li>
 
             <li>
-              <a class="soon-item" href="#">
+              <a class="soon-item soon-item--own" href="#">
+                <span class="soon-item__dot" aria-hidden="true"></span>
                 <span class="soon-item__title">Повторить углы</span>
-                <span>сама себе</span>
+                <span class="soon-item__who">
+                    <span class="avatar avatar--own" aria-hidden="true">М</span>
+                    сама себе
+                  </span>
                 <span class="soon-item__when">
-                  <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
-                  <time>воскресенье</time>
-                </span>
+                    <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>
+                    <time datetime="2026-10-04">воскресенье</time>
+                  </span>
               </a>
             </li>
+
 
             <li>
               <a class="soon-item" href="">
+                <span class="soon-item__dot" aria-hidden="true"></span>
                 <span class="soon-item__title">Отправить Ане ответную задачу</span>
-                <span class="">для Ани</span>
+                <span class="soon-item__who">
+                    <span class="avatar avatar--friend" aria-hidden="true">А</span>
+                    для Ани
+                </span>
                 <span class="soon-item__when">
                   <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
-                  <time>без срока</time>
+                  <span>без срока</span>
                 </span>
               </a>
             </li>
           </ul>
 
           <ul class="legend" role="list">
-            <li class="">от репетитора</li>
-            <li class="">от друзей</li>
-            <li class="">свои</li>
+            <li class="legend__item legend__item--teacher">от репетитора</li>
+            <li class="legend__item legend__item--friend">от друзей</li>
+            <li class="legend__item legend__item--own">свои</li>
           </ul>
         </section>
 

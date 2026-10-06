@@ -49,38 +49,75 @@
   gap: 12px;
 }
 
-.soon-item {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 10px 16px;
-  border: 1.5px solid black;
-}
-
-.soon-item__title {
-  flex: 1;
-  min-width: 0;
-}
-
-.soon-item__when {
-  flex: 0 0 130px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-}
-
-.soon-list,
-.task-list{
-  gap: 10px;
-  border: 2px solid black;
-}
-
 .block__head {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
+}
+
+.block__title {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.block__note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.soon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.soon-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  transition: border-color 0.15s ease;
+}
+
+.soon-item:hover {
+  border-color: var(--muted);
+}
+
+.soon-item__dot {
+  flex: 0 0 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent, var(--own));
+}
+
+.soon-item__title {
+  flex: 1;
+  min-width: 0;
+  font-weight: 600;
+}
+
+.soon-item__who,
+.soon-item__when {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.soon-item__when {
+  flex: 0 0 130px;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.task-list{
+  gap: 10px;
+  border: 2px solid black;
 }
 
 .task {
@@ -244,4 +281,45 @@
 .message__note {
   color: var(--muted);
   font-size: 13px;
+}
+
+.task--teacher,
+.soon-item--teacher,
+.legend__item--teacher {
+  --accent: var(--teacher);
+}
+
+.task--friend,
+.soon-item--friend,
+.legend__item--friend {
+  --accent: var(--friend);
+}
+
+.task--own,
+.soon-item--own,
+.legend__item--own {
+  --accent: var(--own);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 2px 4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.legend__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend__item::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--accent);
 }
