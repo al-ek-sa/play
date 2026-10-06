@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <svg width="0" height="0">
+<svg class="sprite" aria-hidden="true" focusable="false">
     <defs>
         <symbol id="i-logo" viewBox="0 0 24 24">
           <path class="icon-shape" d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/>
@@ -102,7 +102,7 @@
       <nav aria-label="Основное меню">
         <ul class="nav__list" role="list">
           <li>
-            <a href="#" class="nav-item">
+            <a href="#" class="nav__item">
               <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-today"/></svg>
               Сегодня
             </a>
@@ -119,43 +119,43 @@
             <a href="#" class="nav__item">
               <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"/></svg>
               Задачи друзьям
-              <span>3</span>
+              <span class="nav__badge visually-hidden">3</span>
             </a>
           </li>
 
           <li>
-            <span aria-disabled="true" class="nav__item">
+            <span aria-disabled="true" class="nav__item nav__item--disabled">
               <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cal"/></svg>
-              <span class="nav__item--disabled">Календарь</span>
-              <span>скоро</span>
+              <span>Календарь</span>
+              <span class="nav__soon">скоро</span>
             </span>
           </li>
         </ul>
     </nav>
 
-      <div class="c">
-        <h2 id="group-title">Мои группы</h2>
-        <ul role="list">
+      <div class="sidebar__groups">
+        <h2 class="sidebar__caption" id="group-title">Мои группы</h2>
+        <ul class="sidebar__group-list" role="list">
           <li>
-            <a href="#">
-              <span aria-hidden="true">И</span>
+            <a class="group-link" href="#">
+              <span class="avatar avatar--teacher" aria-hidden="true">И</span>
               7Б · Ирина С.
             </a>
           </li>
         </ul>
       </div>
 
-      <div class="d">
-      <button type="button" aria-pressed="false">
+      <div class="sidebar__footer">
+      <button class="theme-toggle" type="button" aria-pressed="false">
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
-        <span>Темная тема</span>
+        <span class="theme-toggle__label">Темная тема</span>
       </button>
-      <a>
-        <span aria-hidden="true">М</span>
-        <span>
-          <span>Маша Котова</span>
-          <span>6 класс</span>
+      <a class="user-card" href="#">
+        <span class="avatar avatar--own avatar--l" aria-hidden="true">М</span>
+        <span class="user-card--text">
+          <span class="user-card__name">Маша Котова</span>
+          <span class="user-card__grade">6 класс</span>
         </span>
       </a>
     </div>
@@ -164,11 +164,11 @@
     <main id="main" class="page">
     <header class="page__header">
       <div>
-        <p><time>Четверг, 1 октября</time></p>
-        <h1>Привет, Маша!</h1>
+        <p class="greeting__date"><time datetime="2026-10-01">Четверг, 1 октября</time></p>
+        <h1 class="greeting__title">Привет, Маша!</h1>
       </div>
       <div class="page__actions">
-        <p>
+        <p class="streak">
           <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg>
           12дней подряд
         </p>

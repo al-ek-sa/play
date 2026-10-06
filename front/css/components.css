@@ -16,7 +16,13 @@
 .nav__item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  min-height: 46px;
+  padding: 0 14px;
+  border-radius: 14px;
+  color: var(--muted);
+  font-weight: 600;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
 .nav__item--disabled {
@@ -125,6 +131,39 @@
   color: var(--on-primary);
 }
 
+.notify-button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 12px;
+  background: transparent;
+}
+
+.notify-button:hover {
+  background: var(--surface-2);
+}
+
+.notify-button__badge {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  display: grid;
+  place-items: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border: 2px solid var(--surface);
+  border-radius: 8px;
+  background: var(--friend);
+  color: #FFFFFF;
+  font-size: 10.5px;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .logo__mark {
   display: grid;
   place-items: center;
@@ -170,3 +209,119 @@ body.dark .avatar {
   height: 44px;
   font-size: 17px;
 }
+
+.sidebar__groups {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 8px;
+}
+
+.sidebar__caption {
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.sidebar__group-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.group-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.group-link .avatar {
+  flex-basis: 30px;
+  height: 30px;
+  font-size: 13px;
+}
+
+.nav__badge {
+  display: grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  margin-left: auto;
+  padding: 0 6px;
+  border-radius: 11px;
+  background: var(--friend);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.nav__soon {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sidebar__footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 42px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.theme-toggle:hover {
+  color: var(--text);
+}
+
+.theme-toggle__sun {
+  display: none;
+}
+
+body.dark .theme-toggle__sun {
+  display: block;
+}
+
+body.dark .theme-toggle__moon {
+  display: none;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 16px;
+  background: var(--surface-2);
+}
+
+.user-card__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-card__name {
+  font-size: 14.5px;
+  font-weight: 700;
+}
+
+.user-card__grade {
+  color: var(--muted);
+  font-size: 12.5px;
+}
+

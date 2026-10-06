@@ -2,7 +2,7 @@
   flex: 1;
   min-width: 0;
   overflow-y: auto;
-  padding: 32px 40 px;
+  padding: 32px 40px;
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -385,4 +385,30 @@
   height: 10px;
   border-radius: 3px;
   background: var(--accent);
+}
+
+.streak {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--friend-soft);
+  color: var(--friend-ink);
+  font-size: 13.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.greeting__date {
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-size: 14.5px;
+}
+
+.greeting__title {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
 }
