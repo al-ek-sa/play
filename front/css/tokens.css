@@ -1,15 +1,51 @@
 :root {
+  --bg: #F5F6FA;
+  --surface: #FFFFFF;
+  --surface-2: #EEF0F7;
+  --line: #E3E6EF;
   --text: #171A2C;
+  --muted: #5D6278;
+  --primary: #4F46E5;
+  --on-primary: #FFFFFF;
+  --primary-soft: #ECEBFF;
+  --primary-ink: #3A32C9;
+  --teacher: #4F46E5;
+  --friend: #F2694B;
+  --friend-soft: #FFE9E3;
+  --friend-ink: #B03A1F;
+  --own: #14A38B;
+  --own-soft: #DDF5EF;
+  --own-ink: #0B7563;
+  --logic: #F0A824;
+  --ok: #15936F;
+  --ok-soft: #DDF5EF;
+  --shadow: 0 10px 30px rgba(23, 26, 44, 0.07);
   --radius-s: 12px;
   --radius-m: 18px;
   --radius-l: 22px;
-  --line: #E3E6EF;
-  --primary: #4F46E5;
-  --on-primary: #FFFFFF;
-  --font: "Manrope", "Helvetica Neue", Arial, sana-serif;
+  --font: "Manrope", "Helvetica Neue", Arial, sans-serif;
 }
 
 body.dark {
+  --bg: #0E0F1E;
+  --surface: #181A2F;
+  --surface-2: #22253D;
+  --line: #2D3050;
+  --text: #F1F2FA;
+  --muted: #A2A6C3;
   --primary: #8E88FF;
   --on-primary: #0E0F1E;
+  --primary-soft: #2A2952;
+  --primary-ink: #C9C6FF;
+  --teacher: #8E88FF;
+  --friend: #FF8466;
+  --friend-soft: #3A2230;
+  --friend-ink: #FFB4A3;
+  --own: #35CFB0;
+  --own-soft: #163A3A;
+  --own-ink: #8CEBD6;
+  --logic: #FFC24A;
+  --ok: #3DD29B;
+  --ok-soft: #163A30;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }

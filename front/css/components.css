@@ -94,7 +94,10 @@
   flex-direction: column;
   gap: 14px;
   padding: 22px;
-  border: 2px solid black;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-1);
+  background: var(--surface);
+  box-shadow: var(--shadow);
 }
 
 .page__side {
