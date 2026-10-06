@@ -126,19 +126,6 @@
   width: 100%;
 }
 
-.message{
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px;
-}
-
-.messages {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
 .button--primary {
   background: var(--primary);
   color: var(--on-primary);
@@ -152,4 +139,28 @@
   border-radius: 11px;
   background: var(--primary);
   color: var(--on-primary);
+}
+
+.avatar {
+  --accent: var(--own);
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.avatar--friend {
+  --accent: var(--friend);
+}
+
+.avatar--l {
+  flex-basis: 44px;
+  height: 44px;
+  font-size: 17px;
 }

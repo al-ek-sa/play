@@ -198,3 +198,50 @@
   align-items: center;
   gap: 16px;
 }
+
+.messages {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  padding: 16px;
+  border-radius: var(--radius-m);
+}
+
+.message--friend {
+  background: var(--friend-soft);
+}
+
+.message--inbox {
+  background: var(--primary-soft);
+}
+
+.message__icon {
+  display: grid;
+  place-items: center;
+  flex: 0 0 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--primary-ink);
+}
+
+.message__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.message__title {
+  font-weight: 800;
+}
+
+.message__note {
+  color: var(--muted);
+  font-size: 13px;
+}
