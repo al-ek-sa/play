@@ -135,10 +135,10 @@
 
       <div class="sidebar__footer">
         <div class="palette">
-          <button class="palette-toggle" type="button" aria-pressed="false">
+          <button id="palette-toggle" class="palette-toggle" type="button" aria-pressed="false">
             <span class="palette__label">Цвет приложения</span>
           </button>
-          <fieldset class="palette__panel" >
+          <fieldset id="palette-panel" class="palette__panel" hidden>
             <legend class="visually-hidden">Цвет оформления</legend>
             <div class="palette__grid">
               <label class="palette__option">
@@ -209,7 +209,7 @@
           </fieldset>
         </div>
 
-      <button class="theme-toggle" type="button" aria-pressed="false">
+      <button id="color" class="theme-toggle" type="button" aria-pressed="false">
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
         <span class="theme-toggle__label">Темная тема</span>
@@ -504,7 +504,7 @@
     </div>
   </main>
   </div>
-<script src="../js/main.js" defer></script>
+<script type="module" src="../js/main.js"></script>
 </body>
 
 </html>
