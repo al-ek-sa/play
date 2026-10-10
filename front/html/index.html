@@ -133,19 +133,82 @@
         </ul>
     </nav>
 
-      <div class="sidebar__groups">
-        <h2 class="sidebar__caption" id="group-title">Мои группы</h2>
-        <ul class="sidebar__group-list" role="list">
-          <li>
-            <a class="group-link" href="#">
-              <span class="avatar avatar--teacher" aria-hidden="true">И</span>
-              7Б · Ирина С.
-            </a>
-          </li>
-        </ul>
-      </div>
-
       <div class="sidebar__footer">
+        <div class="palette">
+          <button class="palette-toggle" type="button" aria-pressed="false">
+            <span class="palette__label">Цвет приложения</span>
+          </button>
+          <fieldset class="palette__panel" >
+            <legend class="visually-hidden">Цвет оформления</legend>
+            <div class="palette__grid">
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="indigo">
+                <span class="visually-hidden">Индиго</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="violet">
+                <span class="visually-hidden">Фиалка</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="pink">
+                <span class="visually-hidden">Розовый</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="rose">
+                <span class="visually-hidden">Малина</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="coral">
+                <span class="visually-hidden">Коралл</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="orange">
+                <span class="visually-hidden">Апельсиновый</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="amber">
+                <span class="visually-hidden">Янтарь</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accept" value="lime">
+                <span class="visually-hidden">Лайм</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="green">
+                <span class="visually-hidden">Зеленый</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="teal">
+                <span class="visually-hidden">Бирюза</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="sky">
+                <span class="visually-hidden">Небо</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="blue">
+                <span class="visually-hidden">Синий</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="graphite">
+                <span class="visually-hidden">Графит</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
       <button class="theme-toggle" type="button" aria-pressed="false">
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
         <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
