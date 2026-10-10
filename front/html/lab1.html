@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>MathQuest - Сегодня</title>
+  <title>MathQuest - Координатная плоскость</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
   <link rel="stylesheet" href="../css/tokens.css">
   <link rel="stylesheet" href="../css/base.css">
@@ -156,7 +156,7 @@
     <div class="page__body page__body--coords">
       <section class="coords__plot">
         <div class="plot card">
-          <canvas class="plot__canvas" width="460" height="460" role="img" aria-label="Координатная плоскость"></canvas>
+          <canvas id="canvas" class="plot__canvas" width="460" height="460" role="img" aria-label="Координатная плоскость"></canvas>
         </div>
         <ul class="plot-legend" role="list">
           <li class="plot-legend__item">попала в область</li>
@@ -167,45 +167,21 @@
       <div class="coords__side">
         <section class="card">
           <h2 class="coords__task">Поставь точку так, чтобы она попала в закрашенную область</h2>
-            <form class="point-form">
-              <div class="point-form__field">
-                <label class="point-form__label">R</label>
-                <input
-                  class="text-input"
-                  id="r"
-                  type="text"
-                  name="r"
-                  max="10000"
-                  min="-10000"
-                  step="0.1"
-                >
-              </div>
-              <div class="point-form__field">
-                <label class="point-form__label">X</label>
-                <input
-                  class="text-input"
-                  id="x"
-                  type="text"
-                  name="x"
-                  max="10000"
-                  min="-10000"
-                  step="0.1"
-                >
-              </div>
-              <div class="point-form__field">
-                <label class="point-form__label">Y</label>
-                <input
-                  class="text-input"
-                  id="y"
-                  type="text"
-                  name="y"
-                  max="10000"
-                  min="-10000"
-                  step="0.1"
-                >
-              </div>
-              <button class="button button--wide button--primary">Проверить точку</button>
-            </form>
+          <form id="form-lab1" class="point-form" novalidate>
+            <div class="point-form__field">
+              <label class="point-form__label" for="field-r">R</label>
+              <input class="text-input" id="field-r" type="text" name="r" inputmode="decimal" autocomplete="off" required>
+            </div>
+            <div class="point-form__field">
+              <label class="point-form__label" for="field-x">X</label>
+              <input class="text-input" id="field-x" type="text" name="x" inputmode="decimal" autocomplete="off" required>
+            </div>
+            <div class="point-form__field">
+              <label class="point-form__label" for="field-y">Y</label>
+              <input class="text-input" id="field-y" type="text" name="y" inputmode="decimal" autocomplete="off" required>
+            </div>
+            <button id="lv1" class="button button--wide button--primary" type="submit">Проверить точку</button>
+          </form>
         </section>
 
         <section class="card">
@@ -217,13 +193,13 @@
           <div class="history__scroll" aria-labelledby="progress-title">
             <table class="history">
               <thead>
-                <tr>
-                  <th scope="col">X</th>
-                  <th scope="col">Y</th>
-                  <th scope="col">R</th>
-                  <th scope="col">Итог</th>
-                  <th scope="col">Время</th>
-                </tr>
+              <tr>
+                <th scope="col">X</th>
+                <th scope="col">Y</th>
+                <th scope="col">R</th>
+                <th scope="col">Итог</th>
+                <th scope="col">Время</th>
+              </tr>
               </thead>
 
               <tbody id="history-body">

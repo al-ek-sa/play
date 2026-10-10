@@ -1,8 +1,8 @@
 export function ld(){
   document.body.classList = localStorage.getItem("LD");
   document.getElementById('color').addEventListener('click', event => {
-    document.body.classList.toggle("dark");
-    localStorage.setItem("LD", document.body.classList.value);
+    const isDark= document.body.classList.toggle("dark");
+    localStorage.setItem("LD", isDark ? "dark" : "light");
   });
 }
 
