@@ -1,25 +1,35 @@
 .history__head {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .history__title {
+  margin-right: auto;
   font-size: 16px;
   font-weight: 800;
 }
 
+.history__pager {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .history__clear {
+  padding: 6px 10px;
   border: none;
+  border-radius: 10px;
   background: transparent;
   color: var(--muted);
   font-size: 13.5px;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .history__scroll {
-  max-height: 320px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .history {
@@ -50,6 +60,28 @@
   text-align: center;
 }
 
+.history__page-button {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.history__page-info {
+  min-width: 44px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
 .coords__side {
   display: flex;
   flex-direction: column;
@@ -94,13 +126,6 @@
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-}
-
-.coords__side {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  min-width: 0;
 }
 
 .coords__task {

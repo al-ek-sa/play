@@ -83,6 +83,14 @@
     <symbol id="i-inbox" viewBox="0 0 24 24">
       <path class="icon-shape" d="M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z"/>
     </symbol>
+
+    <symbol id="i-chevron-left" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M15 5l-7 7 7 7"/>
+    </symbol>
+
+    <symbol id="i-chevron-right" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M9 5l7 7-7 7"/>
+    </symbol>
   </defs>
 </svg>
 
@@ -187,9 +195,19 @@
         <section class="card">
           <div class="history__head">
             <h2 class="history__title">История проверок</h2>
-            <button></button>
-            <h2 class="history__clear">1/1</h2>
-            <button></button>
+            <div class="history__pager">
+              <button id="history-prev" class="history__page-button" type="button" aria-label="Предыдущая страница">
+                <svg class="icon icon--m" aria-hidden="true" focusable="false">
+                  <use href="#i-chevron-left"/>
+                </svg>
+              </button>
+              <span id="history-page" class="history__page-info" aria-live="polite">1 / 1</span>
+              <button id="history-next" class="history__page-button" type="button" aria-label="Следующая страница">
+                <svg class="icon icon--m" aria-hidden="true" focusable="false">
+                  <use href="#i-chevron-right"/>
+                </svg>
+              </button>
+            </div>
             <button id="history-clear" class="history__clear" type="button">Очистить</button>
           </div>
 
@@ -207,6 +225,7 @@
 
               <tbody id="history-body">
               <tr class="history__empty">
+                <td colspan="5">Пока нет проверок</td>
               </tr>
               </tbody>
             </table>
