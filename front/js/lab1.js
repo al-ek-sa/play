@@ -16,6 +16,8 @@ export function lab1(){
   const but = document.getElementById("lv1");
   const hist = history();
   const clearButton = document.getElementById("history-clear");
+  const nextPage = document.getElementById("history-next");
+  const prevPage = document.getElementById("history-prev");
 
   if(!form){
     console.warn("форма не найдена");
@@ -25,6 +27,8 @@ export function lab1(){
   canvas("canvas");
 
   if (clearButton) clearButton.addEventListener("click", () => hist.clear());
+  if (nextPage) nextPage.addEventListener("click", hist.next());
+  if (prevPage) prevPage.addEventListener("click", hist.prev());
 
   form.addEventListener("submit", event => {
     event.preventDefault();

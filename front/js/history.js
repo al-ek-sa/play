@@ -2,6 +2,7 @@ export function history(){
   const tb = document.getElementById("history-body");
   const CAPACITY = 7;
   let currentPage = 1;
+  let page = 1;
   function before(){
     const history = load();
     const start = (currentPage - 1) * CAPACITY;
@@ -52,5 +53,19 @@ export function history(){
 
   load().forEach(table);
 
-  return { add, clear };
+  function next(){
+    if(currentPage < page) {
+      currentPage++;
+      before();
+    }
+  }
+
+  function prev() {
+    if (currentPage > 1) {
+      currentPage--;
+      before();
+    }
+  }
+
+  return { add, clear, next, prev };
 }
