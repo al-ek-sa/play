@@ -1,10 +1,51 @@
+let scale = 1;
+
+try {
+  const saved = Number(sessionStorage.getItem("SCALE"));
+  if (Number.isFinite(saved) && saved > 0) scale = saved;
+} catch {
+  scale = 1;
+}
+
+
+function redraw(name){
+  const lv1 = canvas(name);
+
+  let last = null;
+  try {
+    last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
+  } catch {
+    last = null;
+    lv1(0, 0, 15, true);
+  }
+  if (last && Number.isFinite(last.r)) {
+    lv1(last.x, last.y, last.r, last.ans);
+  }
+}
+
 export function canvas(name) {
   const canvas = document.getElementById(`${name}`);
   const ctx = canvas.getContext("2d");
   const width = canvas.width;
-  const step = width / 40;
+  const step = width / 40 * scale;
   const cx = width / 2;
   const cy = width / 2;
+
+  if (!canvas.dataset.zoom) {
+    canvas.dataset.zoom = "on";
+    canvas.addEventListener("wheel", (event) => {
+      event.preventDefault();
+      scale = event.deltaY < 0 ? scale * 1.1 : scale / 1.1;
+      scale = Math.min(8, Math.max(0.25, scale));
+      try {
+        sessionStorage.setItem("SCALE", String(scale));
+      } catch {
+        console.warn("sessionStorage недоступен");
+      }
+      redraw(name);
+    });
+  }
+
 
   ctx.clearRect(0, 0, width, canvas.height);
   ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
@@ -30,12 +71,16 @@ export function canvas(name) {
 
   ctx.globalAlpha = 0.1;
 
-  for(let i = 0; i < width; i+= (step)){
+  for(let i = step; i <= cx; i+= step){
     ctx.beginPath();
-    ctx.moveTo(0, i);
-    ctx.lineTo(width, i);
-    ctx.moveTo(i, 0);
-    ctx.lineTo(i, width);
+    ctx.moveTo(0, cy - i);
+    ctx.lineTo(width, cy - i);
+    ctx.moveTo(0, cy + i);
+    ctx.lineTo(width, cy + i);
+    ctx.moveTo(cx - i, 0);
+    ctx.lineTo(cx - i, width);
+    ctx.moveTo(cx + i, 0);
+    ctx.lineTo(cx + i, width);
     ctx.stroke();
   }
   ctx.globalAlpha = 1;

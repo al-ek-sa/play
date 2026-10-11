@@ -59,13 +59,6 @@ export function lab1(){
     if (errX) labelX.textContent = `X: ${errX}`;
     if (errY) labelY.textContent = `Y: ${errY}`;
 
-
-
-    if (errors.length) {
-      alert(errors.join("\n"));
-      return;
-    }
-
     const r = Number(object['r'].replace(",", "."));
     const x = Number(object['x'].replace(",", "."));
     const y = Number(object['y'].replace(",", "."));
