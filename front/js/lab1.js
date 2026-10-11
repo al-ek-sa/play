@@ -30,11 +30,12 @@ export function lab1(){
   if (nextPage) nextPage.addEventListener("click", hist.next());
   if (prevPage) prevPage.addEventListener("click", hist.prev());
 
+  historyLv();
+
   form.addEventListener("submit", event => {
     event.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
-    const hist = history();
 
     const errR = validateNumber(object['r'], 0, 100);
     const errX = validateNumber(object['x'], -100, 100);
@@ -50,9 +51,9 @@ export function lab1(){
       return;
     }
 
-    const r = (object['r']);
-    const x = (object['x']);
-    const y = (object['y']);
+    const r = Number(object['r'].replace(",", "."));
+    const x = Number(object['x'].replace(",", "."));
+    const y = Number(object['y'].replace(",", "."));
 
     console.log("lab1:", { r, x, y });
 
@@ -81,5 +82,25 @@ export function lab1(){
     lv1(x, y, r, isCorrect);
 
     hist.add({ x, y, r, ans: isCorrect, time: new Date().toISOString() });
+  });
+}
+
+export function historyLv(){
+  const table = document.getElementById("history-body");
+  if (!table) return;
+
+  table.addEventListener("click", event =>{
+    const row = event.target.closest("tr");
+    if (!row || !row.dataset.x) return;
+
+    const data = {
+      x: Number(row.dataset.x),
+      y: Number(row.dataset.y),
+      r: Number(row.dataset.r),
+      ans: row.dataset.ans === "true"
+    };
+
+    const lv1 = canvas("canvas");
+    lv1(data.x, data.y, data.r, data.ans);
   });
 }

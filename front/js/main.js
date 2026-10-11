@@ -1,6 +1,6 @@
 import {color, ld} from './background.js';
 import {lab} from './location.js';
-import {lab1} from './lab1.js';
+import {lab1, historyLv} from './lab1.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   restore();
@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if(document.getElementById("form-lab1")){
     lab1();
+  }
+
+  if (document.getElementById("history")){
+    historyLv();
   }
 
 });
