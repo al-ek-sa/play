@@ -1,4 +1,5 @@
 import {canvas} from './canvas.js';
+import {history} from './history.js';
 
 function validateNumber(raw, min, max) {
   const text = String(raw ?? '');
@@ -47,5 +48,28 @@ export function lab1(){
 
     const lv1 = canvas("canvas");
     lv1(x, y, r);
+
+    let isCorrect = false;
+
+    if(x >= 0 && y >= 0){
+      if(y <= r && x <= r / 2){
+        isCorrect = true;
+      }
+    }
+
+    if(x >= 0 && y <= 0){
+      if(y >= x - r / 2){
+        isCorrect = true;
+      }
+    }
+
+    if(x <= 0 && y <= 0){
+      if(x * x + y * y <= (r / 2) * (r / 2)){
+        isCorrect = true;
+      }
+    }
+
+    const hist = history();
+    hist.add({ x, y, r, ans: isCorrect, time: new Date().toISOString() });
   });
 }
