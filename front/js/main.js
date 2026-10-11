@@ -1,6 +1,5 @@
 import {color, ld} from './background.js';
 import {lab} from './location.js';
-import {canvas} from './canvas.js'
 import {lab1} from './lab1.js';
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -22,9 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     lab1();
   }
 
-  if(document.getElementById("canvas")){
-    canvas();
-  }
 });
 
 

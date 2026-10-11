@@ -1,3 +1,5 @@
+import {canvas} from './canvas.js';
+
 function validateNumber(raw, min, max) {
   const text = String(raw ?? '');
   if (text.trim() === '') return 'Поле обязательно к заполнению';
@@ -15,6 +17,8 @@ export function lab1(){
     console.warn("форма не найдена");
     return;
   }
+
+  canvas("canvas");
 
   form.addEventListener("submit", event => {
     event.preventDefault();
@@ -35,11 +39,13 @@ export function lab1(){
       return;
     }
 
-    const r = toNumber(object['r']);
-    const x = toNumber(object['x']);
-    const y = toNumber(object['y']);
+    const r = (object['r']);
+    const x = (object['x']);
+    const y = (object['y']);
 
     console.log("lab1:", { r, x, y });
 
+    const lv1 = canvas("canvas");
+    lv1(x, y, r);
   });
 }
