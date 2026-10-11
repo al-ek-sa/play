@@ -1,10 +1,21 @@
 let scale = 1;
+let offsetX = 0;
+let offsetY = 0;
+const LIMIT = 20;
 
 try {
   const saved = Number(sessionStorage.getItem("SCALE"));
   if (Number.isFinite(saved) && saved > 0) scale = saved;
+  const offset = JSON.parse(sessionStorage.getItem("OFFSET"));
+  if (offset && Number.isFinite(offset.x) && Number.isFinite(offset.y)) {
+    offsetX = offset.x;
+    offsetY = offset.y;
+  }
+
 } catch {
   scale = 1;
+  offsetX = 0;
+  offsetY = 0;
 }
 
 
@@ -28,8 +39,11 @@ export function canvas(name) {
   const ctx = canvas.getContext("2d");
   const width = canvas.width;
   const step = width / 40 * scale;
-  const cx = width / 2;
-  const cy = width / 2;
+  const max = LIMIT * step;
+  offsetX = Math.min(max, Math.max(-max, offsetX));
+  offsetY = Math.min(max, Math.max(-max, offsetY));
+  const cx = width / 2 + offsetX;
+  const cy = width / 2 + offsetY;
 
   if (!canvas.dataset.zoom) {
     canvas.dataset.zoom = "on";
@@ -43,9 +57,46 @@ export function canvas(name) {
         console.warn("sessionStorage недоступен");
       }
       redraw(name);
-    });
-  }
+    }, { passive: false });
 
+    let dragging = false;
+    let lastX = 0;
+    let lastY = 0;
+    canvas.style.cursor = "grab";
+    canvas.style.touchAction = "none";
+
+    canvas.addEventListener("pointerdown", event => {
+      dragging = true;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      canvas.setPointerCapture(event.pointerId);
+      canvas.style.cursor = "grabbing";
+    });
+
+    canvas.addEventListener("pointermove", event => {
+      if (!dragging) return;
+      const k = canvas.width / canvas.getBoundingClientRect().width;
+      offsetX += (event.clientX - lastX) * k;
+      offsetY += (event.clientY - lastY) * k;
+      lastX = event.clientX;
+      lastY = event.clientY;
+      redraw(name);
+    });
+
+    function stop(){
+      if(!dragging) return;
+      dragging = false;
+      canvas.style.cursor = "grab";
+      try {
+        sessionStorage.setItem("OFFSET", JSON.stringify({x: offsetX, y: offsetY}));
+      } catch {
+        console.warn("sessionStorage недоступен");
+      }
+    }
+
+    canvas.addEventListener("pointerup", stop);
+    canvas.addEventListener("pointercancel", stop);
+  }
 
   ctx.clearRect(0, 0, width, canvas.height);
   ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
