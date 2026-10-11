@@ -3,8 +3,9 @@ export function history(){
   const pageInfo = document.getElementById("history-page");
   const prevButton = document.getElementById("history-prev");
   const nextButton = document.getElementById("history-next");
-  const CAPACITY = 7;
+  const CAPACITY = 5;
   let currentPage = 1;
+
   function before(){
     if (!tb) return;
     const history = load().reverse();

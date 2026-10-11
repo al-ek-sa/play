@@ -52,6 +52,7 @@ export function canvas(name) {
   }
 
   function lv1(x, y, r, isCorrect) {
+    sessionStorage.setItem("LAST_VERSION", JSON.stringify({x: x, y: y, r: r, ans: isCorrect}));
     ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
     ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
 
@@ -72,8 +73,6 @@ export function canvas(name) {
       ctx.arc(cx + x * step, cy - y * step, 4, 0, Math.PI * 2);
       ctx.fill();
     }
-
-    ctx.strokeStyle = "blue";
   }
 
 

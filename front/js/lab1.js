@@ -18,13 +18,27 @@ export function lab1(){
   const clearButton = document.getElementById("history-clear");
   const nextPage = document.getElementById("history-next");
   const prevPage = document.getElementById("history-prev");
+  const labelR = document.getElementById("label-r");
+  const labelX = document.getElementById("label-x");
+  const labelY = document.getElementById("label-y");
 
   if(!form){
     console.warn("форма не найдена");
     return;
   }
 
-  canvas("canvas");
+  const lv1 = canvas("canvas");
+
+  let last = null;
+  try {
+    last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
+  } catch {
+    last = null;
+    lv1(0, 0, 15, true);
+  }
+  if (last && Number.isFinite(last.r)) {
+    lv1(last.x, last.y, last.r, last.ans);
+  }
 
   if (clearButton) clearButton.addEventListener("click", () => hist.clear());
   if (nextPage) nextPage.addEventListener("click", () => hist.next());
@@ -41,10 +55,11 @@ export function lab1(){
     const errX = validateNumber(object['x'], -100, 100);
     const errY = validateNumber(object['y'], -100, 100);
 
-    const errors = [];
-    if (errR) errors.push(`R: ${errR}`);
-    if (errX) errors.push(`X: ${errX}`);
-    if (errY) errors.push(`Y: ${errY}`);
+    if (errR) labelR.textContent = `R: ${errR}`;
+    if (errX) labelX.textContent = `X: ${errX}`;
+    if (errY) labelY.textContent = `Y: ${errY}`;
+
+
 
     if (errors.length) {
       alert(errors.join("\n"));
@@ -55,7 +70,6 @@ export function lab1(){
     const x = Number(object['x'].replace(",", "."));
     const y = Number(object['y'].replace(",", "."));
 
-    console.log("lab1:", { r, x, y });
 
     const lv1 = canvas("canvas");
 
