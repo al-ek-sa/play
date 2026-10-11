@@ -51,9 +51,9 @@ export function canvas(name) {
 
   }
 
-  function lv1(x, y, r) {
-    ctx.strokeStyle = "green";
-    ctx.fillStyle = "green";
+  function lv1(x, y, r, isCorrect) {
+    ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
+    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
 
     area(r);
     ctx.globalAlpha = 0.2;
@@ -62,7 +62,12 @@ export function canvas(name) {
     ctx.stroke();
 
     if (x !== undefined && y !== undefined) {
-      ctx.fillStyle = "blue";
+      if(isCorrect) {
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--ok").trim();
+      } else {
+        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--miss").trim();
+      }
+
       ctx.beginPath();
       ctx.arc(cx + x * step, cy - y * step, 4, 0, Math.PI * 2);
       ctx.fill();

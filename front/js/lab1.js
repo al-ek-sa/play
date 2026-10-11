@@ -14,6 +14,9 @@ function validateNumber(raw, min, max) {
 export function lab1(){
   const form = document.getElementById("form-lab1");
   const but = document.getElementById("lv1");
+  const hist = history();
+  const clearButton = document.getElementById("history-clear");
+
   if(!form){
     console.warn("форма не найдена");
     return;
@@ -21,10 +24,13 @@ export function lab1(){
 
   canvas("canvas");
 
+  if (clearButton) clearButton.addEventListener("click", () => hist.clear());
+
   form.addEventListener("submit", event => {
     event.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
+    const hist = history();
 
     const errR = validateNumber(object['r'], 0, 100);
     const errX = validateNumber(object['x'], -100, 100);
@@ -47,7 +53,6 @@ export function lab1(){
     console.log("lab1:", { r, x, y });
 
     const lv1 = canvas("canvas");
-    lv1(x, y, r);
 
     let isCorrect = false;
 
@@ -69,7 +74,8 @@ export function lab1(){
       }
     }
 
-    const hist = history();
+    lv1(x, y, r, isCorrect);
+
     hist.add({ x, y, r, ans: isCorrect, time: new Date().toISOString() });
   });
 }
