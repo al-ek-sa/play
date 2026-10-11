@@ -22,6 +22,12 @@ export function canvas(name) {
   ctx.lineTo(width / 2 + 6, 6);
   ctx.stroke();
 
+  ctx.font = "14px sans-serif";
+  ctx.textAlign = "right";
+  ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
+  ctx.fillText("x", width - 4, width / 2 + 19);
+  ctx.fillText("y", width / 2 - 10,  15);
+
   ctx.globalAlpha = 0.1;
   for(let i = 0; i < width; i+= (width/40)){
     ctx.beginPath();
@@ -61,6 +67,28 @@ export function canvas(name) {
     ctx.fill();
     ctx.globalAlpha = 1;
     ctx.stroke();
+
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(width/2 - 6, width / 2 - width / 40 * r);
+    ctx.lineTo(width/2 + 6, width / 2 - width / 40 * r);
+
+    ctx.moveTo(width/2 - 6, width / 2 + width / 40 * (r/2));
+    ctx.lineTo(width/2 + 6, width / 2 + width / 40 * (r/2));
+
+    ctx.moveTo(width/2 - width / 40 * (r/2), width / 2 - 6);
+    ctx.lineTo(width/2 - width / 40 * (r/2), width / 2 + 6);
+
+    ctx.moveTo(width/2 + width / 40 * (r/2), width / 2 - 6);
+    ctx.lineTo(width/2 + width / 40 * (r/2), width / 2 + 6);
+    ctx.stroke();
+
+    ctx.font = "14px sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText("R/2", width/2 + width / 40 * (r/2), width / 2  + 20);
+    ctx.fillText("R/2", width/2 - width / 40 * (r/2), width / 2  + 20);
+    ctx.fillText("R/2", width/2 - 15, width / 2  + width / 40 * (r/2) + 10);
+    ctx.fillText("R", width/2 - 15, width / 2  - width / 40 * r + 10);
 
     if (x !== undefined && y !== undefined) {
       if(isCorrect) {
