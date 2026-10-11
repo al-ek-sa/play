@@ -27,8 +27,8 @@ export function lab1(){
   canvas("canvas");
 
   if (clearButton) clearButton.addEventListener("click", () => hist.clear());
-  if (nextPage) nextPage.addEventListener("click", hist.next());
-  if (prevPage) prevPage.addEventListener("click", hist.prev());
+  if (nextPage) nextPage.addEventListener("click", () => hist.next());
+  if (prevPage) prevPage.addEventListener("click", () => hist.prev());
 
   historyLv();
 
