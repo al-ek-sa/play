@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathQuest - Сегодня</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/today.css">
+  <link rel="stylesheet" href="../css/symbol.css">
+</head>
+
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+    <defs>
+        <symbol id="i-logo" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/>
+          <path class="icon-shape" d="M4 7.4 12 12l8-4.6M12 12v9.2"/>
+        </symbol>
+
+        <symbol id="i-bell" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/>
+          <path class="icon-shape" d="M10 21h4"/>
+        </symbol>
+
+        <symbol id="i-today" viewBox="0 0 24 24">
+          <rect class="icon-shape" x="3.5" y="5" width="17" height="15" rx="3"/>
+          <path class="icon-shape" d="M3.5 10h17M8 3v4M16 3v4"/>
+          <path class="icon-shape" d="m9 15 2 2 4-4"/>
+        </symbol>
+
+        <symbol id="i-topics" viewBox="0 0 24 24">
+          <rect class="icon-shape" x="4" y="4" width="7" height="7" rx="2"/>
+          <rect class="icon-shape" x="13" y="4" width="7" height="7" rx="2"/>
+          <rect class="icon-shape" x="4" y="13" width="7" height="7" rx="2"/>
+          <rect class="icon-shape" x="13" y="13" width="7" height="7" rx="2"/>
+        </symbol>
+
+        <symbol id="i-send" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/>
+        </symbol>
+
+        <symbol id="i-cal" viewBox="0 0 24 24">
+          <rect class="icon-shape" x="3.5" y="5" width="17" height="15" rx="3"/>
+          <path class="icon-shape" d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/>
+        </symbol>
+
+        <symbol id="i-moon" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>
+        </symbol>
+
+        <symbol id="i-sun" viewBox="0 0 24 24">
+          <circle class="icon-shape" cx="12" cy="12" r="4"/>
+          <path class="icon-shape" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+        </symbol>
+
+        <symbol id="i-flame" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.6 1 2.5 2 3 .2-3-.3-5.6.5-8z"/>
+        </symbol>
+
+        <symbol id="i-pen" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M4 20l4-1L19 8l-3-3L5 16z"/>
+          <path class="icon-shape" d="M14 7l3 3"/>
+        </symbol>
+
+        <symbol id="i-clock" viewBox="0 0 24 24">
+          <circle class="icon-shape" cx="12" cy="12" r="8.5"/>
+          <path class="icon-shape" d="M12 7.5V12l3 2"/>
+        </symbol>
+
+        <symbol id="i-check" viewBox="0 0 24 24">
+          <path class="icon-shape icon-check" d="m5 12 4.5 4.5L19 7"/>
+        </symbol>
+
+        <symbol id="i-arrow" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M5 12h14M13 6l6 6-6 6"/>
+        </symbol>
+
+        <symbol id="i-inbox" viewBox="0 0 24 24">
+          <path class="icon-shape" d="M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z"/>
+        </symbol>
+    </defs>
+  </svg>
+
+
+  <div class="app" >
+    <aside class="sidebar">
+      <div class="sidebar__top">
+        <a href="#" class="logo">
+          <span class="logo__mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg></span>
+          <span class="logo__text" aria-hidden="true">MathQuest</span>
+        </a>
+        <button class="notify-button" type="button" aria-label="Уведомления, 2 новых">
+          <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bell"/></svg>
+          <span class="notify-button__badge" aria-hidden="true">2</span>
+        </button>
+      </div>
+
+      <nav aria-label="Основное меню">
+        <ul class="nav__list" role="list">
+          <li>
+            <a href="index.html?_ijt=ivvnjcd9e6le1vo7gll4cfugg8&_ij_reload=RELOAD_ON_SAVE" class="nav__item">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-today"/></svg>
+              Сегодня
+            </a>
+          </li>
+
+          <li>
+            <a href="topics.html?_ijt=ivvnjcd9e6le1vo7gll4cfugg8&_ij_reload=RELOAD_ON_SAVE" class="nav__item">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-topics"/></svg>
+              Темы
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="nav__item">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"/></svg>
+              Задачи друзьям
+              <span class="nav__badge visually-hidden">3</span>
+            </a>
+          </li>
+
+          <li>
+            <span aria-disabled="true" class="nav__item nav__item--disabled">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cal"/></svg>
+              <span>Календарь</span>
+              <span class="nav__soon">скоро</span>
+            </span>
+          </li>
+        </ul>
+    </nav>
+
+      <div class="sidebar__footer">
+        <div class="palette">
+          <button id="palette-toggle" class="palette-toggle" type="button" aria-pressed="false">
+            <span class="palette__label">Цвет приложения</span>
+          </button>
+          <fieldset id="palette-panel" class="palette__panel" hidden>
+            <legend class="visually-hidden">Цвет оформления</legend>
+            <div class="palette__grid">
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="indigo">
+                <span class="visually-hidden">Индиго</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="violet">
+                <span class="visually-hidden">Фиалка</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="pink">
+                <span class="visually-hidden">Розовый</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="rose">
+                <span class="visually-hidden">Малина</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="coral">
+                <span class="visually-hidden">Коралл</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="orange">
+                <span class="visually-hidden">Апельсиновый</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="amber">
+                <span class="visually-hidden">Янтарь</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accept" value="lime">
+                <span class="visually-hidden">Лайм</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="green">
+                <span class="visually-hidden">Зеленый</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="teal">
+                <span class="visually-hidden">Бирюза</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="sky">
+                <span class="visually-hidden">Небо</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="blue">
+                <span class="visually-hidden">Синий</span>
+              </label>
+
+              <label class="palette__option">
+                <input class="palette__input" type="radio" name="accent" value="graphite">
+                <span class="visually-hidden">Графит</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+
+      <button id="color" class="theme-toggle" type="button" aria-pressed="false">
+        <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-moon"/></svg>
+        <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-sun"/></svg>
+        <span class="theme-toggle__label">Темная тема</span>
+      </button>
+      <a class="user-card" href="#">
+        <span class="avatar avatar--own avatar--l" aria-hidden="true">М</span>
+        <span class="user-card--text">
+          <span class="user-card__name">Маша Котова</span>
+          <span class="user-card__grade">6 класс</span>
+        </span>
+      </a>
+    </div>
+  </aside>
+
+    <main id="main" class="page">
+    <header class="page__header">
+      <div>
+        <p class="greeting__date"><time datetime="2026-10-01">Четверг, 1 октября</time></p>
+        <h1 class="greeting__title">Привет, Маша!</h1>
+      </div>
+      <div class="page__actions">
+        <p class="streak">
+          <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-flame"/></svg>
+          12дней подряд
+        </p>
+        <a class="button button--primary" href="#/tasks/new">
+          <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg>
+          Придумать задачу
+        </a>
+      </div>
+    </header>
+
+    <div class="page__body">
+      <div class="page__main">
+        <section class="block" aria-labelledby="today-title">
+          <header class="block__head">
+            <h2 id="today-title" class="block__title">На сегодня</h2>
+            <p class="block__note">3 из 4 осталось</p>
+          </header>
+
+          <ul class="task-list" role="list">
+            <li>
+              <article class="task task--teacher">
+                <span class="task__stripe" aria-hidden="true"></span>
+                <div class="task__body">
+                  <h3 class="task__title">Дроби: общий знаменатель</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--teacher" aria-hidden="true">И</span>
+                      Ирина Сергеевна
+                    </li>
+                    <li>
+                      <span class="task__meta-item">
+                        <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/>
+                        </svg>
+                        <time datetime="2026-10-01T18:00">до 18:00</time>
+                      </span>
+                    </li>
+                    <li class="task__meta-item">
+                      5 задач
+                    </li>
+                  </ul>
+                </div>
+                <a class="task__action" href="#">Решать</a>
+              </article>
+            </li>
+
+            <li>
+              <article class="task task--friend">
+                <span class="task__stripe" aria-hidden="true"></span>
+                <div class="task__body">
+                  <h3 class="task__title">Часы на башне</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--friend">А</span>
+                      Аня
+                    </li>
+                    <li class="task__meta-item">
+                      <span>
+                        <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                        <time datetime=2026-10-01T20:20"">до 20:00</time>
+                      </span>
+                    </li>
+                    <li class="task__meta-item">
+                      1 задача
+                    </li>
+                  </ul>
+                </div>
+                <a class="task__action" href="#">Решать</a>
+              </article>
+            </li>
+
+            <li>
+              <article class="task task--own">
+                <span class="task__stripe" aria-hidden="true"></span>
+                <div class="task__body">
+                  <h3 class="task__title">Тема "Дроби". Урок 4</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--own">M</span>
+                      сама себе
+                    </li>
+                    <li class="task__meta-item">
+                      <span>
+                        <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                        <time datetime="2026-10-01">сегодня</time>
+                      </span>
+                    </li>
+                    <li>
+                      <span class="task__meta-item">7 задач</span>
+                    </li>
+                  </ul>
+                </div>
+                <a class="task__action" href="#">Решать</a>
+              </article>
+            </li>
+
+            <li>
+              <article class="task task--friend task--done">
+                <span class="task__stripe" aria-hidden="true"></span>
+                <div class="task__body">
+                  <h3 class="task__title">Разминка: закономерности</h3>
+                  <ul class="task__meta" role="list">
+                    <li class="task__meta-item">
+                      <span class="avatar avatar--friend">И</span>
+                      Илья
+                    </li>
+                    <li class="task__meta-item">
+                      <span><svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                        <time datetime="2026-10-01T09:00">утром</time>
+                      </span>
+                    </li>
+                    <li class="task__meta-item">
+                      <span>2 задачи</span>
+                    </li>
+                  </ul>
+                </div>
+                <p class="task__status">
+                  <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>
+                  Готово
+                </p>
+              </article>
+            </li>
+          </ul>
+        </section>
+
+        <section class="block" aria-labelledby="soon-title">
+          <header class="block__head">
+            <h2 class="block__title" id="soon-title">Скоро</h2>
+            <p class="block__note">на этой неделе</p>
+          </header>
+
+          <ul class="soon-list" role="list">
+            <li>
+              <a class="soon-item soon-item--teacher" href="#">
+                <span class="soon-item__dot" aria-hidden="true"></span>
+                <span class="soon-item__title">5 задач на дроби</span>
+                <span class="soon-item__who">
+                    <span class="avatar avatar--teacher" aria-hidden="true">И</span>
+                    Ирина Сергеевна
+                  </span>
+                <span class="soon-item__when">
+                    <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>
+                    <time datetime="2026-10-02T18:00">пятница, 18:00</time>
+                  </span>
+              </a>
+            </li>
+
+            <li>
+              <a class="soon-item soon-item--own" href="#">
+                <span class="soon-item__dot" aria-hidden="true"></span>
+                <span class="soon-item__title">Повторить углы</span>
+                <span class="soon-item__who">
+                    <span class="avatar avatar--own" aria-hidden="true">М</span>
+                    сама себе
+                  </span>
+                <span class="soon-item__when">
+                    <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"></use></svg>
+                    <time datetime="2026-10-04">воскресенье</time>
+                  </span>
+              </a>
+            </li>
+
+
+            <li>
+              <a class="soon-item" href="">
+                <span class="soon-item__dot" aria-hidden="true"></span>
+                <span class="soon-item__title">Отправить Ане ответную задачу</span>
+                <span class="soon-item__who">
+                    <span class="avatar avatar--friend" aria-hidden="true">А</span>
+                    для Ани
+                </span>
+                <span class="soon-item__when">
+                  <svg class="icon icon--s" aria-hidden="true" focusable="false"><use href="#i-clock"/></svg>
+                  <span>без срока</span>
+                </span>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="legend" role="list">
+            <li class="legend__item legend__item--teacher">от репетитора</li>
+            <li class="legend__item legend__item--friend">от друзей</li>
+            <li class="legend__item legend__item--own">свои</li>
+          </ul>
+        </section>
+
+
+      <ul class="messages" aria-label="Новости от друзей">
+        <li>
+          <a href="#" class="message message--friend">
+            <span class="avatar avatar--friend avatar--l">А</span>
+            <div class="message__text">
+              <span class="message__title">Аня решила твою задачу</span>
+              <span class="message__note">с первой попытки * отправь ей своей</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="message message--inbox">
+            <span class="message__icon"><svg class="icon icon--l" aria-hidden="true" focusable="false"><use href="#i-inbox"/></svg></span>
+            <span class="message__text">
+              <span class="message__title">2 новые задачи от друзей</span>
+              <span class="message__note">Аня и Илья ждут ответа</span>
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <aside class="page__side" aria-label="Прогресс">
+      <section class="card">
+        <div class="continue__info">
+          <div class="ring" style="--progress: 50" role="img" aria-label="Пройдено 3 урока из 6">
+            <span class="ring__value" aria-hidden="true">3/6</span>
+          </div>
+          <div class="continue__text">
+            <p class="continue__caption">Продолжить тему</p>
+            <h2 class="continue__topic">Дроби</h2>
+            <p class="continue__lesson">Числа * урок 4 из 6</p>
+          </div>
+        </div>
+        <a class="button button--primary button--wide" href="#">
+          продолжить
+          <svg class="icon icon--m" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>
+        </a>
+      </section>
+
+      <section class="card" aria-labelledby="progress-title">
+        <h2 id="progress-title" class="progress__title">
+          Мой прогресс * 6 класс
+        </h2>
+        <ul class="progress__list" role="list">
+          <li class="progress-row progress-row--num">
+            <label class="progress-row__label" for="progress-num">
+              <span class="progress-row__name">Числа</span>
+              <span class="progress-row__value">62%</span>
+            </label>
+            <progress class="progress-row__bar" id="progress-num" max="100" value="62">62%</progress>
+          </li>
+
+          <li class="progress-row progress-row--geo">
+            <label class="progress-row__label" for="progress-geo">
+              <span class="progress-row__name">Геометрия</span>
+              <span class="progress-row__value">40%</span>
+            </label>
+            <progress class="progress-row__bar" id="progress-geo" max="100" value="40">40%</progress>
+          </li>
+
+          <li class="progress-row progress-row--log">
+            <label class="progress-row__label" for="progress-log">
+              <span class="progress-row__name">Логика</span>
+              <span class="progress-row__value">55%</span>
+            </label>
+            <progress class="progress-row__bar" id="progress-log" max="100" value="55">55%</progress>
+          </li>
+
+
+          <li class="progress-row progress-row--alg">
+            <label class="progress-row__label">
+              <span class="progress-row__name">Алгебра</span>
+              <span class="progress-row__value">8%</span>
+            </label>
+            <progress class="progress-row__bar" max="100" value="8"></progress>
+          </li>
+        </ul>
+      </section>
+      <button id="lab1" class="button button--primary button--wide">
+        Лабораторная работа
+      </button>
+    </aside>
+    </div>
+  </main>
+  </div>
+<script type="module" src="../js/main.js"></script>
+</body>
+
+</html>

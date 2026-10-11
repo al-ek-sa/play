@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MathQuest - Координатная плоскость</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/today.css">
+  <link rel="stylesheet" href="../css/symbol.css">
+  <link rel="stylesheet" href="../css/coords.css">
+</head>
+
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-logo" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z"/>
+      <path class="icon-shape" d="M4 7.4 12 12l8-4.6M12 12v9.2"/>
+    </symbol>
+
+    <symbol id="i-bell" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15z"/>
+      <path class="icon-shape" d="M10 21h4"/>
+    </symbol>
+
+    <symbol id="i-today" viewBox="0 0 24 24">
+      <rect class="icon-shape" x="3.5" y="5" width="17" height="15" rx="3"/>
+      <path class="icon-shape" d="M3.5 10h17M8 3v4M16 3v4"/>
+      <path class="icon-shape" d="m9 15 2 2 4-4"/>
+    </symbol>
+
+    <symbol id="i-topics" viewBox="0 0 24 24">
+      <rect class="icon-shape" x="4" y="4" width="7" height="7" rx="2"/>
+      <rect class="icon-shape" x="13" y="4" width="7" height="7" rx="2"/>
+      <rect class="icon-shape" x="4" y="13" width="7" height="7" rx="2"/>
+      <rect class="icon-shape" x="13" y="13" width="7" height="7" rx="2"/>
+    </symbol>
+
+    <symbol id="i-send" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M21 3 10 14M21 3l-7 18-4-7-7-4z"/>
+    </symbol>
+
+    <symbol id="i-cal" viewBox="0 0 24 24">
+      <rect class="icon-shape" x="3.5" y="5" width="17" height="15" rx="3"/>
+      <path class="icon-shape" d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2"/>
+    </symbol>
+
+    <symbol id="i-moon" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>
+    </symbol>
+
+    <symbol id="i-sun" viewBox="0 0 24 24">
+      <circle class="icon-shape" cx="12" cy="12" r="4"/>
+      <path class="icon-shape" d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>
+    </symbol>
+
+    <symbol id="i-flame" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.5 1.5-4 2.5-5 .3 1.6 1 2.5 2 3 .2-3-.3-5.6.5-8z"/>
+    </symbol>
+
+    <symbol id="i-pen" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M4 20l4-1L19 8l-3-3L5 16z"/>
+      <path class="icon-shape" d="M14 7l3 3"/>
+    </symbol>
+
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle class="icon-shape" cx="12" cy="12" r="8.5"/>
+      <path class="icon-shape" d="M12 7.5V12l3 2"/>
+    </symbol>
+
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path class="icon-shape icon-check" d="m5 12 4.5 4.5L19 7"/>
+    </symbol>
+
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M5 12h14M13 6l6 6-6 6"/>
+    </symbol>
+
+    <symbol id="i-inbox" viewBox="0 0 24 24">
+      <path class="icon-shape" d="M3 13h5l2 3h4l2-3h5M5 5h14l2 8v6H3v-6z"/>
+    </symbol>
+  </defs>
+</svg>
+
+
+<div class="app" >
+  <aside class="sidebar">
+    <div class="sidebar__top">
+      <a href="#" class="logo">
+        <span class="logo__mark"><svg class="icon" aria-hidden="true"><use href="#i-logo"/></svg></span>
+        <span class="logo__text" aria-hidden="true">MathQuest</span>
+      </a>
+      <button class="notify-button" type="button" aria-label="Уведомления, 2 новых">
+        <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-bell"/></svg>
+        <span class="notify-button__badge" aria-hidden="true">2</span>
+      </button>
+    </div>
+
+    <nav aria-label="Основное меню">
+      <ul class="nav__list" role="list">
+        <li>
+          <a href="#" class="nav__item">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-today"/></svg>
+            Сегодня
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="nav__item">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-topics"/></svg>
+            Темы
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="nav__item">
+            <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-send"/></svg>
+            Задачи друзьям
+            <span class="nav__badge visually-hidden">3</span>
+          </a>
+        </li>
+
+        <li>
+            <span aria-disabled="true" class="nav__item nav__item--disabled">
+              <svg class="icon" aria-hidden="true" focusable="false"><use href="#i-cal"/></svg>
+              <span>Календарь</span>
+              <span class="nav__soon">скоро</span>
+            </span>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="sidebar__footer">
+      <a class="user-card" href="#">
+        <span class="avatar avatar--own avatar--l" aria-hidden="true">М</span>
+        <span class="user-card--text">
+          <span class="user-card__name">Маша Котова</span>
+          <span class="user-card__grade">6 класс</span>
+        </span>
+      </a>
+    </div>
+  </aside>
+
+  <main id="main" class="page">
+    <header class="page__header">
+      <div>
+        <p class="page__eyebrow">Геометрия * 6 класс</p>
+        <h1 class="page__title">Координатная плоскость</h1>
+      </div>
+    </header>
+
+    <div class="page__body page__body--coords">
+      <section class="coords__plot">
+        <div class="plot card">
+          <canvas id="canvas" class="plot__canvas" width="460" height="460" role="img" aria-label="Координатная плоскость"></canvas>
+        </div>
+        <ul class="plot-legend" role="list">
+          <li class="plot-legend__item">попала в область</li>
+          <li class="plot-legend__item plot-legend__item--miss">мимо</li>
+        </ul>
+      </section>
+
+      <div class="coords__side">
+        <section class="card">
+          <h2 class="coords__task">Поставь точку так, чтобы она попала в закрашенную область</h2>
+          <form id="form-lab1" class="point-form" novalidate>
+            <div class="point-form__field">
+              <label class="point-form__label" for="field-r">R</label>
+              <input class="text-input" id="field-r" type="text" name="r" inputmode="decimal" autocomplete="off" required>
+            </div>
+            <div class="point-form__field">
+              <label class="point-form__label" for="field-x">X</label>
+              <input class="text-input" id="field-x" type="text" name="x" inputmode="decimal" autocomplete="off" required>
+            </div>
+            <div class="point-form__field">
+              <label class="point-form__label" for="field-y">Y</label>
+              <input class="text-input" id="field-y" type="text" name="y" inputmode="decimal" autocomplete="off" required>
+            </div>
+            <button id="lv1" class="button button--wide button--primary" type="submit">Проверить точку</button>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="history__head">
+            <h2 class="history__title">История проверок</h2>
+            <button class="history__clear" type="button">Очистить</button>
+          </div>
+
+          <div class="history__scroll" aria-labelledby="progress-title">
+            <table class="history">
+              <thead>
+              <tr>
+                <th scope="col">X</th>
+                <th scope="col">Y</th>
+                <th scope="col">R</th>
+                <th scope="col">Итог</th>
+                <th scope="col">Время</th>
+              </tr>
+              </thead>
+
+              <tbody id="history-body">
+              <tr class="history__empty">
+                <td colspan="5">Пока нет проверок</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+<script type="module" src="../js/main.js"></script>
+</body>
+
+</html>
