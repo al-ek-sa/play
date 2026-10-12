@@ -12,6 +12,6 @@
 
 ```bash
 git clone git@github.com:al-ek-sa/play.git
-docker build -t locus .
-docker run -d -p 8080:80 --name locus locus
+docker build -t mathquest-front .
+docker run --rm -p 8080:80 mathquest-front
 ```
