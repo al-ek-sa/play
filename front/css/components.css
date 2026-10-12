@@ -86,7 +86,7 @@
   flex: 0 0 72px;
   height: 72px;
   border-radius: 50%;
-  background: conic-gradient(var(--friend) calc(var(--progress) * 1%), var(--surface-2) 0);
+  background: conic-gradient(var(--primary) calc(var(--progress) * 1%), var(--surface-2) 0);
 }
 
 .ring__value {
@@ -175,7 +175,7 @@
 }
 
 .avatar {
-  --accent: var(--own);
+  --accent: color-mix(in srgb, var(--primary) 65%, transparent);
   display: inline-grid;
   place-items: center;
   flex: 0 0 22px;
@@ -186,22 +186,6 @@
   font-size: 11px;
   font-weight: 800;
   line-height: 1;
-}
-
-.avatar--friend {
-  --accent: var(--friend);
-}
-
-.avatar--own {
-  --accent: var(--own);
-}
-
-body.dark .avatar {
-  color: var(--bg);
-}
-
-.avatar--teacher {
-  --accent: var(--teacher);
 }
 
 .avatar--l {
