@@ -34,10 +34,11 @@ export function lab1(){
     last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
   } catch {
     last = null;
-    lv1(0, 0, 15, true);
   }
   if (last && Number.isFinite(last.r)) {
     lv1(last.x, last.y, last.r, last.ans);
+  } else {
+    lv1(undefined, undefined, 15, true);
   }
 
   if (clearButton) clearButton.addEventListener("click", () => hist.clear());

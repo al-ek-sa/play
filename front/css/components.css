@@ -86,7 +86,7 @@
   flex: 0 0 72px;
   height: 72px;
   border-radius: 50%;
-  background: conic-gradient(var(--primary) calc(var(--progress) * 1%), var(--surface-2) 0);
+  background: conic-gradient(var(--disign) calc(var(--progress) * 1%), var(--surface-2) 0);
 }
 
 .ring__value {
@@ -170,7 +170,7 @@
   width: 36px;
   height: 36px;
   border-radius: 11px;
-  background: var(--primary);
+  background: var(--disign);
   color: var(--on-primary);
 }
 
