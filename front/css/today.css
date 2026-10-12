@@ -122,7 +122,7 @@
 }
 
 .task {
-  --accent: var(--own);
+  --accent: var(--primary);
   display: flex;
   align-items: center;
   gap: 16px;
@@ -348,19 +348,16 @@
   font-size: 13px;
 }
 
-.task--teacher,
 .soon-item--teacher,
 .legend__item--teacher {
   --accent: var(--teacher);
 }
 
-.task--friend,
 .soon-item--friend,
 .legend__item--friend {
   --accent: var(--friend);
 }
 
-.task--own,
 .soon-item--own,
 .legend__item--own {
   --accent: var(--own);
