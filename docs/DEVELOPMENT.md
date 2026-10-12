@@ -13,5 +13,5 @@
 ```bash
 git clone git@github.com:al-ek-sa/play.git
 docker build -t mathquest-front .
-docker run --rm -p 8080:80 mathquest-front
+docker run -d --rm -p 8080:80 --name mathquest-front mathquest-front
 ```
