@@ -27,7 +27,6 @@ function redraw(name){
     last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
   } catch {
     last = null;
-    lv1(0, 0, 15, true);
   }
   if (last && Number.isFinite(last.r)) {
     lv1(last.x, last.y, last.r, last.ans);
@@ -122,18 +121,18 @@ export function canvas(name) {
 
   ctx.globalAlpha = 0.1;
 
-  for(let i = step; i <= cx; i+= step){
-    ctx.beginPath();
-    ctx.moveTo(0, cy - i);
-    ctx.lineTo(width, cy - i);
-    ctx.moveTo(0, cy + i);
-    ctx.lineTo(width, cy + i);
-    ctx.moveTo(cx - i, 0);
-    ctx.lineTo(cx - i, width);
-    ctx.moveTo(cx + i, 0);
-    ctx.lineTo(cx + i, width);
-    ctx.stroke();
+  const startX = cx - Math.floor(cx / step) * step;
+  const startY = cy - Math.floor(cy / step) * step;
+  ctx.beginPath();
+  for(let i = startX; i <= width; i+= step){
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i, width);
   }
+  for(let i = startY; i <= width; i+= step){
+    ctx.moveTo(0, i);
+    ctx.lineTo(width, i);
+  }
+  ctx.stroke();
   ctx.globalAlpha = 1;
 
   function area(r){
