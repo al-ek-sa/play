@@ -1,7 +1,7 @@
 :root {
   --bg: #F5F6FA;
   --surface: #FFFFFF;
-  --surface-2: #EEF0F7;
+  --surface-2: #e0e0e0;
   --line: #E3E6EF;
   --text: #171A2C;
   --muted: #5D6278;
@@ -34,7 +34,7 @@
 body.dark {
   --bg: #0E0F1E;
   --surface: #181A2F;
-  --surface-2: #22253D;
+  --surface-2: #ffff;
   --line: #2D3050;
   --text: #F1F2FA;
   --muted: #A2A6C3;

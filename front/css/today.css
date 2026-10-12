@@ -81,6 +81,7 @@
   border-radius: 16px;
   background: var(--surface);
   transition: border-color 0.15s ease;
+  --accent: var(--primary);
 }
 
 .soon-item:hover {
@@ -216,26 +217,10 @@
 }
 
 .progress-row {
-  --accent: var(--friend);
+  --accent: var(--primary);
   display: flex;
   flex-direction: column;
   gap: 7px;
-}
-
-.progress-row--num {
-  --accent: var(--friend);
-}
-
-.progress-row--geo {
-  --accent: var(--own);
-}
-
-.progress-row--log {
-  --accent: var(--logic);
-}
-
-.progress-row--alg {
-  --accent: var(--teacher);
 }
 
 .progress-row__label {
@@ -270,8 +255,17 @@
   border: none;
   border-radius: 4px;
   overflow: hidden;
-  background: var(--surface-2);
   appearance: none;
+}
+
+progress::-webkit-progress-bar {
+  background-color: var(--surface-2);
+  border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+  background-color: color-mix(in srgb, var(--primary) 45%, transparent);
+  border-radius: 4px;
 }
 
 .continue__text {
@@ -346,21 +340,6 @@
 .message__note {
   color: var(--muted);
   font-size: 13px;
-}
-
-.soon-item--teacher,
-.legend__item--teacher {
-  --accent: var(--teacher);
-}
-
-.soon-item--friend,
-.legend__item--friend {
-  --accent: var(--friend);
-}
-
-.soon-item--own,
-.legend__item--own {
-  --accent: var(--own);
 }
 
 .legend {
