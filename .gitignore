@@ -1,0 +1,15 @@
+# IDE
+.idea/
+*.iml
+
+# Node
+node_modules/
+dist/
+.cache/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
