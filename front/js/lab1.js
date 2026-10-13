@@ -60,6 +60,10 @@ export function lab1(){
     if (errX) labelX.textContent = `X: ${errX}`;
     if (errY) labelY.textContent = `Y: ${errY}`;
 
+    if (!errR) labelR.textContent = `R`;
+    if (!errX) labelX.textContent = `X`;
+    if (!errY) labelY.textContent = `Y`;
+
     if (errR || errX || errY) return;
 
     const r = Number(object['r'].replace(",", "."));

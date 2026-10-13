@@ -1,7 +1,7 @@
 let scale = 1;
 let offsetX = 0;
 let offsetY = 0;
-const LIMIT = 20;
+const LIMIT = 40;
 
 try {
   const saved = Number(sessionStorage.getItem("SCALE"));
