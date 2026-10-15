@@ -1,7 +1,9 @@
 package org.example;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 
+@AllArgsConstructor
 @Getter
 public enum Message {
     EMPTY("Поле не может быть пустым", 0),
@@ -14,9 +16,4 @@ public enum Message {
 
     private final String text;
     private final int priority;
-
-    Message(String text, int priority) {
-        this.text = text;
-        this.priority = priority;
-    }
 }
