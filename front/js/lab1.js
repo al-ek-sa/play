@@ -1,5 +1,6 @@
 import {canvas} from './canvas.js';
 import {history} from './history.js';
+import {getData} from './net.js';
 
 function validateNumber(raw, min, max) {
   const text = String(raw ?? '');
@@ -13,7 +14,6 @@ function validateNumber(raw, min, max) {
 
 export function lab1(){
   const form = document.getElementById("form-lab1");
-  const but = document.getElementById("lv1");
   const hist = history();
   const clearButton = document.getElementById("history-clear");
   const nextPage = document.getElementById("history-next");
@@ -47,7 +47,7 @@ export function lab1(){
 
   historyLv();
 
-  form.addEventListener("submit", event => {
+  form.addEventListener("submit", async event => {
     event.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
@@ -86,6 +86,8 @@ export function lab1(){
         isCorrect = true;
       }
     }
+
+    const data = await getData("http://localhost:7070", { x, y, r });
 
     if(x <= 0 && y <= 0){
       if(x * x + y * y <= (r / 2) * (r / 2)){
