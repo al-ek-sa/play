@@ -9,10 +9,15 @@ public record Response(int status, String body) {
         return new Response(400, body);
     }
 
+    public static Response notFoundMethod(){
+        return new Response(405, "don't know");
+    }
+
     public String reason(){
         return switch (status){
             case(200) -> "OK";
             case(400) -> "Bad Request";
+            case(405) -> "Method Not Allowed";
             default -> "Internal Server Error";
         };
     }
