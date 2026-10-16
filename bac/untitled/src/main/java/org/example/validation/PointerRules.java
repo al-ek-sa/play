@@ -1,7 +1,7 @@
-package org.example;
+package org.example.validation;
 import lombok.experimental.UtilityClass;
 
-import static org.example.Rules.*;
+import static org.example.validation.Rules.*;
 
 @UtilityClass
 public class PointerRules {

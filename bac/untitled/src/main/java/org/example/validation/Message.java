@@ -1,4 +1,4 @@
-package org.example;
+package org.example.validation;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
