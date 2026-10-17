@@ -22,7 +22,7 @@ public class Rules {
         return Rule.of(s -> toDecimal(s).compareTo(max) <= 0 && toDecimal(s).compareTo(min) >= 0, message);
     }
 
-    private BigDecimal toDecimal(String s){
+    public BigDecimal toDecimal(String s){
         return new BigDecimal(s.trim().replace(",", "."));
     }
 }
