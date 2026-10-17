@@ -40,7 +40,7 @@ public record QuarterCircle(Point center,
             bisector = sum;
         } else if(width > 180){
             bisector = new Point(sum.x().negate(), sum.y().negate());
-;       } else {
+        } else {
             bisector = new Point(start.y().negate(), start.x());
         }
 
