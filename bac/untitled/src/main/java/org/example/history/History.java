@@ -9,4 +9,12 @@ public final class History {
     public void add(ResultValidation result){
         resultList.add(result);
     }
+
+    public void clear(){
+        resultList.clear();
+    }
+
+    public List<ResultValidation> reverse(){
+        return List.copyOf(resultList.reversed());
+    }
 }

@@ -13,6 +13,10 @@ public record Response(int status, String body) {
         return new Response(405, "don't know");
     }
 
+    public static Response serverError(){
+        return new Response(500, "{\"error\":\"internal error\"}");
+    }
+
     public String reason(){
         return switch (status){
             case(200) -> "OK";

@@ -12,7 +12,7 @@ public record Point(BigDecimal x, BigDecimal y) {
     }
 
     public BigDecimal cross(Point other){
-        return x.multiply(other.x).subtract(y.multiply(other.y));
+        return x.multiply(other.y).subtract(y.multiply(other.x));
     }
 
     public BigDecimal lengthSquared(){

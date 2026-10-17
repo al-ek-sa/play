@@ -1,7 +1,7 @@
 package org.example.history;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-public record ResultValidation(BigDecimal x, BigDecimal y, BigDecimal r, boolean result, LocalDateTime time) {
+public record ResultValidation(BigDecimal x, BigDecimal y, BigDecimal r, boolean result, Instant time, long execution) {
 }
