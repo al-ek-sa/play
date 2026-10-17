@@ -41,7 +41,7 @@ public record CheckHandler(History history) implements Handler {
         long executionMicros = micros(start);
         ResultValidation result = new ResultValidation(c.x(), c.y(), c.r(), hit, now, executionMicros);
         history.add(result);
-        return Response.ok(Json.write(new Responses.Checked(result, history.newestFirst(), now, executionMicros)));
+        return Response.ok(Json.write(new Responses.Checked(result, history.reverse(), now, executionMicros)));
     }
 
     private Response errors(List<FieldError> errors, long start){
@@ -57,7 +57,7 @@ public record CheckHandler(History history) implements Handler {
     }
 
     private Response historyOnly(long start){
-        return Response.ok(Json.write(new Responses.HistoryOnly(history.newestFirst(), Instant.now(), micros(start))));
+        return Response.ok(Json.write(new Responses.HistoryOnly(history.reverse(), Instant.now(), micros(start))));
     }
 
     private static long micros(long start){
