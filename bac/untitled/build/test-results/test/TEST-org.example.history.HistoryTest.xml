@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.history.HistoryTest" tests="7" skipped="0" failures="0" errors="0" timestamp="2026-10-19T19:31:10.146Z" hostname="Alexa" time="0.136">
+  <properties/>
+  <testcase name="newHistoryIsEmpty()" classname="org.example.history.HistoryTest" time="0.046"/>
+  <testcase name="clearRemovesEverything()" classname="org.example.history.HistoryTest" time="0.047"/>
+  <testcase name="returnedListCannotBeChanged()" classname="org.example.history.HistoryTest" time="0.005"/>
+  <testcase name="addOne()" classname="org.example.history.HistoryTest" time="0.002"/>
+  <testcase name="returnedListDoesNotChangeAfterNewAdd()" classname="org.example.history.HistoryTest" time="0.002"/>
+  <testcase name="addAfterClear()" classname="org.example.history.HistoryTest" time="0.001"/>
+  <testcase name="newestComesFirst()" classname="org.example.history.HistoryTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
