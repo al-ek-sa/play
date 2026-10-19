@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.figure.RectangleTest" tests="16" skipped="0" failures="0" errors="0" timestamp="2026-10-19T18:18:04.706Z" hostname="Alexa" time="0.3">
+  <properties/>
+  <testcase name="[1] &quot;1&quot;, &quot;3&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.097"/>
+  <testcase name="[2] &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.003"/>
+  <testcase name="[3] &quot;2&quot;, &quot;4&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[4] &quot;2&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[5] &quot;0&quot;, &quot;4&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[6] &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[7] &quot;2.01&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <testcase name="[8] &quot;1&quot;, &quot;4.01&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[9] &quot;-0.01&quot;, &quot;1&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <testcase name="[10] &quot;1&quot;, &quot;-0.01&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <testcase name="[11] &quot;3&quot;, &quot;5&quot;, &quot;0&quot;, &quot;0&quot;, &quot;2&quot;, &quot;4&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <testcase name="[12] &quot;-1&quot;, &quot;-1&quot;, &quot;-3&quot;, &quot;-2&quot;, &quot;4&quot;, &quot;3&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <testcase name="[13] &quot;1&quot;, &quot;1&quot;, &quot;-3&quot;, &quot;-2&quot;, &quot;4&quot;, &quot;3&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <testcase name="[14] &quot;1.5&quot;, &quot;0&quot;, &quot;-3&quot;, &quot;-2&quot;, &quot;4&quot;, &quot;3&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[15] &quot;0.25&quot;, &quot;0.5&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0.5&quot;, &quot;0.5&quot;, &quot;true&quot;" classname="org.example.figure.RectangleTest" time="0.002"/>
+  <testcase name="[16] &quot;0.75&quot;, &quot;0.25&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0.5&quot;, &quot;0.5&quot;, &quot;false&quot;" classname="org.example.figure.RectangleTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
