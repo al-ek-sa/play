@@ -6,7 +6,7 @@ import org.example.validation.*;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
-
+//todo не пропускает null
 @UtilityClass
 public class PointValidator {
 

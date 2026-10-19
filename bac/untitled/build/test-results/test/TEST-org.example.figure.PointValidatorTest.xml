@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.figure.PointValidatorTest" tests="31" skipped="0" failures="4" errors="0" timestamp="2026-10-19T19:20:13.439Z" hostname="Alexa" time="0.362">
+  <properties/>
+  <testcase name="notNumberBeatsTooLong()" classname="org.example.figure.PointValidatorTest" time="0.104"/>
+  <testcase name="[1] &quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;1&quot;, &quot;2&quot;, &quot;3&quot;" classname="org.example.figure.PointValidatorTest" time="0.034"/>
+  <testcase name="[2] &quot;1,5&quot;, &quot;-2.25&quot;, &quot;0.5&quot;, &quot;1.5&quot;, &quot;-2.25&quot;, &quot;0.5&quot;" classname="org.example.figure.PointValidatorTest" time="0.003"/>
+  <testcase name="[3] &quot;-100&quot;, &quot;100&quot;, &quot;0&quot;, &quot;-100&quot;, &quot;100&quot;, &quot;0&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[4] &quot;100&quot;, &quot;-100&quot;, &quot;100&quot;, &quot;100&quot;, &quot;-100&quot;, &quot;100&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[5] &quot; 7 &quot;, &quot;-0&quot;, &quot;4&quot;, &quot;7&quot;, &quot;0&quot;, &quot;4&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[6] &quot;0.0001&quot;, &quot;3,75&quot;, &quot;99.99&quot;, &quot;0.0001&quot;, &quot;3.75&quot;, &quot;99.99&quot;" classname="org.example.figure.PointValidatorTest" time="0.003"/>
+  <testcase name="[1] null, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;EMPTY&quot;" classname="org.example.figure.PointValidatorTest" time="0.014">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null
+	at org.example.validation.Rules.lambda$static$0(Rules.java:12)
+	at org.example.validation.Rule.lambda$of$0(Rule.java:10)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.figure.PointValidator.lambda$validate$0(PointValidator.java:42)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:288)
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:635)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:291)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:652)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:658)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:663)
+	at org.example.figure.PointValidator.validate(PointValidator.java:43)
+	at org.example.figure.PointValidatorTest.errorsOf(PointValidatorTest.java:27)
+	at org.example.figure.PointValidatorTest.oneFieldError(PointValidatorTest.java:77)
+</failure>
+  </testcase>
+  <testcase name="[2] &quot;&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;EMPTY&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[3] &quot;   &quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;EMPTY&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[4] &quot;1&quot;, null, &quot;3&quot;, &quot;y&quot;, &quot;EMPTY&quot;" classname="org.example.figure.PointValidatorTest" time="0.003">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null
+	at org.example.validation.Rules.lambda$static$0(Rules.java:12)
+	at org.example.validation.Rule.lambda$of$0(Rule.java:10)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.figure.PointValidator.lambda$validate$0(PointValidator.java:42)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:288)
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:635)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:291)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:652)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:658)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:663)
+	at org.example.figure.PointValidator.validate(PointValidator.java:43)
+	at org.example.figure.PointValidatorTest.errorsOf(PointValidatorTest.java:27)
+	at org.example.figure.PointValidatorTest.oneFieldError(PointValidatorTest.java:77)
+</failure>
+  </testcase>
+  <testcase name="[5] &quot;1&quot;, &quot;2&quot;, null, &quot;r&quot;, &quot;EMPTY&quot;" classname="org.example.figure.PointValidatorTest" time="0.002">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null
+	at org.example.validation.Rules.lambda$static$0(Rules.java:12)
+	at org.example.validation.Rule.lambda$of$0(Rule.java:10)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.figure.PointValidator.lambda$validate$0(PointValidator.java:42)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:288)
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:635)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:291)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:652)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:658)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:663)
+	at org.example.figure.PointValidator.validate(PointValidator.java:43)
+	at org.example.figure.PointValidatorTest.errorsOf(PointValidatorTest.java:27)
+	at org.example.figure.PointValidatorTest.oneFieldError(PointValidatorTest.java:77)
+</failure>
+  </testcase>
+  <testcase name="[6] &quot;abc&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[7] &quot;1.&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[8] &quot;.5&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.004"/>
+  <testcase name="[9] &quot;1e2&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[10] &quot;1.2.3&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[11] &quot;--1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.004"/>
+  <testcase name="[12] &quot;+1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[13] &quot;1&quot;, &quot;2&quot;, &quot;0x10&quot;, &quot;r&quot;, &quot;NOT_NUMBER&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[14] &quot;123456789012345678901&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;TOO_LONG&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[15] &quot;1&quot;, &quot;2&quot;, &quot;1.0000000000000000000&quot;, &quot;r&quot;, &quot;TOO_LONG&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[16] &quot;100.01&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;X_OUT_OF_RANGE&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[17] &quot;-100.01&quot;, &quot;2&quot;, &quot;3&quot;, &quot;x&quot;, &quot;X_OUT_OF_RANGE&quot;" classname="org.example.figure.PointValidatorTest" time="0.002"/>
+  <testcase name="[18] &quot;1&quot;, &quot;101&quot;, &quot;3&quot;, &quot;y&quot;, &quot;Y_OUT_OF_RANGE&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[19] &quot;1&quot;, &quot;2&quot;, &quot;-0.01&quot;, &quot;r&quot;, &quot;R_OUT_OF_RANGE&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="[20] &quot;1&quot;, &quot;2&quot;, &quot;100,5&quot;, &quot;r&quot;, &quot;R_OUT_OF_RANGE&quot;" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="sameLevelErrorsComeTogether()" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="onlyTopPriorityIsReturned()" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <testcase name="allEmpty()" classname="org.example.figure.PointValidatorTest" time="0.002">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;String.trim()&quot; because &quot;s&quot; is null
+	at org.example.validation.Rules.lambda$static$0(Rules.java:12)
+	at org.example.validation.Rule.lambda$of$0(Rule.java:10)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.validation.Rule.lambda$and$0(Rule.java:14)
+	at org.example.figure.PointValidator.lambda$validate$0(PointValidator.java:42)
+	at java.base/java.util.stream.ReferencePipeline$7$1FlatMap.accept(ReferencePipeline.java:288)
+	at java.base/java.util.AbstractList$RandomAccessSpliterator.forEachRemaining(AbstractList.java:722)
+	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:570)
+	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:560)
+	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:635)
+	at java.base/java.util.stream.AbstractPipeline.evaluateToArrayNode(AbstractPipeline.java:291)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:652)
+	at java.base/java.util.stream.ReferencePipeline.toArray(ReferencePipeline.java:658)
+	at java.base/java.util.stream.ReferencePipeline.toList(ReferencePipeline.java:663)
+	at org.example.figure.PointValidator.validate(PointValidator.java:43)
+	at org.example.figure.PointValidatorTest.errorsOf(PointValidatorTest.java:27)
+	at org.example.figure.PointValidatorTest.allEmpty(PointValidatorTest.java:86)
+</failure>
+  </testcase>
+  <testcase name="notNumberBeatsOutOfRange()" classname="org.example.figure.PointValidatorTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
