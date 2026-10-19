@@ -5,6 +5,7 @@ import lombok.experimental.UtilityClass;
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
+//todo отловить null
 @UtilityClass
 public class Rules {
     public final Pattern DECIMAL = Pattern.compile("-?\\d+([.,]\\d+)?");
@@ -17,7 +18,6 @@ public class Rules {
         return Rule.of(s -> s.length() <= max, Message.TOO_LONG);
     }
 
-    //todo избавиться от повторного парсинга в between — парсить один раз, правила на Rule<BigDecimal>
     public Rule<String> between(BigDecimal min, BigDecimal max, Message message){
         return Rule.of(s -> toDecimal(s).compareTo(max) <= 0 && toDecimal(s).compareTo(min) >= 0, message);
     }
