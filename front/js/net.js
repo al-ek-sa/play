@@ -1,19 +1,16 @@
 export async function getData(url, form = {}) {
-  const fullURL = new URL(url);
-  fullURL.search = new URLSearchParams(form).toString();
-
-  const response = await fetch(fullURL, {
-    method: "GET",
-    mode: "cors",
+  const response = await fetch(url, {
+    method: "POST",
     cache: "no-cache",
-    credentials: "same-origin",
-    redirect: "follow",
-    referrerPolicy: "no-referrer"
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams(form)
   });
 
-  if (!response.ok) {
-    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-  }
+  const data = await response.json();
+  return { ok: response.ok, status: response.status, data };
+}
 
+export async function clearHistory(url) {
+  const response = await fetch(url, { method: "DELETE", cache: "no-cache" });
   return response.json();
 }

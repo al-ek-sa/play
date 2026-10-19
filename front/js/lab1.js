@@ -1,6 +1,8 @@
 import {canvas} from './canvas.js';
 import {history} from './history.js';
-import {getData} from './net.js';
+import {getData, clearHistory} from './net.js';
+
+const ENDPOINT = "/fcgi-bin/check";
 
 function validateNumber(raw, min, max) {
   const text = String(raw ?? '');
@@ -18,12 +20,14 @@ export function lab1(){
   const clearButton = document.getElementById("history-clear");
   const nextPage = document.getElementById("history-next");
   const prevPage = document.getElementById("history-prev");
-  const labelR = document.getElementById("label-r");
-  const labelX = document.getElementById("label-x");
-  const labelY = document.getElementById("label-y");
+  const info = document.getElementById("server-info");
+  const labels = {
+    r: document.getElementById("label-r"),
+    x: document.getElementById("label-x"),
+    y: document.getElementById("label-y")
+  };
 
   if(!form){
-    console.warn("форма не найдена");
     return;
   }
 
@@ -41,7 +45,38 @@ export function lab1(){
     lv1(undefined, undefined, 15, true);
   }
 
-  if (clearButton) clearButton.addEventListener("click", () => hist.clear());
+  function showInfo(data){
+    if (!info || !data) return;
+    const time = new Date(data.currentTime).toLocaleTimeString("ru-RU");
+    info.textContent = `Время сервера: ${time} · выполнение: ${data.executionMicros} мкс`;
+  }
+
+  function showError(message){
+    if (info) info.textContent = message;
+    else console.error(message);
+  }
+
+  async function send(action){
+    try {
+      return await action();
+    } catch (e) {
+      showError(`Сервер недоступен: ${e.message}`);
+      return null;
+    }
+  }
+
+  send(() => getData(ENDPOINT)).then(res => {
+    if (!res) return;
+    hist.set(res.data.history);
+    showInfo(res.data);
+  });
+
+  if (clearButton) clearButton.addEventListener("click", async () => {
+    const data = await send(() => clearHistory(ENDPOINT));
+    if (!data) return;
+    hist.set(data.history);
+    showInfo(data);
+  });
   if (nextPage) nextPage.addEventListener("click", () => hist.next());
   if (prevPage) prevPage.addEventListener("click", () => hist.prev());
 
@@ -66,38 +101,22 @@ export function lab1(){
 
     if (errR || errX || errY) return;
 
-    const r = Number(object['r'].replace(",", "."));
-    const x = Number(object['x'].replace(",", "."));
-    const y = Number(object['y'].replace(",", "."));
+    const res = await send(() => getData(ENDPOINT, { x: object['x'], y: object['y'], r: object['r'] }));
+    if (!res) return;
 
+    showInfo(res.data);
 
-    const lv1 = canvas("canvas");
-
-    let isCorrect = false;
-
-    if(x >= 0 && y >= 0){
-      if(y <= r && x <= r / 2){
-        isCorrect = true;
+    if (!res.ok) {
+      for (const error of res.data.errors ?? []) {
+        const label = labels[error.field];
+        if (label) label.textContent = `${error.field.toUpperCase()}: ${error.message}`;
       }
+      return;
     }
 
-    if(x >= 0 && y <= 0){
-      if(y >= x - r / 2){
-        isCorrect = true;
-      }
-    }
-
-    const data = await getData("http://localhost:7070", { x, y, r });
-
-    if(x <= 0 && y <= 0){
-      if(x * x + y * y <= (r / 2) * (r / 2)){
-        isCorrect = true;
-      }
-    }
-
-    lv1(x, y, r, isCorrect);
-
-    hist.add({ x, y, r, ans: isCorrect, time: new Date().toISOString() });
+    const result = res.data.result;
+    lv1(Number(result.x), Number(result.y), Number(result.r), result.hit);
+    hist.set(res.data.history);
   });
 }
 

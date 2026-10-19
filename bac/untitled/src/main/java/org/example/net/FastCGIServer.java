@@ -5,9 +5,11 @@ import com.fastcgi.FCGIRequest;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 import java.util.Properties;
 
 public record FastCGIServer(Handler handler) {
+    private static final int MAX_BODY = 1024;
 
     public void connect() {
         FCGIInterface fcgii = new FCGIInterface();
@@ -18,25 +20,42 @@ public record FastCGIServer(Handler handler) {
                 continue;
             }
 
-            write(request, safeHandler(toRequest(request.params)));
+            write(request, safeHandler(request));
         }
     }
 
-    private Response safeHandler(Request request){
+    private Response safeHandler(FCGIRequest raw){
         try {
-            return handler.handler(request);
-        } catch (RuntimeException e) {
-            //todo
+            return handler.handler(toRequest(raw));
+        } catch (RuntimeException | IOException e) {
             return Response.serverError();
         }
     }
 
-    private static Request toRequest(Properties params){
+    private static Request toRequest(FCGIRequest raw) throws IOException {
+        Properties params = raw.params;
         return new Request(
                 params.getProperty("REQUEST_URI", ""),
                 params.getProperty("REQUEST_METHOD", "GET"),
-                QueryParser.parse(params.getProperty("QUERY_STRING"))
+                QueryParser.parse(body(raw))
         );
+    }
+
+    private static String body(FCGIRequest raw) throws IOException {
+        int length = contentLength(raw.params);
+        if (length <= 0) {
+            return "";
+        }
+        byte[] bytes = raw.inStream.readNBytes(Math.min(length, MAX_BODY));
+        return new String(bytes, StandardCharsets.UTF_8);
+    }
+
+    private static int contentLength(Properties params){
+        try {
+            return Integer.parseInt(params.getProperty("CONTENT_LENGTH", "0").trim());
+        } catch (NumberFormatException e) {
+            return 0;
+        }
     }
 
     private static void write(FCGIRequest request, Response response){

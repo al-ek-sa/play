@@ -18,13 +18,13 @@ public record CheckHandler(History history) implements Handler {
         long start = System.nanoTime();
 
         return switch (request.method()) {
-            case "GET" -> get(request, start);
+            case "POST" -> post(request, start);
             case "DELETE" -> clear(start);
             default -> Response.notFoundMethod();
         };
     }
 
-    private Response get(Request request, long start){
+    private Response post(Request request, long start){
         if (request.data().isEmpty()) {
             return historyOnly(start);
         }

@@ -10,18 +10,18 @@ public record Response(int status, String body) {
     }
 
     public static Response notFoundMethod(){
-        return new Response(405, "don't know");
+        return new Response(405, Json.write(new Responses.Failure("method not allowed")));
     }
 
     public static Response serverError(){
-        return new Response(500, "{\"error\":\"internal error\"}");
+        return new Response(500, Json.write(new Responses.Failure("internal error")));
     }
 
     public String reason(){
         return switch (status){
-            case(200) -> "OK";
-            case(400) -> "Bad Request";
-            case(405) -> "Method Not Allowed";
+            case 200 -> "OK";
+            case 400 -> "Bad Request";
+            case 405 -> "Method Not Allowed";
             default -> "Internal Server Error";
         };
     }
