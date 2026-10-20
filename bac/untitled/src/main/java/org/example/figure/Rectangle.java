@@ -1,7 +1,10 @@
 package org.example.figure;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 
+@Slf4j
 public record Rectangle(Point pointStart, BigDecimal width, BigDecimal height) implements Figure {
     @Override
     public boolean contains(Point point) {

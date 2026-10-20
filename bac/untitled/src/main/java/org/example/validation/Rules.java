@@ -1,10 +1,12 @@
 package org.example.validation;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
+@Slf4j
 //todo отловить null
 @UtilityClass
 public class Rules {

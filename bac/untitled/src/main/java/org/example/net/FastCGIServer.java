@@ -2,11 +2,13 @@ package org.example.net;
 
 import com.fastcgi.FCGIInterface;
 import com.fastcgi.FCGIRequest;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Properties;
 
+@Slf4j
 public record FastCGIServer(Handler handler) {
     private static final int MAX_BODY = 1024;
 

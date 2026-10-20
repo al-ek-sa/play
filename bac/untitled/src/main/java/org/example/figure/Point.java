@@ -1,7 +1,10 @@
 package org.example.figure;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 
+@Slf4j
 public record Point(BigDecimal x, BigDecimal y) {
     public Point minus(Point other){
         return new Point(x.subtract(other.x), y.subtract(other.y));

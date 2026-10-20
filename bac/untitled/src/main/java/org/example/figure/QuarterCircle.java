@@ -1,8 +1,11 @@
 package org.example.figure;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@Slf4j
 public record QuarterCircle(Point center,
                             BigDecimal radius,
                             Point bisector,

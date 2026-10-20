@@ -1,6 +1,7 @@
 package org.example.figure;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.example.validation.*;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.Map;
 import java.util.stream.Stream;
 //todo не пропускает null
 @UtilityClass
+@Slf4j
 public class PointValidator {
 
     private Stream<FieldError> errorOf(String field, Outcome<String> outcome){

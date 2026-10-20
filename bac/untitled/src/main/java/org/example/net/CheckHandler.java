@@ -1,5 +1,6 @@
 package org.example.net;
 
+import lombok.extern.slf4j.Slf4j;
 import org.example.figure.Area;
 import org.example.figure.Coordinate;
 import org.example.figure.FieldError;
@@ -11,6 +12,7 @@ import org.example.history.ResultValidation;
 import java.time.Instant;
 import java.util.List;
 
+@Slf4j
 public record CheckHandler(History history) implements Handler {
 
     @Override
