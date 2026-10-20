@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.example.net.ResponseTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2026-10-20T07:10:21.459Z" hostname="Alexa" time="0.068">
-  <properties/>
-  <testcase name="reason500()" classname="org.example.net.ResponseTest" time="0.042"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

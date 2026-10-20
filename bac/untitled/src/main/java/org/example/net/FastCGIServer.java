@@ -5,7 +5,6 @@ import com.fastcgi.FCGIRequest;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.Map;
 import java.util.Properties;
 
 public record FastCGIServer(Handler handler) {

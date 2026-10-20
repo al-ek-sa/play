@@ -21,7 +21,7 @@ public class QueryParser {
                 .collect(Collectors.toMap(
                         p -> decode(p[0]),
                         p -> p.length > 1 ? decode(p[1]) : "",
-                        (first, second) -> first
+                        (first, _) -> first
                 ));
     }
 
