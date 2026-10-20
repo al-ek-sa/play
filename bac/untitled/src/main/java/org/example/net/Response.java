@@ -22,6 +22,7 @@ public record Response(int status, String body) {
             case 200 -> "OK";
             case 400 -> "Bad Request";
             case 405 -> "Method Not Allowed";
+            case 500 -> "Server error";
             default -> "Internal Server Error";
         };
     }
