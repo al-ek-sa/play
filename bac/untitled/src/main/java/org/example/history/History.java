@@ -1,26 +1,37 @@
 package org.example.history;
 
 import lombok.extern.slf4j.Slf4j;
+import org.example.BD.Add;
+import org.example.BD.Clear;
+import org.example.BD.FindAll;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
 import java.util.List;
 
 @Slf4j
 public final class History {
-    private final List<ResultValidation> resultList = new ArrayList<>();
 
-    public void add(ResultValidation result){
-        resultList.add(result);
-        log.debug("history size {}", resultList.size());
+    public void add(ResultValidation result) {
+        try {
+            Add.add(result);
+        } catch (SQLException e) {
+            throw new IllegalStateException("failed to save result", e);
+        }
     }
 
-    public void clear(){
-        int removed = resultList.size();
-        resultList.clear();
-        log.debug("history cleared, {} entries removed", removed);
+    public void clear() {
+        try {
+            Clear.clear();
+        } catch (SQLException e) {
+            throw new IllegalStateException("failed to clear history", e);
+        }
     }
 
-    public List<ResultValidation> reverse(){
-        return List.copyOf(resultList.reversed());
+    public List<ResultValidation> reverse() {
+        try {
+            return FindAll.findAll();
+        } catch (SQLException e) {
+            throw new IllegalStateException("failed to load history", e);
+        }
     }
 }
