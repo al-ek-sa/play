@@ -1,6 +1,7 @@
 package org.example.BD;
 
 import lombok.experimental.UtilityClass;
+import lombok.extern.slf4j.Slf4j;
 import org.example.history.ResultValidation;
 
 import java.sql.Connection;
@@ -8,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+@Slf4j
 @UtilityClass
 public class Add {
     public boolean add(ResultValidation rv) throws SQLException {
@@ -22,7 +24,14 @@ public class Add {
             ps.setBoolean(4, rv.hit());
             ps.setTimestamp(5, Timestamp.from(rv.time()));
             ps.setLong(6, rv.executionMicros());
-            return ps.executeUpdate() == 1;
+
+            int rows = ps.executeUpdate();
+            if (rows != 1) {
+                log.warn("insert affected {} rows, expected 1: {}", rows, rv);
+                return false;
+            }
+            log.debug("saved x={} y={} r={} hit={}", rv.x(), rv.y(), rv.r(), rv.hit());
+            return true;
         }
     }
 }
