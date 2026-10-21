@@ -11,10 +11,13 @@ public final class History {
 
     public void add(ResultValidation result){
         resultList.add(result);
+        log.debug("history size {}", resultList.size());
     }
 
     public void clear(){
+        int removed = resultList.size();
         resultList.clear();
+        log.debug("history cleared, {} entries removed", removed);
     }
 
     public List<ResultValidation> reverse(){

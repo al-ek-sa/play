@@ -21,7 +21,7 @@ public class PointValidator {
 
     private Stream<FieldError> errorOf(String field, Outcome<String> outcome) {
         return switch (outcome) {
-            case Outcome.Ok<String> ok -> Stream.empty();
+            case Outcome.Ok<String> _ -> Stream.empty();
             case Outcome.Error<String> error -> Stream.of(new FieldError(field, error.message()));
         };
     }
@@ -41,20 +41,28 @@ public class PointValidator {
     }
 
     public Valid<Coordinate> validate(Map<String, String> params) {
+        if (params == null) {
+            log.warn("validate called with null params");
+        }
         Map<String, String> safe = params == null ? Map.of() : params;
+        log.trace("validate params {}", safe);
 
         List<FieldError> errors = FIELDS.stream()
                 .flatMap(field -> errorOf(field.getKey(), field.getValue().apply(valueOf(safe, field.getKey()))))
                 .toList();
 
-        if(!errors.isEmpty()){
-            return new Valid.Failure<>(topPriority(errors));
+        if (!errors.isEmpty()) {
+            List<FieldError> top = topPriority(errors);
+            log.debug("validation failed: all {}, returned {}", errors, top);
+            return new Valid.Failure<>(top);
         }
 
-        return new Valid.Success<>(new Coordinate(
+        Coordinate coordinate = new Coordinate(
                 Rules.toDecimal(valueOf(safe, "x")),
                 Rules.toDecimal(valueOf(safe, "y")),
                 Rules.toDecimal(valueOf(safe, "r"))
-        ));
+        );
+        log.debug("validation passed: {}", coordinate);
+        return new Valid.Success<>(coordinate);
     }
 }

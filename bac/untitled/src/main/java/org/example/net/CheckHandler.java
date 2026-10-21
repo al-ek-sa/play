@@ -28,6 +28,7 @@ public record CheckHandler(History history) implements Handler {
 
     private Response post(Request request, long start){
         if (request.data().isEmpty()) {
+            log.debug("history requested");
             return historyOnly(start);
         }
 
@@ -43,10 +44,12 @@ public record CheckHandler(History history) implements Handler {
         long executionMicros = micros(start);
         ResultValidation result = new ResultValidation(c.x(), c.y(), c.r(), hit, now, executionMicros);
         history.add(result);
+        log.info("check x={} y={} r={} hit={} in {} µs", c.x(), c.y(), c.r(), hit, executionMicros);
         return Response.ok(Json.write(new Responses.Checked(result, history.reverse(), now, executionMicros)));
     }
 
     private Response errors(List<FieldError> errors, long start){
+        log.info("validation failed: {}", errors);
         List<Responses.ErrorItem> items = errors.stream()
                 .map(e -> new Responses.ErrorItem(e.field(), e.message().name(), e.message().getText()))
                 .toList();
@@ -55,6 +58,7 @@ public record CheckHandler(History history) implements Handler {
 
     private Response clear(long start){
         history.clear();
+        log.info("history cleared");
         return historyOnly(start);
     }
 

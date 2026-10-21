@@ -14,21 +14,29 @@ public record FastCGIServer(Handler handler) {
 
     public void connect() {
         FCGIInterface fcgii = new FCGIInterface();
+        log.info("FastCGI server started on port {}", System.getProperty("FCGI_PORT"));
 
         while (fcgii.FCGIaccept() >= 0) {
             FCGIRequest request = FCGIInterface.request;
             if (request == null) {
+                log.warn("FCGIaccept returned without request");
                 continue;
             }
 
             write(request, safeHandler(request));
         }
+        log.info("FastCGI server stopped");
     }
 
     private Response safeHandler(FCGIRequest raw){
+        String method = raw.params.getProperty("REQUEST_METHOD");
+        String uri = raw.params.getProperty("REQUEST_URI");
         try {
-            return handler.handler(toRequest(raw));
+            Response response = handler.handler(toRequest(raw));
+            log.debug("{} {} -> {}", method, uri, response.status());
+            return response;
         } catch (RuntimeException | IOException e) {
+            log.error("{} {} failed", method, uri, e);
             return Response.serverError();
         }
     }
@@ -52,9 +60,11 @@ public record FastCGIServer(Handler handler) {
     }
 
     private static int contentLength(Properties params){
+        String value = params.getProperty("CONTENT_LENGTH", "0").trim();
         try {
             return Integer.parseInt(params.getProperty("CONTENT_LENGTH", "0").trim());
         } catch (NumberFormatException e) {
+            log.warn("invalid CONTENT_LENGTH: '{}'", value);
             return 0;
         }
     }
@@ -69,7 +79,7 @@ public record FastCGIServer(Handler handler) {
             request.outStream.write(http.getBytes(StandardCharsets.UTF_8));
             request.outStream.flush();
         } catch (IOException e) {
-            //todo
+            log.error("failed to write response {}", response.status(), e);
         }
     }
 }

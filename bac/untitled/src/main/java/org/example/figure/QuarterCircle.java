@@ -9,9 +9,10 @@ import java.math.RoundingMode;
 public record QuarterCircle(Point center,
                             BigDecimal radius,
                             Point bisector,
-                            BigDecimal cosSquared, boolean wide) implements Figure {
+                            BigDecimal cosSquared,
+                            boolean wide) implements Figure {
 
-    private static final BigDecimal TWO = BigDecimal.valueOf(2);
+    private static final BigDecimal HALF = new BigDecimal("0.5");
 
     private static BigDecimal round(double value){
         return BigDecimal.valueOf(value).setScale(12, RoundingMode.HALF_EVEN).stripTrailingZeros();
@@ -36,7 +37,7 @@ public record QuarterCircle(Point center,
         if(width == 0) width =360;
         Point start = unit(minAngle);
         Point end = unit(maxAngle);
-        BigDecimal cosSquared = BigDecimal.ONE.add(start.dot(end)).divide(TWO);
+        BigDecimal cosSquared = BigDecimal.ONE.add(start.dot(end)).multiply(HALF);
         Point sum = new Point(start.x().add(end.x()), start.y().add(end.y()));
         Point bisector;
         if(width < 180){
@@ -46,6 +47,8 @@ public record QuarterCircle(Point center,
         } else {
             bisector = new Point(start.y().negate(), start.x());
         }
+        log.trace("sector {}°..{}° width={}° radius={} bisector={} cos²={} wide={}",
+                minAngle, maxAngle, width, radius, bisector, cosSquared, width > 180);
 
         return new QuarterCircle(center, radius, bisector, cosSquared, width > 180);
     }
