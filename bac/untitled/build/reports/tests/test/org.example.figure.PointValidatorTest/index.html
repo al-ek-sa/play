@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta http-equiv="x-ua-compatible" content="IE=edge"/>
-<title>Test results - org.example.net.CheckHandlerTest</title>
+<title>Test results - org.example.figure.PointValidatorTest</title>
 <link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
 <link href="../css/style.css" rel="stylesheet" type="text/css"/>
 <script src="../js/report.js" type="text/javascript"></script>
@@ -12,7 +12,7 @@
 <div id="content">
 <div class="breadcrumbs">
 <a class="breadcrumb" href="../index.html">all</a> &gt; 
-<span class="breadcrumb">org.example.net.CheckHandlerTest</span>
+<span class="breadcrumb">org.example.figure.PointValidatorTest</span>
 </div>
 <div class="tab-container">
 <ul class="tabLinks">
@@ -22,7 +22,7 @@
 </ul>
 <div class="tab">
 <h2>Gradle Test Run :test</h2>
-<h1>CheckHandlerTest</h1>
+<h1>PointValidatorTest</h1>
 <div class="tab-container">
 <ul class="tabLinks">
 <li>
@@ -41,7 +41,7 @@
 <tr>
 <td>
 <div class="infoBox">
-<div class="counter">10</div>
+<div class="counter">31</div>
 <p>tests</p>
 </div>
 </td>
@@ -59,7 +59,7 @@
 </td>
 <td>
 <div class="infoBox duration">
-<div class="counter">0.542s</div>
+<div class="counter">0.206s</div>
 <p>duration</p>
 </div>
 </td>
@@ -90,71 +90,17 @@
 </thead>
 <tbody>
 <tr>
-<td class="success">commaInNumberWorks()</td>
-<td class="path" hidden="">commaInNumberWorks()</td>
+<td class="success">allEmpty()</td>
+<td class="path" hidden="">allEmpty()</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="247">0.247s</td>
+<td data-sort-value="0">0s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
-<td class="success">deleteClearsHistory()</td>
-<td class="path" hidden="">deleteClearsHistory()</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td data-sort-value="7">0.007s</td>
-<td class="success" data-sort-value="100">100%</td>
-</tr>
-<tr>
-<td class="success">emptyPostReturnsHistoryOnly()</td>
-<td class="path" hidden="">emptyPostReturnsHistoryOnly()</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td data-sort-value="2">0.002s</td>
-<td class="success" data-sort-value="100">100%</td>
-</tr>
-<tr>
-<td class="success">getIsNotAllowed()</td>
-<td class="path" hidden="">getIsNotAllowed()</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td data-sort-value="2">0.002s</td>
-<td class="success" data-sort-value="100">100%</td>
-</tr>
-<tr>
-<td class="success">historyNewestFirst()</td>
-<td class="path" hidden="">historyNewestFirst()</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td data-sort-value="4">0.004s</td>
-<td class="success" data-sort-value="100">100%</td>
-</tr>
-<tr>
-<td class="success">hitReturnsOkAndResult()</td>
-<td class="path" hidden="">hitReturnsOkAndResult()</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td data-sort-value="2">0.002s</td>
-<td class="success" data-sort-value="100">100%</td>
-</tr>
-<tr>
-<td class="success">invalidIsNotAddedToHistory()</td>
-<td class="path" hidden="">invalidIsNotAddedToHistory()</td>
-<td>1</td>
-<td>0</td>
-<td>0</td>
-<td data-sort-value="11">0.011s</td>
-<td class="success" data-sort-value="100">100%</td>
-</tr>
-<tr>
-<td class="success">invalidReturnsBadRequest()</td>
-<td class="path" hidden="">invalidReturnsBadRequest()</td>
+<td class="success">notNumberBeatsOutOfRange()</td>
+<td class="path" hidden="">notNumberBeatsOutOfRange()</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
@@ -162,21 +108,52 @@
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
-<td class="success">missReturnsHitFalse()</td>
-<td class="path" hidden="">missReturnsHitFalse()</td>
+<td class="success">notNumberBeatsTooLong()</td>
+<td class="path" hidden="">notNumberBeatsTooLong()</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="11">0.011s</td>
+<td data-sort-value="70">0.070s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 <tr>
-<td class="success">responseHasTimeAndExecution()</td>
-<td class="path" hidden="">responseHasTimeAndExecution()</td>
+<td class="success">
+<a href="oneFieldError(String,-String,-String,-String,-Message)/index.html">oneFieldError(String, String, String, String, Message)</a>
+</td>
+<td class="path" hidden="">oneFieldError(String, String, String, String, Message)</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="52">0.052s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">onlyTopPriorityIsReturned()</td>
+<td class="path" hidden="">onlyTopPriorityIsReturned()</td>
 <td>1</td>
 <td>0</td>
 <td>0</td>
-<td data-sort-value="2">0.002s</td>
+<td data-sort-value="1">0.001s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">sameLevelErrorsComeTogether()</td>
+<td class="path" hidden="">sameLevelErrorsComeTogether()</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="1">0.001s</td>
+<td class="success" data-sort-value="100">100%</td>
+</tr>
+<tr>
+<td class="success">
+<a href="validInput(String,-String,-String,-BigDecimal,-BigDecimal,-BigDecimal)/index.html">validInput(String, String, String, BigDecimal, BigDecimal, BigDecimal)</a>
+</td>
+<td class="path" hidden="">validInput(String, String, String, BigDecimal, BigDecimal, BigDecimal)</td>
+<td>6</td>
+<td>0</td>
+<td>0</td>
+<td data-sort-value="65">0.065s</td>
 <td class="success" data-sort-value="100">100%</td>
 </tr>
 </tbody>
@@ -193,7 +170,7 @@
 <input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
 </label>
 </div>Generated by 
-<a href="https://www.gradle.org">Gradle 9.6.0</a> at 20 окт. 2026 г., 15:00:08</p>
+<a href="https://www.gradle.org">Gradle 9.6.0</a> at 21 окт. 2026 г., 11:32:02</p>
 </div>
 </div>
 </body>

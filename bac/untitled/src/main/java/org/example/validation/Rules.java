@@ -7,12 +7,11 @@ import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
 @Slf4j
-//todo отловить null
 @UtilityClass
 public class Rules {
     public final Pattern DECIMAL = Pattern.compile("-?\\d+([.,]\\d+)?");
 
-    public final Rule<String> REQUIRED = Rule.of(s -> !s.trim().isBlank(), Message.EMPTY);
+    public final Rule<String> REQUIRED = Rule.of(s -> s != null && !s.isBlank(), Message.EMPTY);
 
     public final Rule<String> DECIMAL_FORMAT = Rule.of(s -> DECIMAL.matcher(s.trim()).matches(), Message.NOT_NUMBER);
 
