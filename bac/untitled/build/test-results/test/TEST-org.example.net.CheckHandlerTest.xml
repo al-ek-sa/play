@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.example.net.CheckHandlerTest" tests="10" skipped="0" failures="0" errors="0" timestamp="2026-10-22T18:54:47.112Z" hostname="Alexa" time="0.679">
+  <properties/>
+  <testcase name="commaInNumberWorks()" classname="org.example.net.CheckHandlerTest" time="0.283"/>
+  <testcase name="missReturnsHitFalse()" classname="org.example.net.CheckHandlerTest" time="0.037"/>
+  <testcase name="historyNewestFirst()" classname="org.example.net.CheckHandlerTest" time="0.055"/>
+  <testcase name="deleteClearsHistory()" classname="org.example.net.CheckHandlerTest" time="0.069"/>
+  <testcase name="responseHasTimeAndExecution()" classname="org.example.net.CheckHandlerTest" time="0.029"/>
+  <testcase name="invalidIsNotAddedToHistory()" classname="org.example.net.CheckHandlerTest" time="0.027"/>
+  <testcase name="emptyPostReturnsHistoryOnly()" classname="org.example.net.CheckHandlerTest" time="0.042"/>
+  <testcase name="getIsNotAllowed()" classname="org.example.net.CheckHandlerTest" time="0.013"/>
+  <testcase name="invalidReturnsBadRequest()" classname="org.example.net.CheckHandlerTest" time="0.012"/>
+  <testcase name="hitReturnsOkAndResult()" classname="org.example.net.CheckHandlerTest" time="0.035"/>
+  <system-out><![CDATA[21:54:47.215 [Test worker] INFO org.example.BD.ConnectBD -- database config loaded from /home/xfiles/itmo/3sem/play/bac/untitled/db.properties
+21:54:47.338 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.358 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=1.5, y=1, r=4]
+21:54:47.384 [Test worker] DEBUG org.example.BD.Add -- saved x=1.5 y=1 r=4 hit=true
+21:54:47.385 [Test worker] INFO org.example.net.CheckHandler -- check x=1.5 y=1 r=4 hit=true in 18963 µs
+21:54:47.403 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.485 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.486 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=-1, y=1, r=4]
+21:54:47.497 [Test worker] DEBUG org.example.BD.Add -- saved x=-1 y=1 r=4 hit=false
+21:54:47.497 [Test worker] INFO org.example.net.CheckHandler -- check x=-1 y=1 r=4 hit=false in 1026 µs
+21:54:47.505 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.520 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.521 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=1, y=1, r=4]
+21:54:47.530 [Test worker] DEBUG org.example.BD.Add -- saved x=1 y=1 r=4 hit=true
+21:54:47.530 [Test worker] INFO org.example.net.CheckHandler -- check x=1 y=1 r=4 hit=true in 617 µs
+21:54:47.540 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.540 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=2, y=1, r=4]
+21:54:47.552 [Test worker] DEBUG org.example.BD.Add -- saved x=2 y=1 r=4 hit=true
+21:54:47.552 [Test worker] INFO org.example.net.CheckHandler -- check x=2 y=1 r=4 hit=true in 310 µs
+21:54:47.561 [Test worker] DEBUG org.example.BD.FindAll -- loaded 2 results
+21:54:47.575 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.576 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=1, y=1, r=4]
+21:54:47.587 [Test worker] DEBUG org.example.BD.Add -- saved x=1 y=1 r=4 hit=true
+21:54:47.587 [Test worker] INFO org.example.net.CheckHandler -- check x=1 y=1 r=4 hit=true in 688 µs
+21:54:47.597 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.608 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.608 [Test worker] INFO org.example.net.CheckHandler -- history cleared
+21:54:47.618 [Test worker] DEBUG org.example.BD.FindAll -- loaded 0 results
+21:54:47.630 [Test worker] DEBUG org.example.BD.FindAll -- loaded 0 results
+21:54:47.641 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.642 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=1, y=1, r=4]
+21:54:47.652 [Test worker] DEBUG org.example.BD.Add -- saved x=1 y=1 r=4 hit=true
+21:54:47.652 [Test worker] INFO org.example.net.CheckHandler -- check x=1 y=1 r=4 hit=true in 609 µs
+21:54:47.660 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.671 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.673 [Test worker] DEBUG org.example.figure.PointValidator -- validation failed: all [FieldError[field=x, message=NOT_NUMBER]], returned [FieldError[field=x, message=NOT_NUMBER]]
+21:54:47.674 [Test worker] INFO org.example.net.CheckHandler -- validation failed: [FieldError[field=x, message=NOT_NUMBER]]
+21:54:47.687 [Test worker] DEBUG org.example.BD.FindAll -- loaded 0 results
+21:54:47.702 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.703 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=1, y=1, r=4]
+21:54:47.711 [Test worker] DEBUG org.example.BD.Add -- saved x=1 y=1 r=4 hit=true
+21:54:47.712 [Test worker] INFO org.example.net.CheckHandler -- check x=1 y=1 r=4 hit=true in 426 µs
+21:54:47.719 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.720 [Test worker] DEBUG org.example.net.CheckHandler -- history requested
+21:54:47.729 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+21:54:47.741 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.754 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.754 [Test worker] DEBUG org.example.figure.PointValidator -- validation failed: all [FieldError[field=x, message=NOT_NUMBER]], returned [FieldError[field=x, message=NOT_NUMBER]]
+21:54:47.755 [Test worker] INFO org.example.net.CheckHandler -- validation failed: [FieldError[field=x, message=NOT_NUMBER]]
+21:54:47.768 [Test worker] DEBUG org.example.BD.Clear -- table point truncated
+21:54:47.769 [Test worker] DEBUG org.example.figure.PointValidator -- validation passed: Coordinate[x=1, y=1, r=4]
+21:54:47.780 [Test worker] DEBUG org.example.BD.Add -- saved x=1 y=1 r=4 hit=true
+21:54:47.780 [Test worker] INFO org.example.net.CheckHandler -- check x=1 y=1 r=4 hit=true in 512 µs
+21:54:47.790 [Test worker] DEBUG org.example.BD.FindAll -- loaded 1 results
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
