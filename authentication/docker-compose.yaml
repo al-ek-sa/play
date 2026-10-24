@@ -1,0 +1,46 @@
+services:
+  postgres:
+    image: postgres:18
+    container_name: auth-math-db
+    environment:
+      POSTGRES_DB: auth
+      POSTGRES_USER: mathquest
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "127.0.0.1:7080:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mathquest -d auth"]
+      interval: 5s
+      retries: 10
+
+  redis:
+    image: redis:8
+    container_name: auth-math-redis
+    command: ["redis-server", "--requirepass", "${REDIS_PASSWORD}", "--appendonly", "yes"]
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD}
+    ports:
+      - "127.0.0.1:7081:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli --no-auth-warning -a \"$$REDIS_PASSWORD\" ping | grep -q PONG"]
+      interval: 5s
+      retries: 10
+
+  mailpit:
+    image: axllent/mailpit
+    container_name: auth-math-mailpit
+    environment:
+      MP_SMTP_AUTH: "mathquest:${MAIL_PASSWORD}"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "true"
+      MP_UI_AUTH: "mathquest:${MAIL_PASSWORD}"
+    ports:
+      - "127.0.0.1:7082:1025"
+      - "127.0.0.1:7083:8025"
+
+volumes:
+  postgres_data:
+  redis_data:
