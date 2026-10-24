@@ -4,6 +4,7 @@
 *.ipr
 out/
 .vscode/
+.untitled/*.properties
 
 .gradle/
 #build/

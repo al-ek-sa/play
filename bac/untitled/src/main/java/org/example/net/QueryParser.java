@@ -1,7 +1,6 @@
 package org.example.net;
 
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
@@ -9,7 +8,6 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Slf4j
 @UtilityClass
 public class QueryParser {
 

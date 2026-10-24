@@ -1,6 +1,5 @@
 package org.example.BD;
 
-import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.IOException;
@@ -14,7 +13,6 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 @Slf4j
-@UtilityClass
 public class ConnectBD {
     private final Path CONFIG = Path.of(System.getProperty("db.config", "db.properties"));
     private Properties properties;

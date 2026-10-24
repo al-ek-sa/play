@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.example.figure.Area;
 import org.example.figure.Coordinate;
 import org.example.figure.FieldError;
-import org.example.figure.PointValidator;
+import org.example.validation.PointValidator;
 import org.example.figure.Valid;
 import org.example.history.History;
 import org.example.history.ResultValidation;

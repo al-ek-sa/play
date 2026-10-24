@@ -45,7 +45,7 @@ public record FastCGIServer(Handler handler) {
         Properties params = raw.params;
         return new Request(
                 params.getProperty("REQUEST_URI", ""),
-                params.getProperty("REQUEST_METHOD", "GET"),
+                params.getProperty("REQUEST_METHOD", "POST"),
                 QueryParser.parse(body(raw))
         );
     }
@@ -62,7 +62,7 @@ public record FastCGIServer(Handler handler) {
     private static int contentLength(Properties params){
         String value = params.getProperty("CONTENT_LENGTH", "0").trim();
         try {
-            return Integer.parseInt(params.getProperty("CONTENT_LENGTH", "0").trim());
+            return Integer.parseInt(value);
         } catch (NumberFormatException e) {
             log.warn("invalid CONTENT_LENGTH: '{}'", value);
             return 0;

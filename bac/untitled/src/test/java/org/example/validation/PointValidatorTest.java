@@ -1,6 +1,8 @@
-package org.example.figure;
+package org.example.validation;
 
-import org.example.validation.*;
+import org.example.figure.Coordinate;
+import org.example.figure.FieldError;
+import org.example.figure.Valid;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

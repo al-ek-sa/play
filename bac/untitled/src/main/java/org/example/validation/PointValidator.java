@@ -1,12 +1,13 @@
-package org.example.figure;
+package org.example.validation;
 
 import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
-import org.example.validation.*;
+import org.example.figure.Coordinate;
+import org.example.figure.FieldError;
+import org.example.figure.Valid;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @UtilityClass
@@ -27,12 +28,11 @@ public class PointValidator {
     }
 
     private List<FieldError> topPriority(List<FieldError> errors) {
-        int top = errors.stream()
-                .mapToInt(e -> e.message().getPriority())
-                .min()
-                .orElseThrow();
         return errors.stream()
-                .filter(e -> e.message().getPriority() == top)
+                .collect(Collectors.groupingBy(FieldError::field, LinkedHashMap::new,
+                        Collectors.minBy(Comparator.comparingInt(e -> e.message().getPriority()))))
+                .values().stream()
+                .flatMap(Optional::stream)
                 .toList();
     }
 

@@ -1,6 +1,5 @@
 package org.example.BD;
 
-import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 import org.example.history.ResultValidation;
 
@@ -10,12 +9,11 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 
 @Slf4j
-@UtilityClass
 public class Add {
     public boolean add(ResultValidation rv) throws SQLException {
         String sql = "INSERT INTO point(x, y, r, hit, checked_at, execution_micros) VALUES (?, ?, ?, ?, ?, ?)";
 
-        try(Connection conn = ConnectBD.getConnection();
+        try(Connection conn = new ConnectBD().getConnection();
             PreparedStatement ps = conn.prepareStatement(sql)){
 
             ps.setBigDecimal(1, rv.x());

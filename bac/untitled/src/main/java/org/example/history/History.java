@@ -10,10 +10,13 @@ import java.util.List;
 
 @Slf4j
 public final class History {
+    private final Add add = new Add();
+    private final Clear clear = new Clear();
+    private final FindAll findAll = new FindAll();
 
     public void add(ResultValidation result) {
         try {
-            Add.add(result);
+            add.add(result);
         } catch (SQLException e) {
             throw new IllegalStateException("failed to save result", e);
         }
@@ -21,7 +24,7 @@ public final class History {
 
     public void clear() {
         try {
-            Clear.clear();
+            clear.clear();
         } catch (SQLException e) {
             throw new IllegalStateException("failed to clear history", e);
         }
@@ -29,7 +32,7 @@ public final class History {
 
     public List<ResultValidation> reverse() {
         try {
-            return FindAll.findAll();
+            return findAll.findAll();
         } catch (SQLException e) {
             throw new IllegalStateException("failed to load history", e);
         }

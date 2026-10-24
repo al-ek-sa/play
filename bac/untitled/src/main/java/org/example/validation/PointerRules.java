@@ -1,10 +1,8 @@
 package org.example.validation;
 import lombok.experimental.UtilityClass;
-import lombok.extern.slf4j.Slf4j;
 
 import static org.example.validation.Rules.*;
 
-@Slf4j
 @UtilityClass
 public class PointerRules {
     private final int MAX_LENGTH = 20;

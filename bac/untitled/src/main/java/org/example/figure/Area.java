@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public record Area(List<Figure> figures) {
-    private static final BigDecimal TWO = BigDecimal.valueOf(2);
+    private static final BigDecimal HALF = BigDecimal.valueOf(0.5);
 
     public static Area variant(BigDecimal r){
-        BigDecimal half = r.divide(TWO);
+        BigDecimal half = r.multiply(HALF);
 
         Point origin = new Point(BigDecimal.ZERO, BigDecimal.ZERO);
 
