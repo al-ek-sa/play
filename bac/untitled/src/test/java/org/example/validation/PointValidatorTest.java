@@ -90,17 +90,17 @@ public class PointValidatorTest {
 
     @Test
     void onlyTopPriorityIsReturned() {
-        assertEquals(List.of(new FieldError("x", Message.EMPTY)), errorsOf("", "abc", "500"));
+        assertEquals(List.of(new FieldError("x", Message.EMPTY), new FieldError("y", Message.NOT_NUMBER), new FieldError("r", Message.R_OUT_OF_RANGE)), errorsOf("", "abc", "500"));
     }
 
     @Test
     void notNumberBeatsOutOfRange() {
-        assertEquals(List.of(new FieldError("x", Message.NOT_NUMBER)), errorsOf("abc", "200", "500"));
+        assertEquals(List.of(new FieldError("x", Message.NOT_NUMBER), new FieldError("y", Message.Y_OUT_OF_RANGE), new FieldError("r", Message.R_OUT_OF_RANGE)), errorsOf("abc", "200", "500"));
     }
 
     @Test
     void notNumberBeatsTooLong() {
-        assertEquals(List.of(new FieldError("y", Message.NOT_NUMBER)), errorsOf("123456789012345678901", "abc", "3"));
+        assertEquals(List.of(new FieldError("x", Message.TOO_LONG), new FieldError("y", Message.NOT_NUMBER)), errorsOf("123456789012345678901", "abc", "3"));
     }
 
     @Test

@@ -4,12 +4,13 @@ import {getData, clearHistory} from './net.js';
 
 const ENDPOINT = "/fcgi-bin/check";
 
-function validateNumber(raw, min, max) {
+function validateNumber(raw, min, max, minExclusive = false) {
   const text = String(raw ?? '');
   if (text.trim() === '') return 'Поле обязательно к заполнению';
   const n = Number(text.replace(",", "."));
   if (!Number.isFinite(n)) return 'Поле должно быть числовым';
   if (n > max) return `Поле должно быть не больше ${max}`;
+  if (minExclusive && n <= min) return `Поле должно быть больше ${min}`;
   if (n < min) return `Поле должно быть не меньше ${min}`;
   return '';
 }
@@ -56,6 +57,12 @@ export function lab1(){
     else console.error(message);
   }
 
+  function showFieldError(field, error){
+    const label = labels[field];
+    if (!label) return;
+    label.textContent = error ? `${field.toUpperCase()}: ${error}` : field.toUpperCase();
+  }
+
   async function send(action){
     try {
       return await action();
@@ -87,19 +94,17 @@ export function lab1(){
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
 
-    const errR = validateNumber(object['r'], 0, 100);
-    const errX = validateNumber(object['x'], -100, 100);
-    const errY = validateNumber(object['y'], -100, 100);
+    const errors = {
+      r: validateNumber(object['r'], 0, 100, true),
+      x: validateNumber(object['x'], -100, 100),
+      y: validateNumber(object['y'], -100, 100)
+    };
 
-    if (errR) labelR.textContent = `R: ${errR}`;
-    if (errX) labelX.textContent = `X: ${errX}`;
-    if (errY) labelY.textContent = `Y: ${errY}`;
+    for (const field of ['r', 'x', 'y']) {
+      showFieldError(field, errors[field]);
+    }
 
-    if (!errR) labelR.textContent = `R`;
-    if (!errX) labelX.textContent = `X`;
-    if (!errY) labelY.textContent = `Y`;
-
-    if (errR || errX || errY) return;
+    if (errors.r || errors.x || errors.y) return;
 
     const res = await send(() => getData(ENDPOINT, { x: object['x'], y: object['y'], r: object['r'] }));
     if (!res) return;
@@ -108,8 +113,7 @@ export function lab1(){
 
     if (!res.ok) {
       for (const error of res.data.errors ?? []) {
-        const label = labels[error.field];
-        if (label) label.textContent = `${error.field.toUpperCase()}: ${error.message}`;
+        showFieldError(error.field, error.message);
       }
       return;
     }

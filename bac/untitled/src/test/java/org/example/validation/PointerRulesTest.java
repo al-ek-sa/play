@@ -9,7 +9,7 @@ public class PointerRulesTest {
 
     private static Message messageOf(Outcome<String> outcome) {
         return switch (outcome) {
-            case Outcome.Ok<String> ok -> null;
+            case Outcome.Ok<String> _ -> null;
             case Outcome.Error<String> error -> error.message();
         };
     }
