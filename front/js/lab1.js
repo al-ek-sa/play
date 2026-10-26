@@ -61,6 +61,7 @@ export function lab1(){
     const label = labels[field];
     if (!label) return;
     label.textContent = error ? `${field.toUpperCase()}: ${error}` : field.toUpperCase();
+    info.textContent = `Неверно введенные данные`
   }
 
   async function send(action){
