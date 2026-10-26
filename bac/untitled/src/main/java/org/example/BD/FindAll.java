@@ -12,10 +12,9 @@ import java.util.List;
 
 @Slf4j
 public class FindAll {
-    private final String SQL =
-            "SELECT x, y, r, hit, checked_at, execution_micros FROM point ORDER BY id DESC";
 
     public List<ResultValidation> findAll() throws SQLException {
+        String SQL = "SELECT x, y, r, hit, checked_at, execution_micros FROM point ORDER BY id DESC";
         try (Connection conn = new ConnectBD().getConnection();
              PreparedStatement ps = conn.prepareStatement(SQL);
              ResultSet rs = ps.executeQuery()) {

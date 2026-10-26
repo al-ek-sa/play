@@ -43,7 +43,6 @@ public record FastCGIServer(Handler handler) {
 
     private static Request toRequest(FCGIRequest raw) throws IOException {
         Properties params = raw.params;
-        System.err.println("456459778796");
         return new Request(
                 params.getProperty("REQUEST_URI", ""),
                 params.getProperty("REQUEST_METHOD", "POST"),

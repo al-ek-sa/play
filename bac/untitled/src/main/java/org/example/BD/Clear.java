@@ -9,11 +9,11 @@ import java.sql.Statement;
 
 @Slf4j
 public class Clear {
-    private final String sql = "TRUNCATE TABLE point";
 
     public void clear() throws SQLException {
         try(Connection connection = new ConnectBD().getConnection();
         Statement st = connection.createStatement()){
+            String sql = "TRUNCATE TABLE point";
             st.executeUpdate(sql);
             log.debug("table point truncated");
         }
