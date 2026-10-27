@@ -52,6 +52,7 @@ public record FastCGIServer(Handler handler) {
 
     private static String body(FCGIRequest raw) throws IOException {
         int length = contentLength(raw.params);
+        System.err.println("12345678901234567890");
         if (length <= 0) {
             return "";
         }

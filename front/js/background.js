@@ -1,6 +1,7 @@
 export function ld(){
   document.body.classList = localStorage.getItem("LD");
   document.getElementById('color').addEventListener('click', event => {
+    event.preventDefault();
     const isDark= document.body.classList.toggle("dark");
     localStorage.setItem("LD", isDark ? "dark" : "light");
   });
@@ -13,6 +14,7 @@ export function color(){
   document.body.dataset.theme = localStorage.getItem("COLOR");
 
   but.addEventListener('click', event => {
+    event.preventDefault();
     pl.hidden = !pl.hidden;
     localStorage.setItem("PL", pl.hidden);
   });

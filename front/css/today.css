@@ -160,7 +160,7 @@
   flex-wrap: wrap;
   gap: 6px 12px;
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: 14px;
 }
 
 .task__meta-item {
@@ -275,7 +275,7 @@ progress::-webkit-progress-value {
 
 .continue__caption {
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -286,7 +286,7 @@ progress::-webkit-progress-value {
 
 .continue__lesson {
   color: var(--muted);
-  font-size: 13.5px;
+  font-size: 14px;
 }
 
 .continue__info {
@@ -366,7 +366,7 @@ progress::-webkit-progress-value {
   border-radius: 999px;
   background: var(--friend-soft);
   color: var(--friend-ink);
-  font-size: 13.5px;
+  font-size: 14px;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -374,7 +374,7 @@ progress::-webkit-progress-value {
 .greeting__date {
   margin-bottom: 6px;
   color: var(--muted);
-  font-size: 14.5px;
+  font-size: 15px;
 }
 
 .greeting__title {
