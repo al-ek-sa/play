@@ -5,7 +5,12 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth.iml" filepath="$PROJECT_DIR$/.idea/modules/auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth.main.iml" filepath="$PROJECT_DIR$/.idea/modules/auth.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/auth.test.iml" filepath="$PROJECT_DIR$/.idea/modules/auth.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/notification.iml" filepath="$PROJECT_DIR$/.idea/modules/notification.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notification/.idea/modules/notification/notification.main.iml" filepath="$PROJECT_DIR$/notification/.idea/modules/notification/notification.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notification/.idea/modules/notification/notification.notification-build.iml" filepath="$PROJECT_DIR$/notification/.idea/modules/notification/notification.notification-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notification/.idea/modules/notification/notification.test.iml" filepath="$PROJECT_DIR$/notification/.idea/modules/notification/notification.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/play.iml" filepath="$PROJECT_DIR$/.idea/play.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notification/task/task.iml" filepath="$PROJECT_DIR$/notification/task/task.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/untitled.iml" filepath="$PROJECT_DIR$/.idea/modules/untitled.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/untitled.test.iml" filepath="$PROJECT_DIR$/.idea/modules/untitled.test.iml" />
     </modules>
