@@ -1,0 +1,5 @@
+[debug] Created transactional ClassFileManager with tempDir = /home/xfiles/itmo/3sem/play/notification/target/out/jvm/scala-3.8.4/notification-build/classes.bak
+[debug] About to delete class files:
+[debug] We backup class files:
+[debug] Created transactional ClassFileManager with tempDir = /home/xfiles/itmo/3sem/play/notification/target/out/jvm/scala-3.8.4/notification-build/classes.bak
+[debug] Removing the temporary directory used for backing up class files: /home/xfiles/itmo/3sem/play/notification/target/out/jvm/scala-3.8.4/notification-build/classes.bak
