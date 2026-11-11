@@ -1,12 +1,7 @@
 .idea/
-.env
-db.properties
-db.docker.properties
-logs/
-build/
-/nodejs
-/infra
-/bac/untitled/node_modules
+*.iml
+*.ipr
+*.iws
 
 node_modules/
 npm-debug.log*
@@ -14,6 +9,7 @@ yarn-debug.log*
 yarn-error.log*
 
 .gradle/
+build/
 !gradle/wrapper/gradle-wrapper.jar
 !gradle/wrapper/gradle-wrapper.properties
 
@@ -24,13 +20,13 @@ project/project/
 *.class
 *.tasty
 
-*.iml
-*.ipr
-*.iws
-out/
-*.jar
+.env
+db.properties
+db.docker.properties
+
+logs/
+/nodejs
+/infra
 
 .DS_Store
 Thumbs.db
-*.swp
-.vscode/
