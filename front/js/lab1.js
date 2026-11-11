@@ -34,7 +34,7 @@ export function lab1(){
 
   const lv1 = canvas("canvas");
 
-  let last = null;
+  let last;
   try {
     last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
   } catch {
@@ -132,6 +132,7 @@ export function historyLv(){
   table.addEventListener("click", event =>{
     const row = event.target.closest("tr");
     if (!row || !row.dataset.x) return;
+    row.css("background", "red");
 
     const data = {
       x: Number(row.dataset.x),
@@ -142,5 +143,6 @@ export function historyLv(){
 
     const lv1 = canvas("canvas");
     lv1(data.x, data.y, data.r, data.ans);
+    setTimeout(() => row.css("background", ""), 400);
   });
 }

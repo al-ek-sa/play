@@ -34,7 +34,7 @@ public record QuarterCircle(Point center,
 
     public static QuarterCircle of(Point center, BigDecimal radius, long minAngle, long maxAngle){
         long width = Math.floorMod(maxAngle - minAngle, 360);
-        if(width == 0) width =360;
+        if(width == 0) width = 360;
         Point start = unit(minAngle);
         Point end = unit(maxAngle);
         BigDecimal cosSquared = BigDecimal.ONE.add(start.dot(end)).multiply(HALF);
