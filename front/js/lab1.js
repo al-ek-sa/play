@@ -1,35 +1,40 @@
 import {canvas} from './canvas.js';
 import {history} from './history.js';
+import {getData, clearHistory} from './net.js';
 
-function validateNumber(raw, min, max) {
+const ENDPOINT = "/fcgi-bin/check";
+
+function validateNumber(raw, min, max, minExclusive = false) {
   const text = String(raw ?? '');
   if (text.trim() === '') return 'Поле обязательно к заполнению';
   const n = Number(text.replace(",", "."));
   if (!Number.isFinite(n)) return 'Поле должно быть числовым';
   if (n > max) return `Поле должно быть не больше ${max}`;
+  if (minExclusive && n <= min) return `Поле должно быть больше ${min}`;
   if (n < min) return `Поле должно быть не меньше ${min}`;
   return '';
 }
 
 export function lab1(){
   const form = document.getElementById("form-lab1");
-  const but = document.getElementById("lv1");
   const hist = history();
   const clearButton = document.getElementById("history-clear");
   const nextPage = document.getElementById("history-next");
   const prevPage = document.getElementById("history-prev");
-  const labelR = document.getElementById("label-r");
-  const labelX = document.getElementById("label-x");
-  const labelY = document.getElementById("label-y");
+  const info = document.getElementById("server-info");
+  const labels = {
+    r: document.getElementById("label-r"),
+    x: document.getElementById("label-x"),
+    y: document.getElementById("label-y")
+  };
 
   if(!form){
-    console.warn("форма не найдена");
     return;
   }
 
   const lv1 = canvas("canvas");
 
-  let last = null;
+  let last;
   try {
     last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
   } catch {
@@ -41,61 +46,82 @@ export function lab1(){
     lv1(undefined, undefined, 15, true);
   }
 
-  if (clearButton) clearButton.addEventListener("click", () => hist.clear());
+  function showInfo(data){
+    if (!info || !data) return;
+    const time = new Date(data.currentTime).toLocaleTimeString("ru-RU");
+    info.textContent = `Время сервера: ${time} · выполнение: ${data.executionMicros} мкс`;
+  }
+
+  function showError(message){
+    if (info) info.textContent = message;
+    else console.error(message);
+  }
+
+  function showFieldError(field, error){
+    const label = labels[field];
+    if (!label) return;
+    label.textContent = error ? `${field.toUpperCase()}: ${error}` : field.toUpperCase();
+    info.textContent = `Неверно введенные данные`
+  }
+
+  async function send(action){
+    try {
+      return await action();
+    } catch (e) {
+      showError(`Сервер недоступен: ${e.message}`);
+      return null;
+    }
+  }
+
+  send(() => getData(ENDPOINT)).then(res => {
+    if (!res) return;
+    hist.set(res.data.history);
+    showInfo(res.data);
+  });
+
+  if (clearButton) clearButton.addEventListener("click", async () => {
+    const data = await send(() => clearHistory(ENDPOINT));
+    if (!data) return;
+    hist.set(data.history);
+    showInfo(data);
+  });
   if (nextPage) nextPage.addEventListener("click", () => hist.next());
   if (prevPage) prevPage.addEventListener("click", () => hist.prev());
 
   historyLv();
 
-  form.addEventListener("submit", event => {
+  form.addEventListener("submit", async event => {
     event.preventDefault();
     const formData = new FormData(form);
     const object = Object.fromEntries(formData);
 
-    const errR = validateNumber(object['r'], 0, 100);
-    const errX = validateNumber(object['x'], -100, 100);
-    const errY = validateNumber(object['y'], -100, 100);
+    const errors = {
+      r: validateNumber(object['r'], 0, 100, true),
+      x: validateNumber(object['x'], -100, 100),
+      y: validateNumber(object['y'], -100, 100)
+    };
 
-    if (errR) labelR.textContent = `R: ${errR}`;
-    if (errX) labelX.textContent = `X: ${errX}`;
-    if (errY) labelY.textContent = `Y: ${errY}`;
-
-    if (!errR) labelR.textContent = `R`;
-    if (!errX) labelX.textContent = `X`;
-    if (!errY) labelY.textContent = `Y`;
-
-    if (errR || errX || errY) return;
-
-    const r = Number(object['r'].replace(",", "."));
-    const x = Number(object['x'].replace(",", "."));
-    const y = Number(object['y'].replace(",", "."));
-
-
-    const lv1 = canvas("canvas");
-
-    let isCorrect = false;
-
-    if(x >= 0 && y >= 0){
-      if(y <= r && x <= r / 2){
-        isCorrect = true;
-      }
+    for (const field of ['r', 'x', 'y']) {
+      showFieldError(field, errors[field]);
     }
 
-    if(x >= 0 && y <= 0){
-      if(y >= x - r / 2){
-        isCorrect = true;
+    if (errors.r || errors.x || errors.y) return;
+
+    const res = await send(() => getData(ENDPOINT, { x: object['x'], y: object['y'], r: object['r'] }));
+    if (!res) return;
+
+    showInfo(res.data);
+
+    if (!res.ok) {
+      for (const error of res.data.errors ?? []) {
+        showFieldError(error.field, error.message);
       }
+      return;
     }
 
-    if(x <= 0 && y <= 0){
-      if(x * x + y * y <= (r / 2) * (r / 2)){
-        isCorrect = true;
-      }
-    }
-
-    lv1(x, y, r, isCorrect);
-
-    hist.add({ x, y, r, ans: isCorrect, time: new Date().toISOString() });
+    const result = res.data.result;
+    lv1(Number(result.x), Number(result.y), Number(result.r), result.hit);
+    hist.set(res.data.history);
   });
 }
 
@@ -106,6 +132,7 @@ export function historyLv(){
   table.addEventListener("click", event =>{
     const row = event.target.closest("tr");
     if (!row || !row.dataset.x) return;
+    row.css("background", "red");
 
     const data = {
       x: Number(row.dataset.x),
@@ -116,5 +143,6 @@ export function historyLv(){
 
     const lv1 = canvas("canvas");
     lv1(data.x, data.y, data.r, data.ans);
+    setTimeout(() => row.css("background", ""), 400);
   });
 }

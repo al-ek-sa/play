@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:18
+    container_name: lab2-postgres
+    environment:
+      POSTGRES_DB: lab2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - lab2_data:/var/lib/postgresql
+      - ./infra/lab2-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    ports:
+      - "127.0.0.1:5434:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lab2"]
+      interval: 5s
+      retries: 10
+
+  backend:
+    build: ./bac/untitled
+    container_name: lab2-backend
+    volumes:
+      - ./bac/untitled/db.docker.properties:/app/db.properties:ro
+      - ./bac/untitled/logs:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+
+  front:
+    build: .
+    container_name: lab2-front
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  lab2_data:
