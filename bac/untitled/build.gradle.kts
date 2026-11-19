@@ -1,5 +1,6 @@
 plugins {
     id("java")
+    id("war")
 }
 
 group = "org.example"
@@ -11,33 +12,26 @@ repositories {
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(25)
+        languageVersion = JavaLanguageVersion.of(21)
     }
 }
 
 dependencies {
-    testImplementation(platform("org.junit:junit-bom:6.0.0"))
-    testImplementation("org.junit.jupiter:junit-jupiter")
-    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+    compileOnly("jakarta.platform:jakarta.jakartaee-api:10.0.0")
     compileOnly("org.projectlombok:lombok:1.18.48")
     annotationProcessor("org.projectlombok:lombok:1.18.48")
-    implementation(files("fastcgi-lib.jar"))
     implementation("com.fasterxml.jackson.core:jackson-databind:2.18.2")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.18.2")
     implementation("org.slf4j:slf4j-api:2.0.16")
-    implementation("ch.qos.logback:logback-classic:1.5.12")
-    implementation("org.postgresql:postgresql:42.7.4")
-}
-
-tasks.jar {
-    manifest {
-        attributes["Main-Class"] = "org.example.Main"
-    }
-    from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    exclude("META-INF/*.SF", "META-INF/*.DSA", "META-INF/*.RSA")
+    testImplementation(platform("org.junit:junit-bom:6.0.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
 tasks.test {
     useJUnitPlatform()
+}
+
+tasks.war {
+    archiveFileName = "lab3.war"
 }

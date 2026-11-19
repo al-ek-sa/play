@@ -1,0 +1,37 @@
+@media (max-width: 1000px) {
+    .page {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 120px 30px 40px;
+        justify-items: center;
+    }
+
+    .header {
+        left: 30px;
+        top: 30px;
+    }
+
+    .welcome {
+        text-align: center;
+        align-items: center;
+        padding-top: 0;
+    }
+
+    .welcome h1 {
+        font-size: 35px;
+    }
+
+    .welcome p {
+        font-size: 18px;
+    }
+
+    .welcome__illustration {
+        max-width: 400px;
+        margin-top: 15px;
+    }
+
+    .login-card {
+        max-width: 520px;
+        padding: 40px;
+    }
+}
