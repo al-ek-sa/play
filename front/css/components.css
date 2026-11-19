@@ -159,7 +159,7 @@
   border-radius: 8px;
   background: var(--friend);
   color: #FFFFFF;
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 800;
   line-height: 1;
 }
@@ -203,7 +203,7 @@
 
 .sidebar__caption {
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 13px;
   font-weight: 700;
 }
 
@@ -302,13 +302,13 @@ body.dark .theme-toggle__moon {
 }
 
 .user-card__name {
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 700;
 }
 
 .user-card__grade {
   color: var(--muted);
-  font-size: 12.5px;
+  font-size: 13px;
 }
 
 .palette {

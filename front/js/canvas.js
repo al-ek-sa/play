@@ -11,38 +11,34 @@ try {
     offsetX = offset.x;
     offsetY = offset.y;
   }
-
 } catch {
   scale = 1;
   offsetX = 0;
   offsetY = 0;
 }
 
+function color(name) {
+  return getComputedStyle(document.body).getPropertyValue(name).trim();
+}
 
-function redraw(name){
-  const lv1 = canvas(name);
-
-  let last = null;
+function lastVersion() {
   try {
-    last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
+    return JSON.parse(sessionStorage.getItem("LAST_VERSION"));
   } catch {
-    last = null;
-  }
-  if (last && Number.isFinite(last.r)) {
-    lv1(last.x, last.y, last.r, last.ans);
+    return null;
   }
 }
 
 export function canvas(name) {
   const canvas = document.getElementById(`${name}`);
   const ctx = canvas.getContext("2d");
-  const width = canvas.width;
-  const step = width / 40 * scale;
-  const max = LIMIT * step;
-  offsetX = Math.min(max, Math.max(-max, offsetX));
-  offsetY = Math.min(max, Math.max(-max, offsetY));
-  const cx = width / 2 + offsetX;
-  const cy = width / 2 + offsetY;
+
+  function redraw() {
+    const last = lastVersion();
+    if (last && Number.isFinite(last.r)) {
+      lv1(last.x, last.y, last.r, last.ans);
+    }
+  }
 
   if (!canvas.dataset.zoom) {
     canvas.dataset.zoom = "on";
@@ -55,7 +51,7 @@ export function canvas(name) {
       } catch {
         console.warn("sessionStorage недоступен");
       }
-      redraw(name);
+      redraw();
     }, { passive: false });
 
     let dragging = false;
@@ -79,7 +75,7 @@ export function canvas(name) {
       offsetY += (event.clientY - lastY) * k;
       lastX = event.clientX;
       lastY = event.clientY;
-      redraw(name);
+      redraw();
     });
 
     function stop(){
@@ -97,94 +93,138 @@ export function canvas(name) {
     canvas.addEventListener("pointercancel", stop);
   }
 
-  ctx.clearRect(0, 0, width, canvas.height);
-  ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
-
-  ctx.beginPath();
-  ctx.moveTo(0, cy);
-  ctx.lineTo(width, cy);
-  ctx.moveTo(width - 6, cy - 6);
-  ctx.lineTo(width, cy);
-  ctx.lineTo(width - 6, cy + 6);
-  ctx.moveTo(cx, 0);
-  ctx.lineTo(cx, width);
-  ctx.moveTo(cx - 6, 6);
-  ctx.lineTo(cx, 0);
-  ctx.lineTo(cx + 6, 6);
-  ctx.stroke();
-
-  ctx.font = "14px sans-serif";
-  ctx.textAlign = "right";
-  ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
-  ctx.fillText("x", width - 4, cy + 19);
-  ctx.fillText("y", cx - 10,  15);
-
-  ctx.globalAlpha = 0.1;
-
-  const startX = cx - Math.floor(cx / step) * step;
-  const startY = cy - Math.floor(cy / step) * step;
-  ctx.beginPath();
-  for(let i = startX; i <= width; i+= step){
-    ctx.moveTo(i, 0);
-    ctx.lineTo(i, width);
-  }
-  for(let i = startY; i <= width; i+= step){
-    ctx.moveTo(0, i);
-    ctx.lineTo(width, i);
-  }
-  ctx.stroke();
-  ctx.globalAlpha = 1;
-
-  function area(r){
-    const full = r * (step);
-    const half = (r/2) * step;
-
-    ctx.beginPath();
-    ctx.rect(cx, cy - full, half, full);
-
-    ctx.moveTo(cx, cy);
-    ctx.lineTo(cx + half, cy);
-    ctx.lineTo(cx, cy + half);
-    ctx.closePath();
-
-    ctx.moveTo(cx, cy);
-    ctx.arc(cx, cy, half, Math.PI / 2, Math.PI);
-    ctx.closePath();
-
-  }
-
   function lv1(x, y, r, isCorrect) {
-    sessionStorage.setItem("LAST_VERSION", JSON.stringify({x: x, y: y, r: r, ans: isCorrect}));
-    ctx.strokeStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
-    ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--text").trim();
+    const width = canvas.width;
+    const step = width / 40 * scale;
+    const max = LIMIT * step;
+    offsetX = Math.min(max, Math.max(-max, offsetX));
+    offsetY = Math.min(max, Math.max(-max, offsetY));
+    const cx = width / 2 + offsetX;
+    const cy = width / 2 + offsetY;
 
-    area(r);
-    ctx.globalAlpha = 0.2;
-    ctx.fill();
+    try {
+      sessionStorage.setItem("LAST_VERSION", JSON.stringify({x: x, y: y, r: r, ans: isCorrect}));
+    } catch {
+      console.warn("sessionStorage недоступен");
+    }
+
+    ctx.clearRect(0, 0, width, canvas.height);
+    ctx.lineWidth = 1;
+    ctx.setLineDash([]);
     ctx.globalAlpha = 1;
-    ctx.stroke();
+    ctx.strokeStyle = color("--text");
+    ctx.fillStyle = color("--text");
 
-    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.moveTo(cx - 6, cy - step * r);
-    ctx.lineTo(cx + 6, cy - step * r);
-
-    ctx.moveTo(cx - 6, cy + step * (r/2));
-    ctx.lineTo(cx + 6, cy + step * (r/2));
-
-    ctx.moveTo(cx - step * (r/2), cy - 6);
-    ctx.lineTo(cx - step * (r/2), cy + 6);
-
-    ctx.moveTo(cx + step * (r/2), cy - 6);
-    ctx.lineTo(cx + step * (r/2), cy + 6);
+    ctx.moveTo(0, cy);
+    ctx.lineTo(width, cy);
+    ctx.moveTo(width - 6, cy - 6);
+    ctx.lineTo(width, cy);
+    ctx.lineTo(width - 6, cy + 6);
+    ctx.moveTo(cx, 0);
+    ctx.lineTo(cx, width);
+    ctx.moveTo(cx - 6, 6);
+    ctx.lineTo(cx, 0);
+    ctx.lineTo(cx + 6, 6);
     ctx.stroke();
 
     ctx.font = "14px sans-serif";
-    ctx.textAlign = "center";
-    ctx.fillText("R/2", cx + step * (r/2), cy  + 20);
-    ctx.fillText("R/2", cx - step * (r/2), cy  + 20);
-    ctx.fillText("R/2", cx - 15, cy  + step * (r/2) + 10);
-    ctx.fillText("R", cx - 15, cy  - step * r + 10);
+    ctx.textAlign = "right";
+    ctx.fillText("x", width - 4, cy + 19);
+    ctx.fillText("y", cx - 10, 15);
+
+    ctx.globalAlpha = 0.1;
+    const startX = cx - Math.floor(cx / step) * step;
+    const startY = cy - Math.floor(cy / step) * step;
+    ctx.beginPath();
+    for(let i = startX; i <= width; i += step){
+      ctx.moveTo(i, 0);
+      ctx.lineTo(i, width);
+    }
+    for(let i = startY; i <= width; i += step){
+      ctx.moveTo(0, i);
+      ctx.lineTo(width, i);
+    }
+    ctx.stroke();
+    ctx.globalAlpha = 1;
+
+    function lab1Area(){
+      const full = r * step;
+      const half = (r / 2) * step;
+
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + half, cy);
+      ctx.lineTo(cx, cy - full);
+      ctx.closePath();
+
+      ctx.rect(cx - half, cy, half, full);
+
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, full, 0, Math.PI / 2);
+      ctx.closePath();
+    }
+
+    function lab2Area(){
+      const full = r * step;
+      const half = (r / 2) * step;
+
+      ctx.beginPath();
+      ctx.rect(cx, cy - full, half, full);
+
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(cx + half, cy);
+      ctx.lineTo(cx, cy + half);
+      ctx.closePath();
+
+      ctx.moveTo(cx, cy);
+      ctx.arc(cx, cy, half, Math.PI / 2, Math.PI);
+      ctx.closePath();
+    }
+
+    function fillArea(draw, alpha, dash){
+      draw();
+      ctx.globalAlpha = alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.setLineDash(dash);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function ticks(){
+      const marks = [
+        { value: r, text: "R" },
+        { value: r / 2, text: "R/2" },
+        { value: -r / 2, text: "-R/2" },
+        { value: -r, text: "-R" }
+      ];
+
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      for (const mark of marks) {
+        const shift = mark.value * step;
+        ctx.moveTo(cx + shift, cy - 6);
+        ctx.lineTo(cx + shift, cy + 6);
+        ctx.moveTo(cx - 6, cy - shift);
+        ctx.lineTo(cx + 6, cy - shift);
+      }
+      ctx.stroke();
+      ctx.lineWidth = 1;
+
+      ctx.font = "14px sans-serif";
+      for (const mark of marks) {
+        const shift = mark.value * step;
+        ctx.textAlign = "center";
+        ctx.fillText(mark.text, cx + shift, cy + 20);
+        ctx.textAlign = "right";
+        ctx.fillText(mark.text, cx - 10, cy - shift + 5);
+      }
+    }
+
+    fillArea(lab1Area, 0.12, [5, 4]);
+    fillArea(lab2Area, 0.2, []);
+    ticks();
 
     if (x !== undefined && y !== undefined) {
       if(isCorrect) {
@@ -198,7 +238,6 @@ export function canvas(name) {
       ctx.fill();
     }
   }
-
 
   return lv1;
 }
