@@ -1,4 +1,8 @@
 package org.example.servlet;
 
-public class AuthServlet {
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
+
+@WebServlet("")
+public class AuthServlet extends HttpServlet {
 }
