@@ -26,24 +26,44 @@ public class AreaVersionEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name = "id")
     private UUID id;
 
-    @Column(nullable = false, unique = true)
+    @Column(name = "version", nullable = false, unique = true)
     private int version;
 
-    @Column(nullable = false, precision = 10, scale = 3)
+    @Column(
+            name = "offset_x",
+            nullable = false,
+            precision = 10,
+            scale = 3
+    )
     private BigDecimal offsetX;
 
-    @Column(nullable = false, precision = 10, scale = 3)
+    @Column(
+            name = "offset_y",
+            nullable = false,
+            precision = 10,
+            scale = 3
+    )
     private BigDecimal offsetY;
 
-    @Column(nullable = false, precision = 10, scale = 3)
+    @Column(
+            name = "rotation",
+            nullable = false,
+            precision = 10,
+            scale = 3
+    )
     private BigDecimal rotation;
 
-    @Column(nullable = false)
+    @Column(name = "active", nullable = false)
     private boolean active;
 
-    @Column(nullable = false, updatable = false)
+    @Column(
+            name = "created_at",
+            nullable = false,
+            updatable = false
+    )
     private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)

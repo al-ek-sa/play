@@ -39,14 +39,6 @@ export function auth() {
   offsetXInput.addEventListener("input", updateCanvas);
   rotationInput.addEventListener("input", updateCanvas);
 
-  form.addEventListener("submit", event => {
-    event.preventDefault();
-
-    const offsetY = Number(offsetYInput.value);
-    const offsetX = Number(offsetXInput.value);
-    const rotation = Number(rotationInput.value);
-  });
-
   form.addEventListener("submit", async event => {
     event.preventDefault();
 
@@ -72,7 +64,5 @@ export function auth() {
       alert(result.error);
       return;
     }
-
-    alert(result.message);
   });
 }
