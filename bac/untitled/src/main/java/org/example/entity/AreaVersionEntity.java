@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
@@ -24,14 +25,17 @@ import java.util.UUID;
 public class AreaVersionEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false, unique = true)
     private int version;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
-    private String configuration;
+    @Column(nullable = false, precision = 10, scale = 3)
+    private BigDecimal offsetX;
+
+    @Column(nullable = false, precision = 10, scale = 3)
+    private BigDecimal offsetY;
 
     @Column(nullable = false)
     private boolean active;
@@ -45,11 +49,13 @@ public class AreaVersionEntity {
 
     public AreaVersionEntity(
             int version,
-            String configuration,
+            BigDecimal offsetX,
+            BigDecimal offsetY,
             UserEntity createdBy
     ) {
         this.version = version;
-        this.configuration = configuration;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
         this.createdBy = createdBy;
         this.active = false;
         this.createdAt = Instant.now();
