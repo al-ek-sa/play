@@ -3,136 +3,26 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MathQuest — Вход</title>
-
-  <link rel="stylesheet" href="../css/entrance/reset.css">
-  <link rel="stylesheet" href="../css/entrance/variables.css">
-  <link rel="stylesheet" href="../css/entrance/layout.css">
-  <link rel="stylesheet" href="../css/entrance/components.css">
-  <link rel="stylesheet" href="../css/entrance/login.css">
-  <link rel="stylesheet" href="../css/entrance/responsive.css">
+  <title>Вход</title>
+  <link rel="stylesheet" href="../css/login.css">
 </head>
-
 <body>
 
-<svg xmlns="http://www.w3.org/2000/svg" class="svg-sprite">
-  <symbol id="i-logo" viewBox="0 0 24 24">
-    <path d="M12 2.8 20 7.4v9.2L12 21.2 4 16.6V7.4z" class="icon-shape"/>
-    <path d="M4 7.4 12 12l8-4.6M12 12v9.2" class="icon-shape"/>
-  </symbol>
+<main>
+  <form>
+    <h1>Вход</h1>
 
-  <symbol id="i-user" viewBox="0 0 24 24">
-    <circle cx="12" cy="8" r="4"/>
-    <path d="M4 21c0-4.2 3.5-7 8-7s8 2.8 8 7"/>
-  </symbol>
+    <label for="username">Логин</label>
+    <input type="text" id="username" name="username" required>
 
-  <symbol id="i-lock" viewBox="0 0 24 24">
-    <rect x="4" y="10" width="16" height="11" rx="2"/>
-    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
-    <circle cx="12" cy="15.5" r="1.2"/>
-    <path d="M12 16.7v1.5"/>
-  </symbol>
+    <label for="password">Пароль</label>
+    <input type="password" id="password" name="password" required>
 
-  <symbol id="i-eye" viewBox="0 0 24 24">
-    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/>
-    <circle cx="12" cy="12" r="3"/>
-  </symbol>
+    <button type="submit">Войти</button>
 
-  <symbol id="math-illustration" viewBox="0 0 700 550">
-    <path d="M80 330 C30 240 100 160 220 180 C310 80 450 140 510 240 C600 340 480 450 340 430 C200 470 90 430 80 330Z" fill="#E2F0E5"/>
+    <p>Нет аккаунта? <a href="register.html">Зарегистрироваться</a></p>
+  </form>
+</main>
 
-    <g fill="#8DC5A0">
-      <path d="M150 360 C110 280 80 230 95 190 C140 210 160 280 150 360Z"/>
-      <path d="M180 300 C170 240 200 190 230 180 C235 235 215 280 180 300Z"/>
-      <path d="M130 300 C80 280 75 245 95 225 C130 245 145 275 130 300Z"/>
-      <path d="M180 365 C140 335 135 300 155 280 C190 300 200 335 180 365Z"/>
-    </g>
-
-    <path d="M100 400 Q130 380 190 390 L470 370 Q500 375 500 410 L490 445 Q470 460 440 460 L150 475 Q110 470 100 445Z" fill="#65A77C"/>
-    <path d="M110 410 Q140 395 190 400 L465 382 Q485 385 485 410 L480 430 Q460 445 435 445 L155 460 Q120 455 110 440Z" fill="#FFFFFF"/>
-
-    <path d="M140 340 Q170 320 210 330 L440 310 Q465 310 470 340 L460 375 Q445 390 420 390 L190 410 Q155 405 140 380Z" fill="#247348"/>
-    <path d="M150 350 Q180 335 215 340 L435 320 Q450 325 455 345 L445 365 Q430 380 415 380 L195 400 Q165 395 150 375Z" fill="#FFFFFF"/>
-
-    <path d="M155 290 Q180 275 215 285 L435 265 Q460 270 465 295 L455 330 Q440 345 415 345 L195 365 Q160 360 150 340Z" fill="#155C35"/>
-    <path d="M165 300 Q190 288 220 295 L430 278 Q450 280 455 300 L445 320 Q430 335 410 335 L200 355 Q175 350 165 330Z" fill="#FFFFFF"/>
-
-    <g transform="rotate(-8 320 250)">
-      <rect x="235" y="175" width="170" height="170" rx="28" fill="#F7FBF7" stroke="#FFFFFF" stroke-width="6"/>
-      <text x="320" y="300" text-anchor="middle" font-size="120" font-family="Georgia, serif" font-weight="bold" fill="#174D31">π</text>
-    </g>
-
-    <g stroke="#1E6841" stroke-width="12" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M440 220 L375 440"/>
-      <path d="M440 220 L520 440"/>
-    </g>
-
-    <circle cx="440" cy="220" r="17" fill="#247348"/>
-    <circle cx="440" cy="220" r="7" fill="#D7EADD"/>
-  </symbol>
-</svg>
-
-<div class="page">
-  <header class="header">
-    <a href="/" class="logo">
-            <span class="logo__icon">
-                <svg><use href="#i-logo"></use></svg>
-            </span>
-      <span class="logo__name">MathQuest</span>
-    </a>
-  </header>
-
-  <section class="welcome">
-    <div class="welcome__content">
-      <h1>Добро пожаловать<br>в MathQuest!</h1>
-      <p>Решай задачи, изучай темы и отслеживаивай свой прогресс</p>
-    </div>
-
-    <div class="welcome__illustration">
-      <svg><use href="#math-illustration"></use></svg>
-    </div>
-  </section>
-
-  <main class="login">
-    <section class="login-card">
-      <h2 class="login-card__title">Вход в аккаунт</h2>
-
-      <form class="login-form" action="/login" method="post">
-        <div class="form-field">
-          <label for="username">Логин</label>
-          <div class="input-wrapper">
-            <svg class="input-wrapper__icon"><use href="#i-user"></use></svg>
-            <input type="text" id="username" name="username" placeholder="Введите логин" autocomplete="username" required>
-          </div>
-        </div>
-
-        <div class="form-field">
-          <label for="password">Пароль</label>
-          <div class="input-wrapper">
-            <svg class="input-wrapper__icon"><use href="#i-lock"></use></svg>
-            <input type="password" id="password" name="password" placeholder="Введите пароль" autocomplete="current-password" required>
-            <button type="button" class="password-toggle" aria-label="Показать пароль">
-              <svg><use href="#i-eye"></use></svg>
-            </button>
-          </div>
-        </div>
-
-        <div class="login-form__options">
-          <label class="remember">
-            <input type="checkbox" name="remember">
-            <span>Запомнить меня</span>
-          </label>
-          <a href="#" class="forgot-password">Забыли пароль?</a>
-        </div>
-
-        <button type="submit" class="button button--primary">Войти</button>
-      </form>
-
-      <div class="divider"><span>Ещё нет аккаунта?</span></div>
-
-      <a href="/register" class="button button--secondary">Зарегистрироваться</a>
-    </section>
-  </main>
-</div>
 </body>
 </html>
