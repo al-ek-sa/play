@@ -46,4 +46,33 @@ export function auth() {
     const offsetX = Number(offsetXInput.value);
     const rotation = Number(rotationInput.value);
   });
+
+  form.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const offsetY = Number(offsetYInput.value);
+    const offsetX = Number(offsetXInput.value);
+    const rotation = Number(rotationInput.value);
+
+    const response = await fetch("/api/admin/area", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        offsetX,
+        offsetY,
+        rotation
+      })
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      alert(result.error);
+      return;
+    }
+
+    alert(result.message);
+  });
 }
