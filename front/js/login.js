@@ -11,7 +11,7 @@ export function login() {
     const formData = new FormData(loginForm);
     const data = Object.fromEntries(formData);
 
-    const username = data.login.trim();
+    const username = data.username.trim();
     const password = data.password;
 
     if (!username || !password) {
@@ -20,14 +20,14 @@ export function login() {
     }
 
     try {
-      const response = await fetch("/api/login", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          login: username,
-          password: password
+          username,
+          password
         })
       });
 

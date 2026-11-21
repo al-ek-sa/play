@@ -11,7 +11,7 @@ export function register() {
     const formData = new FormData(registerForm);
     const data = Object.fromEntries(formData);
 
-    const username = data.login.trim();
+    const username = data.username.trim();
     const password = data.password;
     const confirmPassword = data.confirmPassword;
 
@@ -26,14 +26,14 @@ export function register() {
     }
 
     try {
-      const response = await fetch("/api/register", {
+      const response = await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          username: username,
-          password: password
+          username,
+          password
         })
       });
 
@@ -44,8 +44,11 @@ export function register() {
         return;
       }
 
-      alert("Регистрация успешна!");
-      window.location.href = "/login.html";
+      if (result.role === "ADMIN") {
+        window.location.href = "/admin.html";
+      } else if (result.role === "USER") {
+        window.location.href = "/main.html";
+      }
 
     } catch (error) {
       console.error(error);
