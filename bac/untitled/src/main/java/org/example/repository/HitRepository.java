@@ -6,6 +6,7 @@ import org.example.entity.HitEntity;
 import org.example.entity.UserEntity;
 
 import java.util.List;
+import java.util.UUID;
 
 public class HitRepository {
 
@@ -47,7 +48,7 @@ public class HitRepository {
     }
 
     public List<HitEntity> findByUser(
-            UserEntity user,
+            UUID user,
             int offset,
             int limit
     ) {
