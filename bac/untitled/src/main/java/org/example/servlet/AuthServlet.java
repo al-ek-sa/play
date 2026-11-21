@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+
 import org.example.entity.UserEntity;
 import org.example.service.AuthService;
 
@@ -143,8 +144,9 @@ public class AuthServlet extends HttpServlet {
         session.setAttribute("role", user.getRole());
     }
 
-    private JsonObject readJson(HttpServletRequest request)
-            throws IOException {
+    private JsonObject readJson(
+            HttpServletRequest request
+    ) throws IOException {
 
         try (JsonReader reader = Json.createReader(request.getReader())) {
             return reader.readObject();

@@ -4,28 +4,48 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Регистрация</title>
-  <link rel="stylesheet" href="../css/login.css">
+  <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 
 <main>
-  <form id="confirmPassword">
+  <form id="register">
     <h1>Регистрация</h1>
 
     <label for="username">Логин</label>
-    <input type="text" id="username" name="username" required>
+    <input
+      type="text"
+      id="username"
+      name="username"
+      required
+    >
 
     <label for="password">Пароль</label>
-    <input type="password" id="password" name="password" required>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      required
+    >
 
     <label for="confirmPassword">Повторите пароль</label>
-    <input type="password" id="confirmPassword" name="confirmPassword" required>
+    <input
+      type="password"
+      id="confirmPassword"
+      name="confirmPassword"
+      required
+    >
 
     <button type="submit">Зарегистрироваться</button>
 
-    <p>Уже есть аккаунт? <a href="login.html">Войти</a></p>
+    <p>
+      Уже есть аккаунт?
+      <a href="/html/login.html">Войти</a>
+    </p>
   </form>
 </main>
+
+<script type="module" src="/js/main.js"></script>
 
 </body>
 </html>

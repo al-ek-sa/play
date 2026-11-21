@@ -1,38 +1,40 @@
 services:
   db:
     image: postgres:18
-    container_name: lab2-postgres
+    container_name: lab3-postgres
     environment:
-      POSTGRES_DB: lab2
+      POSTGRES_DB: lab3
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: ${DB_PASSWORD}
     volumes:
-      - lab2_data:/var/lib/postgresql
-      - ./infra/lab2-init.sql:/docker-entrypoint-initdb.d/init.sql:ro
-    ports:
-      - "127.0.0.1:5434:5432"
+      - lab3_data:/var/lib/postgresql
+      - ./infra/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d lab2"]
+      test: ["CMD-SHELL", "pg_isready -U postgres -d lab3"]
       interval: 5s
+      timeout: 5s
       retries: 10
 
   backend:
-    build: ./bac/untitled
-    container_name: lab2-backend
-    volumes:
-      - ./bac/untitled/db.docker.properties:/app/db.properties:ro
-      - ./bac/untitled/logs:/app/logs
+    build:
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: lab3-backend
+    environment:
+      DB_PASSWORD: ${DB_PASSWORD}
     depends_on:
       db:
         condition: service_healthy
 
   front:
-    build: .
-    container_name: lab2-front
+    build:
+      context: .
+      dockerfile: Dockerfile.front
+    container_name: lab3-front
     ports:
       - "8080:80"
     depends_on:
       - backend
 
 volumes:
-  lab2_data:
+  lab3_data:

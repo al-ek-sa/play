@@ -1,12 +1,13 @@
 package org.example.repository;
 
-import jakarta.persistence.Entity;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.example.entity.UserEntity;
 
 import java.util.UUID;
 
+@ApplicationScoped
 public class UserRepository {
 
     @PersistenceContext
@@ -27,13 +28,14 @@ public class UserRepository {
                 )
                 .setParameter("username", userName)
                 .getResultStream()
-                .findFirst().orElse(null);
+                .findFirst()
+                .orElse(null);
     }
 
     public boolean existsByUserName(String userName) {
         return !entityManager.createQuery(
-                    "SELECT u.id FROM UserEntity u WHERE u.username = :username",
-                    UserEntity.class
+                        "SELECT u.id FROM UserEntity u WHERE u.username = :username",
+                        UUID.class
                 )
                 .setParameter("username", userName)
                 .getResultList()

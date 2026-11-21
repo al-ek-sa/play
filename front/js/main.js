@@ -1,37 +1,29 @@
-import {color, ld} from './background.js';
-import {lab} from './location.js';
-import {lab1, historyLv} from './lab1.js';
-import {auth} from './auth.js';
+import { color, ld } from './background.js';
+import { lab } from './location.js';
+import { lab1, historyLv } from './lab1.js';
+import { auth } from './auth.js';
+import { login } from './login.js';
+import { register } from './register.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   restore();
 
-  if(document.getElementById("lab1")){
-    lab();
-  }
-
-  if (document.getElementById("areaForm")) {
-    auth();
-  }
-
-  if(document.getElementById("color")) {
-    ld();
-  }
-
-  if(document.getElementById("palette-toggle") || document.getElementById("palette-panel")) {
-    color();
-  }
-
-  if(document.getElementById("form-lab1")){
-    lab1();
-  }
-
-  if (document.getElementById("history")){
-    historyLv();
-  }
-
+  initIfExists("login", login);
+  initIfExists("register", register);
+  initIfExists("confirmPassword", register);
+  initIfExists("lab1", lab);
+  initIfExists("areaForm", auth);
+  initIfExists("color", ld);
+  initIfExists("palette-toggle", color);
+  initIfExists("form-lab1", lab1);
+  initIfExists("history", historyLv);
 });
 
+function initIfExists(id, callback) {
+  if (document.getElementById(id)) {
+    callback();
+  }
+}
 
 function restore(){
   document.body.classList = localStorage.getItem("LD");

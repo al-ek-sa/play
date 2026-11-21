@@ -38,7 +38,9 @@ public class ControllerServlet extends HttpServlet {
                     return;
                 }
 
-                forward(request, response, AUTH_SERVLET);
+                String authPath = path.substring("/auth".length());
+
+                forward(request, response, AUTH_SERVLET + authPath);
             }
 
             case "/points", "/points/check", "/points/batch" -> {
@@ -47,7 +49,7 @@ public class ControllerServlet extends HttpServlet {
                     return;
                 }
 
-                forward(request, response, POINTS_SERVLET);
+                forward(request, response, POINTS_SERVLET + path);
             }
 
             case "/history/export" -> {

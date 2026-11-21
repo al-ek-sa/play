@@ -1,9 +1,11 @@
 package org.example.repository;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.example.entity.AreaVersionEntity;
 
+@ApplicationScoped
 public class AreaVersionRepository {
 
     @PersistenceContext

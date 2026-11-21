@@ -1,22 +1,24 @@
 export function login() {
-  const loginForm = document.getElementById("login");
+  const form = document.getElementById("login");
 
-  if (!loginForm) {
+  if (!form) {
     return;
   }
 
-  loginForm.addEventListener("submit", async event => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
 
-    const formData = new FormData(loginForm);
-    const data = Object.fromEntries(formData);
+    const username = form.elements.username.value.trim();
+    const password = form.elements.password.value;
 
-    const username = data.username.trim();
-    const password = data.password;
+    const button = form.querySelector('button[type="submit"]');
 
     if (!username || !password) {
-      alert("Заполните все поля");
       return;
+    }
+
+    if (button) {
+      button.disabled = true;
     }
 
     try {
@@ -34,19 +36,21 @@ export function login() {
       const result = await response.json();
 
       if (!response.ok) {
-        alert(result.message || "Неверный логин или пароль");
-        return;
+        throw new Error(result.message || "Ошибка авторизации");
       }
 
-      if (result.role === "ADMIN") {
-        window.location.href = "/admin.html";
-      } else if (result.role === "USER") {
-        window.location.href = "/main.html";
+      if (result.role === "USER") {
+        window.location.href = "/html/index.html";
+      } else if (result.role === "ADMIN") {
+        window.location.href = "/html/auth.html";
       }
 
     } catch (error) {
-      console.error(error);
-      alert("Ошибка соединения с сервером");
+      alert(error.message);
+    } finally {
+      if (button) {
+        button.disabled = false;
+      }
     }
   });
 }

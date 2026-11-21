@@ -45,9 +45,9 @@ export function register() {
       }
 
       if (result.role === "ADMIN") {
-        window.location.href = "/admin.html";
+        window.location.href = "/html/admin.html";
       } else if (result.role === "USER") {
-        window.location.href = "/main.html";
+        window.location.href = "/html/main.html";
       }
 
     } catch (error) {

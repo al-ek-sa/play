@@ -1,0 +1,33 @@
+FROM eclipse-temurin:25-jdk AS build
+
+WORKDIR /app
+
+COPY bac/untitled/ .
+
+RUN chmod +x gradlew
+RUN ./gradlew clean war --no-daemon
+
+FROM quay.io/wildfly/wildfly:latest
+
+USER root
+
+RUN mkdir -p /opt/jboss/wildfly/modules/org/postgresql/main
+
+ADD https://jdbc.postgresql.org/download/postgresql-42.7.8.jar \
+    /opt/jboss/wildfly/modules/org/postgresql/main/postgresql.jar
+
+COPY infra/wildfly/module.xml \
+    /opt/jboss/wildfly/modules/org/postgresql/main/module.xml
+
+COPY infra/wildfly/configure-wildfly.cli \
+    /opt/jboss/wildfly/configure-wildfly.cli
+
+RUN /opt/jboss/wildfly/bin/jboss-cli.sh \
+    --file=/opt/jboss/wildfly/configure-wildfly.cli
+
+COPY --from=build /app/build/libs/lab3.war \
+    /opt/jboss/wildfly/standalone/deployments/ROOT.war
+
+EXPOSE 8080
+
+CMD ["/opt/jboss/wildfly/bin/standalone.sh", "-b", "0.0.0.0"]
