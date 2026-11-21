@@ -1,10 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Редактор области</title>
+  <link rel="stylesheet" href="../css/editor.css">
 </head>
 <body>
-$END$
+
+<header class="header">
+  <h1>Аккаунт главного редактора</h1>
+  <button>Выйти из аккаунта</button>
+</header>
+
+<main class="editor">
+  <section class="graph-section">
+    <h2>Область попаданий</h2>
+
+    <canvas id="areaCanvas" width="600" height="600"></canvas>
+  </section>
+
+  <section class="settings-section">
+    <h2>Настройки области</h2>
+
+    <form id="areaForm">
+      <label for="offsetY">
+        Смещение по Y
+        <input
+          type="text"
+          id="offsetY"
+          name="offsetY"
+          step="any"
+          required
+        >
+      </label>
+
+      <label for="offsetX">
+        Смещение по X
+        <input
+          type="text"
+          id="offsetX"
+          name="offsetX"
+          required
+        >
+      </label>
+
+      <label for="rotation">
+        Угол поворота (градусы)
+        <input
+          type="text"
+          id="rotation"
+          name="rotation"
+          max="360"
+          min="-360"
+          required
+        >
+      </label>
+
+      <button type="submit">Сохранить изменения</button>
+    </form>
+  </section>
+</main>
+
 </body>
 </html>
