@@ -68,8 +68,4 @@ public class AuthService {
 
         return user;
     }
-
-    public UserEntity findById(UUID id) {
-        return userRepository.findById(id);
-    }
 }
