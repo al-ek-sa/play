@@ -4,8 +4,9 @@ WORKDIR /app
 
 COPY bac/untitled/ .
 
-RUN chmod +x gradlew
-RUN ./gradlew clean war --no-daemon
+RUN chmod +x gradlew \
+    && ./gradlew clean war --no-daemon \
+    && test -f build/libs/lab3.war
 
 FROM quay.io/wildfly/wildfly:latest
 
