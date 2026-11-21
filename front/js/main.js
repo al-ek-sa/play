@@ -1,12 +1,17 @@
 import {color, ld} from './background.js';
 import {lab} from './location.js';
 import {lab1, historyLv} from './lab1.js';
+import {auth} from './auth.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   restore();
 
   if(document.getElementById("lab1")){
     lab();
+  }
+
+  if (document.getElementById("areaForm")) {
+    auth();
   }
 
   if(document.getElementById("color")) {

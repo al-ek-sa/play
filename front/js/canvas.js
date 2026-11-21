@@ -1,24 +1,36 @@
 let scale = 1;
-let offsetX = 0;
-let offsetY = 0;
+let panX = 0;
+let panY = 0;
+
 const LIMIT = 40;
 
 try {
-  const saved = Number(sessionStorage.getItem("SCALE"));
-  if (Number.isFinite(saved) && saved > 0) scale = saved;
-  const offset = JSON.parse(sessionStorage.getItem("OFFSET"));
-  if (offset && Number.isFinite(offset.x) && Number.isFinite(offset.y)) {
-    offsetX = offset.x;
-    offsetY = offset.y;
+  const savedScale = Number(sessionStorage.getItem("SCALE"));
+
+  if (Number.isFinite(savedScale) && savedScale > 0) {
+    scale = savedScale;
+  }
+
+  const savedPan = JSON.parse(sessionStorage.getItem("OFFSET"));
+
+  if (
+    savedPan &&
+    Number.isFinite(savedPan.x) &&
+    Number.isFinite(savedPan.y)
+  ) {
+    panX = savedPan.x;
+    panY = savedPan.y;
   }
 } catch {
   scale = 1;
-  offsetX = 0;
-  offsetY = 0;
+  panX = 0;
+  panY = 0;
 }
 
 function color(name) {
-  return getComputedStyle(document.body).getPropertyValue(name).trim();
+  return getComputedStyle(document.body)
+    .getPropertyValue(name)
+    .trim();
 }
 
 function lastVersion() {
@@ -30,169 +42,285 @@ function lastVersion() {
 }
 
 export function canvas(name) {
-  const canvas = document.getElementById(`${name}`);
-  const ctx = canvas.getContext("2d");
+  const canvasElement = document.getElementById(name);
+
+  if (!canvasElement) {
+    console.error(`Canvas "${name}" не найден`);
+    return null;
+  }
+
+  const ctx = canvasElement.getContext("2d");
+
+  if (!ctx) {
+    console.error("Не удалось получить Canvas context");
+    return null;
+  }
 
   function redraw() {
     const last = lastVersion();
-    if (last && Number.isFinite(last.r)) {
-      lv1(last.x, last.y, last.r, last.ans);
+
+    if (last) {
+      lv1(
+        last.x,
+        last.y,
+        last.r,
+        last.ans,
+        last.offsetX,
+        last.offsetY,
+        last.rotation
+      );
+    } else {
+      lv1(undefined, undefined, 5, false, 0, 0, 0);
     }
   }
 
-  if (!canvas.dataset.zoom) {
-    canvas.dataset.zoom = "on";
-    canvas.addEventListener("wheel", (event) => {
+  if (!canvasElement.dataset.zoom) {
+    canvasElement.dataset.zoom = "true";
+
+    canvasElement.addEventListener("wheel", event => {
       event.preventDefault();
-      scale = event.deltaY < 0 ? scale * 1.1 : scale / 1.1;
-      scale = Math.min(8, Math.max(0.25, scale));
+
+      scale *= event.deltaY < 0 ? 1.1 : 1 / 1.1;
+
+      scale = Math.max(0.25, Math.min(8, scale));
+
       try {
         sessionStorage.setItem("SCALE", String(scale));
       } catch {
-        console.warn("sessionStorage недоступен");
+        console.warn("Не удалось сохранить масштаб");
       }
+
       redraw();
     }, { passive: false });
 
     let dragging = false;
-    let lastX = 0;
-    let lastY = 0;
-    canvas.style.cursor = "grab";
-    canvas.style.touchAction = "none";
 
-    canvas.addEventListener("pointerdown", event => {
+    let lastMouseX = 0;
+    let lastMouseY = 0;
+
+    canvasElement.style.cursor = "grab";
+    canvasElement.style.touchAction = "none";
+
+    canvasElement.addEventListener("pointerdown", event => {
       dragging = true;
-      lastX = event.clientX;
-      lastY = event.clientY;
-      canvas.setPointerCapture(event.pointerId);
-      canvas.style.cursor = "grabbing";
+
+      lastMouseX = event.clientX;
+      lastMouseY = event.clientY;
+
+      canvasElement.setPointerCapture(event.pointerId);
+
+      canvasElement.style.cursor = "grabbing";
     });
 
-    canvas.addEventListener("pointermove", event => {
-      if (!dragging) return;
-      const k = canvas.width / canvas.getBoundingClientRect().width;
-      offsetX += (event.clientX - lastX) * k;
-      offsetY += (event.clientY - lastY) * k;
-      lastX = event.clientX;
-      lastY = event.clientY;
+
+    canvasElement.addEventListener("pointermove", event => {
+      if (!dragging) {
+        return;
+      }
+
+      const rect = canvasElement.getBoundingClientRect();
+
+      const kx = canvasElement.width / rect.width;
+      const ky = canvasElement.height / rect.height;
+
+      panX += (event.clientX - lastMouseX) * kx;
+      panY += (event.clientY - lastMouseY) * ky;
+
+      lastMouseX = event.clientX;
+      lastMouseY = event.clientY;
+
       redraw();
     });
 
-    function stop(){
-      if(!dragging) return;
+
+    function stopDragging() {
+      if (!dragging) {
+        return;
+      }
+
       dragging = false;
-      canvas.style.cursor = "grab";
+
+      canvasElement.style.cursor = "grab";
+
       try {
-        sessionStorage.setItem("OFFSET", JSON.stringify({x: offsetX, y: offsetY}));
+        sessionStorage.setItem(
+          "OFFSET",
+          JSON.stringify({
+            x: panX,
+            y: panY
+          })
+        );
       } catch {
         console.warn("sessionStorage недоступен");
       }
     }
 
-    canvas.addEventListener("pointerup", stop);
-    canvas.addEventListener("pointercancel", stop);
+    canvasElement.addEventListener("pointerup", stopDragging);
+    canvasElement.addEventListener("pointercancel", stopDragging);
   }
 
-  function lv1(x, y, r, isCorrect) {
-    const width = canvas.width;
-    const step = width / 40 * scale;
-    const max = LIMIT * step;
-    offsetX = Math.min(max, Math.max(-max, offsetX));
-    offsetY = Math.min(max, Math.max(-max, offsetY));
-    const cx = width / 2 + offsetX;
-    const cy = width / 2 + offsetY;
+
+  function lv1(
+    x,
+    y,
+    r,
+    isCorrect,
+    areaOffsetX = 0,
+    areaOffsetY = 0,
+    rotation = 0
+  ) {
+    const width = canvasElement.width;
+    const height = canvasElement.height;
+
+    const step = (width / 40) * scale;
+
+    const cx = width / 2 + panX;
+    const cy = height / 2 + panY;
+
+    const full = r * step;
+    const half = (r / 2) * step;
 
     try {
-      sessionStorage.setItem("LAST_VERSION", JSON.stringify({x: x, y: y, r: r, ans: isCorrect}));
+      sessionStorage.setItem(
+        "LAST_VERSION",
+        JSON.stringify({
+          x,
+          y,
+          r,
+          ans: isCorrect,
+          offsetX: areaOffsetX,
+          offsetY: areaOffsetY,
+          rotation
+        })
+      );
     } catch {
       console.warn("sessionStorage недоступен");
     }
 
-    ctx.clearRect(0, 0, width, canvas.height);
+    ctx.clearRect(0, 0, width, height);
+
     ctx.lineWidth = 1;
-    ctx.setLineDash([]);
     ctx.globalAlpha = 1;
+    ctx.setLineDash([]);
+
     ctx.strokeStyle = color("--text");
     ctx.fillStyle = color("--text");
+    ctx.globalAlpha = 0.1;
 
     ctx.beginPath();
-    ctx.moveTo(0, cy);
-    ctx.lineTo(width, cy);
-    ctx.moveTo(width - 6, cy - 6);
-    ctx.lineTo(width, cy);
-    ctx.lineTo(width - 6, cy + 6);
-    ctx.moveTo(cx, 0);
-    ctx.lineTo(cx, width);
-    ctx.moveTo(cx - 6, 6);
-    ctx.lineTo(cx, 0);
-    ctx.lineTo(cx + 6, 6);
-    ctx.stroke();
 
-    ctx.font = "14px sans-serif";
-    ctx.textAlign = "right";
-    ctx.fillText("x", width - 4, cy + 19);
-    ctx.fillText("y", cx - 10, 15);
-
-    ctx.globalAlpha = 0.1;
     const startX = cx - Math.floor(cx / step) * step;
     const startY = cy - Math.floor(cy / step) * step;
-    ctx.beginPath();
-    for(let i = startX; i <= width; i += step){
-      ctx.moveTo(i, 0);
-      ctx.lineTo(i, width);
+
+    for (let gx = startX; gx <= width; gx += step) {
+      ctx.moveTo(gx, 0);
+      ctx.lineTo(gx, height);
     }
-    for(let i = startY; i <= width; i += step){
-      ctx.moveTo(0, i);
-      ctx.lineTo(width, i);
+
+    for (let gy = startY; gy <= height; gy += step) {
+      ctx.moveTo(0, gy);
+      ctx.lineTo(width, gy);
     }
     ctx.stroke();
     ctx.globalAlpha = 1;
 
-    function lab1Area(){
-      const full = r * step;
-      const half = (r / 2) * step;
+    ctx.beginPath();
 
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + half, cy);
-      ctx.lineTo(cx, cy - full);
-      ctx.closePath();
+    ctx.moveTo(0, cy);
+    ctx.lineTo(width, cy);
 
-      ctx.rect(cx - half, cy, half, full);
+    ctx.moveTo(width - 8, cy - 5);
+    ctx.lineTo(width, cy);
+    ctx.lineTo(width - 8, cy + 5);
 
-      ctx.moveTo(cx, cy);
-      ctx.arc(cx, cy, full, 0, Math.PI / 2);
-      ctx.closePath();
-    }
+    ctx.moveTo(cx, height);
+    ctx.lineTo(cx, 0);
 
-    function lab2Area(){
-      const full = r * step;
-      const half = (r / 2) * step;
+    ctx.moveTo(cx - 5, 8);
+    ctx.lineTo(cx, 0);
+    ctx.lineTo(cx + 5, 8);
 
-      ctx.beginPath();
-      ctx.rect(cx, cy - full, half, full);
+    ctx.stroke();
 
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(cx + half, cy);
-      ctx.lineTo(cx, cy + half);
-      ctx.closePath();
+    ctx.font = "14px Arial";
 
-      ctx.moveTo(cx, cy);
-      ctx.arc(cx, cy, half, Math.PI / 2, Math.PI);
-      ctx.closePath();
-    }
+    ctx.textAlign = "right";
+    ctx.fillText("x", width - 5, cy + 20);
 
-    function fillArea(draw, alpha, dash){
+    ctx.textAlign = "left";
+    ctx.fillText("y", cx + 10, 15);
+
+    const radians = rotation * Math.PI / 180;
+
+    const dx = areaOffsetX * step;
+    const dy = -areaOffsetY * step;
+
+    const areaCx = cx + dx;
+    const areaCy = cy + dy;
+
+    ctx.save();
+
+    ctx.translate(areaCx, areaCy);
+
+    ctx.rotate(-radians);
+
+
+    function fillArea(draw) {
       draw();
-      ctx.globalAlpha = alpha;
+
+      ctx.globalAlpha = 0.2;
       ctx.fill();
+
       ctx.globalAlpha = 1;
-      ctx.setLineDash(dash);
-      ctx.stroke();
       ctx.setLineDash([]);
+
+      ctx.stroke();
     }
 
-    function ticks(){
+    function rectangle() {
+      ctx.beginPath();
+
+      ctx.rect(
+        0,
+        -full,
+        full,
+        full
+      );
+    }
+
+    function triangle() {
+      ctx.beginPath();
+
+      ctx.moveTo(0, 0);
+      ctx.lineTo(half, 0);
+      ctx.lineTo(0, half);
+
+      ctx.closePath();
+    }
+
+    function quarterCircle() {
+      ctx.beginPath();
+
+      ctx.moveTo(0, 0);
+
+      ctx.arc(
+        0,
+        0,
+        full,
+        Math.PI / 2,
+        Math.PI,
+        false
+      );
+
+      ctx.closePath();
+    }
+
+
+    fillArea(rectangle);
+    fillArea(triangle);
+    fillArea(quarterCircle);
+
+    function ticks() {
       const marks = [
         { value: r, text: "R" },
         { value: r / 2, text: "R/2" },
@@ -202,41 +330,70 @@ export function canvas(name) {
 
       ctx.lineWidth = 2;
       ctx.beginPath();
+
       for (const mark of marks) {
         const shift = mark.value * step;
-        ctx.moveTo(cx + shift, cy - 6);
-        ctx.lineTo(cx + shift, cy + 6);
-        ctx.moveTo(cx - 6, cy - shift);
-        ctx.lineTo(cx + 6, cy - shift);
+
+        ctx.moveTo(shift, -6);
+        ctx.lineTo(shift, 6);
+
+        ctx.moveTo(-6, -shift);
+        ctx.lineTo(6, -shift);
       }
       ctx.stroke();
       ctx.lineWidth = 1;
 
-      ctx.font = "14px sans-serif";
+      ctx.font = "14px Arial";
+
       for (const mark of marks) {
         const shift = mark.value * step;
         ctx.textAlign = "center";
-        ctx.fillText(mark.text, cx + shift, cy + 20);
+
+        ctx.fillText(
+          mark.text,
+          shift,
+          20
+        );
+
         ctx.textAlign = "right";
-        ctx.fillText(mark.text, cx - 10, cy - shift + 5);
+
+        ctx.fillText(
+          mark.text,
+          -10,
+          -shift + 5
+        );
       }
     }
 
-    fillArea(lab1Area, 0.12, [5, 4]);
-    fillArea(lab2Area, 0.2, []);
     ticks();
 
-    if (x !== undefined && y !== undefined) {
-      if(isCorrect) {
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--ok").trim();
-      } else {
-        ctx.fillStyle = getComputedStyle(document.body).getPropertyValue("--miss").trim();
-      }
+    if (
+      x !== undefined &&
+      y !== undefined &&
+      Number.isFinite(x) &&
+      Number.isFinite(y)
+    ) {
+      ctx.fillStyle = isCorrect
+        ? color("--ok")
+        : color("--miss");
 
       ctx.beginPath();
-      ctx.arc(cx + x * step, cy - y * step, 4, 0, Math.PI * 2);
+
+      ctx.arc(
+        x * step,
+        -y * step,
+        4,
+        0,
+        Math.PI * 2
+      );
+
       ctx.fill();
     }
+
+    ctx.restore();
+    ctx.globalAlpha = 1;
+    ctx.setLineDash([]);
+    ctx.lineWidth = 1;
   }
 
   return lv1;
