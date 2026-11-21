@@ -13,6 +13,15 @@ public class AreaVersionRepository {
         entityManager.persist(areaVersion);
     }
 
+    public int getLastVersion() {
+        Integer version = entityManager.createQuery(
+                "SELECT MAX(a.version) FROM AreaVersionEntity a",
+                Integer.class
+        ).getSingleResult();
+
+        return version == null ? 0 : version;
+    }
+
     public AreaVersionEntity findById(Long id) {
         return entityManager.find(AreaVersionEntity.class, id);
     }
