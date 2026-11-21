@@ -14,8 +14,6 @@ import org.example.service.AdminService;
 import java.io.IOException;
 import java.util.Set;
 import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  * сервлет только для действий администраторов (добавить новую область)

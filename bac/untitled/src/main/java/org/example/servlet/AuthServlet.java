@@ -16,6 +16,9 @@ import org.example.service.AuthService;
 
 import java.io.IOException;
 
+/**
+ * сервлет для аутентификации
+ */
 @WebServlet("/internal/auth/*")
 public class AuthServlet extends HttpServlet {
 

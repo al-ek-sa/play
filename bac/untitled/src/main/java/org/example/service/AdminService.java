@@ -12,6 +12,9 @@ import org.example.status.UserStatus;
 
 import java.util.UUID;
 
+/**
+ * сервис только с действиями администратора
+ */
 @ApplicationScoped
 public class AdminService {
 

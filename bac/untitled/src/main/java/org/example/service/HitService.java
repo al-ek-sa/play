@@ -3,21 +3,18 @@ package org.example.service;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
+
 import org.example.dto.HitRequestDto;
 import org.example.entity.AreaVersionEntity;
 import org.example.entity.HitEntity;
 import org.example.entity.UserEntity;
 import org.example.figure.Area;
-import org.example.figure.Coordinate;
 import org.example.figure.Point;
-import org.example.figure.Valid;
 import org.example.repository.AreaVersionRepository;
 import org.example.repository.HitRepository;
 import org.example.repository.UserRepository;
-import org.example.validation.PointValidator;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 @ApplicationScoped
@@ -33,7 +30,7 @@ public class HitService {
     private UserRepository userRepository;
 
     @Transactional
-    public Valid<Boolean> hit(
+    public HitResult hit(
             HitRequestDto hitDto,
             UUID userId,
             UUID idempotencyKey,
@@ -43,49 +40,38 @@ public class HitService {
         UserEntity user = userRepository.findById(userId);
 
         if (user == null || !user.isEnabled()) {
-            throw new IllegalStateException("User is not available");
+            throw new IllegalStateException(
+                    "Пользователь не найден или отключён"
+            );
         }
-
-        Map<String, String> params = new HashMap<>();
-
-        params.put("x", hitDto.x() == null ? "" : hitDto.x().toString());
-        params.put("y", hitDto.y() == null ? "" : hitDto.y().toString());
-        params.put("r", hitDto.r() == null ? "" : hitDto.r().toString());
-
-        Valid<Coordinate> validation = PointValidator.validate(params);
-
-        if (validation instanceof Valid.Failure<Coordinate>(java.util.List<org.example.figure.FieldError> errors)) {
-            return new Valid.Failure<>(errors);
-        }
-
-        Coordinate coordinate =
-                ((Valid.Success<Coordinate>) validation).value();
 
         AreaVersionEntity areaVersion = areaVersionRepository.findActive();
 
         if (areaVersion == null) {
-            throw new IllegalStateException("Active area version not found");
+            throw new IllegalStateException(
+                    "Активная версия области не найдена"
+            );
         }
 
         Area area = Area.variant(
-                coordinate.r(),
+                hitDto.r(),
                 areaVersion.getOffsetX(),
                 areaVersion.getOffsetY(),
                 areaVersion.getRotation()
         );
 
         Point point = new Point(
-                coordinate.x(),
-                coordinate.y()
+                hitDto.x(),
+                hitDto.y()
         );
 
-        boolean result = area.contains(point);
+        boolean hitResult = area.contains(point);
 
         HitEntity hit = new HitEntity(
-                coordinate.x(),
-                coordinate.y(),
-                coordinate.r(),
-                result,
+                hitDto.x(),
+                hitDto.y(),
+                hitDto.r(),
+                hitResult,
                 user,
                 areaVersion,
                 idempotencyKey,
@@ -94,6 +80,29 @@ public class HitService {
 
         hitRepository.save(hit);
 
-        return new Valid.Success<>(result);
+        return new HitResult(
+                hitDto.x(),
+                hitDto.y(),
+                hitDto.r(),
+                hitResult,
+                areaVersion.getOffsetX(),
+                areaVersion.getOffsetY(),
+                areaVersion.getRotation(),
+                areaVersion.getVersion(),
+                areaVersion.getId()
+        );
+    }
+
+    public record HitResult(
+            BigDecimal x,
+            BigDecimal y,
+            BigDecimal r,
+            boolean hit,
+            BigDecimal offsetX,
+            BigDecimal offsetY,
+            BigDecimal rotation,
+            int areaVersion,
+            UUID areaVersionId
+    ) {
     }
 }

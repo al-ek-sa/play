@@ -8,6 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
+/**
+ * сервлет-контроллер
+ */
 @WebServlet("/api/*")
 public class ControllerServlet extends HttpServlet {
 
