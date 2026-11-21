@@ -19,9 +19,12 @@ public class AreaVersionRepository {
 
     public AreaVersionEntity findActive() {
         return entityManager.createQuery(
-                        "SELECT a FROM AreaVersionEntity a WHERE a.active = true",
+                        "SELECT a FROM AreaVersionEntity a " +
+                                "WHERE a.active = true " +
+                                "ORDER BY a.version DESC",
                         AreaVersionEntity.class
                 )
+                .setMaxResults(1)
                 .getResultStream()
                 .findFirst()
                 .orElse(null);
