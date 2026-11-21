@@ -49,7 +49,8 @@ public class HitService {
         Area area = Area.variant(
                 r,
                 areaVersion.getOffsetX(),
-                areaVersion.getOffsetY()
+                areaVersion.getOffsetY(),
+                areaVersion.getRotation()
         );
 
         Point point = new Point(x, y);

@@ -37,6 +37,9 @@ public class AreaVersionEntity {
     @Column(nullable = false, precision = 10, scale = 3)
     private BigDecimal offsetY;
 
+    @Column(nullable = false, precision = 10, scale = 3)
+    private BigDecimal rotation;
+
     @Column(nullable = false)
     private boolean active;
 
@@ -51,13 +54,15 @@ public class AreaVersionEntity {
             int version,
             BigDecimal offsetX,
             BigDecimal offsetY,
+            BigDecimal rotation,
             UserEntity createdBy
     ) {
         this.version = version;
         this.offsetX = offsetX;
         this.offsetY = offsetY;
+        this.rotation = rotation;
         this.createdBy = createdBy;
-        this.active = false;
+        this.active = true;
         this.createdAt = Instant.now();
     }
 }

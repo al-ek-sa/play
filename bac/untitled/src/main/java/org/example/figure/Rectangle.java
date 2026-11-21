@@ -1,21 +1,32 @@
 package org.example.figure;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.stream.Stream;
 
-public record Rectangle(Point pointStart, BigDecimal width, BigDecimal height) implements Figure {
+/**
+ * попадание точки в квадрат изменение было для написания относительно 4 точек квадрата.
+ * @param a
+ * @param b
+ * @param c
+ * @param d
+ */
+public record Rectangle(
+        Point a,
+        Point b,
+        Point c,
+        Point d
+) implements Figure {
+
     @Override
-    public boolean contains(Point point) {
-        return pointStart.x().compareTo(point.x()) <= 0
-                && maxX().compareTo(point.x()) >= 0
-                && pointStart.y().compareTo(point.y()) <= 0
-                && maxY().compareTo(point.y()) >= 0;
-    }
+    public boolean contains(Point p) {
+        List<Integer> signs = Stream.of(
+                b.minus(a).cross(p.minus(a)),
+                c.minus(b).cross(p.minus(b)),
+                d.minus(c).cross(p.minus(c)),
+                a.minus(d).cross(p.minus(d))
+        ).map(BigDecimal::signum).toList();
 
-    private BigDecimal maxX(){
-        return pointStart.x().add(width);
-    }
-
-    private BigDecimal maxY(){
-        return pointStart.y().add(height);
+        return !(signs.contains(1) && signs.contains(-1));
     }
 }
