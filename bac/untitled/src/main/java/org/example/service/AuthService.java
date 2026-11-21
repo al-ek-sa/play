@@ -44,11 +44,25 @@ public class AuthService {
 
     @Transactional
     public UserEntity register(String userName, String password) {
+        if (userName == null || userName.isBlank()) {
+            throw new IllegalArgumentException("Username is required");
+        }
+
+        if (password == null || password.isBlank()) {
+            throw new IllegalArgumentException("Password is required");
+        }
+
+        userName = userName.trim();
+
         if (userRepository.existsByUserName(userName)) {
             throw new IllegalArgumentException("Username already exists");
         }
 
-        UserEntity user = new UserEntity(userName, hasher.hash(password), UserStatus.USER);
+        UserEntity user = new UserEntity(
+                userName,
+                hasher.hash(password),
+                UserStatus.USER
+        );
 
         userRepository.save(user);
 
