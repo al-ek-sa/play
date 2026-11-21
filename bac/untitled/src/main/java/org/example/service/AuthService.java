@@ -10,6 +10,10 @@ import org.example.status.UserStatus;
 
 import java.util.UUID;
 
+/**
+ * Сервис для регистрации пользователя и входа в систему.
+ */
+//todo удаление аккаунта
 @ApplicationScoped
 public class AuthService {
 
@@ -19,6 +23,7 @@ public class AuthService {
     @Inject
     private PasswordHasher hasher;
 
+    //todo сравнение по имени пользователя -
     public UserEntity login(String userName, String password){
         UserEntity user = userRepository.findByUserName(userName);
 
