@@ -11,6 +11,7 @@ import java.io.IOException;
 @WebServlet("/api/*")
 public class ControllerServlet extends HttpServlet {
 
+    private static final String ADMIN_SERVLET = "/internal/admin";
     private static final String AUTH_SERVLET = "/internal/auth";
     private static final String POINTS_SERVLET = "/internal/area-check";
     private static final String HISTORY_EXPORT_SERVLET = "/internal/history-export";
@@ -50,6 +51,19 @@ public class ControllerServlet extends HttpServlet {
                 }
 
                 forward(request, response, POINTS_SERVLET + path);
+            }
+
+            case "/admin/area" -> {
+                if (!method.equals("POST")) {
+                    sendMethodNotAllowed(response, "POST");
+                    return;
+                }
+
+                forward(
+                        request,
+                        response,
+                        ADMIN_SERVLET + "/area"
+                );
             }
 
             case "/history/export" -> {

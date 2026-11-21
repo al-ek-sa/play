@@ -17,6 +17,9 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * сервлет только для действий администраторов (добавить новую область)
+ */
 @WebServlet("/api/admin/area")
 public class AdminServlet extends HttpServlet {
     private static final ObjectMapper OBJECT_MAPPER =
