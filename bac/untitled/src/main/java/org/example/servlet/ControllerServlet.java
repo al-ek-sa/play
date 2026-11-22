@@ -105,6 +105,8 @@ public class ControllerServlet extends HttpServlet {
             String destination
     ) throws ServletException, IOException {
 
+        request.setAttribute("internalDispatch", true);
+
         request.getRequestDispatcher(destination)
                 .forward(request, response);
     }
