@@ -4,6 +4,7 @@ import { lab1, historyLv } from './lab1.js';
 import { auth } from './auth.js';
 import { login } from './login.js';
 import { register } from './register.js';
+import { batch } from './file.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   restore();
@@ -17,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initIfExists("palette-toggle", color);
   initIfExists("form-lab1", lab1);
   initIfExists("history", historyLv);
+  initIfExists("file", batch);
 });
 
 function initIfExists(id, callback) {

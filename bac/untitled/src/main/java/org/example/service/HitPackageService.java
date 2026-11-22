@@ -69,13 +69,17 @@ public class HitPackageService {
 
         validateAll(list);
 
-        for (HitRequestDto hit : list) {
+        for (int i = 0; i < list.size(); i++) {
+            HitRequestDto hit = list.get(i);
+
+            int currentBatchIndex = batchIndex + i;
+
             HitEntity entity = createHit(
                     hit,
                     user,
                     areaVersion,
                     idempotencyKey,
-                    batchIndex
+                    currentBatchIndex
             );
 
             hitRepository.save(entity);
