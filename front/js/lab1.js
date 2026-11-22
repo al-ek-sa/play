@@ -191,23 +191,13 @@ export function lab1(){
       Number(result.rotation ?? 0)
     );
 
-    if (data.history) {
-      hist.set(data.history);
-    }
-
+    await hist.refresh();
     showInfo(data);
   });
 
   if (clearButton) {
     clearButton.addEventListener("click", async () => {
-      const response = await send(() => clearHistory(ENDPOINT));
-
-      if (!response) {
-        return;
-      }
-
-      hist.set(response.history ?? []);
-      showInfo(response);
+      showError("Очистка истории не поддерживается текущим backend");
     });
   }
 
@@ -227,14 +217,16 @@ export function lab1(){
 export function historyLv() {
   const table = document.getElementById("history");
 
-  if (!table) {
+  if (!table || table.dataset.listener === "true") {
     return;
   }
+
+  table.dataset.listener = "true";
 
   table.addEventListener("click", (event) => {
     const row = event.target.closest("tr");
 
-    if (!row) {
+    if (!row || !table.contains(row)) {
       return;
     }
 
@@ -243,12 +235,15 @@ export function historyLv() {
     const r = row.dataset.r;
     const hit = row.dataset.ans;
 
-    if (
-      x === undefined ||
-      y === undefined ||
-      r === undefined
-    ) {
+    if (x === undefined || y === undefined || r === undefined) {
       return;
+    }
+
+    let saved = {};
+    try {
+      saved = JSON.parse(sessionStorage.getItem("LAST_VERSION") || "{}");
+    } catch {
+      saved = {};
     }
 
     const lv1 = canvas("canvas");
@@ -257,7 +252,10 @@ export function historyLv() {
       Number(x),
       Number(y),
       Number(r),
-      hit === "true"
+      hit === "true",
+      Number(saved.offsetX ?? 0),
+      Number(saved.offsetY ?? 0),
+      Number(saved.rotation ?? 0)
     );
   });
 }

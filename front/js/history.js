@@ -1,79 +1,142 @@
-export function history(){
-  const tb = document.getElementById("history-body");
+import { getHistory, filter } from "./historyFilter.js";
+
+export function history() {
+  const tbody = document.getElementById("history-body");
   const pageInfo = document.getElementById("history-page");
   const prevButton = document.getElementById("history-prev");
   const nextButton = document.getElementById("history-next");
-  const CAPACITY = 5;
-  let items = [];
-  let currentPage = 1;
 
-  function pages(){
-    return Math.max(1, Math.ceil(items.length / CAPACITY));
+  const LIMIT = 5;
+  let currentPage = 1;
+  let totalPages = 0;
+  let loading = false;
+
+  let filters = { result: "true" };
+
+  function renderMessage(message) {
+    if (!tbody) return;
+    tbody.replaceChildren();
+    const row = tbody.insertRow();
+    row.className = "history__empty";
+    const cell = row.insertCell();
+    cell.colSpan = 5;
+    cell.textContent = message;
   }
 
-  function render(){
-    if (!tb) return;
-    if (currentPage > pages()) currentPage = pages();
-    const start = (currentPage - 1) * CAPACITY;
-    const pageItems = items.slice(start, start + CAPACITY);
+  function render(items) {
+    if (!tbody) return;
+    tbody.replaceChildren();
 
-    if (pageInfo) pageInfo.textContent = `${currentPage} / ${pages()}`;
-    if (prevButton) prevButton.disabled = currentPage === 1;
-    if (nextButton) nextButton.disabled = currentPage === pages();
-
-    tb.replaceChildren();
-
-    if (pageItems.length === 0) {
-      tb.innerHTML = '<tr class="history__empty"><td colspan="5">Пока нет проверок</td></tr>';
+    if (!items?.length) {
+      renderMessage("История пуста");
       return;
     }
 
-    for (const item of pageItems) {
-      row(item);
+    for (const item of items) {
+      if (![item.x, item.y, item.r].every(Number.isFinite)) continue;
+
+      const row = tbody.insertRow();
+      row.dataset.x = String(item.x);
+      row.dataset.y = String(item.y);
+      row.dataset.r = String(item.r);
+      row.dataset.ans = String(item.hit);
+      row.dataset.version = String(item.version ?? "");
+      row.dataset.offsetX = String(item.offsetX ?? 0);
+      row.dataset.offsetY = String(item.offsetY ?? 0);
+      row.dataset.rotation = String(item.rotation ?? 0);
+
+      row.insertCell().textContent = item.x;
+      row.insertCell().textContent = item.y;
+      row.insertCell().textContent = item.r;
+
+      const result = document.createElement("span");
+      result.className = item.hit ? "result result--hit" : "result result--miss";
+      result.textContent = item.hit ? "Попадание" : "Промах";
+      row.insertCell().append(result);
+
+      const timeCell = row.insertCell();
+      timeCell.textContent = item.time
+        ? new Date(item.time).toLocaleString("ru-RU")
+        : "—";
+    }
+
+    if (!tbody.rows.length) renderMessage("История пуста");
+  }
+
+  async function load() {
+    if (!tbody || loading) return;
+    loading = true;
+    renderMessage("Загрузка истории…");
+
+    if (prevButton) prevButton.disabled = true;
+    if (nextButton) nextButton.disabled = true;
+
+    try {
+      const response = await getHistory({
+        page: currentPage,
+        limit: LIMIT,
+        filters
+      });
+
+      if (!response.ok) {
+        renderMessage(response.message || `Ошибка загрузки истории (HTTP ${response.status})`);
+        totalPages = 0;
+        if (pageInfo) pageInfo.textContent = "0 / 0";
+        return;
+      }
+
+      currentPage = response.page;
+      totalPages = response.totalPages;
+      render(response.items);
+
+      if (pageInfo) {
+        pageInfo.textContent = totalPages
+          ? `${currentPage} / ${totalPages}`
+          : "0 / 0";
+      }
+    } catch (error) {
+      console.error("History loading error", error);
+      renderMessage(`Ошибка загрузки истории: ${error.message}`);
+      totalPages = 0;
+      if (pageInfo) pageInfo.textContent = "0 / 0";
+    } finally {
+      loading = false;
+      if (prevButton) prevButton.disabled = currentPage <= 1 || totalPages === 0;
+      if (nextButton) nextButton.disabled = currentPage >= totalPages || totalPages === 0;
     }
   }
 
-  function row(item){
-    const newRow = tb.insertRow();
-    newRow.dataset.x = item.x;
-    newRow.dataset.y = item.y;
-    newRow.dataset.r = item.r;
-    newRow.dataset.ans = item.hit;
-    newRow.insertCell(0).textContent = item.x;
-    newRow.insertCell(1).textContent = item.y;
-    newRow.insertCell(2).textContent = item.r;
-
-    const badge = document.createElement("span");
-    badge.className = item.hit ? "result result--hit" : "result result--miss";
-    badge.textContent = item.hit ? "попала" : "мимо";
-    newRow.insertCell(3).append(badge);
-
-    const timeCell = newRow.insertCell(4);
-    timeCell.textContent = new Date(item.time).toLocaleTimeString("ru-RU");
-    timeCell.title = `выполнено за ${item.executionMicros} мкс`;
+  async function next() {
+    if (loading || currentPage >= totalPages) return;
+    currentPage++;
+    await load();
   }
 
-  function set(list){
-    items = Array.isArray(list) ? list : [];
+  async function prev() {
+    if (loading || currentPage <= 1) return;
+    currentPage--;
+    await load();
+  }
+
+  async function setFilters(newFilters) {
+    filters = newFilters;
     currentPage = 1;
-    render();
+    await load();
   }
 
-  function next(){
-    if (currentPage < pages()) {
-      currentPage++;
-      render();
-    }
+  async function resetFilters() {
+    filters = { result: "true" };
+    currentPage = 1;
+    await load();
   }
 
-  function prev() {
-    if (currentPage > 1) {
-      currentPage--;
-      render();
-    }
+  async function refresh() {
+    await load();
   }
 
-  render();
+  const controller = { load, next, prev, setFilters, resetFilters, refresh };
+  filter(controller);
+  load();
 
-  return { set, next, prev };
+  return controller;
 }

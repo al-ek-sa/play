@@ -14,7 +14,9 @@ import org.example.status.UserStatus;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.io.Writer;
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.UUID;
 import java.util.stream.Stream;
 
@@ -65,17 +67,52 @@ public class HistoryService {
 
         checkUser(userId);
 
-        try (Stream<HitEntity> hits = hitRepository.findByTime(userId, from, to, offset, limit)) {
+        if (from == null || to == null) {
+            throw new IllegalArgumentException(
+                    "Time range must not be null"
+            );
+        }
+
+        if (from.isAfter(to)) {
+            throw new IllegalArgumentException(
+                    "Start date must not be after end date"
+            );
+        }
+
+        ZoneId zone = ZoneId.systemDefault();
+
+        Instant fromInstant = from.atZone(zone).toInstant();
+        Instant toInstant = to.atZone(zone).toInstant();
+
+        try (Stream<HitEntity> hits =
+                     hitRepository.findByTime(
+                             userId,
+                             fromInstant,
+                             toInstant,
+                             offset,
+                             limit
+                     )) {
+
             parseCsv(hits, writer);
         }
 
-        return hitRepository.countByTime(userId, from, to);
+        return hitRepository.countByTime(
+                userId,
+                fromInstant,
+                toInstant
+        );
     }
 
     /**
      * Проверка пользователя и его роли.
      */
     private void checkUser(UUID userId) {
+
+        if (userId == null) {
+            throw new IllegalArgumentException(
+                    "User ID must not be null"
+            );
+        }
 
         UserEntity user = userRepository.findById(userId);
 
@@ -89,7 +126,7 @@ public class HistoryService {
     }
 
     /**
-     * Формирование CSV из потока записей.
+     * CSV
      */
     private void parseCsv(
             Stream<HitEntity> hits,
@@ -98,34 +135,35 @@ public class HistoryService {
 
         CSVPrinter csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT);
 
-        csvPrinter.printRecord(
-                "X",
-                "Y",
-                "R",
-                "Result",
-                "Created At",
-                "Area Version"
-        );
+            csvPrinter.printRecord(
+                    "X",
+                    "Y",
+                    "R",
+                    "Result",
+                    "Created At",
+                    "Area Version"
+            );
 
-        try {
-            hits.forEach(hit -> {
-                try {
-                    csvPrinter.printRecord(
-                            hit.getX(),
-                            hit.getY(),
-                            hit.getR(),
-                            hit.isHit() ? "HIT" : "MISS",
-                            hit.getCreatedAt(),
-                            hit.getAreaVersion().getId()
-                    );
-                } catch (IOException e) {
-                    throw new UncheckedIOException(e);
-                }
-            });
-        } catch (UncheckedIOException e) {
-            throw e.getCause();
+            try {
+                hits.forEach(hit -> {
+                    try {
+                        csvPrinter.printRecord(
+                                hit.getX(),
+                                hit.getY(),
+                                hit.getR(),
+                                hit.isHit() ? "HIT" : "MISS",
+                                hit.getCreatedAt(),
+                                hit.getAreaVersion().getVersion()
+                        );
+                    } catch (IOException e) {
+                        throw new UncheckedIOException(e);
+                    }
+                });
+
+            } catch (UncheckedIOException e) {
+                throw e.getCause();
+            }
+
+            csvPrinter.flush();
         }
-
-        csvPrinter.flush();
-    }
 }

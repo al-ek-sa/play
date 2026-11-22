@@ -6,7 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import org.example.entity.HitEntity;
 import org.example.entity.UserEntity;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Stream;
@@ -21,7 +21,7 @@ public class HitRepository {
         entityManager.persist(hit);
     }
 
-    public HitEntity findById(Long id) {
+    public HitEntity findById(UUID id) {
         return entityManager.find(HitEntity.class, id);
     }
 
@@ -52,7 +52,7 @@ public class HitRepository {
     }
 
     public List<HitEntity> findByUser(
-            UUID user,
+            UUID userId,
             int offset,
             int limit
     ) {
@@ -60,12 +60,12 @@ public class HitRepository {
                         """
                         SELECT h
                         FROM HitEntity h
-                        WHERE h.user = :user
+                        WHERE h.user.id = :userId
                         ORDER BY h.createdAt DESC
                         """,
                         HitEntity.class
                 )
-                .setParameter("user", user)
+                .setParameter("userId", userId)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
@@ -120,12 +120,12 @@ public class HitRepository {
     ) {
         return entityManager.createQuery(
                         """
-                                SELECT h
-                                FROM HitEntity h
-                                WHERE h.user.id = :userId
-                                  AND h.areaVersion.id = :version
-                                ORDER BY h.createdAt DESC
-                                """,
+                        SELECT h
+                        FROM HitEntity h
+                        WHERE h.user.id = :userId
+                          AND h.areaVersion.version = :version
+                        ORDER BY h.createdAt DESC
+                        """,
                         HitEntity.class
                 )
                 .setParameter("userId", userId)
@@ -137,20 +137,20 @@ public class HitRepository {
 
     public Stream<HitEntity> findByTime(
             UUID userId,
-            LocalDateTime from,
-            LocalDateTime to,
+            Instant from,
+            Instant to,
             int offset,
             int limit
     ) {
         return entityManager.createQuery(
                         """
-                                SELECT h
-                                FROM HitEntity h
-                                WHERE
-                                 h.user.id = :userId
-                                  AND h.createdAt BETWEEN :from AND :to
-                                ORDER BY h.createdAt DESC
-                                """,
+                        SELECT h
+                        FROM HitEntity h
+                        WHERE h.user.id = :userId
+                          AND h.createdAt >= :from
+                          AND h.createdAt <= :to
+                        ORDER BY h.createdAt DESC
+                        """,
                         HitEntity.class
                 )
                 .setParameter("userId", userId)
@@ -169,12 +169,12 @@ public class HitRepository {
     ) {
         return entityManager.createQuery(
                         """
-                                SELECT h
-                                FROM HitEntity h
-                                WHERE h.user.id = :userId
-                                  AND h.hit = :hit
-                                ORDER BY h.createdAt DESC
-                                """,
+                        SELECT h
+                        FROM HitEntity h
+                        WHERE h.user.id = :userId
+                          AND h.hit = :hit
+                        ORDER BY h.createdAt DESC
+                        """,
                         HitEntity.class
                 )
                 .setParameter("userId", userId)
@@ -187,11 +187,11 @@ public class HitRepository {
     public long countByVersion(UUID userId, int version) {
         return entityManager.createQuery(
                         """
-                                SELECT COUNT(h)
-                                FROM HitEntity h
-                                WHERE h.user.id = :userId
-                                  AND h.areaVersion.id = :version
-                                """,
+                        SELECT COUNT(h)
+                        FROM HitEntity h
+                        WHERE h.user.id = :userId
+                          AND h.areaVersion.version = :version
+                        """,
                         Long.class
                 )
                 .setParameter("userId", userId)
@@ -202,11 +202,11 @@ public class HitRepository {
     public long countByResult(UUID userId, boolean hit) {
         return entityManager.createQuery(
                         """
-                                SELECT COUNT(h)
-                                FROM HitEntity h
-                                WHERE h.user.id = :userId
-                                  AND h.hit = :hit
-                                """,
+                        SELECT COUNT(h)
+                        FROM HitEntity h
+                        WHERE h.user.id = :userId
+                          AND h.hit = :hit
+                        """,
                         Long.class
                 )
                 .setParameter("userId", userId)
@@ -216,16 +216,17 @@ public class HitRepository {
 
     public long countByTime(
             UUID userId,
-            LocalDateTime from,
-            LocalDateTime to
+            Instant from,
+            Instant to
     ) {
         return entityManager.createQuery(
                         """
-                                SELECT COUNT(h)
-                                FROM HitEntity h
-                                WHERE h.user.id = :userId
-                                  AND h.createdAt BETWEEN :from AND :to
-                                """,
+                        SELECT COUNT(h)
+                        FROM HitEntity h
+                        WHERE h.user.id = :userId
+                          AND h.createdAt >= :from
+                          AND h.createdAt <= :to
+                        """,
                         Long.class
                 )
                 .setParameter("userId", userId)

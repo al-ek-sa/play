@@ -4,7 +4,6 @@ import { lab1, historyLv } from './lab1.js';
 import { auth } from './auth.js';
 import { login } from './login.js';
 import { register } from './register.js';
-import { filter } from './historyFilter.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   restore();
@@ -18,7 +17,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initIfExists("palette-toggle", color);
   initIfExists("form-lab1", lab1);
   initIfExists("history", historyLv);
-  initIfExists("history-filter", filter);
 });
 
 function initIfExists(id, callback) {
