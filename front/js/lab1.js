@@ -1,19 +1,8 @@
-import {canvas} from './canvas.js';
-import {history} from './history.js';
-import {getData, clearHistory} from './net.js';
+import { canvas } from './canvas.js';
+import { history } from './history.js';
+import { getData, clearHistory } from './net.js';
 
-const ENDPOINT = "/fcgi-bin/check";
-
-function validateNumber(raw, min, max, minExclusive = false) {
-  const text = String(raw ?? '');
-  if (text.trim() === '') return 'Поле обязательно к заполнению';
-  const n = Number(text.replace(",", "."));
-  if (!Number.isFinite(n)) return 'Поле должно быть числовым';
-  if (n > max) return `Поле должно быть не больше ${max}`;
-  if (minExclusive && n <= min) return `Поле должно быть больше ${min}`;
-  if (n < min) return `Поле должно быть не меньше ${min}`;
-  return '';
-}
+const ENDPOINT = "/api/points/check";
 
 export function lab1(){
   const form = document.getElementById("form-lab1");
@@ -34,115 +23,242 @@ export function lab1(){
 
   const lv1 = canvas("canvas");
 
-  let last;
-  try {
-    last = JSON.parse(sessionStorage.getItem("LAST_VERSION"));
-  } catch {
-    last = null;
-  }
-  if (last && Number.isFinite(last.r)) {
-    lv1(last.x, last.y, last.r, last.ans);
+  const lastVersion = sessionStorage.getItem("LAST_VERSION");
+
+  if (lastVersion) {
+    try {
+      const last = JSON.parse(lastVersion);
+
+      lv1(
+        last.x,
+        last.y,
+        last.r,
+        last.ans,
+        last.offsetX ?? 0,
+        last.offsetY ?? 0,
+        last.rotation ?? 0
+      );
+    } catch {
+      lv1(undefined, undefined, 15, true);
+    }
   } else {
     lv1(undefined, undefined, 15, true);
   }
 
   function showInfo(data){
     if (!info || !data) return;
-    const time = new Date(data.currentTime).toLocaleTimeString("ru-RU");
-    info.textContent = `Время сервера: ${time} · выполнение: ${data.executionMicros} мкс`;
+
+    const currentTime = data.currentTime
+      ? new Date(data.currentTime).toLocaleString()
+      : "";
+
+    info.textContent = [
+      currentTime,
+      executionTime
+    ].filter(Boolean).join(" | ");
   }
 
-  function showError(message){
-    if (info) info.textContent = message;
-    else console.error(message);
+  function showError(message) {
+    if (!info) return;
+
+    info.textContent = message;
   }
 
-  function showFieldError(field, error){
+  function showFieldError(field, error) {
+    const labels = {
+      r: labelR,
+      x: labelX,
+      y: labelY
+    };
+
     const label = labels[field];
-    if (!label) return;
-    label.textContent = error ? `${field.toUpperCase()}: ${error}` : field.toUpperCase();
-    info.textContent = `Неверно введенные данные`
+
+    if (label) {
+      label.textContent = error;
+    }
+
+    showError("Неверно введенные данные");
   }
 
-  async function send(action){
+  function resetFieldErrors() {
+    if (labelR) labelR.textContent = "R";
+    if (labelX) labelX.textContent = "X";
+    if (labelY) labelY.textContent = "Y";
+  }
+
+  function validateNumber(raw, min, max, minExclusive = false) {
+    if (raw === undefined || raw === null || raw.trim() === "") {
+      return "Поле обязательно";
+    }
+
+    const number = Number(raw.replace(",", "."));
+
+    if (!Number.isFinite(number)) {
+      return "Введите число";
+    }
+
+    if (number > max) {
+      return `Значение должно быть не больше ${max}`;
+    }
+
+    if (minExclusive && number <= min) {
+      return `Значение должно быть больше ${min}`;
+    }
+
+    if (number < min) {
+      return `Значение должно быть не меньше ${min}`;
+    }
+
+    return "";
+  }
+
+  async function send(request) {
     try {
-      return await action();
-    } catch (e) {
-      showError(`Сервер недоступен: ${e.message}`);
+      return await request();
+    } catch (error) {
+      showError(`Сервер недоступен: ${error.message}`);
       return null;
     }
   }
 
-  send(() => getData(ENDPOINT)).then(res => {
-    if (!res) return;
-    hist.set(res.data.history);
-    showInfo(res.data);
-  });
-
-  if (clearButton) clearButton.addEventListener("click", async () => {
-    const data = await send(() => clearHistory(ENDPOINT));
-    if (!data) return;
-    hist.set(data.history);
-    showInfo(data);
-  });
-  if (nextPage) nextPage.addEventListener("click", () => hist.next());
-  if (prevPage) prevPage.addEventListener("click", () => hist.prev());
-
-  historyLv();
-
-  form.addEventListener("submit", async event => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    const formData = new FormData(form);
-    const object = Object.fromEntries(formData);
+
+    resetFieldErrors();
+
+    const formData = Object.fromEntries(new FormData(form));
 
     const errors = {
-      r: validateNumber(object['r'], 0, 100, true),
-      x: validateNumber(object['x'], -100, 100),
-      y: validateNumber(object['y'], -100, 100)
+      r: validateNumber(formData.r, 0, 100, true),
+      x: validateNumber(formData.x, -100, 100),
+      y: validateNumber(formData.y, -100, 100)
     };
 
-    for (const field of ['r', 'x', 'y']) {
-      showFieldError(field, errors[field]);
-    }
-
-    if (errors.r || errors.x || errors.y) return;
-
-    const res = await send(() => getData(ENDPOINT, { x: object['x'], y: object['y'], r: object['r'] }));
-    if (!res) return;
-
-    showInfo(res.data);
-
-    if (!res.ok) {
-      for (const error of res.data.errors ?? []) {
-        showFieldError(error.field, error.message);
+    if (errors.r || errors.x || errors.y) {
+      for (const [field, error] of Object.entries(errors)) {
+        if (error) {
+          showFieldError(field, error);
+        }
       }
+
       return;
     }
 
-    const result = res.data.result;
-    lv1(Number(result.x), Number(result.y), Number(result.r), result.hit);
-    hist.set(res.data.history);
-  });
-}
-
-export function historyLv(){
-  const table = document.getElementById("history-body");
-  if (!table) return;
-
-  table.addEventListener("click", event =>{
-    const row = event.target.closest("tr");
-    if (!row || !row.dataset.x) return;
-    row.css("background", "red");
-
-    const data = {
-      x: Number(row.dataset.x),
-      y: Number(row.dataset.y),
-      r: Number(row.dataset.r),
-      ans: row.dataset.ans === "true"
+    const point = {
+      x: Number(formData.x.replace(",", ".")),
+      y: Number(formData.y.replace(",", ".")),
+      r: Number(formData.r.replace(",", "."))
     };
 
+    const response = await send(() => getData(ENDPOINT, point));
+
+    if (!response) {
+      return;
+    }
+
+    if (!response.ok) {
+      if (response.data?.errors) {
+        for (const error of response.data.errors) {
+          showFieldError(error.field, error.message);
+        }
+      } else {
+        showError(
+          response.data?.message ??
+          response.data?.error ??
+          `Ошибка сервера: ${response.status}`
+        );
+      }
+
+      return;
+    }
+
+    const data = response.data;
+    const result = data.result ?? data;
+
+    if (
+      result.x === undefined ||
+      result.y === undefined ||
+      result.r === undefined
+    ) {
+      showError("Сервер вернул некорректный результат");
+      return;
+    }
+
+    lv1(
+      Number(result.x),
+      Number(result.y),
+      Number(result.r),
+      result.hit,
+      Number(result.offsetX ?? 0),
+      Number(result.offsetY ?? 0),
+      Number(result.rotation ?? 0)
+    );
+
+    if (data.history) {
+      hist.set(data.history);
+    }
+
+    showInfo(data);
+  });
+
+  if (clearButton) {
+    clearButton.addEventListener("click", async () => {
+      const response = await send(() => clearHistory(ENDPOINT));
+
+      if (!response) {
+        return;
+      }
+
+      hist.set(response.history ?? []);
+      showInfo(response);
+    });
+  }
+
+  if (nextButton) {
+    nextButton.addEventListener("click", () => {
+      hist.next();
+    });
+  }
+
+  if (prevButton) {
+    prevButton.addEventListener("click", () => {
+      hist.prev();
+    });
+  }
+}
+
+export function historyLv() {
+  const table = document.getElementById("history");
+
+  if (!table) {
+    return;
+  }
+
+  table.addEventListener("click", (event) => {
+    const row = event.target.closest("tr");
+
+    if (!row) return;
+
+    const x = row.dataset.x;
+    const y = row.dataset.y;
+    const r = row.dataset.r;
+    const hit = row.dataset.ans;
+
+    if (
+      x === undefined ||
+      y === undefined ||
+      r === undefined
+    ) {
+      return;
+    }
+
     const lv1 = canvas("canvas");
-    lv1(data.x, data.y, data.r, data.ans);
-    setTimeout(() => row.css("background", ""), 400);
+
+    lv1(
+      Number(x),
+      Number(y),
+      Number(r),
+      hit === "true"
+    );
   });
 }

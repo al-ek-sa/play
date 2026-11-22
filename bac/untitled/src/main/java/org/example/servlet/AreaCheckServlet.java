@@ -66,13 +66,18 @@ public class AreaCheckServlet extends HttpServlet {
         }
 
         switch (path) {
-            case "/check" -> handleSingle(request, response, userId);
-            case "/batch" -> handleBatch(request, response, userId);
-            default -> sendError(
-                    response,
-                    HttpServletResponse.SC_NOT_FOUND,
-                    "Endpoint не найден"
-            );
+            case "/check", "/points/check", "/points" ->
+                    handleSingle(request, response, userId);
+
+            case "/batch", "/points/batch" ->
+                    handleBatch(request, response, userId);
+
+            default ->
+                    sendError(
+                            response,
+                            HttpServletResponse.SC_NOT_FOUND,
+                            "Endpoint не найден: " + path
+                    );
         }
     }
 

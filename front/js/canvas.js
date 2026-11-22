@@ -261,9 +261,7 @@ export function canvas(name) {
     ctx.save();
 
     ctx.translate(areaCx, areaCy);
-
     ctx.rotate(-radians);
-
 
     function fillArea(draw) {
       draw();
@@ -367,6 +365,7 @@ export function canvas(name) {
 
     ticks();
 
+    ctx.restore();
     if (
       x !== undefined &&
       y !== undefined &&
@@ -380,8 +379,8 @@ export function canvas(name) {
       ctx.beginPath();
 
       ctx.arc(
-        x * step,
-        -y * step,
+        cx + x * step,
+        cy - y * step,
         4,
         0,
         Math.PI * 2
@@ -390,7 +389,6 @@ export function canvas(name) {
       ctx.fill();
     }
 
-    ctx.restore();
     ctx.globalAlpha = 1;
     ctx.setLineDash([]);
     ctx.lineWidth = 1;

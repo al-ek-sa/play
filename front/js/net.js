@@ -1,5 +1,3 @@
-//"https://cdn.jsdelivr.net/npm/superagent@8.1.2/+esm";
-
 export async function getData(url, form = {}) {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), 3000);
@@ -12,10 +10,9 @@ export async function getData(url, form = {}) {
       mode: "same-origin",
       keepalive: false,
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        "Authorization": "Bearer JWT"
+        "Content-Type": "application/json"
       },
-      body: new URLSearchParams(form)
+      body: JSON.stringify(form)
     });
     const text = await response.text();
     const data = text ? JSON.parse(text) : null;

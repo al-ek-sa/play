@@ -44,7 +44,7 @@ public class HitEntity {
     @Column(nullable = false)
     private boolean hit;
 
-    @Column(nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false, updatable = false)
     private Instant createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
