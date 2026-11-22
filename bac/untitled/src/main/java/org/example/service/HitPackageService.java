@@ -15,6 +15,7 @@ import org.example.repository.AreaVersionRepository;
 import org.example.repository.HitRepository;
 import org.example.repository.UserRepository;
 import org.example.status.UserStatus;
+import org.example.websocket.HistoryNotificationService;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -37,6 +38,9 @@ public class HitPackageService {
 
     @Inject
     private AreaVersionRepository areaVersionRepository;
+
+    @Inject
+    private HistoryNotificationService historyNotificationService;
 
     @Transactional
     public void save(
@@ -84,6 +88,8 @@ public class HitPackageService {
 
             hitRepository.save(entity);
         }
+
+        historyNotificationService.notifyHistoryUpdated(userId);
     }
 
     private void validateBatchSize(List<HitRequestDto> list) {

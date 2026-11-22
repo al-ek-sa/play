@@ -5,6 +5,7 @@ import { auth } from './auth.js';
 import { login } from './login.js';
 import { register } from './register.js';
 import { batch } from './file.js';
+import { HistoryWebSocket } from './history-websocket.js';
 
 document.addEventListener("DOMContentLoaded", () => {
   restore();
@@ -19,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initIfExists("form-lab1", lab1);
   initIfExists("history", historyLv);
   initIfExists("file", batch);
+
+  if (document.getElementById("history") || document.getElementById("form-lab1")) {
+    HistoryWebSocket.connect();
+  }
 });
 
 function initIfExists(id, callback) {
@@ -27,7 +32,7 @@ function initIfExists(id, callback) {
   }
 }
 
-function restore(){
+function restore() {
   document.body.classList = localStorage.getItem("LD");
   document.body.dataset.theme = localStorage.getItem("COLOR");
 }

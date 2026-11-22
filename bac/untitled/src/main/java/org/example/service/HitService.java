@@ -13,12 +13,16 @@ import org.example.figure.Point;
 import org.example.repository.AreaVersionRepository;
 import org.example.repository.HitRepository;
 import org.example.repository.UserRepository;
+import org.example.websocket.HistoryNotificationService;
 
 import java.math.BigDecimal;
 import java.util.UUID;
 
 @ApplicationScoped
 public class HitService {
+
+    @Inject
+    private HistoryNotificationService historyNotificationService;
 
     @Inject
     private HitRepository hitRepository;
@@ -79,6 +83,8 @@ public class HitService {
         );
 
         hitRepository.save(hit);
+
+        historyNotificationService.notifyHistoryUpdated(userId);
 
         return new HitResult(
                 hitDto.x(),

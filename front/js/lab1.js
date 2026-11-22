@@ -1,12 +1,16 @@
 import { canvas } from './canvas.js';
 import { history } from './history.js';
 import { getData, clearHistory } from './net.js';
+import { HistoryWebSocket } from './history-websocket.js';
 
 const ENDPOINT = "/api/points/check";
 
-export function lab1(){
+export function lab1() {
   const form = document.getElementById("form-lab1");
   const hist = history();
+
+  HistoryWebSocket.setHistoryRefreshHandler(() => hist.refresh());
+
   const clearButton = document.getElementById("history-clear");
   const nextPage = document.getElementById("history-next");
   const prevPage = document.getElementById("history-prev");
@@ -45,8 +49,10 @@ export function lab1(){
     lv1(undefined, undefined, 15, true);
   }
 
-  function showInfo(data){
-    if (!info || !data) return;
+  function showInfo(data) {
+    if (!info || !data) {
+      return;
+    }
 
     const currentTime = data.currentTime
       ? new Date(data.currentTime).toLocaleString()
