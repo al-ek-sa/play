@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="../css/today.css">
   <link rel="stylesheet" href="../css/symbol.css">
   <link rel="stylesheet" href="../css/coords.css">
+  <link rel="stylesheet" href="../css/history.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -192,99 +193,51 @@
           </form>
         </section>
 
-        <section class="history-filters">
-
-          <h3>Фильтрация истории</h3>
-
-          <ul class="plot-legend" role="list">
-            <li>
-              <label class="filter-option">
-                <input
-                  type="radio"
-                  name="history-filter"
-                  value="version"
-                  checked
-                >
-                <span>Версия области</span>
-              </label>
-            </li>
-
-            <li>
-              <label class="filter-option">
-                <input
-                  type="radio"
-                  name="history-filter"
-                  value="result"
-                >
-                <span>Результат</span>
-              </label>
-            </li>
-
-            <li>
-              <label class="filter-option">
-                <input
-                  type="radio"
-                  name="history-filter"
-                  value="time"
-                >
-                <span>Время</span>
-              </label>
-            </li>
-          </ul>
-
-          <div class="filter-fields" id="version-filter" hidden>
-
-            <label for="area-version">Версия области</label>
-
-            <input
-              type="number"
-              id="area-version"
-              name="version"
-              min="1"
-              placeholder="Введите номер версии"
-            >
-
+        <section class="history-filter">
+          <div class="filter-header">
+            <span class="filter-title">История</span>
+            <span class="filter-subtitle">Фильтрация результатов</span>
           </div>
 
-          <div class="filter-fields hidden" id="result-filter" hidden>
+          <div class="filter-tabs">
+            <label class="filter-tab">
+              <input type="radio" name="history-filter" value="version" checked>
+              <span>Версия</span>
+            </label>
 
-            <label for="hit-result">Результат попадания</label>
+            <label class="filter-tab">
+              <input type="radio" name="history-filter" value="result">
+              <span>Результат</span>
+            </label>
 
-            <select id="hit-result" name="hit">
-              <option value="true">Попадание</option>
-              <option value="false">Промах</option>
-            </select>
-
+            <label class="filter-tab">
+              <input type="radio" name="history-filter" value="time">
+              <span>Период</span>
+            </label>
           </div>
 
-          <div class="filter-fields hidden" id="time-filter" hidden>
-
-            <div class="date-field">
-              <label for="date-from">Начало периода</label>
-
-              <input
-                type="datetime-local"
-                id="date-from"
-                name="from"
-              >
+          <div class="filter-content">
+            <div class="filter-fields" id="version-filter">
+              <input type="number" id="area-version" min="1" placeholder="Номер версии">
             </div>
 
-            <div class="date-field">
-              <label for="date-to">Конец периода</label>
-
-              <input
-                type="datetime-local"
-                id="date-to"
-                name="to"
-              >
+            <div class="filter-fields hidden" id="result-filter">
+              <select id="hit-result">
+                <option value="true">Попадание</option>
+                <option value="false">Промах</option>
+              </select>
             </div>
 
+            <div class="filter-fields hidden" id="time-filter">
+              <input type="datetime-local" id="date-from">
+              <span class="date-separator">—</span>
+              <input type="datetime-local" id="date-to">
+            </div>
+
+            <button class="filter-apply" id="apply-history-filter">
+              Применить
+            </button>
           </div>
-
-          <button type="button" id="apply-history-filter"  hidden>
-            Применить фильтр
-          </button>
-
         </section>
 
         <section class="card">
