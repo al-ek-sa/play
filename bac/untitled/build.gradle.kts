@@ -27,6 +27,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation("org.mindrot:jbcrypt:0.4")
+    implementation("org.apache.commons:commons-csv:1.14.1")
 }
 
 tasks.test {

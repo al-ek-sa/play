@@ -111,17 +111,23 @@ public class HitRepository {
     /**
      * для истории методы и пагинации (по тз время, версия фигуры и результат)
      */
-
-    public List<HitEntity> findByVersion(int version, int offset, int limit) {
+    public List<HitEntity> findByVersion(
+            UUID userId,
+            int version,
+            int offset,
+            int limit
+    ) {
         return entityManager.createQuery(
                         """
                                 SELECT h
                                 FROM HitEntity h
-                                WHERE h.areaVersion.id = :version
+                                WHERE h.user.id = :userId
+                                  AND h.areaVersion.id = :version
                                 ORDER BY h.createdAt DESC
                                 """,
                         HitEntity.class
                 )
+                .setParameter("userId", userId)
                 .setParameter("version", version)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
@@ -129,6 +135,7 @@ public class HitRepository {
     }
 
     public List<HitEntity> findByTime(
+            UUID userId,
             LocalDateTime from,
             LocalDateTime to,
             int offset,
@@ -138,11 +145,14 @@ public class HitRepository {
                         """
                                 SELECT h
                                 FROM HitEntity h
-                                WHERE h.createdAt BETWEEN :from AND :to
+                                WHERE
+                                 h.user.id = :userId
+                                  AND h.createdAt BETWEEN :from AND :to
                                 ORDER BY h.createdAt DESC
                                 """,
                         HitEntity.class
                 )
+                .setParameter("userId", userId)
                 .setParameter("from", from)
                 .setParameter("to", to)
                 .setFirstResult(offset)
@@ -151,6 +161,7 @@ public class HitRepository {
     }
 
     public List<HitEntity> findByResult(
+            UUID userId,
             boolean hit,
             int offset,
             int limit
@@ -159,14 +170,66 @@ public class HitRepository {
                         """
                                 SELECT h
                                 FROM HitEntity h
-                                WHERE h.hit = :hit
+                                WHERE h.user.id = :userId
+                                  AND h.hit = :hit
                                 ORDER BY h.createdAt DESC
                                 """,
                         HitEntity.class
                 )
+                .setParameter("userId", userId)
                 .setParameter("hit", hit)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
                 .getResultList();
+    }
+
+    public long countByVersion(UUID userId, int version) {
+        return entityManager.createQuery(
+                        """
+                                SELECT COUNT(h)
+                                FROM HitEntity h
+                                WHERE h.user.id = :userId
+                                  AND h.areaVersion.id = :version
+                                """,
+                        Long.class
+                )
+                .setParameter("userId", userId)
+                .setParameter("version", version)
+                .getSingleResult();
+    }
+
+    public long countByResult(UUID userId, boolean hit) {
+        return entityManager.createQuery(
+                        """
+                                SELECT COUNT(h)
+                                FROM HitEntity h
+                                WHERE h.user.id = :userId
+                                  AND h.hit = :hit
+                                """,
+                        Long.class
+                )
+                .setParameter("userId", userId)
+                .setParameter("hit", hit)
+                .getSingleResult();
+    }
+
+    public long countByTime(
+            UUID userId,
+            LocalDateTime from,
+            LocalDateTime to
+    ) {
+        return entityManager.createQuery(
+                        """
+                                SELECT COUNT(h)
+                                FROM HitEntity h
+                                WHERE h.user.id = :userId
+                                  AND h.createdAt BETWEEN :from AND :to
+                                """,
+                        Long.class
+                )
+                .setParameter("userId", userId)
+                .setParameter("from", from)
+                .setParameter("to", to)
+                .getSingleResult();
     }
 }
