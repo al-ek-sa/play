@@ -9,6 +9,7 @@ import org.example.entity.UserEntity;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Stream;
 
 @ApplicationScoped
 public class HitRepository {
@@ -111,7 +112,7 @@ public class HitRepository {
     /**
      * для истории методы и пагинации (по тз время, версия фигуры и результат)
      */
-    public List<HitEntity> findByVersion(
+    public Stream<HitEntity> findByVersion(
             UUID userId,
             int version,
             int offset,
@@ -131,10 +132,10 @@ public class HitRepository {
                 .setParameter("version", version)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
-                .getResultList();
+                .getResultStream();
     }
 
-    public List<HitEntity> findByTime(
+    public Stream<HitEntity> findByTime(
             UUID userId,
             LocalDateTime from,
             LocalDateTime to,
@@ -157,10 +158,10 @@ public class HitRepository {
                 .setParameter("to", to)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
-                .getResultList();
+                .getResultStream();
     }
 
-    public List<HitEntity> findByResult(
+    public Stream<HitEntity> findByResult(
             UUID userId,
             boolean hit,
             int offset,
@@ -180,7 +181,7 @@ public class HitRepository {
                 .setParameter("hit", hit)
                 .setFirstResult(offset)
                 .setMaxResults(limit)
-                .getResultList();
+                .getResultStream();
     }
 
     public long countByVersion(UUID userId, int version) {
