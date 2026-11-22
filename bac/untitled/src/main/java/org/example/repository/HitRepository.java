@@ -6,6 +6,7 @@ import jakarta.persistence.PersistenceContext;
 import org.example.entity.HitEntity;
 import org.example.entity.UserEntity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -105,5 +106,67 @@ public class HitRepository {
                         Long.class
                 )
                 .getSingleResult();
+    }
+
+    /**
+     * для истории методы и пагинации (по тз время, версия фигуры и результат)
+     */
+
+    public List<HitEntity> findByVersion(int version, int offset, int limit) {
+        return entityManager.createQuery(
+                        """
+                                SELECT h
+                                FROM HitEntity h
+                                WHERE h.areaVersion.id = :version
+                                ORDER BY h.createdAt DESC
+                                """,
+                        HitEntity.class
+                )
+                .setParameter("version", version)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
+    public List<HitEntity> findByTime(
+            LocalDateTime from,
+            LocalDateTime to,
+            int offset,
+            int limit
+    ) {
+        return entityManager.createQuery(
+                        """
+                                SELECT h
+                                FROM HitEntity h
+                                WHERE h.createdAt BETWEEN :from AND :to
+                                ORDER BY h.createdAt DESC
+                                """,
+                        HitEntity.class
+                )
+                .setParameter("from", from)
+                .setParameter("to", to)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
+    }
+
+    public List<HitEntity> findByResult(
+            boolean hit,
+            int offset,
+            int limit
+    ) {
+        return entityManager.createQuery(
+                        """
+                                SELECT h
+                                FROM HitEntity h
+                                WHERE h.hit = :hit
+                                ORDER BY h.createdAt DESC
+                                """,
+                        HitEntity.class
+                )
+                .setParameter("hit", hit)
+                .setFirstResult(offset)
+                .setMaxResults(limit)
+                .getResultList();
     }
 }

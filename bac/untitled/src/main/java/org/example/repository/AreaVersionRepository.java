@@ -40,4 +40,14 @@ public class AreaVersionRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    public int countArea() {
+        return entityManager.createQuery(
+                """
+                        SELECT COUNT(a)
+                        FROM AreaVersionEntity a
+                        """,
+                Integer.class
+        ).getSingleResult();
+    }
 }
