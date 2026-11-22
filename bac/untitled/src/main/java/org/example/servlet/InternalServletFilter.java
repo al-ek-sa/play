@@ -1,4 +1,4 @@
-package org.example.filter;
+package org.example.servlet;
 
 import jakarta.servlet.DispatcherType;
 import jakarta.servlet.Filter;

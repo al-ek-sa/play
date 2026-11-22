@@ -40,7 +40,7 @@ export function login() {
       }
 
       if (result.role === "USER") {
-        window.location.href = "/html/index.html";
+        window.location.href = "/html/lab1.html";
       } else if (result.role === "ADMIN") {
         window.location.href = "/html/auth.html";
       }
