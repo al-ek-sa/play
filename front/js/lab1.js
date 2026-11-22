@@ -52,25 +52,22 @@ export function lab1(){
       ? new Date(data.currentTime).toLocaleString()
       : "";
 
-    info.textContent = [
-      currentTime,
-      executionTime
-    ].filter(Boolean).join(" | ");
+    const executionTime = data.executionTime
+      ? `${data.executionTime} ms`
+      : "";
+
+    info.textContent = [currentTime, executionTime]
+      .filter(Boolean)
+      .join(" | ");
   }
 
   function showError(message) {
-    if (!info) return;
-
-    info.textContent = message;
+    if (info) {
+      info.textContent = message;
+    }
   }
 
   function showFieldError(field, error) {
-    const labels = {
-      r: labelR,
-      x: labelX,
-      y: labelY
-    };
-
     const label = labels[field];
 
     if (label) {
@@ -81,9 +78,9 @@ export function lab1(){
   }
 
   function resetFieldErrors() {
-    if (labelR) labelR.textContent = "R";
-    if (labelX) labelX.textContent = "X";
-    if (labelY) labelY.textContent = "Y";
+    if (labels.r) labels.r.textContent = "R";
+    if (labels.x) labels.x.textContent = "X";
+    if (labels.y) labels.y.textContent = "Y";
   }
 
   function validateNumber(raw, min, max, minExclusive = false) {
@@ -214,14 +211,14 @@ export function lab1(){
     });
   }
 
-  if (nextButton) {
-    nextButton.addEventListener("click", () => {
+  if (nextPage) {
+    nextPage.addEventListener("click", () => {
       hist.next();
     });
   }
 
-  if (prevButton) {
-    prevButton.addEventListener("click", () => {
+  if (prevPage) {
+    prevPage.addEventListener("click", () => {
       hist.prev();
     });
   }
@@ -237,7 +234,9 @@ export function historyLv() {
   table.addEventListener("click", (event) => {
     const row = event.target.closest("tr");
 
-    if (!row) return;
+    if (!row) {
+      return;
+    }
 
     const x = row.dataset.x;
     const y = row.dataset.y;

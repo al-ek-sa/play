@@ -193,7 +193,7 @@
           </form>
         </section>
 
-        <section class="history-filter">
+        <section class="history-filter" id="history-filter">
           <div class="filter-header">
             <span class="filter-title">История</span>
             <span class="filter-subtitle">Фильтрация результатов</span>
@@ -221,14 +221,14 @@
               <input type="number" id="area-version" min="1" placeholder="Номер версии">
             </div>
 
-            <div class="filter-fields hidden" id="result-filter">
+            <div class="filter-fields hidden" id="result-filter" hidden>
               <select id="hit-result">
                 <option value="true">Попадание</option>
                 <option value="false">Промах</option>
               </select>
             </div>
 
-            <div class="filter-fields hidden" id="time-filter">
+            <div class="filter-fields hidden" id="time-filter" hidden>
               <input type="datetime-local" id="date-from">
               <span class="date-separator">—</span>
               <input type="datetime-local" id="date-to">
