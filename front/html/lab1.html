@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../css/symbol.css">
   <link rel="stylesheet" href="../css/coords.css">
   <link rel="stylesheet" href="../css/history.css">
+  <link rel="stylesheet" href="../css/file.css">
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 
@@ -191,6 +192,38 @@
             </div>
             <button id="lv1" class="button button--wide button--primary" type="submit">Проверить точку</button>
           </form>
+        </section>
+
+        <section class="batch-upload">
+          <div class="batch-upload__header">
+            <h2>Пакетная проверка</h2>
+            <p>Загрузите JSON-файл с набором точек</p>
+          </div>
+
+          <div class="batch-upload__dropzone">
+            <input
+              type="file"
+              id="batchFile"
+              accept=".json,application/json"
+            >
+
+            <label for="batchFile" class="batch-upload__file">
+              <span class="batch-upload__icon">↑</span>
+
+              <span class="batch-upload__text">
+                <strong>Выберите файл</strong>
+                <span>или перетащите его сюда</span>
+            </span>
+            </label>
+
+            <div class="batch-upload__filename" id="fileName">
+              JSON · до 500 точек
+            </div>
+          </div>
+
+          <button type="button" id="uploadBatch" class="batch-upload__button">
+            Загрузить пакет
+          </button>
         </section>
 
         <section class="history-filter" id="history-filter">
