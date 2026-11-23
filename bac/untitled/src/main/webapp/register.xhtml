@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" lang="ru">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="./css/login.css" />
+</h:head>
+
+<h:body>
+
+    <main>
+        <h:form id="register">
+            <h1>Регистрация</h1>
+
+            <h:outputLabel for="username" value="Логин"/>
+            <h:inputText id="username" value="#{registerBean.username}" required="true"/>
+
+            <h:outputLabel for="password" value="Пароль"/>
+            <h:inputSecret id="password" value="#{registerBean.password}" required="true"/>
+
+            <h:outputLabel for="confirmPassword" value="Повторите пароль"/>
+            <h:inputSecret id="confirmPassword" value="#{registerBean.confirmPassword}" required="true"/>
+
+            <h:commandButton value="Зарегистрироваться" action="#{registerBean.register}"/>
+
+            <p>
+                Уже есть аккаунт?
+                <a href="./login.html">Войти</a>
+            </p>
+        </h:form>
+    </main>
+
+    <script type="module" src="/js/main.js"></script>
+
+</h:body>
+</html>

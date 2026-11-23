@@ -1,0 +1,144 @@
+.history-filter {
+  width: 100%;
+  max-width: 520px;
+  padding: 20px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  color: #1f2937;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.filter-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 18px;
+}
+
+.filter-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.filter-subtitle {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.filter-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  background: #f5f5f5;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.filter-tab {
+  flex: 1;
+  cursor: pointer;
+}
+
+.filter-tab input {
+  display: none;
+}
+
+.filter-tab span {
+  display: block;
+  text-align: center;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: #737373;
+  border-radius: 6px;
+  transition: 0.2s;
+}
+
+.filter-tab input:checked + span {
+  background: #ffffff;
+  color: #262626;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  font-weight: 500;
+}
+
+.filter-tab:hover span {
+  color: #262626;
+}
+
+.filter-content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.filter-fields {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.filter-fields input,
+.filter-fields select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 12px;
+  background: #ffffff;
+  border: 1px solid #d4d4d4;
+  border-radius: 7px;
+  color: #404040;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.filter-fields input:focus,
+.filter-fields select:focus {
+  border-color: #a3a3a3;
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.04);
+}
+
+.filter-fields input::placeholder {
+  color: #a3a3a3;
+}
+
+.filter-fields select {
+  cursor: pointer;
+}
+
+.filter-fields input:hover,
+.filter-fields select:hover {
+  border-color: #b5b5b5;
+}
+
+.date-separator {
+  color: #a3a3a3;
+}
+
+.filter-apply {
+  padding: 10px 16px;
+  border: 1px solid #d4d4d4;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  background: #ffffff;
+  color: #404040;
+}
+
+.filter-apply:hover {
+  background: #f4f3f2;
+  border-color: #b5b5b5;
+}
+
+.filter-apply:active {
+  background: #eaeaea;
+}
+
+[hidden] {
+  display: none !important;
+}

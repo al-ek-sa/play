@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" lang="ru">
+
+<h:head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Вход</title>
+    <link rel="stylesheet" href="./css/login.css"/>
+</h:head>
+
+<h:body>
+    <main>
+        <h:form id="login">
+            <h1>Вход</h1>
+
+            <label for="username">Логин</label>
+            <h:inputText id="username" value="#{loginBean.username}" required="true"/>
+
+            <label for="password">Пароль</label>
+            <h:inputSecret id="password" value="#{loginBean.password}" required="true"/>
+
+            <h:commandButton value="Войти" action="#{loginBean.login}"/>
+
+            <p>
+                Нет аккаунта?
+                <a href="./register.html">Зарегистрироваться</a>
+            </p>
+        </h:form>
+    </main>
+</h:body>
+</html>
