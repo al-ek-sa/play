@@ -2,28 +2,29 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" lang="ru">
 
 <h:head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Вход</title>
-    <link rel="stylesheet" href="./css/login.css"/>
+    <link rel="stylesheet" href="/css/login.css"/>
+    <script type="module" src="/js/main.js"></script>
 </h:head>
 
 <h:body>
     <main>
-        <h:form id="login">
+        <h:form id="login" prependId="false">
             <h1>Вход</h1>
-
             <label for="username">Логин</label>
-            <h:inputText id="username" value="#{loginBean.username}" required="true"/>
-
+            <h:inputText id="username" value="#{loginBean.login}" required="true" requiredMessage="Введите логин"/>
+            <h:message for="username"/>
             <label for="password">Пароль</label>
-            <h:inputSecret id="password" value="#{loginBean.password}" required="true"/>
-
-            <h:commandButton value="Войти" action="#{loginBean.login}"/>
-
+            <h:inputSecret id="password" value="#{loginBean.password}" required="true" requiredMessage="Введите пароль"/>
+            <h:message for="password"/>
+            <button id="submit" type="submit">Войти</button>
             <p>
                 Нет аккаунта?
-                <a href="./register.html">Зарегистрироваться</a>
+                <h:outputLink value="/register.xhtml">
+                    Зарегистрироваться
+                </h:outputLink>
             </p>
         </h:form>
     </main>

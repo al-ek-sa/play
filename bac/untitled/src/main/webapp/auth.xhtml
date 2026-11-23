@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" lang="ru">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="jakarta.faces.html" xmlns:pt="jakarta.faces.passthrough" lang="ru">
 
 <h:head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Редактор области</title>
-    <link rel="stylesheet" href="./css/editor.css"/>
+    <link rel="stylesheet" href="/css/editor.css"/>
+    <script type="module" src="/js/main.js"></script>
 </h:head>
 
 <h:body>
 
     <header class="header">
         <h1>Аккаунт главного редактора</h1>
-
-        <h:form>
-            <h:commandButton value="Выйти из аккаунта" action="#{editorBean.logout}"/>
+        <h:form id="logoutForm" prependId="false">
+            <h:commandButton id="logout" value="Выйти из аккаунта" action="#{editorBean.logout}"/>
         </h:form>
     </header>
 
@@ -22,41 +22,38 @@
 
         <section class="graph-section">
             <h2>Область попаданий</h2>
-            <canvas id="areaCanvas" width="600" height="600"></canvas>
+            <canvas id="areaCanvas" width="600" height="600" aria-label="Графическое отображение области попаданий"></canvas>
         </section>
 
         <section class="settings-section">
             <h2>Настройки области</h2>
 
-            <h:form id="areaForm">
+            <h:form id="areaForm" prependId="false">
+                <h:messages id="messages" styleClass="messages" globalOnly="false"/>
+                <div class="settings-field">
+                    <h:outputLabel for="offsetY" value="Смещение по Y"/>
+                    <h:inputText id="offsetY" value="#{editorBean.offsetY}" required="true" requiredMessage="Введите смещение по Y" pt:type="number" pt:step="any">
+                        <h:message for="offsetY"/>
+                    </h:inputText>
+                </div>
 
-                <label for="offsetY">
-                    Смещение по Y
-                </label>
+                <div class="settings-field">
+                    <h:outputLabel for="offsetX" value="Смещение по X"/>
+                    <h:inputText id="offsetX" value="#{editorBean.offsetX}" required="true" requiredMessage="Введите смещение по X" pt:type="number" pt:step="any">
+                        <h:message for="offsetX"/>
+                    </h:inputText>
+                </div>
 
-                <h:inputText id="offsetY" value="#{editorBean.offsetY}" required="true"/>
+                <div class="settings-field">
+                    <h:outputLabel for="rotation" value="Угол поворота (градусы)"/>
+                    <h:inputText id="rotation" value="#{editorBean.rotation}" required="true" requiredMessage="Введите угол поворота" pt:type="number" pt:step="any">
+                        <h:message for="rotation"/>
+                    </h:inputText>
+                </div>
 
-                <label for="offsetX">
-                    Смещение по X
-                </label>
-
-                <h:inputText id="offsetX" value="#{editorBean.offsetX}" required="true"/>
-
-                <label for="rotation">
-                    Угол поворота (градусы)
-                </label>
-
-                <h:inputText id="rotation" value="#{editorBean.rotation}" required="true"/>
-
-                <h:commandButton value="Сохранить изменения" action="#{editorBean.saveArea}"/>
-
+                <h:commandButton id="saveArea" value="Сохранить изменения" action="#{editorBean.saveArea}"/>
             </h:form>
-
         </section>
-
     </main>
-
-    <script type="module" src="../js/main.js"></script>
-
 </h:body>
 </html>
