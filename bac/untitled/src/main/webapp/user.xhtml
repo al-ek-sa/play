@@ -13,59 +13,12 @@
     <link rel="stylesheet" href="/css/symbol.css"/>
     <link rel="stylesheet" href="/css/coords.css"/>
     <link rel="stylesheet" href="/css/history.css"/>
+    <link rel="stylesheet" href="/css/file.css"/>
     <script type="module" src="/js/main.js"></script>
 </h:head>
 
 <h:body>
     <div class="app">
-        <aside class="sidebar">
-            <div class="sidebar__top">
-                <a href="#" class="logo">
-                    <span class="logo__text" aria-hidden="true">
-                        MathQuest
-                    </span>
-                </a>
-
-                <button class="notify-button" type="button" aria-label="Уведомления, 2 новых">
-                    <span class="notify-button__badge" aria-hidden="true">
-                        2
-                    </span>
-                </button>
-            </div>
-
-            <nav aria-label="Основное меню">
-                <ul class="nav__list" role="list">
-                    <li>
-                        <a href="#" class="nav__item">
-                            Сегодня
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="nav__item">
-                            Темы
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="#" class="nav__item">
-                            Задачи друзьям
-                            <span class="nav__badge visually-hidden">
-                                3
-                            </span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <span aria-disabled="true"
-                              class="nav__item nav__item--disabled">
-                            <span>Календарь</span>
-                            <span class="nav__soon">скоро</span>
-                        </span>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
 
         <main id="main" class="page">
             <header class="page__header">
@@ -143,6 +96,41 @@
                                 Проверить точку
                             </button>
                         </h:form>
+                    </section>
+
+                    <section id="file" class="batch-upload">
+
+                        <div class="batch-upload__heading">
+                            <h2>Пакетная проверка</h2>
+                            <p>Загрузите JSON-файл с набором точек</p>
+                        </div>
+
+                        <label class="batch-upload__zone" for="batchFile">
+                            <input type="file"
+                                   id="batchFile"
+                                   accept=".json,application/json"/>
+
+                            <span class="batch-upload__upload-icon">↑</span>
+
+                            <span class="batch-upload__description">
+                                <span class="batch-upload__main-text">
+                                    Выбрать файл
+                                </span>
+
+                                <span class="batch-upload__sub-text">
+                                    JSON · до 500 точек
+                                </span>
+                            </span>
+
+                            <span class="batch-upload__filename" id="fileName"></span>
+                        </label>
+
+                        <button id="uploadBatch"
+                                class="batch-upload__button"
+                                type="button">
+                            Загрузить пакет
+                        </button>
+                        <div id="batchStatus" class="batch-upload__status"></div>
                     </section>
 
                     <section class="history-filter" id="history-filter">
@@ -227,10 +215,6 @@
                                     </span>
                                 </button>
                             </div>
-
-                            <button id="history-clear" class="history__clear" type="button">
-                                Очистить
-                            </button>
                         </div>
 
                         <div class="history__scroll" aria-labelledby="progress-title">

@@ -45,13 +45,12 @@ export function register() {
       }
 
       if (result.role === "ADMIN") {
-        window.location.href = "/html/admin.html";
+        window.location.href = "/admin.html";
       } else if (result.role === "USER") {
-        window.location.href = "/html/main.html";
+        window.location.href = "/user.html";
       }
 
     } catch (error) {
-      console.error(error);
       alert("Ошибка соединения с сервером");
     }
   });

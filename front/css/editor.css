@@ -24,15 +24,15 @@ body {
 
 button {
   padding: 10px 16px;
-  border: none;
+  border: 1px solid #ccc;
   border-radius: 6px;
-  background: gray;
-  color: white;
+  background: #eeeeee;
+  color: #333;
   cursor: pointer;
 }
 
 button:hover {
-  background: dimgrey;
+  background: #e0e0e0;
 }
 
 .editor {
@@ -66,27 +66,77 @@ canvas {
   background: #fafafa;
 }
 
-form {
+.settings-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-label {
+.settings-field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-input {
+.settings-label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.settings-input {
+  width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 16px;
 }
 
-input:focus {
+.settings-input:focus {
   outline: none;
-  border-color: #4f46e5;
+  border-color: black;
 }
 
+.settings-form .save-button {
+  width: 100%;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #eeeeee;
+  color: #333;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.settings-form .save-button:hover {
+  background: #e0e0e0;
+}
+
+.settings-form .save-button:active {
+  background: #d5d5d5;
+}
+
+.logout-button {
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #eeeeee;
+  color: #333;
+  font-family: Arial, sans-serif;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background: #e0e0e0;
+}
+
+.field-message {
+  color: #666;
+  font-size: 13px;
+}
+
+.messages {
+  color: #666;
+  font-size: 14px;
+}

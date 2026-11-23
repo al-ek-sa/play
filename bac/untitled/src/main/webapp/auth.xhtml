@@ -14,7 +14,7 @@
     <header class="header">
         <h1>Аккаунт главного редактора</h1>
         <h:form id="logoutForm" prependId="false">
-            <h:commandButton id="logout" value="Выйти из аккаунта" action="#{editorBean.logout}"/>
+            <h:commandButton id="logout" value="Выйти из аккаунта" action="#{editorBean.logout}" styleClass="logout-button"/>
         </h:form>
     </header>
 
@@ -28,30 +28,28 @@
         <section class="settings-section">
             <h2>Настройки области</h2>
 
-            <h:form id="areaForm" prependId="false">
-                <h:messages id="messages" styleClass="messages" globalOnly="false"/>
+            <h:form id="areaForm" prependId="false" styleClass="settings-form">
+                <h:messages id="messages" styleClass="messages" globalOnly="true"/>
+
                 <div class="settings-field">
-                    <h:outputLabel for="offsetY" value="Смещение по Y"/>
-                    <h:inputText id="offsetY" value="#{editorBean.offsetY}" required="true" requiredMessage="Введите смещение по Y" pt:type="number" pt:step="any">
-                        <h:message for="offsetY"/>
-                    </h:inputText>
+                    <h:outputLabel for="offsetY" value="Смещение по Y" styleClass="settings-label"/>
+                    <h:inputText id="offsetY" value="#{editorBean.offsetY}" required="true" requiredMessage="Введите смещение по Y" pt:type="number" pt:step="any" styleClass="settings-input"/>
+                    <h:message for="offsetY" styleClass="field-message"/>
                 </div>
 
                 <div class="settings-field">
-                    <h:outputLabel for="offsetX" value="Смещение по X"/>
-                    <h:inputText id="offsetX" value="#{editorBean.offsetX}" required="true" requiredMessage="Введите смещение по X" pt:type="number" pt:step="any">
-                        <h:message for="offsetX"/>
-                    </h:inputText>
+                    <h:outputLabel for="offsetX" value="Смещение по X" styleClass="settings-label"/>
+                    <h:inputText id="offsetX" value="#{editorBean.offsetX}" required="true" requiredMessage="Введите смещение по X" pt:type="number" pt:step="any" styleClass="settings-input"/>
+                    <h:message for="offsetX" styleClass="field-message"/>
                 </div>
 
                 <div class="settings-field">
-                    <h:outputLabel for="rotation" value="Угол поворота (градусы)"/>
-                    <h:inputText id="rotation" value="#{editorBean.rotation}" required="true" requiredMessage="Введите угол поворота" pt:type="number" pt:step="any">
-                        <h:message for="rotation"/>
-                    </h:inputText>
+                    <h:outputLabel for="rotation" value="Угол поворота (градусы)" styleClass="settings-label"/>
+                    <h:inputText id="rotation" value="#{editorBean.rotation}" required="true" requiredMessage="Введите угол поворота" pt:type="number" pt:step="any" styleClass="settings-input"/>
+                    <h:message for="rotation" styleClass="field-message"/>
                 </div>
 
-                <h:commandButton id="saveArea" value="Сохранить изменения" action="#{editorBean.saveArea}"/>
+                <h:commandButton id="saveArea" value="Сохранить изменения" action="#{editorBean.saveArea}" styleClass="save-button"/>
             </h:form>
         </section>
     </main>
